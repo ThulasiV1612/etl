@@ -1,0 +1,92 @@
+{
+  "deal_name": "Wildflower Assisted Living",
+  "deal_id": "",
+  "target_raise": "2650000",
+  "mapped_from": "Class_Mapping_FILLED.xlsx",
+  "note": "payTo holds class NAMES \u2014 replace with deal_investor_class.id UUIDs before PUT",
+  "class_setup_context": {
+    "classes": [
+      {
+        "name": "Class A1 - LP (Cash Engine)",
+        "type": "lp",
+        "pref": "",
+        "equity": "0"
+      },
+      {
+        "name": "Class A2 - LP (Growth Engine)",
+        "type": "lp",
+        "pref": "7",
+        "equity": "50"
+      },
+      {
+        "name": "General partners",
+        "type": "gp",
+        "pref": "",
+        "equity": "50"
+      }
+    ],
+    "hurdles": [
+      {
+        "deal_name": "Wildflower Assisted Living",
+        "deal_id": "",
+        "class_name": "Class A2 - LP (Growth Engine)",
+        "tier_order": "1",
+        "hurdle_name": "Hurdle 1 - Pref",
+        "hurdle_rate_pct": "7",
+        "lp_pct": "100",
+        "gp_pct": "0",
+        "preferred_return_type": "cash_on_cash",
+        "is_final": "no",
+        "load_notes": "100% Class A2 / 0% GP until 7% CoC"
+      }
+    ],
+    "final": []
+  },
+  "waterfalls": {
+    "operating": [
+      {
+        "id": "op_lp_pref_class_a2_lp_growth_engine",
+        "kind": "LP_PREF",
+        "name": "LP preferred return (+ arrears) - 7%",
+        "payTo": [
+          "Class A2 - LP (Growth Engine)"
+        ],
+        "amountMode": "calc",
+        "inputAmount": "0"
+      }
+    ],
+    "capital": [
+      {
+        "id": "cap_roc_class_a1_lp_cash_engine",
+        "kind": "ROC",
+        "name": "Return of LP capital",
+        "payTo": [
+          "Class A1 - LP (Cash Engine)"
+        ],
+        "amountMode": "calc",
+        "inputAmount": "0"
+      },
+      {
+        "id": "cap_roc_class_a2_lp_growth_engine",
+        "kind": "ROC",
+        "name": "Return of LP capital",
+        "payTo": [
+          "Class A2 - LP (Growth Engine)"
+        ],
+        "amountMode": "calc",
+        "inputAmount": "0"
+      },
+      {
+        "id": "cap_catchup_general_partners",
+        "kind": "CATCHUP",
+        "name": "GP catch-up (final 50/50)",
+        "payTo": [
+          "General partners"
+        ],
+        "amountMode": "calc",
+        "inputAmount": "0",
+        "catchupPct": "20"
+      }
+    ]
+  }
+}

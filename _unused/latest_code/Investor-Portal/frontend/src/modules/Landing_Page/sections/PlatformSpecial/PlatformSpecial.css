@@ -1,0 +1,193 @@
+.sx-platform {
+  position: relative;
+}
+
+.sx-platform__shell {
+  position: relative;
+  border-radius: clamp(20px, 3vw, 28px);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  overflow: hidden;
+  border: 1px solid var(--sx-border);
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+  box-shadow: 0 22px 56px rgba(0, 71, 122, 0.06), 0 0 0 1px rgba(255, 255, 255, 0.85) inset;
+}
+
+.sx-platform__shell::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    120deg,
+    color-mix(in srgb, var(--sx-brand) 38%, transparent),
+    color-mix(in srgb, var(--sx-accent) 28%, transparent),
+    rgba(15, 23, 42, 0.04)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.sx-platform__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .sx-platform__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.35fr);
+    align-items: stretch;
+  }
+}
+
+.sx-platform__viz {
+  position: relative;
+  border-radius: var(--sx-radius-lg);
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--sx-border);
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+}
+
+.sx-platform__viz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.sx-platform__viz-title {
+  font-family: var(--sx-font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.25rem;
+  color: var(--sx-title);
+}
+
+.sx-platform__viz-sub {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--sx-text-soft);
+}
+
+.sx-platform__metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.sx-platform__metric {
+  padding: 0.45rem 0.65rem;
+  border-radius: var(--sx-radius-box);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sx-brand);
+  border: 1px solid color-mix(in srgb, var(--sx-brand) 22%, transparent);
+  background: var(--sx-brand-soft);
+}
+
+.sx-platform__chart {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  padding-top: 0.5rem;
+}
+
+.sx-platform__bar {
+  flex: 1;
+  border-radius: 8px 8px 2px 2px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--sx-brand) 88%, #fff),
+    color-mix(in srgb, var(--sx-brand) 22%, transparent)
+  );
+  transform-origin: bottom;
+  min-height: 24px;
+  box-shadow: 0 4px 14px rgba(0, 71, 122, 0.12);
+}
+
+.sx-platform__cards {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .sx-platform__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.sx-platform-card {
+  position: relative;
+  border-radius: var(--sx-radius-md);
+  padding: 1rem 1.05rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--sx-border);
+  transition: transform 0.35s var(--sx-ease-out), border-color 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.04);
+}
+
+.sx-platform-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--sx-brand) 18%, transparent);
+  box-shadow: 0 12px 32px rgba(0, 71, 122, 0.08);
+}
+
+.sx-platform-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.sx-platform-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--sx-brand-soft);
+  color: var(--sx-brand);
+}
+
+.sx-platform-card__metric {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sx-brand);
+  white-space: nowrap;
+}
+
+.sx-platform-card__title {
+  font-family: var(--sx-font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.35rem;
+  color: var(--sx-title);
+}
+
+.sx-platform-card__desc {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--sx-text-muted);
+  line-height: 1.5;
+}

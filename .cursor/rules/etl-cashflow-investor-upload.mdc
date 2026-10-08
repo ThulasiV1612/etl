@@ -1,0 +1,44 @@
+---
+description: ETL Cash Flow investor upload — Profiles then Add Investors (use with filled ETL templates)
+alwaysApply: false
+---
+
+# ETL: Profile + Add Investor upload
+
+Use **Investor-Portal-main**. Source: Cash Flow `Investors (profile)`.
+Templates (user-filled OK):
+- `ETL_Investor_Profile_Mapping_Template*.xlsx` — Profiles, Addresses, Beneficiaries
+- `ETL_Add_Investor_Mapping_Template*.xlsx` — Add Investors, Investments, Profile Type Map
+
+Skip yellow hint rows. Green = examples unless user replaced with real data.
+
+## Full load order
+
+1. Deal exists + **Classes** loaded  
+2. **Deal’s Investor** (Add Investors + Investments) → creates `users` + `deal_lp_investor` (+ investments)  
+3. **Investor Profiles** (Addresses → Beneficiaries → Profiles) → **fetch** existing `users.id` for `user_id` (do not create users here)  
+4. Re-upload Deal’s Investor (optional) if you need `user_investor_profile_id` linked after profiles exist  
+5. Sync `deal_lp_investor.committed_amount` = sum of LP investments  
+
+## Profile book
+
+- Dedupe by `source_profile_id` / Unique profile id  
+- Distribution method: ACH→`ach`, Check→`check`  
+- Link `taxAddressId` / `mailingAddressId` / `checkMailingAddressId` / `beneficiaryPickId`  
+
+## Add Investor
+
+- Required: `contact_id`, `investor_class` (exact class name), `profile_id`  
+- `profile_id`: `individual` | `joint_tenancy` | `custodian_ira_401k` | `llc_corp_trust_etc`  
+- Map Cash Flow → `deal_lp_investor`:  
+  - `percent_of_class_ownership` ← **Percent of class (by total raised)**  
+  - `percent_of_class_distributions` ← **Percent of class or bucket (by target raise)**  
+  - `entity_ownership_percent` ← **Ownership percentage**  
+  - `distribution_allocation_percent` ← **Ownership percentage** (same source)  
+- `POST /deals/:dealId/lp-investors` does **not** create amounts  
+- Do **not** use `POST /investments` for LPs  
+- Payment method Wire = funding (`wire_transfer`), not profile distribution  
+
+## Prompt to run
+
+When user asks to migrate/upload investors from the ETL templates, follow the load order above against Investor-Portal-main schema/APIs; map Cash Flow columns via the template headers; keep external id maps for profile id and investment id.

@@ -1,0 +1,913 @@
+/* Invest now — same page chrome and form layout as Create deal (.deals_create_flow) */
+
+.invest_now_flow_page.deals_add_deal_asset_page.deals_create_flow {
+
+  text-align: left;
+
+  scrollbar-gutter: stable;
+
+}
+
+
+
+.invest_now_flow_stepper {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  gap: 0.3em 0.85em;
+
+}
+
+
+
+.invest_now_flow_stepper_phase {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.3em 0.85em;
+
+}
+
+
+
+/* Step surface matches Create deal `.deals_create_card` (see deals-create.css). */
+.invest_now_flow_page.deals_create_flow .invest_now_step_card.deals_create_card {
+  margin-bottom: 0;
+}
+
+.invest_now_flow_page.deals_create_flow
+  .deals_add_deal_asset_form_scroll
+  > .invest_now_step_card {
+  width: 100%;
+  max-width: var(--deals-create-form-col-max, 50em);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+
+
+.invest_now_readonly_input {
+  cursor: default;
+  color: var(--portal-text, #0f172a);
+  background: color-mix(
+    in srgb,
+    var(--portal-surface-muted, #f8fafc) 88%,
+    var(--portal-surface, #fff)
+  );
+}
+
+
+
+.invest_now_readonly_input_emphasis {
+
+  color: var(--portal-link, #2563eb);
+
+  font-weight: 600;
+
+}
+
+
+
+.invest_now_money_input_wrap {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.35rem;
+
+}
+
+
+
+.invest_now_money_prefix {
+
+  font-size: var(--deals-control-size, 0.9375rem);
+
+  font-weight: 500;
+
+  color: var(--portal-text-muted, #64748b);
+
+  flex-shrink: 0;
+
+}
+
+
+
+.invest_now_money_input {
+
+  flex: 1;
+
+  min-width: 0;
+
+}
+
+
+
+.invest_now_field_hint {
+
+  margin: 0.35rem 0 0;
+
+}
+
+
+
+.invest_now_questionnaire_fieldset_invalid {
+  border: 1px solid var(--portal-danger, #b91c1c);
+  border-radius: var(--portal-card-radius, 4px);
+  padding: 0.65rem 0.75rem;
+  background: rgb(254 242 242 / 35%);
+}
+
+.invest_now_questionnaire_fieldset_invalid .invest_now_questionnaire_option {
+  border-color: rgb(185 28 28 / 35%);
+}
+
+.invest_now_questionnaire_fieldset {
+
+  border: none;
+
+  margin: 0;
+
+  padding: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--deals-form-label-gap, 0.5rem);
+
+}
+
+
+
+.invest_now_questionnaire_fieldset .deals_create_label_text {
+
+  margin-bottom: 0.15rem;
+
+}
+
+
+
+.invest_now_questionnaire_options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.25rem 0 0;
+}
+
+.invest_now_questionnaire_options:has(
+    .invest_now_questionnaire_option:nth-child(2):last-child
+  ) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--portal-binary-radio-gap, 0.65rem);
+  width: 100%;
+  max-width: min(100%, var(--portal-binary-radio-max-width, 28rem));
+}
+
+.invest_now_questionnaire_option {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--portal-binary-radio-inner-gap, 0.5rem);
+  font-size: var(--deals-control-size, 0.9375rem);
+  line-height: 1.25;
+  color: var(--portal-text, #334155);
+  cursor: pointer;
+}
+
+.invest_now_questionnaire_options:has(
+    .invest_now_questionnaire_option:nth-child(2):last-child
+  )
+  .invest_now_questionnaire_option {
+  min-height: var(--portal-binary-radio-min-height, 2.125rem);
+  padding: var(--portal-binary-radio-padding-y, 0.3rem)
+    var(--portal-binary-radio-padding-x, 0.65rem);
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: var(--portal-surface, #fff);
+}
+
+.invest_now_questionnaire_option input {
+  margin: 0;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  align-self: center;
+  accent-color: var(--portal-control-accent, var(--sidebar-bg-color, #131b2e));
+
+}
+
+
+
+.invest_now_step_desc_warn {
+
+  color: #b45309;
+
+}
+
+
+
+.invest_now_w9_name_field .invest_now_w9_name_row {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.5rem;
+
+}
+
+
+
+.invest_now_w9_name_field .invest_now_w9_name_row .deals_create_input {
+
+  flex: 1;
+
+  min-width: 0;
+
+}
+
+
+
+.invest_now_field_help_btn {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0.25rem;
+
+  margin: 0;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background: transparent;
+
+  color: var(--portal-text-muted, #64748b);
+
+  cursor: help;
+
+  flex-shrink: 0;
+
+}
+
+
+
+.invest_now_field_help_btn:hover:not(:disabled) {
+
+  color: var(--portal-primary, #2563eb);
+
+  background: #f1f5f9;
+
+}
+
+
+
+.invest_now_address_field_stack {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0;
+
+}
+
+
+
+.invest_now_address_field_wrap {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 0.75rem;
+
+}
+
+
+
+.invest_now_address_line_input {
+
+  flex: 1;
+
+  min-width: 0;
+
+}
+
+
+
+.invest_now_address_details_btn {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.2rem;
+
+  flex-shrink: 0;
+
+  min-width: 4.75rem;
+
+  min-height: var(--deals-control-height, 2.5rem);
+
+  padding: 0 0.15rem;
+
+  border: none;
+
+  background: transparent;
+
+  font-size: 0.875rem;
+
+  font-weight: 500;
+
+  line-height: 1.25;
+
+  color: var(--portal-link, #2563eb);
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+}
+
+
+
+.invest_now_address_details_btn:hover:not(:disabled) {
+
+  color: color-mix(in srgb, var(--portal-link, #2563eb) 82%, #000);
+
+}
+
+
+
+.invest_now_address_details_btn:disabled {
+
+  opacity: 0.65;
+
+  cursor: not-allowed;
+
+}
+
+
+
+.invest_now_address_details_chevron {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 1rem;
+
+  height: 1rem;
+
+  flex-shrink: 0;
+
+}
+
+
+
+.invest_now_address_details_chevron svg {
+
+  display: block;
+
+  transition: transform 0.15s ease;
+
+}
+
+
+
+.invest_now_address_details_chevron_open {
+
+  transform: rotate(180deg);
+
+}
+
+
+
+.invest_now_address_details_panel {
+
+  display: grid;
+
+  grid-template-rows: 0fr;
+
+  transition: grid-template-rows 0.2s ease;
+
+}
+
+
+
+.invest_now_address_details_panel_open {
+
+  grid-template-rows: 1fr;
+
+}
+
+
+
+.invest_now_address_details_grid {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.65rem;
+
+  min-height: 0;
+
+  overflow: hidden;
+
+  padding-top: 0;
+
+  transition: padding-top 0.2s ease;
+
+}
+
+
+
+.invest_now_address_details_panel_open .invest_now_address_details_grid {
+
+  padding-top: 0.75rem;
+
+}
+
+
+
+.invest_now_address_details_city_row {
+
+  display: grid;
+
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.75fr) minmax(0, 0.85fr);
+
+  gap: 0.65rem;
+
+}
+
+
+
+.invest_now_esign_status {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.5rem;
+
+  margin: 0;
+
+  font-size: 0.9375rem;
+
+  color: var(--portal-text-muted, #64748b);
+
+}
+
+
+
+.invest_now_esign_status_ok {
+
+  color: #15803d;
+
+}
+
+
+
+.invest_now_esign_send_error {
+
+  margin: 0 0 1.25rem;
+
+  padding: 1rem 1.25rem;
+
+  border-radius: var(--portal-pill-radius, 4px);
+
+  border: 1px solid var(--um_border_error, #f5c2c7);
+
+  background: var(--um_bg_error_subtle, #f8d7da);
+
+}
+
+
+
+.invest_now_esign_send_error_text {
+
+  margin: 0 0 0.75rem;
+
+  color: var(--um_text_error, #842029);
+
+}
+
+
+
+.invest_now_esign_sign_cta {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 1rem 1.25rem;
+
+  margin-bottom: 1.25rem;
+
+  padding: 1rem 1.15rem;
+
+  border: 1px solid var(--portal-border, #e2e8f0);
+
+  border-radius: var(--portal-pill-radius, 4px);
+
+  background: color-mix(
+    in srgb,
+    var(--portal-primary-soft, #e8eef8) 40%,
+    var(--portal-surface, #fff)
+  );
+}
+
+
+
+.invest_now_esign_sign_cta_text {
+
+  margin: 0;
+
+  flex: 1 1 12rem;
+
+  font-size: 0.9375rem;
+
+  line-height: 1.45;
+
+  color: var(--portal-text, #334155);
+
+}
+
+
+
+.invest_now_esign_sign_btn {
+
+  flex-shrink: 0;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.4rem;
+
+}
+
+
+
+.invest_now_esign_webhook_status {
+  margin: 0 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.invest_now_sign_status_badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.invest_now_sign_status_badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.65rem;
+  border-radius: var(--ui-button-border-radius, 4px);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border: 1px solid var(--portal-border, #cbd5e1);
+  color: var(--portal-text-muted, #64748b);
+  background: var(--portal-surface-muted, #f8fafc);
+}
+
+.invest_now_sign_status_badge--done {
+  border-color: color-mix(in srgb, var(--portal-primary, #2563eb) 35%, #cbd5e1);
+  color: var(--portal-primary, #1d4ed8);
+  background: color-mix(
+    in srgb,
+    var(--portal-primary-soft, #e8eef8) 55%,
+    var(--portal-surface, #fff)
+  );
+}
+
+.invest_now_sign_status_badge--active {
+  border-color: var(--portal-primary, #2563eb);
+  color: #fff;
+  background: var(--portal-primary, #2563eb);
+}
+
+.invest_now_sign_status_badge--loading {
+  opacity: 0.85;
+}
+
+.invest_now_esign_doc_list {
+
+  list-style: none;
+
+  margin: 0.25rem 0 0;
+
+  padding: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.75rem;
+
+}
+
+
+
+.invest_now_esign_doc_row {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 0.75rem 1rem;
+
+  padding: 1rem 1.15rem;
+
+  border: 1px solid var(--portal-border, #e2e8f0);
+
+  border-radius: var(--portal-pill-radius, 4px);
+
+  background: color-mix(
+    in srgb,
+    var(--portal-surface-muted, #f8fafc) 55%,
+    var(--portal-surface, #fff)
+  );
+
+  box-sizing: border-box;
+
+}
+
+
+
+.invest_now_esign_doc_main {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 0.65rem;
+
+  min-width: 0;
+
+  flex: 1 1 12rem;
+
+}
+
+
+
+.invest_now_esign_doc_icon {
+
+  flex-shrink: 0;
+
+  color: var(--portal-link, #2563eb);
+
+  margin-top: 0.1rem;
+
+}
+
+
+
+.invest_now_esign_doc_name {
+
+  font-size: 0.9375rem;
+
+  font-weight: 600;
+
+  color: var(--portal-text, #0f172a);
+
+  line-height: 1.35;
+
+}
+
+
+
+.invest_now_esign_doc_meta {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  gap: 0.35rem 0.5rem;
+
+  margin-top: 0.2rem;
+
+  font-size: 0.8125rem;
+
+  color: var(--portal-text-muted, #64748b);
+
+  line-height: 1.4;
+
+}
+
+
+
+.invest_now_esign_doc_meta_category {
+
+  color: var(--portal-text-muted, #64748b);
+
+}
+
+
+
+.invest_now_esign_doc_status {
+
+  display: inline-block;
+
+  padding: 0.12rem 0.45rem;
+
+  font-size: 0.6875rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.03em;
+
+  line-height: 1.3;
+
+  border-radius: 4px;
+
+}
+
+
+
+.invest_now_esign_doc_status--signed {
+
+  color: #166534;
+
+  background: color-mix(in srgb, #15803d 14%, transparent);
+
+}
+
+
+
+.invest_now_esign_doc_status--pending {
+
+  color: #92400e;
+
+  background: color-mix(in srgb, #d97706 12%, transparent);
+
+}
+
+
+
+.invest_now_esign_doc_status--loading {
+
+  color: #475569;
+
+  font-weight: 600;
+
+  letter-spacing: 0;
+
+  text-transform: none;
+
+  background: color-mix(in srgb, #94a3b8 14%, transparent);
+
+}
+
+
+
+.invest_now_esign_doc_actions {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  gap: 0.5rem 0.65rem;
+
+  flex-shrink: 0;
+
+}
+
+
+
+.invest_now_esign_doc_link {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.35rem;
+
+  font-size: 0.875rem;
+
+  font-weight: 500;
+
+  color: var(--portal-link, #2563eb);
+
+  text-decoration: none;
+
+}
+
+
+
+.invest_now_esign_doc_link:hover {
+
+  text-decoration: underline;
+
+}
+
+
+
+.invest_now_esign_doc_sign_btn {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.35rem;
+
+  font-size: 0.875rem;
+
+}
+
+
+
+@media (max-width: 640px) {
+
+  .invest_now_address_details_city_row {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+
+  .invest_now_esign_doc_row {
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+  }
+
+
+
+  .invest_now_esign_doc_actions {
+
+    justify-content: flex-start;
+
+  }
+
+}
+
+
+
+/* Invest Now profile dropdown — name + profile type stacked in listbox */
+.invest_now_profile_option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.12rem;
+  min-width: 0;
+  text-align: left;
+}
+
+.invest_now_profile_option_name {
+  line-height: 1.3;
+}
+
+.invest_now_profile_option_type {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deals_create_dropdown_panel .portal_dropdown_select_option .invest_now_profile_option {
+  width: 100%;
+}
+
+.portal_dropdown_select_option:disabled .invest_now_profile_option_type {
+  color: var(--portal-text-muted, #94a3b8);
+}
+
+

@@ -1,0 +1,57 @@
+.auth_card .copyright {
+  margin: 1rem 0 0;
+  text-align: center;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--auth-landing-ink-soft, rgba(244, 241, 235, 0.35));
+}
+
+.auth_card .poweredBy {
+  display: flex;
+  justify-content: center;
+  margin: 0.85rem auto 0;
+  padding: 0.55rem 1rem;
+  width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
+  border-radius: var(--portal-pill-radius, 4px);
+  /* background: rgba(244, 241, 235, 0.94); */
+  /* border: 1px solid color-mix(in srgb, var(--auth-landing-gold, #c9973a) 22%, transparent); */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.auth_card .poweredBy p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.auth_card .poweredBy img {
+  /* height: 1.35rem; */
+  width: auto;
+  /* max-width: min(100%, 8.5rem); */
+  opacity: 1;
+  filter: none;
+  display: block;
+}
+
+.copyright {
+  font-weight: 600;
+  margin: 1.5em 0 0;
+}
+
+.poweredBy {
+  margin: 2em 0 0.5em;
+}
+
+body:has(.authPage) .poweredBy {
+  margin: clamp(0.75em, 3vw, 1.25em) 0 0.35em;
+}
+
+body:has(.signup_page) .poweredBy {
+  margin: 0.5em 0 0;
+}

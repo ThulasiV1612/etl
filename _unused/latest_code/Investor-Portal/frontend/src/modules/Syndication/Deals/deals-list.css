@@ -1,0 +1,1732 @@
+.deals_list_page {
+  text-align: left;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* With `.um_page`, keep same max width as Customers / Members (don’t let 100% override `.um_page`). */
+.deals_list_page.um_page {
+  /* max-width: 1280px; */
+}
+
+/* Match Customers list: title row rhythm before tabs (company_page .um_header_row) */
+.deals_list_page.um_page .um_members_header_block .um_header_row {
+  margin-bottom: 0.65em;
+}
+
+a.deals_list_add_link.um_btn_primary {
+  text-decoration: none;
+}
+
+.deals_list_breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  margin: 0 0 0.5em;
+  font-size: 0.8125em;
+  color: var(--portal-text-muted);
+}
+
+.deals_list_breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  color: var(--portal-text-muted);
+  text-decoration: none;
+}
+
+.deals_list_breadcrumb a:hover {
+  color: var(--portal-text);
+}
+
+.deals_list_breadcrumb_sep {
+  opacity: 0.6;
+}
+
+/* Deals modals/forms: keep textarea shape and prevent manual resize. */
+.deals_list_page textarea.deals_create_input {
+  resize: none;
+  border-radius: var(--portal-card-radius, 4px);
+}
+
+.deals_add_inv_modal_panel textarea.deals_create_input {
+  resize: none;
+  border-radius: var(--portal-card-radius, 4px);
+}
+
+.deals_list_tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em;
+  margin: 0 0 1em;
+  padding: 0.2em;
+  border-radius: var(--portal-pill-radius);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+:root[data-theme="dark"] .deals_list_tabs {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.deals_list_tab {
+  border: none;
+  border-radius: calc(var(--portal-pill-radius) - 2px);
+  padding: 0.5em 1em;
+  font-family: var(--portal-font-sans, "Inter", sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--portal-text-muted);
+  background: transparent;
+  cursor: pointer;
+}
+
+.deals_list_tab:hover {
+  color: var(--portal-text);
+}
+
+.deals_list_tab_active {
+  color: var(--portal-text);
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+:root[data-theme="dark"] .deals_list_tab_active {
+  background: #1a1a1a;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.deals_list_head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  margin-bottom: 1.25em;
+}
+
+/* Deal detail: back control + title (same row as primary action) */
+.deals_list_title_row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65em;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.deals_list_back_circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.25em;
+  height: 2.25em;
+  border-radius: 50%;
+  border: 1px solid var(--portal-border);
+  color: var(--portal-text);
+  background: var(--portal-surface);
+  text-decoration: none;
+}
+
+.deals_list_back_circle:hover,
+.deals_list_back_circle:focus-visible {
+  background: var(--portal-primary-soft);
+  color: var(--portal-text);
+  text-decoration: none;
+}
+
+/* Full-page flows — space below top nav so back control is not flush with chrome */
+.deals_add_deal_asset_page > header.deals_list_head,
+.deals_add_deal_asset_page > .deals_list_head {
+  padding-top: 1rem;
+}
+
+.deals_detail_page > header.deals_list_head,
+.deals_detail_page > .deals_detail_sticky_chrome > header.deals_list_head {
+  padding-top: 1rem;
+}
+
+/* Deal name + tabs stay pinned while tab content scrolls in `.app_main_content`. */
+.deals_detail_page > .deals_detail_sticky_chrome {
+  position: sticky;
+  top: 0;
+  /* Below the top navbar (z-index 200) so the Profile menu is not covered by deal tabs. */
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  background: var(--portal-page-bg, #fcf8fa);
+  box-shadow: 0 8px 14px -12px rgba(16, 20, 19, 0.35);
+}
+
+.app_main_content:has(.deals_detail_sticky_chrome) {
+  scroll-padding-top: 8.5rem;
+}
+
+/* Dist / class setup sticky headers already pad themselves — avoid stacked gap above title */
+.deals_detail_page.deals_dist_setup_page > header.deals_list_head.ds_page_header,
+.deals_detail_page.deals_class_setup_page > header.deals_list_head.cs_page_header {
+  padding-top: 0.35rem;
+}
+
+/* Full-page create/edit flows: header back matches Edit deal gold secondary */
+.deals_add_deal_asset_page .deals_list_back_circle {
+  background: var(--portal-tab-active-bg);
+  color: var(--portal-tab-active-text, var(--portal-text));
+  border-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 28%,
+    var(--portal-border, #c6c6c6)
+  );
+}
+
+.deals_add_deal_asset_page .deals_list_back_circle:hover,
+.deals_add_deal_asset_page .deals_list_back_circle:focus-visible {
+  background: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 16%,
+    transparent
+  );
+  color: var(--portal-tab-active-text, var(--portal-text));
+  border-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 42%,
+    var(--portal-border, #c6c6c6)
+  );
+  text-decoration: none;
+}
+
+:root[data-theme="dark"] .deals_add_deal_asset_page .deals_list_back_circle {
+  background: var(--portal-tab-active-bg);
+  color: var(--portal-tab-active-text, var(--portal-text));
+  border-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 32%,
+    var(--portal-border, rgba(255, 255, 255, 0.14))
+  );
+}
+
+:root[data-theme="dark"] .deals_add_deal_asset_page .deals_list_back_circle:hover,
+:root[data-theme="dark"] .deals_add_deal_asset_page .deals_list_back_circle:focus-visible {
+  background: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 22%,
+    transparent
+  );
+  color: var(--portal-tab-active-text, var(--portal-text));
+  text-decoration: none;
+}
+
+.portal_tab_placeholder {
+  margin: 1.5em 0 0;
+  font-size: 0.9375em;
+  color: var(--portal-text-secondary);
+  line-height: 1.5;
+}
+
+.deal_detail_tab_panel {
+  padding-top: 0.5em;
+  min-width: 0;
+}
+
+.deal_detail_wip_wrap {
+  margin: 2em auto 1.5em;
+  max-width: 28em;
+  padding: 1.75em 1.5em;
+  text-align: center;
+  border-radius: var(--portal-pill-radius, 4px);
+  border: 1px dashed color-mix(in srgb, var(--portal-text-muted) 45%, var(--portal-border));
+  background: color-mix(in srgb, var(--portal-primary-soft, rgb(37 99 235 / 6%)) 80%, transparent);
+}
+
+.deal_detail_wip_title {
+  margin: 0 0 0.5em;
+  font-size: 1.0625em;
+  font-weight: 700;
+  color: var(--portal-text);
+  letter-spacing: -0.02em;
+}
+
+.deal_detail_wip_hint {
+  margin: 0;
+  font-size: 0.875em;
+  line-height: 1.5;
+  color: var(--portal-text-muted);
+}
+
+.deal_detail_wip_actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.deal_documents_tab_root {
+  padding: 0 0 1.5rem;
+  min-width: 0;
+}
+
+.deal_documents_tab_root.deal_offering_root {
+  padding: 1rem 1.1rem 1.15rem;
+}
+
+.deal_documents_tab_root .deal_docs > .um_panel {
+  margin-bottom: 0.75rem;
+  padding: 1rem 1.1rem 1.05rem;
+  box-sizing: border-box;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: var(--portal-surface, #fff);
+  box-shadow: 0 1px 2px rgb(15 23 42 / 4%);
+}
+
+.deal_documents_tab_root .deal_docs > .um_panel .deal_docs_toolbar.um_toolbar {
+  padding: 0;
+  margin: 0 0 var(--portal-table-toolbar-margin-bottom, 25px);
+}
+
+.deal_documents_tab_root .deal_docs_ui_root {
+  margin-top: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.deal_documents_tab_root .deal_offering_stack.deal_docs_sections_stack {
+  margin-top: 0;
+}
+
+.deal_documents_list_section > .deal_docs {
+  padding: 0;
+}
+
+:root[data-theme="dark"] .deal_documents_tab_root .deal_docs > .um_panel {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: var(--portal-surface, #1a1a1a);
+  box-shadow: none;
+}
+
+/* Offering Details tab — match Documents tab section surfaces. */
+.deal_offering_root {
+  padding: 1rem 1.1rem 1.15rem;
+  box-sizing: border-box;
+  background: var(--portal-panel-bg, #f8f8f8);
+  border-radius: var(--portal-pill-radius, 4px);
+  min-width: 0;
+}
+
+.deal_offering_root .deal_offering_top {
+  margin-bottom: 1rem;
+}
+
+.deal_offering_root .deal_offering_stack {
+  margin-top: 0;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-pill-radius, 4px);
+  overflow: hidden;
+  background: var(--portal-surface, #fff);
+}
+
+.deal_offering_root .deal_offering_stack > .deal_offering_section {
+  margin-bottom: 0;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid var(--portal-border, #e2e8f0);
+  background: transparent;
+}
+
+.deal_offering_root .deal_offering_stack > .deal_offering_section:last-child {
+  border-bottom: none;
+}
+
+:root[data-theme="dark"] .deal_offering_root {
+  background: var(--portal-surface, #1a1a1a);
+}
+
+:root[data-theme="dark"] .deal_offering_root .deal_offering_stack {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: var(--portal-surface, #1a1a1a);
+}
+
+:root[data-theme="dark"] .deal_offering_root .deal_offering_stack > .deal_offering_section {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Tab panel below deal tabs: align with list page rhythm */
+.deals_list_page .um_members_tab_content {
+  margin-top: 0;
+  padding-top: 0;
+  min-width: 0;
+}
+
+/* Investing deals: no Deals/Archives tab strip — keep spacing under page title */
+.deals_list_page .deals_list_investing_no_tabs {
+  padding-top: 0.35rem;
+}
+
+.deals_detail_page .deals_list_head {
+  margin-bottom: 1em;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0.65em;
+}
+
+.deals_detail_page .deals_list_head:has(.deal_announcement_banner--page) {
+  gap: 0.75em;
+}
+
+.deals_detail_page .deals_list_head .deals_list_title_row {
+  width: 100%;
+}
+
+.deals_detail_page .deals_list_head .deal_announcement_banner--page {
+  width: 100%;
+  margin: 0;
+}
+
+.deals_list_not_found {
+  padding: 2em 0;
+  color: var(--portal-text-muted);
+}
+
+.deals_page_loader_center {
+  min-height: 62vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+}
+
+.deals_page_loader_center .deals_list_not_found {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.deals_page_loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  width: 100%;
+  text-align: center;
+}
+
+.deals_page_loading_text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deals_list_not_found a {
+  color: var(--portal-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.deals_list_not_found a:not(.deals_list_inline_back):hover {
+  text-decoration: underline;
+}
+
+.deals_list_inline_back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  vertical-align: middle;
+  text-decoration: none;
+}
+
+.deals_list_inline_back:hover,
+.deals_list_inline_back:focus-visible {
+  text-decoration: none;
+}
+
+/* Deals list & deal detail: horizontal tab strip + arrows; scrollbar hidden (scroll/touch still works) */
+.deals_tabs_outer {
+  min-width: 0;
+}
+
+.deals_tabs_outer .tabs_scroll_strip {
+  width: 100%;
+}
+
+.deals_tabs_scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  /* Hide horizontal scrollbar (UI stays clean; use arrows or swipe/trackpad to scroll) */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  border-bottom: none;
+}
+
+/* Underline sits on .um_members_tabs_row (same as customer Members / Deals) */
+.deals_tabs_scroll.um_segmented_tabs_scroll {
+  padding-bottom: 0;
+}
+
+.deals_tabs_scroll::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Tab chrome: portal-tabs.css (aligned with customer company detail tabs) */
+
+/* Narrow phones: two equal columns for Deals / Archives only */
+@media (max-width: 520px) {
+  .deals_tabs_scroll {
+    overflow-x: hidden;
+  }
+
+  .deals_list_page .deals_tabs_row.um_members_tabs_row:has(.deals_tabs_tab:nth-child(2):last-child) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    max-width: none;
+  }
+
+  .deals_list_page
+    .deals_tabs_row.um_members_tabs_row:has(.deals_tabs_tab:nth-child(2):last-child)
+    .deals_tabs_tab.um_members_tab {
+    flex: unset;
+    min-width: 0;
+    padding: 0.6em 0.5em 0.55em;
+    font-size: 0.8125em;
+    gap: 0.4em;
+  }
+
+  .deals_list_page
+    .deals_tabs_row.um_members_tabs_row:has(.deals_tabs_tab:nth-child(2):last-child)
+    .deals_tabs_icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.deals_list_title {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--portal-text);
+  letter-spacing: -0.02em;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.deals_list_stage {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.45em;
+  padding: 0.2em 0.65em;
+  border-radius: var(--portal-pill-radius, 4px);
+  border: 1px solid var(--portal-border, #e2e8f0);
+  background: var(--portal-primary-soft, #e8eef8);
+  color: var(--portal-text, #0f172a);
+  font-size: 0.75em;
+  font-weight: 600;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.deals_list_add_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.55em 1em;
+  border: none;
+  border-radius: var(--portal-pill-radius);
+  background: var(--ui-button-background-add);
+  color: #ffffff;
+  font-family: var(--portal-font-sans, "Inter", sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  justify-content: center;
+}
+
+.deals_list_add_btn:hover {
+  background:   var(--ui-button-hover);
+  color: #ffffff;
+}
+
+:root[data-theme="dark"] .deals_list_add_btn {
+  background: #000000;
+  color: #ffffff;
+}
+
+:root[data-theme="dark"] .deals_list_add_btn:hover {
+  background: #2a2a2a;
+  color: #ffffff;
+}
+
+/* Table + toolbar use Members `.um_panel` / `.um_toolbar` (user_management.css). */
+
+/*
+ * Deals DataTable: horizontal scroll when content is wider than the card.
+ * `table-layout: fixed` + `<colgroup>` widths keep header cells aligned with body while scrolling.
+ */
+.deals_list_table_panel .um_table_wrap.data_table_shell,
+.deals_list_table_panel .data_table_scroll_region {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.deals_list_table_panel .um_table_wrap.data_table_shell {
+  border: 1px solid var(--portal-table-border, var(--portal-border, #e2e8f0));
+  border-radius: var(--portal-card-radius, 4px);
+  overflow: hidden;
+}
+
+.deals_list_table_panel .data_table_scroll_region {
+  overscroll-behavior-x: contain;
+}
+
+.deals_list_table_panel .um_table_wrap.data_table_shell .data_table_scroll_region .um_table.deal_inv_table,
+.deals_list_table_panel .um_table.deal_inv_table,
+.deals_list_table_panel .um_table {
+  table-layout: fixed;
+  width: max-content;
+  min-width: 100%;
+  max-width: none;
+}
+
+.deals_list_table_panel .um_table_members .um_td_user {
+  min-width: 0;
+}
+
+.deals_list_table_panel .um_table th,
+.deals_list_table_panel .um_table td {
+  min-width: 0;
+  vertical-align: middle;
+}
+
+.deals_list_table_panel .um_table thead th {
+  font-size: var(--portal-table-font-size, 0.9375rem);
+  line-height: 1.35;
+  font-weight: 600;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  overflow: visible;
+  background: var(--portal-table-header-bg, #f8fafc);
+  color: var(--portal-table-header-text, #475569);
+  border-bottom: 1px solid
+    var(--portal-table-header-border, var(--portal-table-border, #e2e8f0));
+}
+
+/* Scrolling columns only — do not override sticky pinned headers (see below). */
+.deals_list_table_panel .um_table thead th:not(.data_table_col_sticky) {
+  position: relative;
+}
+
+/* Horizontal scroll: non-sticky header cells must paint under the sticky column (see data-table.css z-index). */
+.deals_list_table_panel .um_table.data_table_sticky_first thead th:not(.data_table_col_sticky) {
+  z-index: 0;
+}
+
+/* Pinned deal-name column — header stays aligned with body while scrolling horizontally. */
+.deals_list_table_panel .um_table.data_table_sticky_first {
+  --data-table-sticky-col-0-width: 15rem;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.deals_list_table_panel .um_table.data_table_sticky_first th.data_table_col_sticky,
+.deals_list_table_panel .um_table.data_table_sticky_first td.data_table_col_sticky {
+  position: sticky;
+  background-clip: padding-box;
+  box-sizing: border-box;
+}
+
+.deals_list_table_panel .um_table.data_table_sticky_first thead th.data_table_col_sticky {
+  top: 0;
+}
+
+.deals_list_table_panel .um_table.data_table_sticky_first th.data_table_col_sticky--0,
+.deals_list_table_panel .um_table.data_table_sticky_first td.data_table_col_sticky--0,
+.deals_list_table_panel .um_table th.deals_col_deal_name,
+.deals_list_table_panel .um_table td.deals_col_deal_name {
+  left: 0;
+  width: var(--data-table-sticky-col-0-width);
+  min-width: var(--data-table-sticky-col-0-width);
+  max-width: var(--data-table-sticky-col-0-width);
+  box-sizing: border-box;
+}
+
+.deals_list_table_panel .um_table.data_table_sticky_first th.data_table_col_sticky--1,
+.deals_list_table_panel .um_table.data_table_sticky_first td.data_table_col_sticky--1 {
+  left: var(--data-table-sticky-col-0-width);
+}
+
+/* Sticky first column: opaque header surface so scrolling columns do not show through. */
+.deals_list_table_panel .um_table.data_table_sticky_first thead th.data_table_col_sticky--0 {
+  z-index: 4;
+  background: var(--portal-table-header-bg, #f8fafc);
+  color: var(--portal-table-header-text, #475569);
+  border-bottom: 1px solid
+    var(--portal-table-header-border, var(--portal-table-border, #e2e8f0));
+}
+
+.deals_list_table_panel .um_table.data_table_sticky_first thead th.data_table_col_sticky--1 {
+  z-index: 5;
+  background: var(--portal-table-header-bg, #f8fafc);
+  color: var(--portal-table-header-text, #475569);
+  border-bottom: 1px solid
+    var(--portal-table-header-border, var(--portal-table-border, #e2e8f0));
+}
+
+.deals_list_table_panel .um_table.data_table_sticky_first tbody td.data_table_col_sticky--0 {
+  z-index: 2;
+}
+
+.deals_list_table_panel .um_table.data_table_sticky_first tbody td.data_table_col_sticky--1 {
+  z-index: 3;
+}
+
+/* Sticky body cells follow striped row surfaces (see data-table.css). */
+.deals_list_table_panel
+  .um_table.data_table_sticky_first
+  tbody
+  tr.data_table_row_odd
+  td.data_table_col_sticky {
+  background: var(--portal-table-row-odd, #ffffff);
+}
+
+.deals_list_table_panel
+  .um_table.data_table_sticky_first
+  tbody
+  tr.data_table_row_even
+  td.data_table_col_sticky {
+  background: var(--portal-table-row-even, #f8fafc);
+}
+
+
+.deals_list_table_panel .um_table tbody td {
+  font-size: var(--portal-table-font-size, 0.9375rem);
+}
+
+/**
+ * Sortable headers: keep `th` padding at 0 (same as Members / user_management)
+ * so horizontal rhythm comes only from `.um_sort_header_ctl` — matches body `td` padding.
+ */
+.deals_list_table_panel
+  .um_table_sortable
+  thead
+  th:not(.um_th_actions):not(.um_th_checkbox) {
+  padding: 0;
+}
+
+.deals_list_table_panel .um_table_sortable thead th.um_th_actions {
+  padding: 0.65em 0.5em;
+  vertical-align: middle;
+}
+
+.deals_list_table_panel .um_table td {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+/**
+ * Sort header label: avoid `flex: 1` + `min-width: 0` shrinking labels until words
+ * break mid-character ("Funde" / "d"). Prefer one line + horizontal scroll on the table.
+ */
+.deals_list_table_panel .um_table th .um_sort_header_label {
+  flex: 0 1 auto;
+  min-width: min-content;
+  white-space: nowrap;
+}
+
+.deals_list_table_panel .um_table th .um_sort_header_ctl {
+  max-width: none;
+  min-width: 0;
+  white-space: nowrap;
+  font-size: var(--portal-table-font-size, 0.9375rem);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  /* Align with `.um_table td` (0.65em 0.75em) for column edges that line up header ↔ body */
+  padding: 0.65em 0.75em;
+  gap: 0.35em;
+}
+
+/* Sort headers — match body column alignment (left / center / right) when scrolling */
+.deals_list_table_panel
+  .um_table
+  .um_sort_header_ctl:not(.um_sort_header_ctl_align_center):not(.um_sort_header_ctl_align_end) {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.deals_list_table_panel .um_table .um_sort_header_ctl.um_sort_header_ctl_align_center {
+  justify-content: center;
+  text-align: center;
+}
+
+.deals_list_table_panel .um_table .um_sort_header_ctl.um_sort_header_ctl_align_end {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.deals_list_table_panel
+  .um_table
+  .um_sort_header_ctl.um_sort_header_ctl_align_center
+  .um_sort_header_label,
+.deals_list_table_panel
+  .um_table
+  .um_sort_header_ctl.um_sort_header_ctl_align_end
+  .um_sort_header_label {
+  flex: 0 0 auto;
+  min-width: min-content;
+  overflow: visible;
+}
+
+.deals_list_table_panel .um_table th.deals_col_deal_name .um_sort_header_label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Hint + label row — do not cap at 100% width inside sort control (prevents pathological wrapping) */
+.deals_list_table_panel .um_sort_header_label .deals_table_col_header {
+  max-width: none;
+  white-space: nowrap;
+  min-width: min-content;
+}
+
+.deals_list_table_panel .um_sort_header_icon,
+.deals_list_table_panel .um_sort_header_icon.um_sort_header_icon_idle {
+  width: 0.75em;
+  height: 0.75em;
+  flex-shrink: 0;
+}
+
+.deals_list_table_panel .deals_table_th_hint {
+  width: 0.75em;
+  height: 0.75em;
+  flex-shrink: 0;
+}
+
+.deals_list_table_panel .deals_table_th_lines {
+  gap: 0;
+  line-height: 1.2;
+}
+
+.deals_list_table_panel .deals_table_th_line {
+  white-space: normal;
+}
+
+.deals_list_table_panel .deals_table_name_link {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.deals_list_table_panel .um_td_actions,
+.deals_list_table_panel .um_th_actions {
+  width: 10%;
+  min-width: 4.5rem;
+  max-width: none;
+  box-sizing: border-box;
+  overflow: visible;
+  word-break: normal;
+  hyphens: none;
+}
+
+.deals_list_table_panel .um_table_pagination {
+  overflow-x: hidden;
+  border-top: 1px solid var(--portal-table-border, var(--portal-border, #e2e8f0));
+}
+
+:root[data-theme="dark"] .deals_list_table_panel .um_table_wrap.data_table_shell {
+  background: var(--portal-surface, rgba(255, 255, 255, 0.04));
+  border-color: var(--portal-table-border);
+}
+
+:root[data-theme="dark"] .deals_list_table_panel .um_table_pagination {
+  background: var(--portal-surface, rgba(255, 255, 255, 0.04));
+  border-top-color: var(--portal-table-border);
+}
+
+:root[data-theme="dark"]
+  .deals_list_table_panel
+  .data_table_scroll_region.data_table_scroll_region--overflow-x {
+  /* Keep scrollbar inside the card — no harsh clip on rounded corners */
+  border-bottom-left-radius: var(--portal-card-radius, 4px);
+  border-bottom-right-radius: var(--portal-card-radius, 4px);
+}
+
+.deals_list_table_panel_loading {
+  opacity: 0.92;
+  pointer-events: none;
+}
+
+.deals_table_th_header_hint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35em;
+  max-width: 100%;
+  text-align: right;
+}
+
+.data_table_sort_btn_align_left .deals_table_th_header_hint {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.deals_table_th_lines {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.05em;
+  line-height: 1.2;
+}
+
+.data_table_sort_btn_align_left .deals_table_th_lines {
+  align-items: flex-start;
+}
+
+.deals_table_th_line {
+  display: block;
+  white-space: nowrap;
+}
+
+.deals_table_th_hint {
+  flex-shrink: 0;
+  color: var(--portal-text-muted);
+  cursor: help;
+}
+
+/* Match Members table name / link treatment */
+.deals_table_name_link {
+  color: var(--portal-text, #1b1b1d);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.deals_table_name_link:hover {
+  text-decoration: underline;
+}
+
+.um_kebab_menuitem.deals_kebab_menuitem_danger {
+  color: #b91c1c;
+}
+
+.um_kebab_menuitem.deals_kebab_menuitem_danger .um_kebab_menuitem_icon {
+  color: #b91c1c;
+}
+
+.um_kebab_menuitem.deals_kebab_menuitem_danger:hover:not(:disabled) {
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.um_kebab_menuitem.deals_kebab_menuitem_danger:hover:not(:disabled) .um_kebab_menuitem_icon {
+  color: #b91c1c;
+}
+
+:root[data-theme="dark"] .um_kebab_menuitem.deals_kebab_menuitem_danger {
+  color: #f87171;
+}
+
+:root[data-theme="dark"] .um_kebab_menuitem.deals_kebab_menuitem_danger .um_kebab_menuitem_icon {
+  color: #f87171;
+}
+
+:root[data-theme="dark"]
+  .um_kebab_menuitem.deals_kebab_menuitem_danger:hover:not(:disabled) {
+  background: rgb(127 29 29 / 25%);
+  color: #fecaca;
+}
+
+.visually_hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* —— Deals list table only: card surface, column hints, selection, preview modal —— */
+
+/* Same card surface as My deals — also Customers directory + deal Assets tab */
+.deals_list_page .deals_list_table_panel.deals_list_card_surface,
+.company_page .deals_list_table_panel.deals_list_card_surface,
+.investing_profiles_page .deals_list_table_panel.deals_list_card_surface,
+.deal_offering_root
+  .deal_assets_datatable_panel.deals_list_table_panel.deals_list_card_surface,
+.deal_offering_root
+  .deal_offering_info_panel.deals_list_table_panel.deals_list_card_surface {
+  background: var(--portal-panel-bg, #f6f6f6);
+}
+
+.deals_list_toolbar_actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.deals_suspend_all_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45em;
+  box-sizing: border-box;
+  height: var(--top-navbar-control-height, 2.25rem);
+  min-height: var(--top-navbar-control-height, 2.25rem);
+  padding: 0 1em;
+  margin: 0;
+  border: 1px solid var(--portal-text, #282828);
+  border-radius: var(--portal-pill-radius, 4px);
+  background: transparent;
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: var(--portal-text, #282828);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.deals_suspend_all_btn:hover {
+  background: var(--portal-primary-soft, #e8eef8);
+}
+
+/* Suspend all — same shell as Add Investment / investor-class modals */
+.deals_suspend_all_modal_panel.deals_add_inv_modal_panel {
+  max-width: min(24em, calc(100vw - 2em));
+}
+
+.deals_suspend_all_modal_body {
+  padding: 0 1.15em 0.85em;
+}
+
+.deals_suspend_all_modal_message {
+  margin: 0;
+  font-size: 0.875em;
+  line-height: 1.5;
+  color: var(--portal-text, #0f172a);
+}
+
+:root[data-theme="dark"] .deals_suspend_all_modal_message {
+  color: var(--portal-text, #f1f5f9);
+}
+
+.deals_table_col_header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  max-width: 100%;
+}
+
+.deals_table_col_header_icon {
+  flex-shrink: 0;
+  color: var(--portal-gold-accent, #d4af37);
+}
+
+.deals_table_col_header_end {
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.deals_table_col_header_center {
+  justify-content: center;
+  width: 100%;
+}
+
+.deals_table_header_tooltip_anchor {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.deals_table_header_tooltip_p {
+  margin: 0;
+  font-size: 0.875em;
+  line-height: 1.45;
+  max-width: 18em;
+}
+
+.deals_table_header_tooltip_stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  max-width: 22em;
+}
+
+.deals_table_header_tooltip_stack .deals_table_header_tooltip_p {
+  max-width: none;
+}
+
+/* Investor Class column — pills (InvestorClassPillsDisplay) */
+.deals_td_investor_class_pills_wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.deals_td_investor_class_pills_wrap .deal_inv_class_pills_tooltip_root {
+  max-width: 100%;
+}
+
+/* Column header alignment: dates / text vs amounts — same min-width on th + td so headers line up when scrolling */
+.deals_list_table_panel .um_table thead th.deals_th_align_center,
+.deals_list_table_panel .um_table tbody td.deals_td_align_center {
+  text-align: center;
+  min-width: 8.25rem;
+  width: 8.25rem;
+  box-sizing: border-box;
+}
+
+.deals_list_table_panel .um_table thead th.deals_th_align_right,
+.deals_list_table_panel .um_table tbody td.deals_td_align_right {
+  text-align: right;
+  min-width: 10.75rem;
+  width: 10.75rem;
+  box-sizing: border-box;
+}
+
+.deals_list_table_panel .um_table thead th.deals_col_deal_stage,
+.deals_list_table_panel .um_table tbody td.deals_col_deal_stage {
+  min-width: 9.5rem;
+  width: 9.5rem;
+  box-sizing: border-box;
+}
+
+.deals_list_table_panel .um_table thead th.deals_col_next_billing,
+.deals_list_table_panel .um_table tbody td.deals_col_next_billing {
+  min-width: 9.25rem;
+  width: 9.25rem;
+  box-sizing: border-box;
+}
+
+.deals_list_table_panel .um_table_members tbody td.um_td_numeric {
+  font-variant-numeric: tabular-nums;
+}
+
+.deals_list_table_panel thead th.deals_th_actions_head {
+  white-space: nowrap;
+}
+
+.deals_list_table_panel .deals_td_investor_class_cell {
+  max-width: 14em;
+}
+
+/* Deal details modal — compact; no inner scroll (overlay scrolls if viewport is short) */
+.deals_deal_view_modal_overlay.um_modal_overlay {
+  z-index: 12100;
+  backdrop-filter: blur(3px);
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.deals_deal_view_modal.um_modal.um_modal_view {
+  max-width: min(44em, 100%);
+  width: min(44em, 100%);
+  min-width: 0;
+  max-height: min(90dvh, calc(100dvh - 2rem));
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  padding: 1em 1.15em 0.95em;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: var(--portal-card-radius, 4px);
+  border: 1px solid var(--portal-border, #e2e8f0);
+  background: var(--portal-surface, #fff);
+  box-shadow: 0 20px 50px rgb(15 23 42 / 18%);
+}
+
+/* Investor details popup: keep content inside viewport (no horizontal scroll). */
+.deal_inv_investor_view_modal.deals_deal_view_modal.um_modal.um_modal_view {
+  width: min(44em, calc(100vw - 2em));
+}
+
+@media (min-width: 640px) {
+  .deals_deal_view_modal.um_modal.um_modal_view {
+    padding: 1.1em 1.35em 1em;
+  }
+}
+
+.deals_deal_view_modal .um_modal_head {
+  margin-bottom: 0.6em;
+}
+
+.deals_deal_view_modal .um_modal_title {
+  font-size: 1.125em;
+}
+
+.deals_deal_view_modal_body {
+  flex: 1 1 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+}
+
+.deals_deal_view_sponsor_role_banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 0.65rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: var(--portal-card-radius, 4px);
+  border: 1px solid var(--portal-border, #e2e8f0);
+  background: color-mix(in srgb, var(--portal-accent, #2563eb) 6%, transparent);
+}
+
+.deals_deal_view_sponsor_role_label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deals_deal_view_modal .um_view_grid {
+  margin-bottom: 0;
+  gap: 0.5em 0.85em;
+  min-width: 0;
+}
+
+/* Investing deal page — offering-only layout (no syndication header/tabs) */
+.deal_detail_investing_section_back {
+  margin: 0 0 0.85rem;
+}
+
+/* Investing deal page — offering preview panel */
+.deal_detail_investing_preview_section {
+  margin: 0 0 1rem;
+  padding: 1rem 1.1rem 1.15rem;
+}
+
+.deal_detail_investing_preview_heading {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--portal-text, #0f172a);
+}
+
+.deal_detail_investing_preview_lead {
+  margin: 0 0 0.85rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deal_detail_investing_sponsor_banner {
+  margin-bottom: 0.75rem;
+}
+
+.deal_detail_readonly_preview_grid {
+  margin-top: 0.25rem;
+}
+
+.deals_deal_view_modal .um_view_field_box {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.deals_deal_view_modal .um_view_field_head {
+  margin-bottom: 0.28em;
+  gap: 0.35em;
+}
+
+.deals_deal_view_modal .um_view_field_icon {
+  width: 16px;
+  height: 16px;
+}
+
+.deals_deal_view_modal .um_view_field_label {
+  font-size: 0.75em;
+}
+
+.deals_deal_view_modal .um_view_field_box {
+  min-height: 2.1em;
+  padding: 0.45em 0.6em;
+  font-size: 0.8125em;
+  line-height: 1.35;
+}
+
+.deals_deal_view_modal .deals_deal_view_field_full {
+  grid-column: 1 / -1;
+}
+
+.deals_deal_view_modal_actions.um_modal_actions_view {
+  margin-top: 0.55em;
+  padding-top: 0.65em;
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+  flex-shrink: 0;
+  gap: 0.5em;
+}
+
+.deals_deal_view_state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  padding: 1.25em 0.5em;
+  text-align: center;
+}
+
+.deals_deal_view_spinner {
+  color: var(--portal-primary, #2563eb);
+  animation: deals_deal_view_spin 0.85s linear infinite;
+}
+
+@keyframes deals_deal_view_spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.deals_deal_view_state_text {
+  margin: 0;
+  font-size: 0.875em;
+  color: var(--portal-text-muted);
+}
+
+.deals_deal_view_error {
+  margin: 0;
+  padding: 0.75em 0.85em;
+  border-radius: var(--portal-card-radius, 4px);
+  font-size: 0.875em;
+  color: #b91c1c;
+  background: color-mix(in srgb, #fecaca 35%, transparent);
+  border: 1px solid color-mix(in srgb, #f87171 45%, transparent);
+}
+
+.deals_deal_view_hint {
+  margin: 0;
+  font-size: 0.9375em;
+  color: var(--portal-text-muted);
+}
+
+.deals_list_page {
+  margin-top: 20px;
+}
+
+/* Create-deal session draft row (same pattern as Deal Members / Investors draft) */
+/* .deals_list_row_draft {
+  background: color-mix(in srgb, var(--um-focus-ring, #2563eb) 14%, transparent);
+} */
+
+.deals_list_name_with_draft {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+/* Deal detail header: title + compact stage chip on one row (wraps on narrow screens) */
+.deals_detail_page .deals_list_title_row {
+  align-items: center;
+}
+
+.deals_detail_title_stack {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4em 0.55em;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.deals_detail_title_stack .deals_stage_chip {
+  flex-shrink: 0;
+}
+
+/* Title + Draft badge stay on one row; stage chip sits beside this block */
+.deals_detail_title_name_block.deals_list_name_with_draft {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.app_shell .deals_detail_page button.deals_detail_edit_deal_btn.um_btn_secondary {
+  flex-shrink: 0;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  white-space: nowrap;
+  background: var(--portal-tab-active-bg);
+  color: var(--portal-tab-active-text, var(--portal-text));
+  border-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 28%,
+    var(--portal-border, #c6c6cd)
+  );
+}
+
+.app_shell .deals_detail_page button.deals_detail_edit_deal_btn.um_btn_secondary:hover:not(:disabled) {
+  background: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 16%,
+    transparent
+  );
+  color: var(--portal-tab-active-text, var(--portal-text));
+  border-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 42%,
+    var(--portal-border, #c6c6cd)
+  );
+}
+
+:root[data-theme="dark"]
+  .app_shell
+  .deals_detail_page
+  button.deals_detail_edit_deal_btn.um_btn_secondary {
+  background: var(--portal-tab-active-bg);
+  color: var(--portal-tab-active-text, var(--portal-text));
+  border-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 32%,
+    var(--portal-border, rgba(255, 255, 255, 0.14))
+  );
+}
+
+:root[data-theme="dark"]
+  .app_shell
+  .deals_detail_page
+  button.deals_detail_edit_deal_btn.um_btn_secondary:hover:not(:disabled) {
+  background: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 22%,
+    transparent
+  );
+  color: var(--portal-tab-active-text, var(--portal-text));
+}
+
+@media (max-width: 520px) {
+  .deals_detail_page .deals_list_title_row .deals_detail_edit_deal_btn {
+    width: 100%;
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+
+.deals_list_draft_badge {
+  flex-shrink: 0;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  padding: 0.2em 0.5em;
+  border-radius: var(--portal-pill-radius, 4px);
+  background: color-mix(in srgb, var(--um-focus-ring, #2563eb) 14%, transparent);
+  color: var(--um-focus-ring, #1d4ed8);
+  border: 1px solid color-mix(in srgb, var(--um-focus-ring, #2563eb) 38%, transparent);
+}
+
+.deals_list_sr_only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.deals_list_name_cell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.deals_list_name_cell--sponsor_dash {
+  align-items: center;
+}
+
+/* Deal / profile name rows use `.um_user_avatar_ring` (portal-theme — matches Settings members). */
+.deals_list_name_cell .um_user_avatar_ring {
+  flex-shrink: 0;
+}
+
+.deals_avatar_icon_ring svg {
+  flex-shrink: 0;
+}
+
+.deals_list_name_text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.deals_list_name_primary {
+  min-width: 0;
+  width: 100%;
+}
+
+.deals_list_name_primary.deals_list_name_with_draft {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: 100%;
+  flex-wrap: nowrap;
+}
+
+.deals_list_table_panel .deals_list_name_with_draft .deals_table_name_link {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.deals_list_name_subrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.deals_list_name_sponsor_role {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  margin-top: 0.15rem;
+}
+
+.deals_list_name_sponsor_role_label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deals_list_stage_badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  max-width: 100%;
+  padding: 0.15em 0.45em 0.15em 0.35em;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--portal-text-muted);
+  background: color-mix(in srgb, var(--portal-text) 6%, transparent);
+  border: 1px solid var(--portal-border);
+  border-radius: var(--portal-pill-radius, 4px);
+}
+
+.deals_list_stage_badge_icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+/* Incomplete deal: icon-only marker; colour follows lifecycle stage */
+.deals_list_draft_icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: var(--portal-pill-radius, 4px);
+  border: 1px solid transparent;
+}
+
+/* .deals_list_draft_icon--draft {
+  color: var(--um-focus-ring, #1d4ed8);
+  background: color-mix(in srgb, var(--um-focus-ring, #2563eb) 14%, transparent);
+  border-color: color-mix(in srgb, var(--um-focus-ring, #2563eb) 38%, transparent);
+} */
+.deals_list_draft_icon--draft {
+  color: #4b5563; /* text gray */
+  background: color-mix(in srgb, #6b7280 14%, transparent);
+  border-color: color-mix(in srgb, #6b7280 38%, transparent);
+}
+
+:root[data-theme="dark"] .deals_list_draft_icon--draft {
+  color: #d1d5db; /* lighter gray for contrast */
+  background: color-mix(in srgb, #9ca3af 14%, transparent);
+  border-color: color-mix(in srgb, #9ca3af 38%, transparent);
+}
+
+.deals_list_page .deal_inv_draft_continue_btn {
+  font-size: 0.8125rem;
+  padding: 0.35em 0.75em;
+  white-space: nowrap;
+}
+
+/* Deal lifecycle stage — shared chip (list, detail header, offering preview) */
+.deals_stage_chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+  max-width: 100%;
+  padding: 0.28em 0.65em;
+  border-radius: var(--portal-pill-radius, 4px);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  border: 1px solid var(--portal-border);
+  box-sizing: border-box;
+}
+
+.deals_stage_chip--compact {
+  padding: 0.15em 0.45em 0.15em 0.35em;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  max-width: min(100%, 8.5rem);
+}
+
+.deals_stage_chip--compact > span:not(.deals_list_stage_badge_icon) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.deals_stage_chip--draft {
+  color: var(--um-focus-ring, #1d4ed8);
+  background: color-mix(in srgb, var(--um-focus-ring, #2563eb) 14%, transparent);
+  border-color: color-mix(in srgb, var(--um-focus-ring, #2563eb) 38%, transparent);
+}
+
+.deals_stage_chip--capital_raising {
+  color: #1e40af;
+  background: color-mix(in srgb, #3b82f6 18%, transparent);
+  border-color: color-mix(in srgb, #2563eb 40%, transparent);
+}
+
+.deals_stage_chip--coming_soon {
+  color: #a16207;
+  background: color-mix(in srgb, #facc15 18%, transparent);
+  border-color: color-mix(in srgb, #eab308 38%, transparent);
+}
+
+.deals_stage_chip--open_investment,
+.deals_stage_chip--invest_now {
+  color: #14532d;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, #4ade80 42%, #16a34a) 0%,
+    color-mix(in srgb, #22c55e 88%, #15803d) 100%
+  );
+  border-color: color-mix(in srgb, #16a34a 55%, #14532d);
+  box-shadow:
+    0 1px 2px rgb(21 128 61 / 18%),
+    inset 0 1px 0 rgb(255 255 255 / 22%);
+}
+
+.deals_stage_chip--managing_asset {
+  color: #065f46;
+  background: color-mix(in srgb, #10b981 20%, transparent);
+  border-color: color-mix(in srgb, #059669 38%, transparent);
+}
+
+.deals_stage_chip--liquidated {
+  color: #5b21b6;
+  background: color-mix(in srgb, #8b5cf6 18%, transparent);
+  border-color: color-mix(in srgb, #7c3aed 38%, transparent);
+}
+
+.deals_stage_chip--unknown {
+  color: var(--portal-text-muted);
+  background: color-mix(in srgb, var(--portal-text) 6%, transparent);
+  border-color: var(--portal-border);
+}
+
+.deals_stage_chip--archived {
+  color: #475569;
+  background: color-mix(in srgb, #64748b 16%, transparent);
+  border-color: color-mix(in srgb, #64748b 38%, transparent);
+}
+
+:root[data-theme="dark"] .deals_stage_chip--draft {
+  color: #93c5fd;
+  background: color-mix(in srgb, var(--um-focus-ring, #2563eb) 14%, transparent);
+  border-color: color-mix(in srgb, var(--um-focus-ring, #2563eb) 38%, transparent);
+}
+
+:root[data-theme="dark"] .deals_stage_chip--capital_raising {
+  color: #bfdbfe;
+  background: color-mix(in srgb, #2563eb 22%, transparent);
+  border-color: color-mix(in srgb, #3b82f6 45%, transparent);
+}
+
+:root[data-theme="dark"] .deals_stage_chip--open_investment,
+:root[data-theme="dark"] .deals_stage_chip--invest_now {
+  color: #ecfdf5;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, #16a34a 75%, #052e16) 0%,
+    color-mix(in srgb, #22c55e 70%, #14532d) 100%
+  );
+  border-color: color-mix(in srgb, #4ade80 45%, #166534);
+  box-shadow:
+    0 1px 3px rgb(0 0 0 / 28%),
+    inset 0 1px 0 rgb(255 255 255 / 12%);
+}
+
+:root[data-theme="dark"] .deals_stage_chip--coming_soon {
+  color: #fde047;
+  background: color-mix(in srgb, #ca8a04 20%, transparent);
+  border-color: color-mix(in srgb, #eab308 42%, transparent);
+}
+
+:root[data-theme="dark"] .deals_stage_chip--managing_asset {
+  color: #a7f3d0;
+  background: color-mix(in srgb, #059669 22%, transparent);
+  border-color: color-mix(in srgb, #10b981 40%, transparent);
+}
+
+:root[data-theme="dark"] .deals_stage_chip--liquidated {
+  color: #ddd6fe;
+  background: color-mix(in srgb, #7c3aed 22%, transparent);
+  border-color: color-mix(in srgb, #8b5cf6 40%, transparent);
+}
+
+:root[data-theme="dark"] .deals_stage_chip--archived {
+  color: #cbd5e1;
+  background: color-mix(in srgb, #64748b 22%, transparent);
+  border-color: color-mix(in srgb, #94a3b8 40%, transparent);
+}
+
+/* Kebab: disabled items (e.g. create-deal draft row — archive/delete N/A) */
+.um_kebab_menu.um_kebab_menu--portal .um_kebab_menuitem.um_kebab_menuitem_disabled,
+.um_kebab_menu.um_kebab_menu--portal .um_kebab_menuitem:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}

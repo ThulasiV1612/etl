@@ -1,0 +1,5 @@
+export { DropboxSignEmbeddedEditor } from "./DropboxSignEmbeddedEditor"
+export type { DropboxSignEmbeddedEditorProps } from "./DropboxSignEmbeddedEditor"
+export { DropboxSignEmbeddedSigner } from "./DropboxSignEmbeddedSigner"
+export type { DropboxSignEmbeddedSignerProps } from "./DropboxSignEmbeddedSigner"
+export type { DropboxSignCreateTemplateEvent } from "./dropboxSignEmbedded.types"

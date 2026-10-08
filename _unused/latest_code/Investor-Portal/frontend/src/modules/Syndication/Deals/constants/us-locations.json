@@ -1,0 +1,612 @@
+{
+  "countryCode": "US",
+  "states": [
+    {
+      "code": "AL",
+      "name": "Alabama",
+      "cities": [
+        "Birmingham",
+        "Montgomery",
+        "Mobile",
+        "Huntsville",
+        "Tuscaloosa",
+        "Hoover"
+      ]
+    },
+    {
+      "code": "AK",
+      "name": "Alaska",
+      "cities": [
+        "Anchorage",
+        "Fairbanks",
+        "Juneau",
+        "Wasilla",
+        "Sitka",
+        "Ketchikan"
+      ]
+    },
+    {
+      "code": "AZ",
+      "name": "Arizona",
+      "cities": [
+        "Phoenix",
+        "Tucson",
+        "Mesa",
+        "Chandler",
+        "Scottsdale",
+        "Gilbert"
+      ]
+    },
+    {
+      "code": "AR",
+      "name": "Arkansas",
+      "cities": [
+        "Little Rock",
+        "Fort Smith",
+        "Fayetteville",
+        "Springdale",
+        "Jonesboro",
+        "Rogers"
+      ]
+    },
+    {
+      "code": "CA",
+      "name": "California",
+      "cities": [
+        "Los Angeles",
+        "San Diego",
+        "San Jose",
+        "San Francisco",
+        "Fresno",
+        "Sacramento"
+      ]
+    },
+    {
+      "code": "CO",
+      "name": "Colorado",
+      "cities": [
+        "Denver",
+        "Colorado Springs",
+        "Aurora",
+        "Fort Collins",
+        "Lakewood",
+        "Thornton"
+      ]
+    },
+    {
+      "code": "CT",
+      "name": "Connecticut",
+      "cities": [
+        "Bridgeport",
+        "New Haven",
+        "Hartford",
+        "Stamford",
+        "Waterbury",
+        "Norwalk"
+      ]
+    },
+    {
+      "code": "DE",
+      "name": "Delaware",
+      "cities": [
+        "Wilmington",
+        "Dover",
+        "Newark",
+        "Middletown",
+        "Smyrna",
+        "Milford"
+      ]
+    },
+    {
+      "code": "DC",
+      "name": "District of Columbia",
+      "cities": [
+        "Washington"
+      ]
+    },
+    {
+      "code": "FL",
+      "name": "Florida",
+      "cities": [
+        "Jacksonville",
+        "Miami",
+        "Tampa",
+        "Orlando",
+        "St. Petersburg",
+        "Hialeah"
+      ]
+    },
+    {
+      "code": "GA",
+      "name": "Georgia",
+      "cities": [
+        "Atlanta",
+        "Augusta",
+        "Columbus",
+        "Savannah",
+        "Athens",
+        "Sandy Springs"
+      ]
+    },
+    {
+      "code": "HI",
+      "name": "Hawaii",
+      "cities": [
+        "Honolulu",
+        "Hilo",
+        "Kailua",
+        "Kaneohe",
+        "Kahului",
+        "Kailua-Kona"
+      ]
+    },
+    {
+      "code": "ID",
+      "name": "Idaho",
+      "cities": [
+        "Boise",
+        "Meridian",
+        "Nampa",
+        "Idaho Falls",
+        "Pocatello",
+        "Caldwell"
+      ]
+    },
+    {
+      "code": "IL",
+      "name": "Illinois",
+      "cities": [
+        "Chicago",
+        "Aurora",
+        "Naperville",
+        "Joliet",
+        "Rockford",
+        "Elgin"
+      ]
+    },
+    {
+      "code": "IN",
+      "name": "Indiana",
+      "cities": [
+        "Indianapolis",
+        "Fort Wayne",
+        "Evansville",
+        "South Bend",
+        "Carmel",
+        "Bloomington"
+      ]
+    },
+    {
+      "code": "IA",
+      "name": "Iowa",
+      "cities": [
+        "Des Moines",
+        "Cedar Rapids",
+        "Davenport",
+        "Sioux City",
+        "Iowa City",
+        "Waterloo"
+      ]
+    },
+    {
+      "code": "KS",
+      "name": "Kansas",
+      "cities": [
+        "Wichita",
+        "Overland Park",
+        "Kansas City",
+        "Olathe",
+        "Topeka",
+        "Lawrence"
+      ]
+    },
+    {
+      "code": "KY",
+      "name": "Kentucky",
+      "cities": [
+        "Louisville",
+        "Lexington",
+        "Bowling Green",
+        "Owensboro",
+        "Covington",
+        "Hopkinsville"
+      ]
+    },
+    {
+      "code": "LA",
+      "name": "Louisiana",
+      "cities": [
+        "New Orleans",
+        "Baton Rouge",
+        "Shreveport",
+        "Lafayette",
+        "Lake Charles",
+        "Kenner"
+      ]
+    },
+    {
+      "code": "ME",
+      "name": "Maine",
+      "cities": [
+        "Portland",
+        "Lewiston",
+        "Bangor",
+        "South Portland",
+        "Auburn",
+        "Augusta"
+      ]
+    },
+    {
+      "code": "MD",
+      "name": "Maryland",
+      "cities": [
+        "Baltimore",
+        "Frederick",
+        "Rockville",
+        "Gaithersburg",
+        "Bowie",
+        "Hagerstown"
+      ]
+    },
+    {
+      "code": "MA",
+      "name": "Massachusetts",
+      "cities": [
+        "Boston",
+        "Worcester",
+        "Springfield",
+        "Cambridge",
+        "Lowell",
+        "New Bedford"
+      ]
+    },
+    {
+      "code": "MI",
+      "name": "Michigan",
+      "cities": [
+        "Detroit",
+        "Grand Rapids",
+        "Warren",
+        "Sterling Heights",
+        "Lansing",
+        "Ann Arbor"
+      ]
+    },
+    {
+      "code": "MN",
+      "name": "Minnesota",
+      "cities": [
+        "Minneapolis",
+        "Saint Paul",
+        "Rochester",
+        "Duluth",
+        "Bloomington",
+        "Plymouth"
+      ]
+    },
+    {
+      "code": "MS",
+      "name": "Mississippi",
+      "cities": [
+        "Jackson",
+        "Gulfport",
+        "Southaven",
+        "Hattiesburg",
+        "Biloxi",
+        "Meridian"
+      ]
+    },
+    {
+      "code": "MO",
+      "name": "Missouri",
+      "cities": [
+        "Kansas City",
+        "Saint Louis",
+        "Springfield",
+        "Columbia",
+        "Independence",
+        "Lee's Summit"
+      ]
+    },
+    {
+      "code": "MT",
+      "name": "Montana",
+      "cities": [
+        "Billings",
+        "Missoula",
+        "Great Falls",
+        "Bozeman",
+        "Butte",
+        "Helena"
+      ]
+    },
+    {
+      "code": "NE",
+      "name": "Nebraska",
+      "cities": [
+        "Omaha",
+        "Lincoln",
+        "Bellevue",
+        "Grand Island",
+        "Kearney",
+        "Fremont"
+      ]
+    },
+    {
+      "code": "NV",
+      "name": "Nevada",
+      "cities": [
+        "Las Vegas",
+        "Henderson",
+        "Reno",
+        "North Las Vegas",
+        "Sparks",
+        "Carson City"
+      ]
+    },
+    {
+      "code": "NH",
+      "name": "New Hampshire",
+      "cities": [
+        "Manchester",
+        "Nashua",
+        "Concord",
+        "Dover",
+        "Rochester",
+        "Keene"
+      ]
+    },
+    {
+      "code": "NJ",
+      "name": "New Jersey",
+      "cities": [
+        "Newark",
+        "Jersey City",
+        "Paterson",
+        "Elizabeth",
+        "Edison",
+        "Lakewood"
+      ]
+    },
+    {
+      "code": "NM",
+      "name": "New Mexico",
+      "cities": [
+        "Albuquerque",
+        "Las Cruces",
+        "Rio Rancho",
+        "Santa Fe",
+        "Roswell",
+        "Farmington"
+      ]
+    },
+    {
+      "code": "NY",
+      "name": "New York",
+      "cities": [
+        "New York City",
+        "Buffalo",
+        "Rochester",
+        "Yonkers",
+        "Syracuse",
+        "Albany"
+      ]
+    },
+    {
+      "code": "NC",
+      "name": "North Carolina",
+      "cities": [
+        "Charlotte",
+        "Raleigh",
+        "Greensboro",
+        "Durham",
+        "Winston-Salem",
+        "Fayetteville"
+      ]
+    },
+    {
+      "code": "ND",
+      "name": "North Dakota",
+      "cities": [
+        "Fargo",
+        "Bismarck",
+        "Grand Forks",
+        "Minot",
+        "West Fargo",
+        "Williston"
+      ]
+    },
+    {
+      "code": "OH",
+      "name": "Ohio",
+      "cities": [
+        "Columbus",
+        "Cleveland",
+        "Cincinnati",
+        "Toledo",
+        "Akron",
+        "Dayton"
+      ]
+    },
+    {
+      "code": "OK",
+      "name": "Oklahoma",
+      "cities": [
+        "Oklahoma City",
+        "Tulsa",
+        "Norman",
+        "Broken Arrow",
+        "Edmond",
+        "Lawton"
+      ]
+    },
+    {
+      "code": "OR",
+      "name": "Oregon",
+      "cities": [
+        "Portland",
+        "Salem",
+        "Eugene",
+        "Gresham",
+        "Hillsboro",
+        "Bend"
+      ]
+    },
+    {
+      "code": "PA",
+      "name": "Pennsylvania",
+      "cities": [
+        "Philadelphia",
+        "Pittsburgh",
+        "Allentown",
+        "Erie",
+        "Reading",
+        "Scranton"
+      ]
+    },
+    {
+      "code": "RI",
+      "name": "Rhode Island",
+      "cities": [
+        "Providence",
+        "Warwick",
+        "Cranston",
+        "Pawtucket",
+        "East Providence",
+        "Woonsocket"
+      ]
+    },
+    {
+      "code": "SC",
+      "name": "South Carolina",
+      "cities": [
+        "Charleston",
+        "Columbia",
+        "North Charleston",
+        "Mount Pleasant",
+        "Rock Hill",
+        "Greenville"
+      ]
+    },
+    {
+      "code": "SD",
+      "name": "South Dakota",
+      "cities": [
+        "Sioux Falls",
+        "Rapid City",
+        "Aberdeen",
+        "Brookings",
+        "Watertown",
+        "Mitchell"
+      ]
+    },
+    {
+      "code": "TN",
+      "name": "Tennessee",
+      "cities": [
+        "Nashville",
+        "Memphis",
+        "Knoxville",
+        "Chattanooga",
+        "Clarksville",
+        "Murfreesboro"
+      ]
+    },
+    {
+      "code": "TX",
+      "name": "Texas",
+      "cities": [
+        "Houston",
+        "San Antonio",
+        "Dallas",
+        "Austin",
+        "Fort Worth",
+        "El Paso"
+      ]
+    },
+    {
+      "code": "UT",
+      "name": "Utah",
+      "cities": [
+        "Salt Lake City",
+        "West Valley City",
+        "Provo",
+        "West Jordan",
+        "Orem",
+        "Sandy"
+      ]
+    },
+    {
+      "code": "VT",
+      "name": "Vermont",
+      "cities": [
+        "Burlington",
+        "South Burlington",
+        "Rutland",
+        "Barre",
+        "Montpelier",
+        "St. Albans"
+      ]
+    },
+    {
+      "code": "VA",
+      "name": "Virginia",
+      "cities": [
+        "Virginia Beach",
+        "Norfolk",
+        "Chesapeake",
+        "Richmond",
+        "Newport News",
+        "Alexandria"
+      ]
+    },
+    {
+      "code": "WA",
+      "name": "Washington",
+      "cities": [
+        "Seattle",
+        "Spokane",
+        "Tacoma",
+        "Vancouver",
+        "Bellevue",
+        "Everett"
+      ]
+    },
+    {
+      "code": "WV",
+      "name": "West Virginia",
+      "cities": [
+        "Charleston",
+        "Huntington",
+        "Morgantown",
+        "Parkersburg",
+        "Wheeling",
+        "Weirton"
+      ]
+    },
+    {
+      "code": "WI",
+      "name": "Wisconsin",
+      "cities": [
+        "Milwaukee",
+        "Madison",
+        "Green Bay",
+        "Kenosha",
+        "Racine",
+        "Appleton"
+      ]
+    },
+    {
+      "code": "WY",
+      "name": "Wyoming",
+      "cities": [
+        "Cheyenne",
+        "Casper",
+        "Laramie",
+        "Gillette",
+        "Rock Springs",
+        "Sheridan"
+      ]
+    }
+  ]
+}

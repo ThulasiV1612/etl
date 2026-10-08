@@ -1,0 +1,168 @@
+.open_inv_esign_modal_overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 13000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: color-mix(in srgb, #0f172a 42%, transparent);
+  backdrop-filter: blur(2px);
+}
+
+.open_inv_esign_modal {
+  box-sizing: border-box;
+  width: min(26rem, 100%);
+  border-radius: 14px;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  background: var(--portal-surface, #fff);
+  box-shadow:
+    0 24px 48px color-mix(in srgb, #0f172a 16%, transparent),
+    0 4px 12px color-mix(in srgb, #0f172a 8%, transparent);
+  overflow: hidden;
+}
+
+.open_inv_esign_modal_head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.1rem 1.15rem 0.85rem;
+  border-bottom: 1px solid var(--portal-border, #e2e8f0);
+}
+
+.open_inv_esign_modal_icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--portal-card-radius, 4px);
+  color: #b45309;
+  background: color-mix(in srgb, #f59e0b 18%, transparent);
+  border: 1px solid color-mix(in srgb, #f59e0b 35%, transparent);
+}
+
+.open_inv_esign_modal_icon--info {
+  color: #1d4ed8;
+  background: color-mix(in srgb, #3b82f6 14%, transparent);
+  border-color: color-mix(in srgb, #3b82f6 28%, transparent);
+}
+
+.open_inv_esign_modal_head_text {
+  flex: 1;
+  min-width: 0;
+  padding-top: 0.15rem;
+}
+
+.open_inv_esign_modal_title {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--portal-text, #0f172a);
+}
+
+.open_inv_esign_modal_close {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin: -0.1rem -0.1rem 0 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--portal-card-radius, 4px);
+  background: transparent;
+  color: var(--portal-text-muted, #64748b);
+  cursor: pointer;
+}
+
+.open_inv_esign_modal_close:hover {
+  background: var(--portal-surface-muted, #f1f5f9);
+  color: var(--portal-text, #0f172a);
+}
+
+.open_inv_esign_modal_body {
+  padding: 1rem 1.15rem;
+}
+
+.open_inv_esign_modal_message {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--portal-text-muted, #475569);
+  white-space: pre-line;
+}
+
+.open_inv_esign_modal_actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.15rem 1.15rem;
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+  background: var(--portal-surface-muted, #f8fafc);
+}
+
+.open_inv_esign_modal_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  box-sizing: border-box;
+  min-height: var(--portal-button-height, 2.25rem);
+  height: var(--portal-button-height, 2.25rem);
+  padding: 0 1rem;
+  border-radius: var(--portal-card-radius, 4px);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.open_inv_esign_modal_btn--secondary {
+  border-color: var(--portal-border, #cbd5e1);
+  background: var(--portal-surface, #fff);
+  color: var(--portal-text, #0f172a);
+}
+
+.open_inv_esign_modal_btn--secondary:hover {
+  background: var(--portal-surface-muted, #f1f5f9);
+}
+
+.open_inv_esign_modal_btn--primary {
+  background: var(--um-focus-ring, #2563eb);
+  color: #fff;
+}
+
+.open_inv_esign_modal_btn--primary:hover {
+  background: color-mix(in srgb, var(--um-focus-ring, #2563eb) 88%, #000);
+}
+
+:root[data-theme="dark"] .open_inv_esign_modal {
+  border-color: var(--portal-border, #334155);
+  background: var(--portal-surface, #1e293b);
+}
+
+:root[data-theme="dark"] .open_inv_esign_modal_head,
+:root[data-theme="dark"] .open_inv_esign_modal_actions {
+  border-color: var(--portal-border, #334155);
+}
+
+:root[data-theme="dark"] .open_inv_esign_modal_actions {
+  background: color-mix(in srgb, #0f172a 35%, transparent);
+}
+
+:root[data-theme="dark"] .open_inv_esign_modal_title {
+  color: var(--portal-text, #f1f5f9);
+}
+
+:root[data-theme="dark"] .open_inv_esign_modal_btn--secondary {
+  background: var(--portal-surface, #1e293b);
+  border-color: var(--portal-border, #475569);
+  color: var(--portal-text, #f1f5f9);
+}

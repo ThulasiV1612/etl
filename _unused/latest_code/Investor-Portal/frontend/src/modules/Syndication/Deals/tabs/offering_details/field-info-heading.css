@@ -1,0 +1,75 @@
+.field_info_heading {
+  margin-bottom: 0.35em;
+}
+
+.field_info_heading_row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.35em;
+  min-width: 0;
+}
+
+.field_info_heading_label {
+  /* flex: 1; */
+  min-width: 0;
+  font-size: 0.8125em;
+  font-weight: 600;
+   letter-spacing: -0.01em;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.field_info_tooltip_inner {
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+}
+
+.field_info_tooltip_inner p {
+  margin: 0 0 0.45em;
+}
+
+.field_info_tooltip_inner p:last-child {
+  margin-bottom: 0;
+}
+
+.field_info_tooltip_inner ul {
+  margin: 0;
+  padding-left: 1.1em;
+}
+
+.field_info_tooltip_inner li {
+  margin-bottom: 0.3em;
+}
+
+.field_info_tooltip_inner li:last-child {
+  margin-bottom: 0;
+}
+
+.field_info_list {
+  margin: 0;
+  padding-left: 1.1em;
+}
+
+.field_info_list li {
+  margin-bottom: 0.35em;
+}
+
+.field_info_list li:last-child {
+  margin-bottom: 0;
+}
+
+.deal_step_sr_legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

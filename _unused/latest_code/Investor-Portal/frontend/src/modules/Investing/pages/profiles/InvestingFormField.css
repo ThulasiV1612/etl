@@ -1,0 +1,14 @@
+/* Label row: [field icon] [label + optional (i) suffix] */
+.um_field .um_field_label_with_suffix {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 0.2em;
+  row-gap: 0.1em;
+}
+
+.um_field .um_field_label_text {
+  min-width: 0;
+}

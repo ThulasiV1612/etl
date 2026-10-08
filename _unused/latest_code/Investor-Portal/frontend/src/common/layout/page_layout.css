@@ -1,0 +1,724 @@
+.app_shell {
+  display: grid;
+  /* minmax(0,1fr) lets the main column shrink so wide tables scroll inside um_table_wrap instead of growing the page */
+  grid-template-columns: 16rem minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  height: 100%;
+  height: 100dvh;
+  max-height: 100%;
+  max-height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  background-color: var(--portal-page-bg);
+}
+
+.app_sidebar {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  overscroll-behavior: contain;
+  background: var(--sidebar-bg-color);
+  color: var(--sidebar-text-color);
+  padding: 1.25em 1em;
+  font-size: var(--font-size);
+  border-right: 1px solid color-mix(in srgb, var(--sidebar-text-color) 18%, var(--sidebar-bg-color));
+}
+
+/** Scrollable nav only; brand + mode footer stay fixed in the column */
+.app_sidebar_nav_region {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+  padding-right: 0.15em;
+}
+
+.app_sidebar_mode_footer {
+  flex-shrink: 0;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  padding-bottom: 0.35rem;
+  border-top: 1px solid var(--sidebar-active-text);
+  /* border-top: 1px solid
+    color-mix(in srgb, var(--sidebar-text-color) 12%, var(--sidebar-bg-color)); */
+}
+
+.app_sidebar_mode_eyebrow {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--sidebar-text-color) 42%, var(--sidebar-bg-color));
+  margin: 0 0 0.35em;
+  line-height: 1.2;
+}
+
+/* Product lockup: stable surface (no hover “pill”) — hierarchy comes from type, not interaction */
+.app_sidebar_brand {
+  flex-shrink: 0;
+  display: block;
+  width: 100%;
+  /* margin: 0 0 0.85em; */
+  padding: 0.15em 0.25em 0.15em 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-style: normal;
+  color: inherit;
+}
+
+.app_sidebar_brand:focus-visible {
+  outline: 2px solid var(--sidebar-text-color);
+  outline-offset: 3px;
+  border-radius: var(--ui-border-radius, 6px);
+}
+
+.app_sidebar_brand .app_sidebar_title {
+  margin: 0 0 0.3em;
+  font-size: clamp(0.95em, 0.35vw + 0.82em, 1.1875em);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--sidebar-text-color);
+}
+
+.app_sidebar_brand.app_sidebar_brand_static {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0 0 0.85em;
+  overflow: visible;
+}
+
+/* Fallback when tenant/default modifier classes are not applied */
+.app_sidebar_brand_static:not(.app_sidebar_brand_static--tenant):not(
+    .app_sidebar_brand_static--default
+  ) {
+  min-height: 2.25rem;
+}
+
+.app_sidebar_brand_static:not(.app_sidebar_brand_static--tenant):not(
+    .app_sidebar_brand_static--default
+  )
+  .app_sidebar_brand_logo {
+  width: 8em;
+  max-width: 100%;
+  height: auto;
+}
+
+/** SyndicationX default — original sidebar logo size (8em wide, natural height). */
+.app_sidebar_brand.app_sidebar_brand_static--default {
+  --app-sidebar-brand-slot-height: auto;
+  min-height: 2.25rem;
+  height: auto;
+  padding: 0.15em 0.25em 0.15em 0;
+}
+
+/** Uploaded company logo — fixed slot so nav alignment stays consistent. */
+.app_sidebar_brand.app_sidebar_brand_static--tenant {
+  --app-sidebar-brand-slot-height: 4.5rem;
+  min-height: var(--app-sidebar-brand-slot-height);
+  height: var(--app-sidebar-brand-slot-height);
+  padding: 0;
+  overflow: hidden;
+}
+
+.app_sidebar_brand_static {
+  cursor: default;
+  position: relative;
+}
+
+.app_sidebar_brand_link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: var(--ui-border-radius, 8px);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.15s ease;
+}
+
+.app_sidebar_brand_static--tenant .app_sidebar_brand_link {
+  height: 100%;
+  min-height: var(--app-sidebar-brand-slot-height, 4.5rem);
+}
+
+.app_sidebar_brand_link:hover {
+  background: color-mix(
+    in srgb,
+    var(--sidebar-text-color) 6%,
+    var(--sidebar-bg-color)
+  );
+}
+
+.app_sidebar_brand_link:focus-visible {
+  outline: 2px solid var(--sidebar-text-color);
+  outline-offset: 3px;
+}
+
+.app_sidebar_title_sr_only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Compact mark: avoid min-width so wide PNG letterboxing does not push “Powered by” away. */
+.app_sidebar_powered_logo {
+  flex-shrink: 0;
+  align-self: center;
+  width: auto;
+  max-width: 5.25rem;
+  height: 1.65rem;
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+}
+
+.app_sidebar_brand_mark {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.app_sidebar_brand_static--default .app_sidebar_brand_mark {
+  min-height: 2.25rem;
+}
+
+.app_sidebar_brand_static--tenant .app_sidebar_brand_mark {
+  justify-content: center;
+  height: 100%;
+  min-height: var(--app-sidebar-brand-slot-height, 4.5rem);
+}
+
+.app_sidebar_brand_mark--loading {
+  pointer-events: none;
+}
+
+.app_sidebar_brand_logo_slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.app_sidebar_brand_static--tenant .app_sidebar_brand_logo_slot {
+  height: var(--app-sidebar-brand-slot-height, 4.5rem);
+  min-height: var(--app-sidebar-brand-slot-height, 4.5rem);
+  max-height: var(--app-sidebar-brand-slot-height, 4.5rem);
+}
+
+.app_sidebar_brand_logo_skeleton {
+  display: block;
+  width: min(8.5rem, 72%);
+  height: min(2.5rem, var(--app-sidebar-brand-slot-height, 4.5rem));
+  border-radius: 6px;
+  background: color-mix(
+    in srgb,
+    var(--sidebar-text-color) 14%,
+    var(--sidebar-bg-color)
+  );
+  animation: app_sidebar_brand_logo_pulse 1.1s ease-in-out infinite;
+}
+
+@keyframes app_sidebar_brand_logo_pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.app_sidebar_brand_logo {
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+/** SyndicationX sidenav lockup (updated_syndicationx_logo — SX + tagline). */
+.app_sidebar_brand_logo--default {
+  width: 9.5em;
+  max-width: 100%;
+  height: auto;
+}
+
+/** Company-uploaded logo — flexible width, capped height inside fixed slot. */
+.app_sidebar_brand_logo--tenant {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: var(--app-sidebar-brand-slot-height, 4.5rem);
+}
+
+.app_sidebar_title {
+  margin-bottom: 1em;
+  color: var(--sidebar-text-color);
+}
+
+/** Current workspace mode — compact label above attribution */
+.app_sidebar_mode_workspace {
+  margin: 0;
+  text-align: center;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: var(--sidebar-active-text, #d4af37);
+  /* color: var(--white-50); */
+  /* color: color-mix(in srgb, var(--sidebar-text-color) 52%, var(--sidebar-bg-color)); */
+}
+
+/** “Powered by” lockup — inset surface + primary accent for brand hierarchy */
+.app_sidebar_powered_lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.45rem 0.45rem 0.45rem 0.4rem;
+  /* border-radius: var(--portal-card-radius, 4px); */
+  /* background: color-mix(in srgb, var(--sidebar-text-color) 7%, var(--sidebar-bg-color)); */
+  /* border: 1px solid */
+    /* color-mix(in srgb, var(--sidebar-text-color) 11%, var(--sidebar-bg-color)); */
+  color: var(--sidebar-active-text);
+  border-left-color: var(--portal-gold-accent, #d4af37);
+  background-color: var(--sidebar-active);
+  box-shadow: 0 1px 0
+    color-mix(in srgb, var(--sidebar-text-color) 6%, transparent);
+}
+
+.app_sidebar_powered_accent {
+  flex-shrink: 0;
+  width: 2px;
+  align-self: stretch;
+  min-height: 1.65rem;
+  /* border-radius: 2px; */
+  /* background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--portal-primary, #2563eb) 92%, var(--sidebar-bg-color))
+      0%,
+    color-mix(in srgb, var(--portal-primary, #2563eb) 65%, var(--sidebar-text-color))
+      100%
+  ); */
+  background: var(--sidebar-active-text);
+}
+
+.app_sidebar_powered_text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.04rem;
+  text-align: left;
+}
+
+.app_sidebar_powered_by {
+  display: block;
+  font-size: 0.5625rem;
+  /* font-weight: 500; */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--sidebar-active-text, #d4af37);
+  /* color: color-mix(in srgb, var(--sidebar-text-color) 48%, var(--sidebar-bg-color)); */
+}
+
+.app_sidebar_powered_brand {
+  display: block;
+  font-size: clamp(0.75rem, 0.2vw + 0.68rem, 0.8125rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+   color: var(--sidebar-active-text);
+
+  /* color: color-mix(in srgb, var(--sidebar-text-color) 96%, var(--sidebar-bg-color)); */
+}
+
+:root[data-theme="dark"] .app_sidebar {
+  border-right: 1px solid var(--portal-gold-accent, #d4af37);
+}
+
+:root[data-theme="dark"] .app_sidebar_powered_lockup {
+  background: color-mix(in srgb, var(--sidebar-text-color) 9%, var(--sidebar-bg-color));
+  border-color: color-mix(in srgb, var(--sidebar-text-color) 14%, var(--sidebar-bg-color));
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] .app_sidebar_mode_workspace {
+  color: var(--sidebar-active-text, #d4af37);
+}
+
+.app_sidebar_role_badge {
+  margin: 0 0 0.75em;
+  padding: 0.35em 0.55em;
+  max-width: 100%;
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: clamp(0.72em, 0.15vw + 0.68em, 0.875em);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--portal-text-secondary, #666);
+  background: color-mix(in srgb, var(--portal-muted-bg, #f4f4f5) 88%, transparent);
+  border: 1px solid var(--portal-border, lightgray);
+  border-radius: 6px;
+}
+
+:root[data-theme="dark"] .app_sidebar_role_badge {
+  background: color-mix(in srgb, var(--portal-surface, #1a1a1a) 92%, transparent);
+  color: var(--portal-text-muted, #a1a1aa);
+}
+
+.app_sidebar_nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  /* Shared rail: icons share one column width so labels line up; subs align under parents. */
+  --nav-icon-col: 1.375rem;
+  --nav-icon-size: 1.125rem;
+  --nav-gap: 0.65em;
+  --nav-px: 0.75em;
+  --nav-py: 0.65em;
+}
+
+.app_sidebar_group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+.app_sidebar_expand_btn {
+  width: 100%;
+  margin: 0;
+  border: none;
+  border-left: 3px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  /* Match `.app_sidebar_link` / NavLink (avoid UA bold on <button>). */
+  font: inherit;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--sidebar-text-color);
+  display: grid;
+  grid-template-columns: var(--nav-icon-col) minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--nav-gap);
+  padding: var(--nav-py) var(--nav-px);
+  /* border-radius: var(--portal-pill-radius, 4px); */
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.app_sidebar_expand_btn > svg:first-of-type {
+  width: var(--nav-icon-size);
+  height: var(--nav-icon-size);
+  justify-self: center;
+  flex-shrink: 0;
+}
+
+.app_sidebar_expand_btn:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--sidebar-text-color) 8%,
+    var(--sidebar-bg-color)
+  );
+}
+
+/* Expanded group — subtle tint only; real “active” state is on the child NavLink. */
+.app_sidebar_expand_btn_open {
+  background-color: color-mix(
+    in srgb,
+    var(--sidebar-text-color) 6%,
+    var(--sidebar-bg-color)
+  );
+}
+
+.app_sidebar_expand_btn_open:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--sidebar-text-color) 10%,
+    var(--sidebar-bg-color)
+  );
+}
+
+/* Keep solid active background on hover (same as sub-links). */
+.app_sidebar_expand_btn.app_sidebar_link_active:hover {
+  background-color: var(--sidebar-active);
+}
+
+.app_sidebar_expand_label {
+  min-width: 0;
+  font-weight: inherit;
+  color: #d3d3d3bd;
+}
+
+.app_sidebar_expand_chevron {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  justify-self: end;
+  opacity: 0.75;
+  transition: transform 0.2s ease;
+}
+
+.app_sidebar_expand_chevron_open {
+  transform: rotate(180deg);
+}
+
+.app_sidebar_subnav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  margin: 0;
+  padding: 0.1em 0 0.15em var(--nav-px);
+}
+
+.app_sidebar_link {
+  text-decoration: none;
+  font-weight: 400;
+  display: grid;
+  grid-template-columns: var(--nav-icon-col) minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--nav-gap);
+  padding: var(--nav-py) var(--nav-px);
+  /* border-radius: var(--portal-pill-radius, 4px); */
+  border-left: 3px solid transparent;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.app_sidebar_link > svg:first-of-type {
+  width: var(--nav-icon-size);
+  height: var(--nav-icon-size);
+  justify-self: center;
+  flex-shrink: 0;
+}
+
+.app_sidebar_link > span {
+  min-width: 0;
+  color: #d3d3d3bd;
+}
+
+.app_sidebar_link > svg:first-of-type {
+  color: inherit;
+}
+
+.app_sidebar_link:hover {
+  background-color: color-mix(in srgb, var(--sidebar-text-color) 8%, var(--sidebar-bg-color));
+}
+
+.app_sidebar_link_active {
+  /* font-weight: 600; */
+  color: var(--sidebar-active-text);
+  border-left-color: var(--portal-gold-accent, #d4af37);
+  background-color: var(--sidebar-active);
+}
+
+.app_sidebar_link_active > span,
+.app_sidebar_link_active > svg:first-of-type {
+  color: var(--sidebar-active-text);
+}
+
+.app_sidebar_expand_btn.app_sidebar_link_active {
+  color: var(--sidebar-active-text);
+  border-left-color: var(--portal-gold-accent, #d4af37);
+  background-color: var(--sidebar-active);
+}
+
+.app_sidebar_expand_btn.app_sidebar_link_active > svg:first-of-type {
+  color: var(--sidebar-active-text);
+}
+
+/* Left rail: each row has a 3px bar; active row uses primary (which “segment” is selected). */
+.app_sidebar_sublink {
+  display: grid;
+  grid-template-columns: var(--nav-icon-col) minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--nav-gap);
+  padding: 0.5em var(--nav-px) 0.5em 0.55em;
+  margin-left: 0;
+  border-left: 3px solid
+    color-mix(
+      in srgb,
+      var(--sidebar-text-color) 20%,
+      var(--sidebar-bg-color)
+    );
+  border-radius: 0 var(--portal-pill-radius, 4px) var(--portal-pill-radius, 4px) 0;
+}
+
+.app_sidebar_sublink_with_badge {
+  grid-template-columns: var(--nav-icon-col) minmax(0, 1fr) auto;
+}
+
+.app_sidebar_sublink_badge {
+  justify-self: end;
+  font-size: 0.625rem;
+  line-height: 1.2;
+  padding: 0.1em 0.45em;
+  border-radius: 8px;
+  background: color-mix(
+    in srgb,
+    var(--sidebar-text-color) 14%,
+    var(--sidebar-bg-color)
+  );
+  color: color-mix(in srgb, var(--sidebar-text-color) 72%, transparent);
+  font-weight: 500;
+}
+
+.app_sidebar_sublink_active .app_sidebar_sublink_badge {
+  background: color-mix(
+    in srgb,
+    var(--sidebar-active-text) 18%,
+    var(--sidebar-active)
+  );
+  color: var(--sidebar-active-text);
+}
+
+.app_sidebar_sublink_icon {
+  width: var(--nav-icon-size);
+  height: var(--nav-icon-size);
+  justify-self: center;
+  color: var(--sidebar-text-color);
+  opacity: 0.72;
+}
+
+.app_sidebar_sublink > span {
+  min-width: 0;
+}
+
+.app_sidebar_sublink_active {
+  font-weight: 600;
+  background-color: var(--sidebar-active);
+  color: var(--sidebar-active-text);
+  border-left-color: var(--portal-gold-accent, #d4af37);
+}
+
+.app_sidebar_sublink_active > span {
+  color: var(--sidebar-active-text);
+}
+
+.app_sidebar_sublink_active .app_sidebar_sublink_icon {
+  color: var(--sidebar-active-text);
+  opacity: 1;
+}
+
+.app_sidebar_sublink_active:hover {
+  background-color: var(--sidebar-active);
+}
+
+.app_main_section {
+  --top-navbar-control-height: 2.25rem;
+  --top-navbar-icon-size: 1.125rem;
+  --app-top-navbar-offset: calc(0.875rem * 2 + var(--top-navbar-control-height));
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  /* Clip here; `.app_main_content` is the vertical scroll layer (avoids flex empty-tail scroll). */
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+.app_main_section > .top_navbar {
+  flex-shrink: 0;
+  /* Navbar sits outside the scroll layer — sticky no longer needed for pin. */
+  position: relative;
+}
+
+.app_main_content {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 0;
+  margin-left: clamp(1.5rem, 4vw, 3rem);
+  margin-right: clamp(1rem, 2vw, 1.5rem);
+  padding: 0 0 2em;
+  background: transparent;
+}
+
+/* Create / edit deal wizard: avoid an extra blank band after the footer when scrolling */
+.app_main_content:has(.deals_add_deal_asset_page.deals_create_flow) {
+  padding-bottom: 1em;
+}
+
+.section_placeholder {
+  border-radius: var(--portal-pill-radius, 4px);
+  padding: 1.25em;
+}
+
+/* Sidebar + nav: scale down on typical laptop widths (keeps main content font-size unchanged) */
+@media (max-width: 1600px) {
+  .app_sidebar {
+    font-size: 1em;
+    padding: 1.05em 0.85em;
+  }
+
+  .app_sidebar_nav {
+    --nav-icon-col: 1.25rem;
+    --nav-icon-size: 1rem;
+    --nav-gap: 0.55em;
+    --nav-px: 0.65em;
+    --nav-py: 0.55em;
+  }
+}
+
+@media (max-width: 1280px) {
+  .app_sidebar {
+    font-size: 0.75em;
+    padding: 1em 0.75em;
+  }
+
+  .app_sidebar_nav {
+    --nav-icon-col: 1.1875rem;
+    --nav-icon-size: 0.9375rem;
+    --nav-gap: 0.5em;
+    --nav-px: 0.6em;
+    --nav-py: 0.5em;
+  }
+}
+
+@media (max-width: 1024px) {
+  .app_sidebar {
+    font-size: 0.6875em;
+    padding: 0.9em 0.65em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app_sidebar_nav_region,
+  .app_main_content {
+    scroll-behavior: auto;
+  }
+}

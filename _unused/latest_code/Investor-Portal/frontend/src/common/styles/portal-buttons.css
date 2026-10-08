@@ -1,0 +1,220 @@
+/**
+ * Portal button system — shared layout, icons, radius, and colors.
+ * Works with `.um_btn_*` from user_management.css and app-specific `*_btn` classes.
+ */
+
+:root {
+  --portal-button-height: var(--top-navbar-control-height, 2.25rem);
+  --portal-button-icon-size: var(--top-navbar-icon-size, 1.125rem);
+  --portal-button-gap: 0.45em;
+}
+
+/* Primary / secondary — links and buttons */
+.um_btn_primary,
+.um_btn_secondary,
+a.um_btn_primary,
+a.um_btn_secondary,
+button.um_btn_primary,
+button.um_btn_secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--portal-button-gap);
+  box-sizing: border-box;
+  min-height: var(--portal-button-height);
+  height: var(--portal-button-height);
+  padding-top: 0;
+  padding-bottom: 0;
+  text-decoration: none;
+  line-height: 1.25;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-radius: var(--ui-button-border-radius, 4px) !important;
+}
+
+.um_btn_primary svg,
+.um_btn_secondary svg,
+.um_btn_toolbar svg,
+.um_toolbar_export_btn svg,
+.deals_export_modal_footer .um_btn_primary svg,
+.deals_export_modal_footer .um_btn_secondary svg,
+.deals_suspend_all_btn svg,
+.deal_docs_toolbar_btn svg,
+.contacts_table_icon_action_btn svg,
+.deal_offering_section_toolbar .um_btn_primary svg,
+.deal_offering_section_toolbar .um_btn_secondary svg,
+.cp_btn_customize svg,
+.deal_card_manage_cta svg {
+  width: var(--portal-button-icon-size);
+  height: var(--portal-button-icon-size);
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* Toolbar + modal: uniform control height */
+.um_toolbar .um_btn_primary,
+.um_toolbar .um_btn_secondary,
+.um_toolbar a.um_btn_primary,
+.um_toolbar_export_btn,
+.um_btn_toolbar,
+.um_toolbar .deals_suspend_all_btn,
+.um_toolbar .deal_docs_toolbar_btn {
+  min-height: var(--portal-button-height);
+  height: var(--portal-button-height);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Modal/export/custom action buttons — same height as Close / Save / Add */
+.deals_export_modal_footer .um_btn_primary,
+.deals_export_modal_footer .um_btn_secondary,
+.deals_export_modal_btn_primary,
+.deals_export_modal_btn_secondary,
+.deal_stage_modal_btn,
+.open_inv_esign_modal_btn,
+.add_contact_quick_btn_primary,
+.add_contact_quick_btn_secondary,
+.deal_docs_move_hint_btn {
+  box-sizing: border-box;
+  min-height: var(--portal-button-height);
+  height: var(--portal-button-height);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.um_modal_actions .um_btn_primary,
+.um_modal_actions .um_btn_secondary,
+.add_contact_modal_actions .um_btn_primary,
+.add_contact_modal_actions .um_btn_secondary,
+.add_contact_modal_actions_trailing .um_btn_primary,
+.add_contact_modal_actions_trailing .um_btn_secondary {
+  min-height: var(--portal-button-height);
+  height: var(--portal-button-height);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.um_modal_actions,
+.add_contact_modal_actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.65em;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.add_contact_modal_actions_leading {
+  margin-right: auto;
+}
+
+.add_contact_modal_actions_trailing {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.65em;
+}
+
+.deal_inv_equity_name_clear_btn,
+.deal_offer_pf_bento_asset_pin,
+.deal_offer_pf_asset_pin,
+.deal_docs_section_modal_upload_icon_ring {
+  border-radius: var(--ui-button-border-radius, 4px) !important;
+}
+
+.deal_docs_ui_pill_select {
+  border-radius: var(--ui-button-border-radius, 4px) !important;
+}
+
+/* Tab / filter controls — same box radius as buttons */
+.pm_period_tab,
+.cp_billing_cycle_group,
+.cp_billing_cycle_option,
+.cp_billing_cycle_save,
+.sponsor_dash_view_track {
+  border-radius: var(--ui-button-border-radius, 4px) !important;
+}
+
+/* Switch toggles — pill track (distinct from box buttons) */
+.deal_fi_toggle,
+.deal_fi_toggle_btn {
+  border-radius: 9999px !important;
+}
+
+.deal_fi_toggle_track {
+  border-radius: 9999px !important;
+}
+
+/* Chips / status badges — align with card corner radius */
+.cp_tag_pill,
+.deal_inv_comm_status_badge,
+.lpdd_chip,
+.invest_now_sign_status_badge,
+.deal_stage_modal_badge,
+.deals_add_inv_field_locked_badge {
+  border-radius: var(--ui-button-border-radius, 4px) !important;
+}
+
+/* Icon-only controls — centered layout */
+.contacts_table_icon_action_btn,
+.deal_docs_section_modal_icon_btn,
+.deal_docs_toolbar_btn,
+.sponsor_dash_view_btn,
+.deal_investor_class_remove_btn,
+.add_contact_quick_close,
+.lpdd_hero_carousel_btn,
+.cp_email_help_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ui-button-border-radius, 4px) !important;
+}
+
+.contacts_table_icon_action_btn svg,
+.deal_docs_section_modal_icon_btn svg,
+.deal_docs_toolbar_btn svg,
+.sponsor_dash_view_btn svg,
+.add_contact_quick_close svg,
+.add_contact_quick_btn_primary svg,
+.add_contact_quick_btn_secondary svg,
+.lpdd_hero_carousel_btn svg,
+.pm_period_tab svg {
+  width: var(--portal-button-icon-size);
+  height: var(--portal-button-icon-size);
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.add_contact_quick_btn_primary,
+.add_contact_quick_btn_secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--portal-button-gap);
+  min-height: var(--portal-button-height);
+  height: var(--portal-button-height);
+  padding-top: 0;
+  padding-bottom: 0;
+  border-radius: var(--ui-button-border-radius, 4px) !important;
+}
+
+/* Company customize — match portal primary (navy + gold) */
+.cp_btn_customize {
+  color: var(--ui-button-text, var(--sidebar-active-text));
+  background: var(--ui-button-background-add, var(--sidebar-bg-color));
+  border: 1px solid var(--ui-button-border, var(--sidebar-active-text));
+  border-radius: var(--ui-button-border-radius, 4px) !important;
+}
+
+.cp_btn_customize:hover:not(:disabled) {
+  background: var(--ui-button-hover);
+  border-color: var(--ui-button-border, var(--sidebar-active-text));
+  color: var(--ui-button-text, var(--sidebar-active-text));
+}
+
+/* Dashboard deal card CTA — same chrome as secondary gold-accent actions */
+.deal_card_manage_cta {
+  border-radius: var(--ui-button-border-radius, 4px) !important;
+}

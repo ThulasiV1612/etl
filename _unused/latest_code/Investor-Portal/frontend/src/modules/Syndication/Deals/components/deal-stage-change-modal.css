@@ -1,0 +1,348 @@
+/* Deal stage change confirmation — keyed by DealStage (draft, capital_raising, …) */
+
+.deal_stage_modal_overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 13000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: color-mix(in srgb, #0f172a 42%, transparent);
+  backdrop-filter: blur(2px);
+}
+
+.deal_stage_modal {
+  box-sizing: border-box;
+  width: min(28rem, 100%);
+  max-height: min(90vh, 32rem);
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  background: var(--portal-surface, #fff);
+  box-shadow:
+    0 24px 48px color-mix(in srgb, #0f172a 16%, transparent),
+    0 4px 12px color-mix(in srgb, #0f172a 8%, transparent);
+  overflow: hidden;
+}
+
+.deal_stage_modal_head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1.15rem 1.15rem 0.85rem;
+  border-bottom: 1px solid var(--portal-border, #e2e8f0);
+}
+
+.deal_stage_modal_icon_wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--portal-card-radius, 4px);
+  border: 1px solid transparent;
+}
+
+.deal_stage_modal_head_text {
+  flex: 1;
+  min-width: 0;
+  padding-top: 0.1rem;
+}
+
+.deal_stage_modal_eyebrow {
+  margin: 0 0 0.2rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deal_stage_modal_title {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--portal-text, #0f172a);
+}
+
+.deal_stage_modal_close {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin: -0.15rem -0.15rem 0 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--portal-card-radius, 4px);
+  background: transparent;
+  color: var(--portal-text-muted, #64748b);
+  cursor: pointer;
+}
+
+.deal_stage_modal_close:hover:not(:disabled) {
+  background: var(--portal-surface-muted, #f1f5f9);
+  color: var(--portal-text, #0f172a);
+}
+
+.deal_stage_modal_close:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.deal_stage_modal_body {
+  flex: 1;
+  min-height: 0;
+  padding: 1rem 1.15rem 1.15rem;
+  overflow-y: auto;
+}
+
+.deal_stage_modal_badge {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--ui-button-border-radius, 4px);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.35;
+  border: 1px solid transparent;
+}
+
+.deal_stage_modal_desc {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--portal-text-muted, #475569);
+}
+
+.deal_stage_modal_actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.15rem 1.15rem;
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+  background: var(--portal-surface-muted, #f8fafc);
+}
+
+.deal_stage_modal_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  box-sizing: border-box;
+  min-height: var(--portal-button-height, 2.25rem);
+  height: var(--portal-button-height, 2.25rem);
+  padding: 0 1rem;
+  border-radius: var(--portal-card-radius, 4px);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.deal_stage_modal_btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.deal_stage_modal_btn--cancel {
+  border-color: var(--portal-border, #cbd5e1);
+  background: var(--portal-surface, #fff);
+  color: var(--portal-text, #0f172a);
+}
+
+.deal_stage_modal_btn--cancel:hover:not(:disabled) {
+  background: var(--portal-surface-muted, #f1f5f9);
+}
+
+.deal_stage_modal_btn--confirm {
+  color: #fff;
+}
+
+/* Stage tones — match deals list stage chips */
+
+.deal_stage_modal--draft .deal_stage_modal_icon_wrap {
+  color: var(--um-focus-ring, #1d4ed8);
+  background: color-mix(in srgb, var(--um-focus-ring, #2563eb) 12%, transparent);
+  border-color: color-mix(in srgb, var(--um-focus-ring, #2563eb) 28%, transparent);
+}
+
+.deal_stage_modal--draft .deal_stage_modal_badge {
+  color: var(--um-focus-ring, #1d4ed8);
+  background: color-mix(in srgb, var(--um-focus-ring, #2563eb) 14%, transparent);
+  border-color: color-mix(in srgb, var(--um-focus-ring, #2563eb) 38%, transparent);
+}
+
+.deal_stage_modal--draft .deal_stage_modal_btn--confirm {
+  background: var(--um-focus-ring, #2563eb);
+}
+
+.deal_stage_modal--draft .deal_stage_modal_btn--confirm:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--um-focus-ring, #2563eb) 88%, #000);
+}
+
+.deal_stage_modal--capital_raising .deal_stage_modal_icon_wrap {
+  color: #1e40af;
+  background: color-mix(in srgb, #3b82f6 18%, transparent);
+  border-color: color-mix(in srgb, #2563eb 40%, transparent);
+}
+
+.deal_stage_modal--capital_raising .deal_stage_modal_badge {
+  color: #1e40af;
+  background: color-mix(in srgb, #3b82f6 18%, transparent);
+  border-color: color-mix(in srgb, #2563eb 40%, transparent);
+}
+
+.deal_stage_modal--capital_raising .deal_stage_modal_btn--confirm {
+  background: #2563eb;
+}
+
+.deal_stage_modal--capital_raising .deal_stage_modal_btn--confirm:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.deal_stage_modal--asset_managing .deal_stage_modal_icon_wrap {
+  color: #065f46;
+  background: color-mix(in srgb, #10b981 20%, transparent);
+  border-color: color-mix(in srgb, #059669 38%, transparent);
+}
+
+.deal_stage_modal--asset_managing .deal_stage_modal_badge {
+  color: #065f46;
+  background: color-mix(in srgb, #10b981 20%, transparent);
+  border-color: color-mix(in srgb, #059669 38%, transparent);
+}
+
+.deal_stage_modal--asset_managing .deal_stage_modal_btn--confirm {
+  background: #059669;
+}
+
+.deal_stage_modal--asset_managing .deal_stage_modal_btn--confirm:hover:not(:disabled) {
+  background: #047857;
+}
+
+.deal_stage_modal--liquidated .deal_stage_modal_icon_wrap {
+  color: #5b21b6;
+  background: color-mix(in srgb, #8b5cf6 18%, transparent);
+  border-color: color-mix(in srgb, #7c3aed 38%, transparent);
+}
+
+.deal_stage_modal--liquidated .deal_stage_modal_badge {
+  color: #5b21b6;
+  background: color-mix(in srgb, #8b5cf6 18%, transparent);
+  border-color: color-mix(in srgb, #7c3aed 38%, transparent);
+}
+
+.deal_stage_modal--liquidated .deal_stage_modal_btn--confirm {
+  background: #7c3aed;
+}
+
+.deal_stage_modal--liquidated .deal_stage_modal_btn--confirm:hover:not(:disabled) {
+  background: #6d28d9;
+}
+
+:root[data-theme="dark"] .deal_stage_modal {
+  border-color: var(--portal-border, #334155);
+  background: var(--portal-surface, #1e293b);
+  box-shadow: 0 24px 48px color-mix(in srgb, #000 45%, transparent);
+}
+
+:root[data-theme="dark"] .deal_stage_modal_head,
+:root[data-theme="dark"] .deal_stage_modal_actions {
+  border-color: var(--portal-border, #334155);
+}
+
+:root[data-theme="dark"] .deal_stage_modal_actions {
+  background: color-mix(in srgb, #0f172a 35%, transparent);
+}
+
+:root[data-theme="dark"] .deal_stage_modal--draft .deal_stage_modal_icon_wrap,
+:root[data-theme="dark"] .deal_stage_modal--draft .deal_stage_modal_badge {
+  color: #93c5fd;
+}
+
+:root[data-theme="dark"] .deal_stage_modal--capital_raising .deal_stage_modal_icon_wrap,
+:root[data-theme="dark"] .deal_stage_modal--capital_raising .deal_stage_modal_badge {
+  color: #bfdbfe;
+}
+
+:root[data-theme="dark"] .deal_stage_modal--asset_managing .deal_stage_modal_icon_wrap,
+:root[data-theme="dark"] .deal_stage_modal--asset_managing .deal_stage_modal_badge {
+  color: #a7f3d0;
+}
+
+:root[data-theme="dark"] .deal_stage_modal--liquidated .deal_stage_modal_icon_wrap,
+:root[data-theme="dark"] .deal_stage_modal--liquidated .deal_stage_modal_badge {
+  color: #ddd6fe;
+}
+
+:root[data-theme="dark"] .deal_stage_modal_btn--cancel {
+  background: var(--portal-surface, #1e293b);
+  border-color: var(--portal-border, #475569);
+  color: var(--portal-text, #f1f5f9);
+}
+
+.deal_stage_modal--complete_deal .deal_stage_modal_icon_wrap {
+  color: var(--um-focus-ring, #1d4ed8);
+  background: color-mix(in srgb, var(--um-focus-ring, #2563eb) 12%, transparent);
+  border-color: color-mix(in srgb, var(--um-focus-ring, #2563eb) 28%, transparent);
+}
+
+.deal_stage_modal--complete_deal .deal_stage_modal_badge {
+  color: var(--um-focus-ring, #1d4ed8);
+  background: color-mix(in srgb, var(--um-focus-ring, #2563eb) 14%, transparent);
+  border-color: color-mix(in srgb, var(--um-focus-ring, #2563eb) 38%, transparent);
+}
+
+.deal_stage_modal--complete_deal .deal_stage_modal_btn--confirm {
+  background: var(--main-auth-button-color, #2563eb);
+  color: #fff;
+}
+
+.deal_stage_modal--complete_deal .deal_stage_modal_btn--confirm:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--main-auth-button-color, #2563eb) 88%, #000);
+}
+
+.deal_stage_modal--saas_paywall .deal_stage_modal_icon_wrap {
+  color: #b45309;
+  background: color-mix(in srgb, #f59e0b 18%, transparent);
+  border-color: color-mix(in srgb, #d97706 38%, transparent);
+}
+
+.deal_stage_modal--saas_paywall .deal_stage_modal_badge {
+  color: #b45309;
+  background: color-mix(in srgb, #f59e0b 18%, transparent);
+  border-color: color-mix(in srgb, #d97706 38%, transparent);
+}
+
+.deal_stage_modal--saas_paywall .deal_stage_modal_btn--confirm {
+  background: #16a34a;
+}
+
+.deal_stage_modal--saas_paywall .deal_stage_modal_btn--confirm:hover:not(:disabled) {
+  background: #15803d;
+}
+
+.deal_saas_paywall_error {
+  margin: 0.75rem 0 0;
+  color: #b91c1c;
+  font-size: 0.875rem;
+}
+
+:root[data-theme="dark"] .deal_stage_modal--saas_paywall .deal_stage_modal_icon_wrap,
+:root[data-theme="dark"] .deal_stage_modal--saas_paywall .deal_stage_modal_badge {
+  color: #fde68a;
+}
+
+:root[data-theme="dark"] .deal_saas_paywall_error {
+  color: #fca5a5;
+}

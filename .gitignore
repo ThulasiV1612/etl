@@ -1,0 +1,11 @@
+node_modules/
+backend/node_modules/
+backend/.env
+backend/logs/*.log
+backend/uploads/*
+!backend/uploads/.gitkeep
+frontend/node_modules/
+frontend/dist/
+python/mapFolder/*
+!python/mapFolder/.gitkeep
+python/mapFolder/_work/

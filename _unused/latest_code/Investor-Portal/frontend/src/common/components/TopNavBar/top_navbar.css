@@ -1,0 +1,537 @@
+/* Top bar — exact newUi/light.html line 202:
+ * sticky top-0 z-40 bg-surface/80 dark:bg-[#0a0f1a]/80 backdrop-blur-lg
+ * flex justify-between items-center w-full px-margin-desktop py-6
+ */
+
+.top_navbar {
+  --top-navbar-icon-size: 1.125rem;
+  position: sticky;
+  top: 0;
+  /* Above deal sticky tabs (z-index 20) and table h-scroll (80) so Profile menu is not covered. */
+  z-index: 200;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  font-size: var(--font-size);
+  padding: 0.875rem 3em;
+  /* bg-surface/80 — surface #fcf8fa */
+  background-color: rgba(252, 248, 250, 0.8);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--portal-outline, #76777d) 16%, var(--portal-border));
+  box-shadow: none;
+  overflow: visible;
+}
+
+:root[data-theme="dark"] .top_navbar {
+  /* dark:bg-[#0a0f1a]/80 */
+  background-color: rgba(10, 15, 26, 0.8);
+  border-bottom: 1px solid var(--portal-gold-accent, #d4af37);
+}
+
+.top_navbar_start {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* gap-4 */
+  min-width: 0;
+  flex: 1 1 0;
+  z-index: 2;
+}
+
+.top_navbar_center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  width: min(24rem, calc(100vw - 20rem));
+  max-width: 100%;
+  min-width: 0;
+  pointer-events: none;
+}
+
+.top_navbar_center .top_navbar_deals_search {
+  pointer-events: auto;
+  width: 100%;
+}
+
+.top_navbar_end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 0;
+  min-width: 0;
+  z-index: 2;
+}
+
+/* font-headline-md text-headline-md text-primary dark:text-white */
+.top_navbar_page_title {
+  margin: 0;
+  font-family: var(--portal-font-display, "Playfair Display", Georgia, serif);
+  font-size: 1.375rem; /* 22px headline-md */
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--portal-primary, #000000);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+:root[data-theme="dark"] .top_navbar_page_title {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* gap-5 tool cluster */
+.top_navbar_tools {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  min-height: var(--top-navbar-control-height);
+}
+
+/* h-8 w-[1px] bg-outline-variant/20 */
+.top_navbar_divider {
+  display: block;
+  align-self: center;
+  width: 1px;
+  height: var(--top-navbar-control-height);
+  flex-shrink: 0;
+  background: color-mix(in srgb, var(--portal-border, #c6c6cd) 20%, transparent);
+}
+
+.top_navbar_user_wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* profile chip: pill-shape hover:bg-surface-container-low py-1.5 pl-1.5 pr-4 gap-3 */
+.top_navbar_profile_chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-sizing: border-box;
+  min-height: var(--top-navbar-control-height);
+  height: var(--top-navbar-control-height);
+  margin: 0;
+  padding: 0.25rem 1rem 0.25rem 0.25rem;
+  border: none;
+  border-radius: var(--portal-pill-radius, 4px);
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-style: normal;
+  color: inherit;
+  max-width: min(16rem, 42vw);
+  transition: background-color 0.3s ease;
+}
+
+.top_navbar_profile_chip:hover {
+  background: var(--portal-surface-container-low, #f6f3f5);
+}
+
+:root[data-theme="dark"] .top_navbar_profile_chip:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+:root[data-theme="dark"] .top_navbar_user_wrap:has(.top_navbar_dd) .top_navbar_profile_chip {
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 1px color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 28%,
+    transparent
+  );
+}
+
+.top_navbar_profile_chip:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--portal-gold-accent, #d4af37) 35%, transparent);
+}
+
+.top_navbar_dd {
+  position: absolute;
+  top: calc(100% + 0.5em);
+  right: 0;
+  z-index: 3000;
+  width: min(20.75em, calc(100dvw - 2em));
+  box-sizing: border-box;
+  padding: 0.35rem;
+  background: var(--portal-surface, #fcf8fa);
+  border: 1px solid var(--portal-border, #c6c6cd);
+  border-radius: var(--portal-card-radius, 4px);
+  box-shadow: 0 10px 40px rgb(15 23 42 / 10%);
+}
+
+:root[data-theme="dark"] .top_navbar_dd {
+  background: color-mix(
+    in srgb,
+    var(--sidebar-bg-color, #0a0f1a) 88%,
+    rgba(255, 255, 255, 0.06)
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 24%,
+    var(--portal-border, rgba(255, 255, 255, 0.14))
+  );
+  box-shadow:
+    0 10px 40px rgb(0 0 0 / 42%),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.top_navbar_dd_list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.top_navbar_dd_list li {
+  padding: 0;
+}
+
+.top_navbar_dd_item {
+  display: flex;
+  align-items: center;
+  gap: 0.65em;
+  width: 100%;
+  margin: 0;
+  padding: 0.5rem 0.65rem;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--portal-text, #1b1b1d);
+  cursor: pointer;
+  border-radius: var(--ui-button-border-radius, 4px);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.top_navbar_dd_item:hover {
+  background: var(--portal-toggle-track, #f0edef);
+  color: var(--portal-text, #1b1b1d);
+}
+
+.top_navbar_dd_item:hover .top_navbar_dd_item_icon {
+  color: var(--portal-gold-accent, #d4af37);
+}
+
+.top_navbar_dd_item_icon {
+  flex-shrink: 0;
+  color: var(--portal-text-muted, #76777d);
+  transition: color 0.15s ease;
+}
+
+:root[data-theme="dark"] .top_navbar_dd_item {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+:root[data-theme="dark"] .top_navbar_dd_item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.96);
+}
+
+:root[data-theme="dark"] .top_navbar_dd_item_icon {
+  color: rgba(255, 255, 255, 0.48);
+}
+
+:root[data-theme="dark"] .top_navbar_dd_item:hover .top_navbar_dd_item_icon {
+  color: var(--portal-gold-accent, #d4af37);
+}
+
+.top_navbar_dd_theme_block {
+  list-style: none;
+}
+
+.top_navbar_dd_theme_trigger {
+  width: 100%;
+}
+
+.top_navbar_dd_theme_trigger--open {
+  font-weight: 600;
+  color: var(--portal-tab-active-text, #131b2e);
+  background: var(--portal-tab-active-bg);
+}
+
+.top_navbar_dd_theme_trigger--open .top_navbar_dd_item_icon {
+  color: var(--portal-gold-accent, #d4af37);
+}
+
+:root[data-theme="dark"] .top_navbar_dd_theme_trigger--open {
+  color: var(--portal-tab-active-text, #d4af37);
+  background: var(
+    --portal-tab-active-bg,
+    color-mix(in srgb, var(--portal-gold-accent, #d4af37) 14%, transparent)
+  );
+}
+
+.top_navbar_dd_theme_panel {
+  margin: 0.15rem 0 0.1rem 0.35rem;
+  padding: 0.2rem 0 0.2rem 0.55rem;
+  border-left: 2px solid color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 35%,
+    var(--portal-border, #c6c6cd)
+  );
+}
+
+:root[data-theme="dark"] .top_navbar_dd_theme_panel {
+  border-left-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 45%,
+    rgba(255, 255, 255, 0.12)
+  );
+}
+
+.top_navbar_dd_theme_list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.top_navbar_dd_theme_option {
+  display: flex;
+  align-items: center;
+  gap: 0.65em;
+  width: 100%;
+  margin: 0;
+  padding: 0.45rem 0.55rem;
+  border: none;
+  border-radius: var(--ui-button-border-radius, 4px);
+  background: transparent;
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--portal-text-muted, #76777d);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.top_navbar_dd_theme_option svg {
+  flex-shrink: 0;
+  color: currentColor;
+  opacity: 0.85;
+}
+
+.top_navbar_dd_theme_option:hover {
+  color: var(--portal-text);
+  background: var(--portal-toggle-track);
+}
+
+.top_navbar_dd_theme_option > span {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.top_navbar_dd_theme_option_active,
+.top_navbar_dd_theme_option_active:hover {
+  color: var(--portal-tab-active-text, #131b2e);
+  background: var(
+    --portal-tab-active-bg,
+    color-mix(in srgb, var(--portal-gold-accent, #d4af37) 10%, transparent)
+  );
+}
+
+.top_navbar_dd_theme_option_active svg {
+  opacity: 1;
+}
+
+.top_navbar_dd_theme_check {
+  flex-shrink: 0;
+  margin-left: auto;
+  color: var(--portal-gold-accent, #d4af37);
+}
+
+:root[data-theme="dark"] .top_navbar_dd_theme_option {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+:root[data-theme="dark"] .top_navbar_dd_theme_option:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+:root[data-theme="dark"] .top_navbar_dd_theme_option_active,
+:root[data-theme="dark"] .top_navbar_dd_theme_option_active:hover {
+  color: var(--portal-gold-accent, #d4af37);
+  background: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 14%,
+    transparent
+  );
+}
+
+.top_navbar_dd_list > li:has(.top_navbar_dd_item_logout) {
+  margin-top: 0.25rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--portal-border, #c6c6cd) 72%, transparent);
+}
+
+:root[data-theme="dark"] .top_navbar_dd_list > li:has(.top_navbar_dd_item_logout) {
+  border-top-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 18%,
+    rgba(255, 255, 255, 0.1)
+  );
+}
+
+.top_navbar_dd_item_logout {
+  color: var(--portal-danger, #b91c1c);
+  background: transparent;
+}
+
+.top_navbar_dd_item_logout .top_navbar_dd_item_icon {
+  color: var(--portal-danger, #b91c1c);
+}
+
+.top_navbar_dd_item_logout:hover {
+  color: var(--portal-danger, #b91c1c);
+  background: color-mix(in srgb, var(--portal-danger, #b91c1c) 10%, transparent);
+}
+
+.top_navbar_dd_item_logout:hover .top_navbar_dd_item_icon {
+  color: var(--portal-danger, #b91c1c);
+}
+
+:root[data-theme="dark"] .top_navbar_dd_item_logout {
+  color: #fca5a5;
+  background: transparent;
+}
+
+:root[data-theme="dark"] .top_navbar_dd_item_logout .top_navbar_dd_item_icon {
+  color: #fca5a5;
+}
+
+:root[data-theme="dark"] .top_navbar_dd_item_logout:hover {
+  color: #fecaca;
+  background: color-mix(in srgb, #b91c1c 16%, transparent);
+}
+
+:root[data-theme="dark"] .top_navbar_dd_item_logout:hover .top_navbar_dd_item_icon {
+  color: #fecaca;
+}
+
+/* Avatar styling lives in portal-theme.css (`.top_navbar_avatar`). */
+
+/* font-medium text-xs dark:text-white/80 */
+.top_navbar_user_name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--portal-text);
+  font-weight: 500;
+  font-size: 1em;
+  text-transform: capitalize;
+}
+
+:root[data-theme="dark"] .top_navbar_user_name {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* light.html: theme + notifications — p-2.5 pill-shape hover surfaces */
+.top_navbar .portal_theme_toggle,
+.top_navbar .notifications_nav_btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--top-navbar-control-height);
+  height: var(--top-navbar-control-height);
+  min-width: var(--top-navbar-control-height);
+  min-height: var(--top-navbar-control-height);
+  padding: 0;
+  border-radius: var(--portal-pill-radius, 4px);
+  overflow: visible;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.top_navbar .notifications_nav_root {
+  overflow: visible;
+}
+
+.top_navbar .notifications_nav_btn svg,
+.top_navbar .portal_theme_toggle svg {
+  width: var(--top-navbar-icon-size);
+  height: var(--top-navbar-icon-size);
+  flex-shrink: 0;
+}
+
+.top_navbar_tools .company_switcher_wrap {
+  display: flex;
+  align-items: center;
+  margin-right: 0;
+}
+
+/* Company switcher chrome lives in company_switcher.css (matches search field tokens). */
+.top_navbar_tools .company_switcher_btn {
+  max-width: 11rem;
+}
+
+@media (max-width: 1024px) {
+  .top_navbar {
+    padding: 0.75rem clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .top_navbar_center {
+    width: min(15rem, calc(100vw - 14rem));
+  }
+
+  .top_navbar_tools {
+    gap: 0.65rem;
+  }
+
+  .top_navbar_user_name {
+    display: none;
+  }
+
+  .top_navbar_profile_chip {
+    padding: 0.25rem;
+    gap: 0;
+  }
+
+  .top_navbar_divider {
+    height: var(--top-navbar-control-height);
+  }
+}
+
+@media (max-width: 767px) {
+  .top_navbar_page_title {
+    font-size: 1rem;
+    max-width: 8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .top_navbar,
+  .top_navbar_profile_chip,
+  .top_navbar .portal_theme_toggle,
+  .top_navbar .notifications_nav_btn {
+    transition-duration: 0.01ms;
+  }
+}

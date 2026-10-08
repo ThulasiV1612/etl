@@ -1,0 +1,134 @@
+{
+  "deal_name": "Woodland Ridge",
+  "deal_id": "",
+  "target_raise": "3254000",
+  "mapped_from": "Class_Mapping_FILLED.xlsx",
+  "note": "payTo holds class NAMES \u2014 replace with deal_investor_class.id UUIDs before PUT",
+  "class_setup_context": {
+    "classes": [
+      {
+        "name": "Class A+ LP",
+        "type": "lp",
+        "pref": "6.5",
+        "equity": ""
+      },
+      {
+        "name": "Class A - Limited partners",
+        "type": "lp",
+        "pref": "5.5",
+        "equity": ""
+      },
+      {
+        "name": "General partners",
+        "type": "gp",
+        "pref": "",
+        "equity": "30"
+      }
+    ],
+    "hurdles": [
+      {
+        "deal_name": "Woodland Ridge",
+        "deal_id": "",
+        "class_name": "Class A+ LP",
+        "tier_order": "1",
+        "hurdle_name": "Hurdle 1 - Pref",
+        "hurdle_rate_pct": "6.5",
+        "lp_pct": "100",
+        "gp_pct": "0",
+        "preferred_return_type": "cash_on_cash",
+        "is_final": "no",
+        "load_notes": "100% Class A+ LP / 0% GP until 6.5% CoC"
+      },
+      {
+        "deal_name": "Woodland Ridge",
+        "deal_id": "",
+        "class_name": "Class A - Limited partners",
+        "tier_order": "1",
+        "hurdle_name": "Hurdle 1 - Pref",
+        "hurdle_rate_pct": "5.5",
+        "lp_pct": "100",
+        "gp_pct": "0",
+        "preferred_return_type": "cash_on_cash",
+        "is_final": "no",
+        "load_notes": "100% Class A / 0% GP until 5.5% CoC"
+      }
+    ],
+    "final": [
+      {
+        "deal_name": "Woodland Ridge",
+        "deal_id": "",
+        "class_name": "Class A+ LP",
+        "final_lp_pct": "70",
+        "final_gp_pct": "30",
+        "hurdle_name": "Hurdle 2 - Final",
+        "load_notes": "Final yes \u2014 70% Class A+ LP / 30% General partners"
+      },
+      {
+        "deal_name": "Woodland Ridge",
+        "deal_id": "",
+        "class_name": "Class A - Limited partners",
+        "final_lp_pct": "70",
+        "final_gp_pct": "30",
+        "hurdle_name": "Hurdle 2 - Final",
+        "load_notes": "Final yes \u2014 70% Class A / 30% General partners"
+      }
+    ]
+  },
+  "waterfalls": {
+    "operating": [
+      {
+        "id": "op_lp_pref_class_a_lp",
+        "kind": "LP_PREF",
+        "name": "LP preferred return (+ arrears) - 6.5%",
+        "payTo": [
+          "Class A+ LP"
+        ],
+        "amountMode": "calc",
+        "inputAmount": "0"
+      },
+      {
+        "id": "op_lp_pref_class_a_limited_partners",
+        "kind": "LP_PREF",
+        "name": "LP preferred return (+ arrears) - 5.5%",
+        "payTo": [
+          "Class A - Limited partners"
+        ],
+        "amountMode": "calc",
+        "inputAmount": "0"
+      }
+    ],
+    "capital": [
+      {
+        "id": "cap_roc_class_a_lp",
+        "kind": "ROC",
+        "name": "Return of LP capital",
+        "payTo": [
+          "Class A+ LP"
+        ],
+        "amountMode": "calc",
+        "inputAmount": "0"
+      },
+      {
+        "id": "cap_roc_class_a_limited_partners",
+        "kind": "ROC",
+        "name": "Return of LP capital",
+        "payTo": [
+          "Class A - Limited partners"
+        ],
+        "amountMode": "calc",
+        "inputAmount": "0"
+      },
+      {
+        "id": "cap_catchup_general_partners",
+        "kind": "CATCHUP",
+        "name": "GP catch-up (final 70/30)",
+        "payTo": [
+          "General partners"
+        ],
+        "amountMode": "calc",
+        "inputAmount": "0",
+        "catchupPct": "20"
+      }
+    ]
+  }
+}

@@ -1,0 +1,121 @@
+/* Matches dashboard deals toolbar search (`.sponsor_dash_search_wrap`). */
+
+.top_navbar_deals_search {
+  display: block;
+  width: 100%;
+  max-width: 24rem;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.top_navbar_deals_search_field {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: var(--top-navbar-control-height, 2.25rem);
+  height: var(--top-navbar-control-height, 2.25rem);
+  padding: 0 0.75em;
+  border: 1px solid var(--portal-border);
+  border-radius: var(--portal-pill-radius);
+  background: var(--portal-surface);
+  color: var(--portal-text);
+}
+
+.top_navbar_deals_search_field:focus-within {
+  border-color: var(--portal-gold-accent, #d4af37);
+  box-shadow: none;
+}
+
+.top_navbar_deals_search_icon {
+  flex-shrink: 0;
+  width: var(--top-navbar-icon-size, 1.125rem);
+  height: var(--top-navbar-icon-size, 1.125rem);
+  color: var(--portal-text-muted);
+  pointer-events: none;
+}
+
+.top_navbar_deals_search_input {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--portal-text);
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.875em;
+  font-weight: 600;
+  line-height: calc(var(--top-navbar-control-height, 2.25rem) - 2px);
+  outline: none;
+  box-shadow: none;
+}
+
+.top_navbar_deals_search_input::placeholder {
+  color: var(--portal-text-muted);
+  font-weight: 400;
+  opacity: 1;
+}
+
+.top_navbar_deals_search_input:focus,
+.top_navbar_deals_search_input:focus-visible {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.top_navbar_deals_search_input::-webkit-search-cancel-button,
+.top_navbar_deals_search_input::-webkit-search-decoration {
+  display: none;
+}
+
+.top_navbar_deals_search_clear {
+  align-self: center;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--portal-pill-radius);
+  background: transparent;
+  color: var(--portal-text-muted);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.top_navbar_deals_search_clear:hover {
+  color: var(--portal-text);
+  background: color-mix(in srgb, var(--portal-outline, #76777d) 12%, transparent);
+}
+
+@media (max-width: 1024px) {
+  .top_navbar_deals_search {
+    max-width: 15rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .top_navbar_deals_search {
+    max-width: 100%;
+  }
+
+  .top_navbar_deals_search_field {
+    padding: 0 0.65em;
+  }
+
+  .top_navbar_deals_search_input {
+    font-size: 0.8125em;
+  }
+}

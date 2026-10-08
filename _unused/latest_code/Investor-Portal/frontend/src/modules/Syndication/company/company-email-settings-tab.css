@@ -1,0 +1,209 @@
+/* Company → Email settings tab — premium cards aligned with workspace Settings */
+
+.cp_email_main_fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.cp_email_root .cp_settings_stack {
+  gap: 1rem;
+}
+
+/* Full card chrome — overrides legacy `.cp_settings_section:last-child` in company_page.css */
+.cp_email_root .cp_settings_section {
+  margin: 0;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: color-mix(
+    in srgb,
+    var(--portal-chrome-bg, #f8fafc) 90%,
+    var(--portal-surface, #fff)
+  );
+  box-shadow: 0 1px 2px rgb(15 23 42 / 4%);
+}
+
+.cp_email_root .cp_settings_section:last-child,
+.cp_email_root .cp_email_section_row .cp_settings_section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--portal-border, #e2e8f0);
+}
+
+:root[data-theme="dark"] .cp_email_root .cp_settings_section {
+  background: var(--portal-panel-bg, rgba(255, 255, 255, 0.05));
+  border-color: var(--portal-table-border, rgba(255, 255, 255, 0.1));
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] .cp_email_root .cp_settings_section:last-child,
+:root[data-theme="dark"] .cp_email_root .cp_email_section_row .cp_settings_section:last-child {
+  border-bottom-color: var(--portal-table-border, rgba(255, 255, 255, 0.1));
+}
+
+/* Side-by-side section pairs */
+.cp_email_section_row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  min-width: 0;
+}
+
+@media (min-width: 720px) {
+  .cp_email_section_row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+  }
+}
+
+.cp_email_section_row .cp_settings_section {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+}
+
+.cp_email_section_row .cp_settings_section_head {
+  margin-bottom: 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--portal-border, #e2e8f0) 70%, transparent);
+}
+
+/* Customize action cards */
+.cp_email_action_card_body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.cp_email_action_card_desc {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.cp_email_root .cp_email_action_card .cp_btn_customize {
+  align-self: flex-start;
+  margin-top: auto;
+  min-height: 2.5rem;
+  padding: 0.55rem 1rem;
+  border-radius: var(--ui-button-border-radius, 6px);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+@media (max-width: 719px) {
+  .cp_email_root .cp_email_action_card .cp_btn_customize {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Compact field cards (deliverability + editor) */
+.cp_email_section_row .cp_settings_fields {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.cp_email_section_row .cp_settings_row {
+  grid-template-columns: 1fr;
+  gap: 0.45rem;
+  padding: 0;
+  border-top: none;
+}
+
+.cp_email_section_row .cp_settings_label_col {
+  padding-top: 0;
+}
+
+.cp_email_section_row .cp_settings_control {
+  gap: 0.45rem;
+}
+
+.cp_email_section_row .cp_settings_select {
+  width: 100%;
+  max-width: none;
+}
+
+/* Email addresses — full-width field rows */
+.cp_email_root .cp_email_addresses_section .cp_settings_row {
+  align-items: center;
+}
+
+.cp_email_root .cp_email_addresses_section .cp_settings_label_col {
+  padding-top: 0.35rem;
+}
+
+.cp_email_root .cp_settings_value_row {
+  align-items: center;
+}
+
+.cp_email_value_pill.um_view_field_box {
+  flex: 1 1 240px;
+  min-width: 0;
+  max-width: 420px;
+  min-height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: var(--ui-button-border-radius, 6px);
+  font-size: 0.875rem;
+  word-break: break-all;
+  box-sizing: border-box;
+}
+
+.cp_email_value_pill_icon {
+  flex-shrink: 0;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.cp_email_hint {
+  margin: 0 0 0.35rem;
+  font-size: 0.8125rem;
+  color: var(--portal-text-muted, #64748b);
+  line-height: 1.5;
+}
+
+.cp_email_root .cp_email_addresses_section .cp_media_actions,
+.cp_email_section_row .cp_media_actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cp_email_root .cp_settings_value_row .um_btn_secondary {
+  white-space: nowrap;
+}
+
+@media (max-width: 719px) {
+  .cp_email_root .cp_email_addresses_section .cp_settings_row {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .cp_email_root .cp_email_addresses_section .cp_settings_label_col {
+    padding-top: 0;
+  }
+
+  .cp_email_value_pill.um_view_field_box {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+:root[data-theme="dark"] .cp_email_value_pill.um_view_field_box {
+  background: color-mix(in srgb, var(--portal-surface, #0a0f1a) 88%, #fff);
+}

@@ -1,0 +1,78 @@
+/* Shared: My deals table + Deal → Investors tab (InvestorClassPillsDisplay) */
+
+.deal_inv_class_pills_row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0.3em;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.deal_inv_class_pill {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.12em 0.45em;
+  border-radius: var(--portal-pill-radius, 4px);
+  font-size: 0.75em;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--portal-text);
+  background: color-mix(in srgb, var(--portal-border) 38%, transparent);
+  border: 1px solid var(--portal-border);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deal_inv_class_pill_muted {
+  font-size: 0.8125em;
+  color: var(--portal-text-muted);
+}
+
+/* "+N" when more than two classes — full list on hover */
+.deal_inv_class_pill_more {
+  flex-shrink: 0;
+  max-width: none;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--portal-text-muted);
+  background: color-mix(in srgb, var(--portal-text-muted) 14%, transparent);
+  border-color: color-mix(in srgb, var(--portal-text-muted) 28%, var(--portal-border));
+}
+
+.deal_inv_class_tooltip_list {
+  margin: 0;
+  padding-left: 1.15em;
+  font-size: 0.875em;
+  line-height: 1.45;
+  /* Inherit from .form_tooltip_surface (--form-tooltip-fg); portal-text is dark and vanishes on dark tooltip bg */
+  color: inherit;
+}
+
+.deal_inv_class_tooltip_list li {
+  margin: 0.15em 0;
+}
+
+.deal_inv_class_tooltip_p {
+  margin: 0;
+  font-size: 0.875em;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: inherit;
+}
+
+.deal_inv_class_pills_tooltip_root {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.deal_inv_class_pills_tooltip_always .form_tooltip_trigger_inline {
+  cursor: pointer;
+}

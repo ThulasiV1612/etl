@@ -1,0 +1,60 @@
+---
+description: ETL class migration — Classes, Hurdles, Final Tier → Investor-Portal-main DB
+globs: ETL_Class_Mapping_Template*.xlsx,**/classSetup/**/*,**/deal-investor-class*
+alwaysApply: false
+---
+
+# ETL: Investor Class Mapping
+
+Use **Investor-Portal-main** as the source of truth for Class Setup.
+
+## Storage (both table + JSON)
+
+| Target | What |
+|---|---|
+| `deal_investor_class` | One row per class — name, type, raises, min, start_date, status |
+| `deal_investor_class.advanced_options_json` | Ownership, preferred return, hurdles, final tier |
+| `add_deal_form.class_setup_json` | Deal meta only — `targetRaise`, promote |
+
+No separate hurdles table. Deal must already exist before class ETL.
+
+## Template (exactly 3 sheets)
+
+File: `ETL_Class_Mapping_Template.xlsx` / `_v2.xlsx`
+
+1. **Classes** — identity + money + pref flags → table columns + `classSetup` JSON  
+2. **Hurdles** — pref tiers only (`is_final=no`) → `advanced_options_json.classSetup.waterfallTiers[]`  
+3. **Final Tier** — post-pref split → `advanced_options_json.classSetup.finalTier`
+
+Yellow hint rows are documentation — **do not import**.
+
+## Load order
+
+1. Resolve `deal_id` from `deal_name`  
+2. Upsert **Classes** rows  
+3. Attach **Hurdles** to matching `class_name`  
+4. Attach **Final Tier** (usually on LP class)  
+5. Set `start_date` + LP `billing_raise_quota` if API left them blank  
+6. Verify `name` matches investor Excel `Class` before LP import  
+
+## Transforms
+
+- Class type: `LP`→`lp`, `GP`→`gp`
+- Money: strip `$` and commas → numeric string (`1800000`)
+- Dates: `MM/DD/YYYY` → `YYYY-MM-DD`
+- Ownership: `70%` → `equity_pct=70` and `entityLegalOwnershipPct=70%`
+- Pref CoC limit: `7%` → `pref_rate=7` + hurdle `hurdle_rate_pct=7`
+
+## Fate reference (Village at Fate)
+
+- LP: `Class A - Limited partners`, raise/min `1800000`/`100000`, equity `70`, pref `7` simple  
+- GP: `Class B - General partners`, equity `30`  
+- Hurdle: 7% CoC, 100/0 LP/GP  
+- Final: 70/30  
+
+## APIs
+
+`PUT /deals/:dealId/class-setup` (meta + classes)  
+`POST/PUT /deals/:dealId/class-setup/classes`  
+
+Do **not** confuse with deal waterfall tab (`distribution_setup_json`) or investor ACH distribution on profiles.

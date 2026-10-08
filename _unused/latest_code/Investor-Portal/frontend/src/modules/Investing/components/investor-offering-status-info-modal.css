@@ -1,0 +1,32 @@
+.investor_offering_status_modal {
+  max-width: 32rem;
+}
+
+.investor_offering_status_modal_body {
+  margin-bottom: 1.25em;
+}
+
+.investor_offering_status_modal_badge {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0.85em;
+  padding: 0.3em 0.65em;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #0f172a;
+  font-size: 0.8125em;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.investor_offering_status_modal_message {
+  margin-bottom: 0;
+}
+
+.investor_offering_status_modal_detail {
+  margin-top: 0.75em;
+}
+
+.investor_offering_status_modal_actions {
+  justify-content: flex-end;
+}

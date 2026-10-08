@@ -1,0 +1,64 @@
+/* Input component: password suffix alignment */
+
+.input_wrapper__label_row {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  gap: 0.5em;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input_wrapper__label_leading {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  min-width: 0;
+  /* flex: 1; */
+}
+
+.input_wrapper__label_text {
+  min-width: 0;
+}
+
+.input_wrapper__required_mark {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  color: #dc2626;
+  line-height: 0;
+}
+
+.input_wrapper__required_icon {
+  display: block;
+}
+
+.input_wrapper__optional_mark {
+  font-weight: 400;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.input_wrapper__field {
+  position: relative;
+  width: 100%;
+}
+
+.input_wrapper__field .passwordVisible {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.passwordVisible {
+  margin: 0;
+  display: inline;
+  position: absolute;
+  top: 63.6%;
+  right: 2%;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.passwordVisible svg {
+  color: inherit;
+}

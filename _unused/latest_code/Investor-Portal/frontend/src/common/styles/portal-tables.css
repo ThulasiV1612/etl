@@ -1,0 +1,61 @@
+/**
+ * Portal DataTable typography tokens (Deals, Investors, Deal Members, User Management).
+ * Prefer explicit font sizes on table chrome — avoid font-size: inherit on sort/pagination controls.
+ */
+:root {
+  --portal-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --portal-table-font-size: 0.9375rem;
+  --portal-table-line-height: 1.4;
+  --portal-table-toolbar-margin-bottom: 25px;
+}
+
+/* Space between table toolbar and grid */
+.app_shell .deals_list_table_panel > .um_toolbar,
+.app_shell .deal_inv_table_panel > .um_toolbar,
+.app_shell .deal_inv_table_panel .deal_inv_controls > .um_toolbar {
+  margin-bottom: var(--portal-table-toolbar-margin-bottom);
+}
+
+/* Dark mode — table shells inherit portal-theme row/header tokens */
+:root[data-theme="dark"] .um_table th {
+  background: var(--portal-table-header-bg);
+  color: var(--portal-table-header-text);
+  border-bottom-color: var(--portal-table-header-border);
+}
+
+:root[data-theme="dark"] .um_table td {
+  color: var(--portal-table-body-text);
+  border-bottom-color: var(--portal-table-border);
+}
+
+:root[data-theme="dark"] .um_table_pagination {
+  border-top-color: var(--portal-pagination-border);
+  color: var(--portal-pagination-muted);
+}
+
+:root[data-theme="dark"] .um_table_pagination strong {
+  color: var(--portal-pagination-strong);
+}
+
+/* App-wide — bordered table shells (DataTable members + default variants) */
+.app_shell .um_table_wrap,
+.app_shell .data_table_scroll {
+  border: 1px solid var(--portal-table-border, var(--portal-border, #e2e8f0));
+  border-radius: var(--portal-card-radius, 4px);
+  box-sizing: border-box;
+}
+
+.app_shell .um_table_wrap.data_table_shell,
+.app_shell .data_table_scroll {
+  background: var(--portal-table-row-odd, #ffffff);
+}
+
+:root[data-theme="dark"] .app_shell .um_table_wrap,
+:root[data-theme="dark"] .app_shell .data_table_scroll {
+  border-color: var(--portal-table-border);
+}
+
+:root[data-theme="dark"] .app_shell .um_table_wrap.data_table_shell,
+:root[data-theme="dark"] .app_shell .data_table_scroll {
+  background: var(--portal-surface, rgba(255, 255, 255, 0.04));
+}

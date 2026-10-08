@@ -1,0 +1,161 @@
+/**
+ * Deal create flow + Add/Edit asset — DropdownSelect theming.
+ * Inherits portal shell UI; panel is portaled to avoid clipping.
+ */
+
+.deals_create_flow .deals_create_dropdown_select .portal_dropdown_select_shell,
+.deals_add_deal_asset_page .deals_create_dropdown_select .portal_dropdown_select_shell,
+.deals_add_deal_asset_panel .deals_create_dropdown_select .portal_dropdown_select_shell {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.deals_create_flow .deals_create_dropdown_select .portal_dropdown_select_trigger,
+.deals_add_deal_asset_page .deals_create_dropdown_select .portal_dropdown_select_trigger,
+.deals_add_deal_asset_panel .deals_create_dropdown_select .portal_dropdown_select_trigger {
+  font-size: var(--deals-control-size, 1rem);
+  line-height: var(--deals-control-line-height, 1.45);
+  min-height: var(
+    --deals-control-height,
+    var(--portal-dropdown-trigger-min-height, 2.5rem)
+  );
+  padding: var(--portal-dropdown-trigger-padding-block, 0.45rem)
+    var(--portal-dropdown-trigger-padding-inline, 0.875rem);
+}
+
+.deals_create_flow .deals_create_dropdown_select .portal_dropdown_select_trigger_invalid,
+.deals_add_deal_asset_page
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger_invalid,
+.deals_add_deal_asset_panel
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger_invalid {
+  box-shadow: inset 0 0 0 1px #b91c1c;
+}
+
+.deals_create_dropdown_panel.portal_dropdown_select_panel--fixed {
+  max-height: min(320px, 55vh);
+}
+
+.deals_create_dropdown_panel .portal_dropdown_select_option {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.deals_create_dropdown_panel .portal_dropdown_select_header_btn,
+.deals_create_dropdown_panel .portal_dropdown_select_footer_btn {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.875rem;
+}
+
+.deals_create_dropdown_panel .portal_dropdown_select_search {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.deals_create_dropdown_panel .portal_dropdown_select_empty {
+  font-size: 0.9375rem;
+}
+
+/* Asset step — underline fields: flatten shell to match text inputs */
+.deals_create_flow
+  .deals_create_dropdown_select
+  .portal_dropdown_select_shell:has(.asset_step_input_underline),
+.deals_add_deal_asset_page
+  .deals_create_dropdown_select
+  .portal_dropdown_select_shell:has(.asset_step_input_underline),
+.deals_add_deal_asset_panel
+  .deals_create_dropdown_select
+  .portal_dropdown_select_shell:has(.asset_step_input_underline) {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.deals_create_flow
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.asset_step_input_underline,
+.deals_add_deal_asset_page
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.asset_step_input_underline,
+.deals_add_deal_asset_panel
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.asset_step_input_underline {
+  min-height: auto;
+  padding-left: 0;
+  padding-right: 2rem;
+  border-bottom: 1px solid var(--portal-border, #e5e5e5);
+  border-radius: 0;
+}
+
+.deals_create_flow
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.asset_step_input_underline:hover:not(:disabled),
+.deals_add_deal_asset_page
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.asset_step_input_underline:hover:not(:disabled),
+.deals_add_deal_asset_panel
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.asset_step_input_underline:hover:not(:disabled) {
+  background: transparent;
+  border-bottom-color: #d1d5db;
+}
+
+.deals_create_flow
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.asset_step_input_underline:focus-visible,
+.deals_add_deal_asset_page
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.asset_step_input_underline:focus-visible,
+.deals_add_deal_asset_panel
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.asset_step_input_underline:focus-visible {
+  background: transparent;
+  border-bottom-color: var(--portal-text);
+  box-shadow: none;
+}
+
+.deals_create_flow
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger_invalid.asset_step_input_underline,
+.deals_add_deal_asset_page
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger_invalid.asset_step_input_underline,
+.deals_add_deal_asset_panel
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger_invalid.asset_step_input_underline {
+  box-shadow: none;
+  border-bottom-color: #b91c1c;
+}
+
+.deals_create_flow
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.asset_step_input_underline
+  .portal_dropdown_select_chevron,
+.deals_add_deal_asset_page
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.asset_step_input_underline
+  .portal_dropdown_select_chevron,
+.deals_add_deal_asset_panel
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.asset_step_input_underline
+  .portal_dropdown_select_chevron {
+  background: transparent;
+  min-width: auto;
+  padding: 0;
+}
+
+/* Asset step — state / city: keep full shell */
+.deals_create_flow
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.asset_step_location_bordered,
+.deals_add_deal_asset_page
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.asset_step_location_bordered,
+.deals_add_deal_asset_panel
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.asset_step_location_bordered {
+  padding-left: var(--deals-control-padding-x, 1rem);
+}

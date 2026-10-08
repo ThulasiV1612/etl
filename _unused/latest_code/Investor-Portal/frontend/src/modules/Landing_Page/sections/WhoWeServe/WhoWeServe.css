@@ -1,0 +1,17 @@
+.sx-bento-grid-audience {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .sx-bento-grid-audience {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .sx-bento-grid-audience {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

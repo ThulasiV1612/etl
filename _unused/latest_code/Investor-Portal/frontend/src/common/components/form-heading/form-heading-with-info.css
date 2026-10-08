@@ -1,0 +1,38 @@
+.form_heading_with_info {
+  margin: 0;
+}
+
+.form_heading_with_info_row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.form_heading_with_info_text {
+  min-width: 0;
+}
+
+.form_heading_with_info_leading_icon {
+  flex-shrink: 0;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.form_heading_with_info_tooltip_inner {
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.form_heading_with_info_tooltip_inner p {
+  margin: 0 0 0.45em;
+}
+
+.form_heading_with_info_tooltip_inner p:last-child {
+  margin-bottom: 0;
+}
+
+.form_heading_with_info_tooltip_inner strong {
+  font-weight: 600;
+}

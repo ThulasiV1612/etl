@@ -1,0 +1,9 @@
+# Profile & Investor Mapping
+openpyxl>=3.1.0
+
+# PDF Classes Mapping
+pymupdf>=1.23.0
+Pillow>=10.0.0
+pytesseract>=0.3.10
+
+# Distribution Mapping (openpyxl already listed above)

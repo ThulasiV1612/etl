@@ -1,0 +1,19 @@
+node_modules/
+dist/
+*.log
+npm-debug.log*
+
+# Secrets and local env
+.env
+.env.local
+.env.*.local
+
+# User uploads (never commit deal assets, SQL dumps, signed PDFs)
+src/storage/uploads/
+!src/storage/uploads/.gitkeep
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store

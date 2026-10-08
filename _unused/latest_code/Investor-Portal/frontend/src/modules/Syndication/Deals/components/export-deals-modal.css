@@ -1,0 +1,281 @@
+.deals_export_modal_overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25em;
+  background: rgb(15 23 42 / 45%);
+  backdrop-filter: blur(3px);
+}
+
+.deals_export_modal {
+  width: 100%;
+  max-width: 26em;
+  max-height: min(85vh, 560px);
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--portal-card-radius);
+  border: 1px solid var(--portal-border);
+  background: var(--portal-surface);
+  box-shadow:
+    0 24px 48px -12px rgb(15 23 42 / 22%),
+    0 0 0 1px rgb(15 23 42 / 4%);
+}
+
+.deals_export_modal_head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75em;
+  padding: 1em 1.1em 0.65em;
+  border-bottom: 1px solid var(--portal-border);
+}
+
+.deals_export_modal_title {
+  margin: 0;
+  font-size: 1.0625em;
+  font-weight: 700;
+  color: var(--portal-text);
+  letter-spacing: -0.02em;
+}
+
+.deals_export_modal_close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35em;
+  margin: 0;
+  border: none;
+  border-radius: var(--portal-pill-radius);
+  background: transparent;
+  color: var(--portal-text-muted);
+  cursor: pointer;
+}
+
+.deals_export_modal_close:hover {
+  background: var(--portal-primary-soft);
+  color: var(--portal-text);
+}
+
+.deals_export_modal_hint {
+  margin: 0;
+  padding: 0.65em 1.1em 0;
+  font-size: 0.8125em;
+  color: var(--portal-text-muted);
+  line-height: 1.45;
+}
+
+.deals_export_modal_search {
+  position: relative;
+  margin: 0.75em 1.1em 0;
+}
+
+.deals_export_modal_search_input {
+  width: 100%;
+  height: 40px;
+  padding: 0 2.5066667em 0 0.8em;
+  border: 1px solid var(--portal-border);
+  border-radius: var(--portal-pill-radius);
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.9375em;
+  background: var(--portal-surface);
+  color: var(--portal-text);
+  box-sizing: border-box;
+}
+
+.deals_export_modal_search_input:focus-visible {
+  outline: none;
+  border-color: var(--portal-text-muted);
+  box-shadow: var(--portal-field-focus-shadow, 0 0 0 2px rgb(17 24 39 / 8%));
+}
+
+:root[data-theme="dark"] .deals_export_modal_search_input:focus-visible {
+  box-shadow: var(--portal-field-focus-shadow-dark, 0 0 0 2px rgb(249 250 251 / 12%));
+}
+
+.deals_export_modal_search_icon {
+  position: absolute;
+  right: 0.5em;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--portal-text-muted);
+  pointer-events: none;
+}
+
+.deals_export_modal_select_all {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0.75em 1.1em 0;
+  padding: 0.35em 0;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: var(--portal-text);
+  cursor: pointer;
+  user-select: none;
+}
+
+.deals_export_modal_select_all input {
+  width: 1.05em;
+  height: 1.05em;
+  accent-color: var(--portal-text);
+  cursor: pointer;
+}
+
+.deals_export_modal_select_all_meta {
+  font-weight: 500;
+  color: var(--portal-text-muted);
+}
+
+.deals_export_modal_list {
+  margin: 0.35em 0.65em 0;
+  padding: 0 0.35em;
+  list-style: none;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+.deals_export_modal_row {
+  border-bottom: 1px solid var(--portal-border);
+}
+
+.deals_export_modal_row:last-child {
+  border-bottom: none;
+}
+
+.deals_export_modal_row_label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65em;
+  padding: 0.55em 0.35em;
+  cursor: pointer;
+  border-radius: var(--portal-pill-radius);
+}
+
+.deals_export_modal_row_label:hover {
+  background: var(--portal-primary-soft);
+}
+
+.deals_export_modal_row_label input {
+  width: 1.05em;
+  height: 1.05em;
+  flex-shrink: 0;
+  margin-top: 0.12em;
+  accent-color: var(--portal-text);
+  cursor: pointer;
+}
+
+.deals_export_modal_row_name {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: var(--portal-text);
+}
+
+.deals_export_modal_row_meta {
+  flex-shrink: 0;
+  font-size: 0.75em;
+  font-weight: 500;
+  color: var(--portal-text-muted);
+}
+
+.deals_export_modal_empty {
+  margin: 0;
+  padding: 1.5em 0.5em;
+  text-align: center;
+  font-size: 0.875em;
+  color: var(--portal-text-muted);
+}
+
+.deals_export_modal_footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.85em 1.1em 1em;
+  border-top: 1px solid var(--portal-border);
+  margin-top: auto;
+}
+
+.deals_export_modal_footer .um_btn_primary,
+.deals_export_modal_footer .um_btn_secondary {
+  font-size: 0.875em;
+}
+
+.deals_export_modal_footer_trailing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5em;
+}
+
+.deals_export_modal_btn_secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  box-sizing: border-box;
+  min-height: var(--portal-button-height, 2.25rem);
+  height: var(--portal-button-height, 2.25rem);
+  padding: 0 1em;
+  border: 1px solid var(--portal-border);
+  border-radius: var(--portal-pill-radius);
+  background: var(--portal-surface);
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: var(--portal-text);
+  cursor: pointer;
+}
+
+.deals_export_modal_btn_secondary:hover {
+  background: var(--portal-primary-soft);
+}
+
+.deals_export_modal_btn_primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  box-sizing: border-box;
+  min-height: var(--portal-button-height, 2.25rem);
+  height: var(--portal-button-height, 2.25rem);
+  padding: 0 1em;
+  border: none;
+  border-radius: var(--portal-pill-radius);
+  background: var(--portal-primary);
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+
+.deals_export_modal_btn_primary:hover:not(:disabled) {
+  background: var(--portal-primary-hover);
+}
+
+.deals_export_modal_btn_primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+:root[data-theme="dark"] .deals_export_modal_btn_primary {
+  background: var(--ui-button-background-add, var(--sidebar-bg-color));
+  color: var(--ui-button-text, var(--sidebar-active-text));
+  border: 1px solid var(--ui-button-border, var(--sidebar-active-text));
+}
+
+:root[data-theme="dark"] .deals_export_modal_btn_primary:hover:not(:disabled) {
+  background: var(--ui-button-hover);
+  color: var(--ui-button-text, var(--sidebar-active-text));
+}

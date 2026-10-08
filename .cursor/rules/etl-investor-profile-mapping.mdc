@@ -1,0 +1,50 @@
+---
+description: ETL investor profile migration — Profiles, Addresses, Beneficiaries from Cash Flow Excel
+globs: ETL_Investor_Profile_Mapping_Template*.xlsx,**/userProfileBook*,**/Investing/pages/profiles/**
+alwaysApply: false
+---
+
+# ETL: Investor Profile / Address / Beneficiary
+
+Source: `Cash_Flow_Portal_Investments_07_23_2026.xlsx` → sheet **Investors (profile)**  
+Code: **Investor-Portal-main** profile book.
+
+## Storage
+
+| Sheet | Table |
+|---|---|
+| Profiles | `user_investor_profiles` + `form_snapshot` jsonb + distribution columns |
+| Addresses | `user_saved_addresses` |
+| Beneficiaries | `user_beneficiaries` |
+
+Profiles link addresses/beneficiaries by IDs in `form_snapshot` (`taxAddressId`, `mailingAddressId`, `checkMailingAddressId`, `beneficiaryPickId`).
+
+## Template (3 sheets)
+
+`ETL_Investor_Profile_Mapping_Template.xlsx`
+
+1. **Addresses** first (parse Cash Flow Tax / Mailing / Check mailing)  
+2. **Beneficiaries** (optional — Cash Flow “Beneficial owners” ≠ estate beneficiary; confirm before mapping)  
+3. **Profiles** last (identity + tax + distribution; set address/beneficiary keys)
+
+Yellow hint rows = docs only — **do not import**. Green rows = FAKE examples.
+
+## Cash Flow → our fields (high level)
+
+- Unique profile id → `source_profile_id` (external map)  
+- Profile name / type / First / Last / Email / SSN / EIN / Entity… → profile + `form_snapshot`  
+- Distribution method ACH/Check → `ach`/`check` + bank columns  
+- Tax/Mailing/Check mailing address → Addresses sheet → UUID links  
+- Beneficial owner name/Tax ID → Beneficiaries only if product agrees  
+
+## Load order
+
+1. Upsert `users` by email  
+2. Insert addresses → map `address_key` → UUID  
+3. Insert beneficiaries → map `beneficiary_key` → UUID  
+4. Insert profiles with `form_snapshot` + distribution columns + ID links  
+5. Dedupe by `source_profile_id` (Excel rows are investments, not unique profiles)
+
+## Do not put on these sheets
+
+Deal LP roster, `deal_investment` amounts, or class setup — separate ETL after classes exist.

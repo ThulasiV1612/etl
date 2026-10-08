@@ -1,0 +1,166 @@
+/**
+ * Portal scrollbars — quiet by default, clear on hover/drag.
+ * Soft pill thumbs with a light gold brand cue on interaction.
+ */
+
+/* Firefox + standard */
+*,
+*::before,
+*::after {
+  scrollbar-width: thin;
+  scrollbar-color: var(--portal-scroll-thumb, #94a3b8)
+    var(--portal-scroll-track, transparent);
+}
+
+/* WebKit / Chromium / Safari */
+*::-webkit-scrollbar {
+  width: var(--portal-scroll-size, 9px);
+  height: var(--portal-scroll-size, 9px);
+}
+
+*::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--portal-scroll-track, transparent);
+  border-radius: 999px;
+  margin: 2px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--portal-scroll-thumb, #94a3b8);
+  background-clip: padding-box;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  min-height: 2.5rem;
+  min-width: 2.5rem;
+  transition: background-color 160ms ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--portal-scroll-thumb-hover, #64748b);
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: var(--portal-scroll-thumb-active, #475569);
+  background-clip: padding-box;
+}
+
+/* Reveal a soft track while the pane is hovered — helps discoverability */
+.app_main_content:hover::-webkit-scrollbar-track,
+.app_sidebar_nav_region:hover::-webkit-scrollbar-track,
+.um_modal_scroll:hover::-webkit-scrollbar-track,
+.deals_add_inv_modal_scroll:hover::-webkit-scrollbar-track,
+.data_table_scroll:hover::-webkit-scrollbar-track,
+.data_table_scroll_region:hover::-webkit-scrollbar-track {
+  background: var(--portal-scroll-track-hover, rgba(0, 0, 0, 0.04));
+}
+
+/* Sidebar nav — slightly quieter on the dark chrome */
+.app_sidebar_nav_region {
+  scrollbar-color: color-mix(in srgb, var(--sidebar-text-color, #7c839b) 55%, transparent)
+    transparent;
+}
+
+.app_sidebar_nav_region::-webkit-scrollbar-thumb {
+  background-color: color-mix(
+    in srgb,
+    var(--sidebar-text-color, #7c839b) 45%,
+    transparent
+  );
+  background-clip: padding-box;
+}
+
+.app_sidebar_nav_region::-webkit-scrollbar-thumb:hover,
+.app_sidebar_nav_region::-webkit-scrollbar-thumb:active {
+  background-color: color-mix(
+    in srgb,
+    var(--sidebar-active-text, #d4af37) 55%,
+    var(--sidebar-text-color, #7c839b)
+  );
+  background-clip: padding-box;
+}
+
+/* Tables — a bit wider so horizontal scroll is easier to grab */
+.data_table_scroll,
+.data_table_scroll_region,
+.um_table_wrap.data_table_shell,
+.deals_list_table_panel .data_table_scroll_region,
+.deal_inv_table_panel .data_table_scroll_region {
+  scrollbar-width: thin;
+  scrollbar-color: var(
+      --portal-table-scroll-thumb,
+      var(--portal-scroll-thumb, #94a3b8)
+    )
+    var(--portal-scroll-track, transparent);
+}
+
+.data_table_scroll::-webkit-scrollbar,
+.data_table_scroll_region::-webkit-scrollbar,
+.um_table_wrap.data_table_shell::-webkit-scrollbar,
+.deals_list_table_panel .data_table_scroll_region::-webkit-scrollbar,
+.deal_inv_table_panel .data_table_scroll_region::-webkit-scrollbar {
+  width: var(--portal-scroll-size-table, 10px);
+  height: var(--portal-scroll-size-table, 10px);
+}
+
+.data_table_scroll::-webkit-scrollbar-thumb,
+.data_table_scroll_region::-webkit-scrollbar-thumb,
+.um_table_wrap.data_table_shell::-webkit-scrollbar-thumb,
+.deals_list_table_panel .data_table_scroll_region::-webkit-scrollbar-thumb,
+.deal_inv_table_panel .data_table_scroll_region::-webkit-scrollbar-thumb {
+  background-color: var(
+    --portal-table-scroll-thumb,
+    var(--portal-scroll-thumb, #94a3b8)
+  );
+  background-clip: padding-box;
+}
+
+.data_table_scroll::-webkit-scrollbar-thumb:hover,
+.data_table_scroll_region::-webkit-scrollbar-thumb:hover,
+.um_table_wrap.data_table_shell::-webkit-scrollbar-thumb:hover,
+.deals_list_table_panel .data_table_scroll_region::-webkit-scrollbar-thumb:hover,
+.deal_inv_table_panel .data_table_scroll_region::-webkit-scrollbar-thumb:hover {
+  background-color: var(
+    --portal-table-scroll-thumb-hover,
+    var(--portal-scroll-thumb-hover, #64748b)
+  );
+  background-clip: padding-box;
+}
+
+/* Keep intentional hidden scrollbars (tab strips, Documents custom bar). */
+.deals_tabs_scroll,
+.um_segmented_tabs_scroll,
+.tabs_scroll_strip_scroll,
+.deal_docs_ui_table_scroll,
+.data_table_scroll_region.data_table_scroll_region--floating-hscroll,
+.deals_list_table_panel .data_table_scroll_region.data_table_scroll_region--floating-hscroll,
+.deal_inv_table_panel .data_table_scroll_region.data_table_scroll_region--floating-hscroll,
+.cs_table_scroll.data_table_scroll_region--floating-hscroll,
+.ds_table_scroll.data_table_scroll_region--floating-hscroll,
+.ds_flow_wrap.data_table_scroll_region--floating-hscroll {
+  scrollbar-width: none;
+}
+
+.deals_tabs_scroll::-webkit-scrollbar,
+.um_segmented_tabs_scroll::-webkit-scrollbar,
+.tabs_scroll_strip_scroll::-webkit-scrollbar,
+.deal_docs_ui_table_scroll::-webkit-scrollbar,
+.data_table_scroll_region.data_table_scroll_region--floating-hscroll::-webkit-scrollbar,
+.deals_list_table_panel .data_table_scroll_region.data_table_scroll_region--floating-hscroll::-webkit-scrollbar,
+.deal_inv_table_panel .data_table_scroll_region.data_table_scroll_region--floating-hscroll::-webkit-scrollbar,
+.cs_table_scroll.data_table_scroll_region--floating-hscroll::-webkit-scrollbar,
+.ds_table_scroll.data_table_scroll_region--floating-hscroll::-webkit-scrollbar,
+.ds_flow_wrap.data_table_scroll_region--floating-hscroll::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}

@@ -1,0 +1,29 @@
+.investor_deal_status_badge_btn {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: inherit;
+  flex-wrap: inherit;
+  gap: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+.investor_deal_status_badge_btn:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.investor_deal_status_badge--invest_now {
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.investor_deal_status_badge--invest_now .deal_card_status_label {
+  font-weight: 700;
+}

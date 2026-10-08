@@ -1,0 +1,112 @@
+/* Tab strip with edge scroll arrows */
+
+.tabs_scroll_strip {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+  min-width: 0;
+}
+
+.tabs_scroll_strip_scroll {
+  flex: 1;
+  min-width: 0;
+}
+
+.tabs_scroll_strip_edge {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  width: 2.5em;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.tabs_scroll_strip_edge .tabs_scroll_strip_btn {
+  pointer-events: auto;
+}
+
+.tabs_scroll_strip_edge_start {
+  margin-inline-end: -0.35em;
+  padding-inline-start: 0.1em;
+  /* background: linear-gradient(
+    90deg,
+    var(--portal-surface, #fff) 40%,
+    transparent 100%
+  ); */
+}
+
+.tabs_scroll_strip_edge_end {
+  margin-inline-start: -0.35em;
+  padding-inline-end: 0.1em;
+  /* background: linear-gradient(
+    270deg,
+    var(--portal-surface, #fff) 40%,
+    transparent 100%
+  ); */
+}
+
+.tabs_scroll_strip_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25em;
+  height: 2.25em;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-pill-radius, 4px);
+  background: var(--portal-surface, #fff);
+  color: var(--portal-text, #0f172a);
+  box-shadow:
+    0 1px 2px rgb(15 23 42 / 8%),
+    0 2px 8px rgb(15 23 42 / 10%);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.tabs_scroll_strip_btn:hover:not(:disabled) {
+  background: var(--portal-primary-soft, #f1f5f9);
+  border-color: color-mix(in srgb, var(--portal-primary, #2563eb) 35%, var(--portal-border));
+}
+
+.tabs_scroll_strip_btn:focus-visible {
+  outline: 2px solid var(--portal-primary, #2563eb);
+  outline-offset: 2px;
+}
+
+.tabs_scroll_strip_btn:disabled {
+  opacity: 0.28;
+  cursor: default;
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] .tabs_scroll_strip_edge_start {
+  background: linear-gradient(
+    90deg,
+    var(--portal-surface, #0f172a) 40%,
+    transparent 100%
+  );
+}
+
+:root[data-theme="dark"] .tabs_scroll_strip_edge_end {
+  background: linear-gradient(
+    270deg,
+    var(--portal-surface, #0f172a) 40%,
+    transparent 100%
+  );
+}
+
+:root[data-theme="dark"] .tabs_scroll_strip_btn {
+  background: var(--portal-surface, #0f172a);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--portal-text, #f1f5f9);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 35%);
+}

@@ -1,0 +1,716 @@
+/* Add Investment — matches Member details / view modal (um_modal_view + um_view_grid) */
+
+.deals_add_inv_modal_overlay.um_modal_overlay {
+  z-index: 1100;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.deals_add_inv_modal_panel.um_modal.um_modal_view {
+  max-width: min(44em, 100%);
+  max-height: min(90dvh, calc(100dvh - 2rem));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 1em 1.15em 0.95em;
+  box-sizing: border-box;
+  font-family:
+    "Inter",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  --deals-add-inv-font-family: "Inter", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* rem: stable vs nested em from modal title / steps */
+  --deals-add-inv-control-font: 0.9375rem;
+  --deals-add-inv-control-radius: 10px;
+  --deals-add-inv-control-min-h: 0.9em;
+}
+
+@media (min-width: 640px) {
+  .deals_add_inv_modal_panel.um_modal.um_modal_view {
+    padding: 1.1em 1.35em 1em;
+  }
+}
+
+.deals_add_inv_modal_form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  font-family: var(--deals-add-inv-font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Other modals reusing this stylesheet (Add contact, investor class, etc.) */
+.deals_add_inv_modal_scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  /* padding: 0 0.2em 0.75em 0; */
+  margin-bottom: 0.25em;
+}
+
+/* Tall forms stay inside the viewport — header/footer stay put, body scrolls */
+.deals_add_inv_modal_body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.deals_add_inv_modal_panel .um_modal_head {
+  flex-shrink: 0;
+  margin-bottom: 0.65em;
+}
+
+.deals_add_inv_modal_panel .um_modal_title {
+  font-size: 1.125em;
+}
+
+/* Two columns on wider screens; single column on phones */
+.deals_add_inv_view_grid.um_view_grid {
+  margin-bottom: 0.35em;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55em 0.9em;
+}
+
+@media (max-width: 639px) {
+  .deals_add_inv_view_grid.um_view_grid {
+    grid-template-columns: 1fr;
+    gap: 0.55em;
+  }
+}
+
+.deals_add_inv_modal_panel .um_view_field_head {
+  margin-bottom: 0.28em;
+  gap: 0.35em;
+}
+
+.deals_add_inv_modal_panel .um_view_field_icon {
+  width: 16px;
+  height: 16px;
+}
+
+.deals_add_inv_modal_panel .um_view_field_label {
+  font-size: 0.75em;
+}
+
+/* .deals_add_inv_field_full {
+  grid-column: 1 / -1;
+} */
+
+.um_view_field_head .deals_add_inv_label_info,
+.add_contact_panel .um_field_label_row .deals_add_inv_label_info {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.35em;
+  color: #64748b;
+  cursor: help;
+  flex-shrink: 0;
+}
+
+/* Controls under icon+label: full width */
+.deals_add_inv_field_control.um_field_select,
+.deals_add_inv_input.deals_add_inv_field_control {
+  width: 100%;
+  margin: 0;
+}
+
+/* Pill-shaped controls (dropdown triggers + text/date inputs) */
+.deals_add_inv_modal_form input.deals_add_inv_field_pill,
+.deals_add_inv_input.deals_add_inv_field_control.deals_add_inv_field_pill {
+  border-radius: var(--portal-pill-radius, 4px);
+}
+
+.deals_add_inv_modal_form .portal_dropdown_select_trigger.deals_add_inv_field_pill {
+  min-height: var(--portal-dropdown-trigger-min-height, 2.5rem);
+  padding: var(--portal-dropdown-trigger-padding-block, 0.45rem)
+    0.65rem var(--portal-dropdown-trigger-padding-block, 0.45rem)
+    0.75rem;
+  font-size: var(--deals-add-inv-control-font);
+  border-radius: var(--portal-pill-radius, 4px);
+  justify-content: space-between;
+  gap: 0.35rem;
+}
+
+/* Native selects: leave room for chevron; match app_shell field typography */
+.deals_add_inv_modal_form .um_field_select.deals_add_inv_field_control {
+  box-sizing: border-box;
+  min-height: var(--deals-add-inv-control-min-h);
+  /* padding: 0.5rem 2.25rem 0.5rem 0.75rem; */
+  padding: 0.5rem 0.25rem 0.5rem 0.75rem;
+  border-radius: var(--deals-add-inv-control-radius);
+  font-family: var(--deals-add-inv-font-family);
+  font-size: var(--deals-add-inv-control-font);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--portal-text, #282828);
+  background-color: var(--portal-surface, #fff);
+  border: 1px solid var(--portal-border, #e5e5e5);
+  cursor: pointer;
+  text-overflow: ellipsis;
+  color-scheme: light dark;
+  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); */
+  background-repeat: no-repeat;
+  background-position: right 0.65rem center;
+  background-size: 1rem;
+}
+
+:root[data-theme="dark"]
+  .deals_add_inv_modal_form
+  .um_field_select.deals_add_inv_field_control {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+}
+
+.deals_add_inv_modal_form .um_field_select.deals_add_inv_field_control:hover:not(:disabled) {
+  border-color: color-mix(
+    in srgb,
+    var(--portal-text, #282828) 14%,
+    var(--portal-border, #e5e5e5)
+  );
+}
+
+.deals_add_inv_modal_form .um_field_select.deals_add_inv_field_control:disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deals_add_inv_modal_form .um_field_select.deals_add_inv_field_control:focus-visible {
+  outline: none;
+  border-color: var(--portal-text-muted, #64748b);
+  box-shadow: var(--portal-field-focus-shadow, 0 0 0 2px rgb(17 24 39 / 8%));
+}
+
+:root[data-theme="dark"]
+  .deals_add_inv_modal_form
+  .um_field_select.deals_add_inv_field_control:focus-visible {
+  box-shadow: var(--portal-field-focus-shadow-dark, 0 0 0 2px rgb(249 250 251 / 12%));
+}
+
+.deals_add_inv_modal_form .um_field_select.deals_add_inv_field_control optgroup {
+  font-family: var(--deals-add-inv-font-family);
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deals_add_inv_modal_form .um_field_select.deals_add_inv_field_control option {
+  font-family: var(--deals-add-inv-font-family);
+  font-weight: 400;
+  font-size: var(--deals-add-inv-control-font);
+  line-height: 1.45;
+  color: var(--portal-text, #282828);
+}
+
+.deals_add_inv_input.deals_add_inv_field_control {
+  box-sizing: border-box;
+  min-height: var(--deals-add-inv-control-min-h);
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--portal-border, #e5e5e5);
+  border-radius: var(--deals-add-inv-control-radius);
+  font-family: var(--deals-add-inv-font-family);
+  font-size: var(--deals-add-inv-control-font);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--portal-text, #282828);
+  background: var(--portal-surface, #fff);
+}
+
+.deals_add_inv_input.deals_add_inv_field_control:focus-visible {
+  outline: none;
+  border-color: var(--portal-text-muted);
+  box-shadow: var(--portal-field-focus-shadow, 0 0 0 2px rgb(17 24 39 / 8%));
+}
+
+:root[data-theme="dark"] .deals_add_inv_input.deals_add_inv_field_control:focus-visible {
+  box-shadow: var(--portal-field-focus-shadow-dark, 0 0 0 2px rgb(249 250 251 / 12%));
+}
+
+/* Text / date fields in this form without .deals_add_inv_field_control */
+.deals_add_inv_modal_form
+  .um_field
+  input:not([type="file"]):not([type="hidden"]):not([type="checkbox"]):not(
+    [type="radio"]
+  ):not(.visually_hidden):not(.contacts_chips_combobox_input):not(
+    .add_contact_chip_input
+  ) {
+  box-sizing: border-box;
+  min-height: var(--deals-add-inv-control-min-h);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--portal-pill-radius, 4px);
+  font-family: var(--deals-add-inv-font-family);
+  font-size: var(--deals-add-inv-control-font);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--portal-text, #282828);
+  background: var(--portal-surface, #fff);
+  border: 1px solid var(--portal-border, #e5e5e5);
+}
+
+.deals_add_inv_modal_form
+  .um_field
+  input:not([type="file"]):not([type="hidden"]):not([type="checkbox"]):not(
+    [type="radio"]
+  ):not(.visually_hidden):not(.contacts_chips_combobox_input):not(
+    .add_contact_chip_input
+  ):focus-visible {
+  outline: none;
+  border-color: var(--portal-text-muted);
+  box-shadow: var(--portal-field-focus-shadow, 0 0 0 2px rgb(17 24 39 / 8%));
+}
+
+:root[data-theme="dark"]
+  .deals_add_inv_modal_form
+  .um_field
+  input:not([type="file"]):not([type="hidden"]):not([type="checkbox"]):not(
+    [type="radio"]
+  ):not(.visually_hidden):not(.contacts_chips_combobox_input):not(
+    .add_contact_chip_input
+  ):focus-visible {
+  box-shadow: var(--portal-field-focus-shadow-dark, 0 0 0 2px rgb(249 250 251 / 12%));
+}
+
+/* Label row: match control scale */
+.deals_add_inv_modal_form .um_field label.um_field_label_row {
+  font-family: var(--deals-add-inv-font-family);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--portal-text-muted, #64748b);
+  margin-bottom: 0.35em;
+  min-height: 1.25rem;
+  align-items: center;
+}
+
+/* Same vertical rhythm for tight two-column fields and full-width rows */
+.deals_add_inv_modal_panel.add_contact_panel .add_contact_section .um_field {
+  margin-bottom: 0.85em;
+}
+
+.deals_add_inv_modal_form .portal_dropdown_select {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Portaled menus: opening a dropdown must not expand modal / scroll area height */
+.deals_add_inv_modal_form .portal_dropdown_select--fixed-panel .portal_dropdown_select_shell {
+  flex: 0 0 auto;
+}
+
+/*
+ * Safety net: any modal dropdown still using inline panels must overlay, not grow layout.
+ * Prefer MODAL_DROPDOWN_SELECT_PROPS / ModalDropdownSelect / DealsCreateDropdownSelect.
+ */
+.deals_add_inv_modal_form
+  .portal_dropdown_select:not(.portal_dropdown_select--fixed-panel) {
+  position: relative;
+}
+
+.deals_add_inv_modal_form
+  .portal_dropdown_select:not(.portal_dropdown_select--fixed-panel)
+  .portal_dropdown_select_shell--open:not(.portal_dropdown_select_shell--open-fixed) {
+  overflow: visible;
+}
+
+.deals_add_inv_modal_form
+  .portal_dropdown_select:not(.portal_dropdown_select--fixed-panel)
+  .portal_dropdown_select_shell
+  .portal_dropdown_select_panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 50;
+  max-height: min(260px, 45vh);
+  margin-top: 0;
+  box-shadow: var(--portal-dropdown-panel-shadow);
+}
+
+
+/* Lead Sponsor row: member/contact cannot be changed (dropdown disabled). */
+.deals_add_inv_modal_form
+  .portal_dropdown_select_trigger.deals_add_inv_field_control_readonly {
+  background: var(--portal-chrome-bg, #f8fafc);
+  color: var(--portal-text, #0f172a);
+}
+
+.deals_add_inv_field_locked_badge {
+  margin-inline-start: 0.35em;
+  padding: 0.12em 0.45em;
+  border-radius: var(--ui-button-border-radius, 4px);
+  font-size: 0.65em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--portal-text-muted, #64748b);
+  background: color-mix(in srgb, var(--portal-border) 35%, transparent);
+}
+
+.deals_add_inv_member_readonly_hint {
+  margin-top: 0.35em;
+  margin-bottom: 0;
+  max-width: 36em;
+  line-height: 1.4;
+}
+
+.deals_add_inv_after_grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45em;
+}
+
+.deals_add_inv_after_grid .um_view_field {
+  margin-bottom: 0;
+}
+
+.deals_add_inv_after_grid .deals_add_inv_add_row {
+  margin-bottom: 0;
+}
+
+.deals_add_inv_add_row {
+  margin: 0;
+}
+
+.deals_add_inv_add_row .um_btn_secondary {
+  font-size: 0.875em;
+}
+
+.deals_add_inv_dropzone {
+  margin-top: 0.25em;
+  border: 1px dashed #cbd5e1;
+  border-radius: var(--ui-button-border-radius, 4px);
+  cursor: pointer;
+  color: #64748b;
+  font-size: 0.8125em;
+  line-height: 1.35;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+  background: #fff;
+}
+
+.deals_add_inv_dropzone_compact {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.45em 0.75em;
+  text-align: left;
+}
+
+.deals_add_inv_dropzone_lead_icon {
+  flex-shrink: 0;
+  color: #64748b;
+}
+
+.deals_add_inv_dropzone_text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  min-width: 0;
+}
+
+.deals_add_inv_dropzone_hint {
+  color: #64748b;
+}
+
+.deals_add_inv_dropzone:hover,
+.deals_add_inv_dropzone_focus {
+  border-color: #2563eb;
+  background: #f8fafc;
+}
+
+.deals_add_inv_file_name {
+  display: block;
+  font-weight: 600;
+  color: #334155;
+  font-size: 0.8125em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.deals_add_inv_modal_panel .visually_hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.deals_add_inv_modal_panel .um_modal_actions {
+  margin-top: 0.55em;
+  padding-top: 0.65em;
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+  flex-shrink: 0;
+  gap: 0.5em;
+}
+
+/* Investor add/edit — section tabs under the title (same as View) */
+.deals_add_inv_section_tabs_outer {
+  margin: 0 0 0.35em;
+  padding: 0 0 0.55em;
+  border-top: 0;
+  border-bottom: 1px solid var(--portal-border, #e2e8f0);
+  flex-shrink: 0;
+}
+
+.deals_add_inv_section_tabs_outer .deals_add_inv_section_tabs_row {
+  flex-wrap: nowrap;
+  justify-content: stretch;
+  width: 100%;
+}
+
+.deals_add_inv_section_tabs_outer
+  .deals_add_inv_section_tabs_row
+  .um_members_tab {
+  flex: 1 1 0;
+  justify-content: center;
+  min-width: 0;
+}
+
+.deals_add_inv_modal_body .um_msg_error {
+  margin-bottom: 0.45em;
+  font-size: 0.8125em;
+}
+
+.deal_step_yesno_cards {
+  width: 100%;
+}
+
+.deals_add_inv_modal_form .um_field:has(.portal_yesno_field_block) .um_field_label_row {
+  margin-bottom: 0.35em;
+}
+
+.deals_add_inv_modal_form .portal_yesno_field_block {
+  margin-top: 0;
+}
+
+.deals_add_inv_doc_field {
+  margin-top: 15px;
+}
+
+/* Label in field head: same weight as view modal */
+.deals_add_inv_modal_panel .um_view_field_head label.um_view_field_label {
+  cursor: default;
+  margin: 0;
+}
+
+/* Invalid field — Add contact & other forms sharing this modal shell */
+.deals_add_inv_modal_panel .um_field input.um_field_input_invalid,
+.deals_add_inv_modal_panel .um_field select.um_field_input_invalid,
+.deals_add_inv_modal_panel .um_field textarea.um_field_input_invalid,
+.deals_add_inv_modal_panel .portal_dropdown_select_trigger_invalid {
+  border-color: #dc2626;
+}
+
+/* Optional: stack above dense toolbars */
+.deals_add_inv_modal_overlay.portal_modal_z_boost {
+  z-index: 1200;
+}
+
+/* Add / Edit Investor Class — same focus treatment as deal create fields */
+.deal_inv_ic_form_modal_panel
+  .deals_add_inv_input.deals_add_inv_field_control:focus-visible {
+  outline: none;
+  border-color: var(--portal-text-muted);
+  box-shadow: var(--portal-field-focus-shadow, 0 0 0 2px rgb(17 24 39 / 8%));
+}
+
+:root[data-theme="dark"]
+  .deal_inv_ic_form_modal_panel
+  .deals_add_inv_input.deals_add_inv_field_control:focus-visible {
+  box-shadow: var(--portal-field-focus-shadow-dark, 0 0 0 2px rgb(249 250 251 / 12%));
+}
+
+.deal_inv_ic_form_modal_panel
+  .deals_add_inv_field_control.um_field_select:focus-visible {
+  outline: none;
+  border-color: var(--portal-text-muted);
+  box-shadow: var(--portal-field-focus-shadow, 0 0 0 2px rgb(17 24 39 / 8%));
+}
+
+:root[data-theme="dark"]
+  .deal_inv_ic_form_modal_panel
+  .deals_add_inv_field_control.um_field_select:focus-visible {
+  box-shadow: var(--portal-field-focus-shadow-dark, 0 0 0 2px rgb(249 250 251 / 12%));
+}
+
+/* Investor class add/edit — pill-shaped native selects (class type, equity, advanced, hurdles) */
+.deal_inv_ic_form_modal_panel.deal_inv_offering_modal
+  .deals_add_inv_modal_form
+  select.um_field_select.deals_add_inv_field_control {
+  border-radius: var(--portal-pill-radius, 4px);
+  padding-left: 1rem;
+  padding-right: 2.35rem;
+}
+
+.deal_inv_ic_form_modal_panel .deal_inv_portal_select_trigger:focus-visible {
+  outline: none;
+  border-color: var(--portal-text-muted);
+  box-shadow: var(--portal-field-focus-shadow, 0 0 0 2px rgb(17 24 39 / 8%));
+}
+
+:root[data-theme="dark"]
+  .deal_inv_ic_form_modal_panel
+  .deal_inv_portal_select_trigger:focus-visible {
+  box-shadow: var(--portal-field-focus-shadow-dark, 0 0 0 2px rgb(249 250 251 / 12%));
+}
+
+/* Open combobox: keep list attachment line */
+.deal_inv_ic_form_modal_panel
+  .deal_inv_portal_select_open
+  .deal_inv_portal_select_trigger {
+  border-color: var(--portal-text-muted);
+  border-bottom-color: var(--portal-border, #e2e8f0);
+  box-shadow: none;
+}
+
+@keyframes deal_ic_modal_btn_spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.deal_ic_modal_btn_spin {
+  animation: deal_ic_modal_btn_spin 0.85s linear infinite;
+}
+
+/* Autosaved add-member draft preview below member dropdown */
+.deals_add_inv_draft_table_wrap {
+  margin-top: 0.65em;
+  padding-top: 0.55em;
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+  min-width: 0;
+}
+
+.deals_add_inv_draft_table_label {
+  margin: 0 0 0.45em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deals_add_inv_draft_table.um_table_members {
+  font-size: 0.8125rem;
+}
+
+.deals_add_inv_draft_table_wrap .um_table_wrap {
+  margin-bottom: 0;
+}
+
+.deals_add_inv_draft_edit_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.35em 0.65em;
+  font-size: 0.8125rem;
+}
+
+/* Add Member step 2 — stacked sections (Offering Details pattern) */
+.deals_add_member_step2_intro {
+  margin: 0 0 1em;
+  font-size: 0.875em;
+  line-height: 1.55;
+}
+
+.deals_add_member_env_hint {
+  font-size: 0.92em;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--portal-text, #0f172a) 6%, transparent);
+}
+
+.deals_add_member_doc_stack {
+  margin-top: 0.15em;
+}
+
+.deals_add_member_doc_panel_inner {
+  padding-top: 0.15em;
+}
+
+.deals_lp_inv_role_readonly {
+  background: color-mix(in srgb, var(--portal-text, #0f172a) 5%, transparent);
+  color: var(--portal-text-muted, #64748b);
+  cursor: default;
+}
+
+.deals_lp_inv_send_field {
+  margin-top: 0.75em;
+}
+
+.deals_lp_inv_toggle_row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55em;
+  margin-top: 0.35em;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--portal-text, #0f172a);
+}
+
+.deals_lp_inv_toggle_input {
+  margin-top: 0.2em;
+  flex-shrink: 0;
+  width: 1.1em;
+  height: 1.1em;
+  accent-color: var(--portal-primary, #2563eb);
+}
+
+.deals_lp_inv_toggle_text {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Lead Sponsor single-slot: hint when option is disabled in dropdown */
+.deals_add_inv_role_lead_taken_hint {
+  margin: 0.35em 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: var(--portal-text-muted, #64748b);
+}
+
+/* Add Investor — Profile is its own section (narrow column, not split with Role) */
+.deals_add_inv_profile_section_grid {
+  grid-template-columns: 1fr;
+  max-width: min(100%, 22rem);
+}
+
+.deals_add_inv_section_hint {
+  margin: 0.5rem 0 0;
+  max-width: 36rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--portal-text-muted, #64748b);
+}
+
+/* Add Member — stack fields vertically (no side-by-side columns) */
+.deals_add_member_form_stacked .add_contact_name_grid {
+  grid-template-columns: 1fr;
+  gap: 0;
+}

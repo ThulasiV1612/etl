@@ -1,0 +1,73 @@
+{
+  "deal_name": "Wildflower Assisted Living",
+  "deal_target_raise": "2650000",
+  "deal_id": "",
+  "classes": [
+    {
+      "name": "Class A1 - LP (Cash Engine)",
+      "subscription_type": "lp",
+      "source_class_name": "Class A1 - LP (Cash Engine)",
+      "status": "active",
+      "display_order": 0,
+      "entity_name": "Class A1",
+      "start_date": "2026-03-20",
+      "offering_size": "350000",
+      "raise_amount_distributions": "350000",
+      "billing_raise_quota": "200000",
+      "minimum_investment": "50000",
+      "equity_pct": "0",
+      "distribution_share_pct": "10",
+      "pref_enabled": "no",
+      "pref_rate": "",
+      "load_notes": "no pref hurdles on PDF"
+    },
+    {
+      "name": "Class A2 - LP (Growth Engine)",
+      "subscription_type": "lp",
+      "source_class_name": "Class A2 - LP (Growth Engine)",
+      "status": "active",
+      "display_order": 1,
+      "entity_name": "Class A2",
+      "start_date": "2026-04-01",
+      "offering_size": "2300000",
+      "raise_amount_distributions": "2300000",
+      "billing_raise_quota": "2300000",
+      "minimum_investment": "50000",
+      "equity_pct": "50",
+      "distribution_share_pct": "90",
+      "pref_enabled": "yes",
+      "pref_rate": "7",
+      "load_notes": ""
+    },
+    {
+      "name": "General partners",
+      "subscription_type": "gp",
+      "source_class_name": "General partners",
+      "status": "active",
+      "display_order": 2,
+      "entity_name": "GP",
+      "start_date": "2026-04-01",
+      "offering_size": "0",
+      "raise_amount_distributions": "0",
+      "minimum_investment": "0",
+      "equity_pct": "50",
+      "distribution_share_pct": "0",
+      "pref_enabled": "no",
+      "load_notes": "GP class"
+    }
+  ],
+  "hurdles": [
+    {
+      "class_name": "Class A2 - LP (Growth Engine)",
+      "tier_order": 1,
+      "hurdle_name": "Hurdle 1 - Pref",
+      "hurdle_rate_pct": "7",
+      "lp_pct": "100",
+      "gp_pct": "0",
+      "preferred_return_type": "cash_on_cash",
+      "is_final": "no",
+      "load_notes": "100% Class A2 / 0% GP until 7% CoC"
+    }
+  ],
+  "final_tiers": []
+}

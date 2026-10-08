@@ -1,0 +1,56 @@
+.deals_stepper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.5em 1.5em;
+  margin: 0 0 1.35em;
+  padding: 0;
+  list-style: none;
+}
+
+.deals_stepper_step {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--portal-text-muted);
+  font-size: 0.875em;
+  font-weight: 500;
+}
+
+.deals_stepper_step_current {
+  color: var(--portal-text);
+  font-weight: 700;
+}
+
+.deals_stepper_step_done {
+  color: var(--portal-text-muted);
+}
+
+.deals_stepper_badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75em;
+  height: 1.75em;
+  border-radius: var(--portal-pill-radius, 4px);
+  border: 1px solid var(--portal-border);
+  background: var(--portal-surface);
+  font-size: 0.75em;
+  font-weight: 700;
+}
+
+.deals_stepper_step_current .deals_stepper_badge {
+  border-color: var(--portal-text);
+  background: var(--portal-text);
+  color: var(--portal-surface);
+}
+
+.deals_stepper_step_done .deals_stepper_badge {
+  border-color: var(--portal-text-muted);
+  background: var(--portal-primary-soft);
+  color: var(--portal-text);
+}
+
+.deals_stepper_label {
+  white-space: nowrap;
+}

@@ -1,0 +1,71 @@
+.radio-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--portal-binary-radio-gap, 0.65rem);
+  width: 100%;
+}
+
+.radio-group.radio-group_binary {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: min(100%, var(--portal-binary-radio-max-width, 28rem));
+}
+
+/*
+ * Visually hidden but focusable (display:none would remove keyboard access).
+ * Sits over the pill so clicks and focus ring behave like native radios.
+ */
+.radio-group input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  inset: 0;
+  cursor: pointer;
+}
+
+.radio-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  border-radius: var(--ui-button-border-radius, 4px);
+  border: 1px solid var(--ui-button-background-add);
+  background-color: #ffffff;
+  color: var(--ui-button-background-add);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+/* Unchecked hover — same filled look as before (selection is still click-only). */
+.radio-group input[type="radio"]:not(:checked) + .radio-btn:hover {
+  background-color: var(--ui-button-background-add);
+  color: #ffffff;
+  border-color: var(--ui-button-background-add);
+}
+
+/* Checked state */
+.radio-group input[type="radio"]:checked + .radio-btn {
+  background-color:  var(--ui-button-background-add);
+  color: #ffffff;
+  border-color:  var(--ui-button-background-add);
+}
+
+.radio-group input[type="radio"]:focus-visible + .radio-btn {
+  outline: 2px solid  var(--ui-button-background-add);
+  outline-offset: 2px;
+}
+
+/* Label fills grid cell so every pill has the same width in its row */
+.radio-pill-label {
+  display: flex;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  cursor: pointer;
+  margin: 0;
+}

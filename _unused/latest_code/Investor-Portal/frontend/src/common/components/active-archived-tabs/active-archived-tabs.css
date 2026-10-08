@@ -1,0 +1,18 @@
+/* Active / Archived and usage filter strips */
+.contacts_toolbar_filters_row .active_archived_tabs_outer,
+.contacts_toolbar_filters_row .usage_filter_tabs_outer {
+  flex: 1 1 auto;
+  min-width: min(100%, 14rem);
+  margin-bottom: 0;
+}
+
+.contacts_toolbar_filters_row .active_archived_tabs_outer .um_members_tabs_row,
+.contacts_toolbar_filters_row .usage_filter_tabs_outer .um_members_tabs_row {
+  width: max-content;
+  min-width: min(100%, max-content);
+}
+
+.contacts_status_tabs_outer.active_archived_tabs_outer,
+.contacts_status_tabs_outer.usage_filter_tabs_outer {
+  width: 100%;
+}

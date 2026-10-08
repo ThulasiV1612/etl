@@ -1,0 +1,497 @@
+/**
+ * Portal dark mode — shared polish for the logged-in shell.
+ * Uses portal-theme tokens; loaded globally after portal-theme.css.
+ */
+
+:root[data-theme="dark"] {
+  --portal-form-label-color: rgba(255, 255, 255, 0.55);
+  --portal-modal-overlay: rgba(4, 8, 15, 0.72);
+  --portal-modal-bg: color-mix(
+    in srgb,
+    var(--portal-page-bg, #0a0f1a) 88%,
+    rgba(255, 255, 255, 0.08)
+  );
+  --portal-modal-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+  --portal-dropdown-shell-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.35),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* —— Scrollbars —— */
+/* Tokens + chrome live in portal-scrollbars.css / portal-theme.css */
+
+/* —— Modals —— */
+:root[data-theme="dark"] .um_modal_overlay {
+  background: var(--portal-modal-overlay);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+:root[data-theme="dark"] .um_modal,
+:root[data-theme="dark"] .um_modal.um_modal_view {
+  background: var(--portal-modal-bg);
+  border: 1px solid var(--portal-border);
+  box-shadow: var(--portal-modal-shadow);
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .um_modal_desc,
+:root[data-theme="dark"] .um_modal .um_hint {
+  color: var(--portal-text-muted);
+}
+
+:root[data-theme="dark"] .um_modal_close {
+  color: var(--portal-text-muted);
+}
+
+:root[data-theme="dark"] .um_modal_close:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .modal_close_btn {
+  color: var(--portal-text-muted);
+}
+
+:root[data-theme="dark"] .modal_close_btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--portal-text);
+}
+
+/* —— Export modals (contacts, deals, members, etc.) —— */
+:root[data-theme="dark"] .deals_export_modal_overlay {
+  background: var(--portal-modal-overlay);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+:root[data-theme="dark"] .deals_export_modal {
+  background: var(--portal-modal-bg);
+  border: 1px solid var(--portal-border);
+  box-shadow: var(--portal-modal-shadow);
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .deals_export_modal_title {
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .deals_export_modal_hint {
+  color: var(--portal-text-muted);
+}
+
+:root[data-theme="dark"] .deals_export_modal_close {
+  color: var(--portal-text-muted);
+}
+
+:root[data-theme="dark"] .deals_export_modal_close:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .deals_export_modal_search_icon {
+  color: var(--portal-text-muted);
+}
+
+:root[data-theme="dark"] .deals_export_modal_select_all,
+:root[data-theme="dark"] .deals_export_modal_row_name {
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .deals_export_modal_select_all_meta,
+:root[data-theme="dark"] .deals_export_modal_row_meta,
+:root[data-theme="dark"] .deals_export_modal_empty {
+  color: var(--portal-text-muted);
+}
+
+:root[data-theme="dark"] .deals_export_modal_row_label:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+:root[data-theme="dark"] .deals_export_modal_btn_secondary {
+  background: transparent;
+  color: var(--portal-text);
+  border-color: var(--portal-border);
+}
+
+:root[data-theme="dark"] .deals_export_modal_btn_secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--portal-text);
+  border-color: color-mix(
+    in srgb,
+    var(--portal-text) 18%,
+    var(--portal-border)
+  );
+}
+
+:root[data-theme="dark"] .deals_export_modal_footer .um_btn_primary,
+:root[data-theme="dark"] .deals_export_modal .um_btn_primary {
+  background: var(--ui-button-background-add, var(--sidebar-bg-color));
+  color: var(--ui-button-text, var(--sidebar-active-text));
+  border-color: var(--ui-button-border, var(--sidebar-active-text));
+}
+
+:root[data-theme="dark"] .deals_export_modal_footer .um_btn_primary:hover:not(:disabled),
+:root[data-theme="dark"] .deals_export_modal .um_btn_primary:hover:not(:disabled) {
+  background: var(--ui-button-hover);
+  color: var(--ui-button-text, var(--sidebar-active-text));
+}
+
+/* —— Menus / dropdowns —— */
+:root[data-theme="dark"] .um_kebab_menu {
+  background: color-mix(
+    in srgb,
+    var(--portal-page-bg, #0a0f1a) 92%,
+    rgba(255, 255, 255, 0.1)
+  );
+  border-color: var(--portal-border);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+:root[data-theme="dark"] .um_kebab_menuitem {
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .um_kebab_menuitem_icon {
+  color: var(--portal-text-muted);
+}
+
+:root[data-theme="dark"] .um_kebab_menuitem:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .um_kebab_menuitem:hover:not(:disabled) .um_kebab_menuitem_icon {
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .um_kebab_trigger:hover:not(:disabled),
+:root[data-theme="dark"] .um_kebab_trigger[aria-expanded="true"]:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--portal-text);
+}
+
+/* —— Toolbar + search —— */
+:root[data-theme="dark"] .um_btn_toolbar {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--portal-border);
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .um_btn_toolbar:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 25%,
+    var(--portal-border)
+  );
+}
+
+:root[data-theme="dark"] .um_toolbar_export_btn:hover:not(:disabled) {
+  background: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 12%,
+    transparent
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 35%,
+    var(--portal-border)
+  );
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .um_search_input,
+:root[data-theme="dark"] .sponsor_dash_search_input,
+:root[data-theme="dark"] .deals_export_modal_search_input {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--portal-border);
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .um_search_input::placeholder,
+:root[data-theme="dark"] .sponsor_dash_search_input::placeholder,
+:root[data-theme="dark"] .deals_export_modal_search_input::placeholder {
+  color: var(--portal-text-muted);
+}
+
+:root[data-theme="dark"] .um_search_icon,
+:root[data-theme="dark"] .sponsor_dash_search_icon {
+  color: var(--portal-text-muted);
+}
+
+/* —— Form controls —— */
+:root[data-theme="dark"] .app_shell input:hover:not(:disabled),
+:root[data-theme="dark"] .app_shell textarea:hover:not(:disabled),
+:root[data-theme="dark"] .app_shell select:hover:not(:disabled),
+:root[data-theme="dark"] select:hover:not(:disabled) {
+  border-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 22%,
+    var(--portal-border)
+  );
+}
+
+:root[data-theme="dark"] select option {
+  color: var(--portal-text);
+  background: var(--portal-page-bg);
+}
+
+:root[data-theme="dark"] select option:first-child,
+:root[data-theme="dark"] .select_input--placeholder {
+  color: var(--portal-text-muted);
+}
+
+:root[data-theme="dark"] .select_input:not(.select_input--placeholder) {
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] body select {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: var(--portal-border);
+  color: var(--portal-text);
+}
+
+/* —— Tables + links —— */
+:root[data-theme="dark"] .deals_table_name_link {
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .deals_table_name_link:hover {
+  color: var(--portal-gold-accent, #d4af37);
+}
+
+:root[data-theme="dark"] .um_table_wrap.data_table_shell {
+  background: var(--portal-surface, rgba(255, 255, 255, 0.04));
+  border-color: var(--portal-table-border);
+}
+
+/* Table scroll thumbs inherit portal-scrollbars.css + theme tokens. */
+
+:root[data-theme="dark"] .app_shell .um_table_pagination {
+  background: var(--portal-surface, rgba(255, 255, 255, 0.04));
+  border-top-color: var(--portal-table-border);
+}
+
+:root[data-theme="dark"] .um_status_muted {
+  color: var(--portal-text-muted);
+}
+
+:root[data-theme="dark"] .um_membership_company {
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .um_membership_sep {
+  color: var(--portal-text-muted);
+}
+
+:root[data-theme="dark"] .um_membership_role_tag,
+:root[data-theme="dark"] .um_role_badge {
+  background: rgba(255, 255, 255, 0.08);
+  color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 55%,
+    var(--portal-text)
+  );
+}
+
+:root[data-theme="dark"] .um_role_badge_icon {
+  color: inherit;
+}
+
+/* —— Surfaces —— */
+:root[data-theme="dark"] .deals_list_card_surface,
+:root[data-theme="dark"] .deals_list_page .deals_list_card_surface {
+  background: var(--portal-panel-bg);
+  border-color: var(--portal-border);
+}
+
+:root[data-theme="dark"] .um_title,
+:root[data-theme="dark"] .um_title_with_icon {
+  color: var(--font-color-title);
+}
+
+:root[data-theme="dark"] .tool_style_card:not(.tool_style_card--metric) {
+  border-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 28%,
+    var(--portal-border)
+  );
+}
+
+:root[data-theme="dark"] .tool_style_card .tool_style_card_label,
+:root[data-theme="dark"] .tool_style_card .tool_style_card_subtitle {
+  color: var(--portal-text-muted);
+}
+
+:root[data-theme="dark"] .section_placeholder {
+  background: var(--portal-panel-bg);
+  border-color: var(--portal-border);
+  color: var(--portal-text);
+}
+
+/* Empty / dashed states */
+:root[data-theme="dark"] .sponsor_dash_empty,
+:root[data-theme="dark"] .sponsor_dash_deals_state,
+:root[data-theme="dark"] .data_table_empty {
+  background: var(--portal-table-empty-bg);
+  border-color: var(--portal-table-empty-border);
+  color: var(--portal-table-empty-text);
+}
+
+/* —— Quill rich text (snow theme) —— */
+:root[data-theme="dark"] .ql-toolbar.ql-snow,
+:root[data-theme="dark"] .ql-snow .ql-toolbar {
+  border-color: var(--portal-border);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+:root[data-theme="dark"] .ql-container.ql-snow {
+  border-color: var(--portal-border);
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .ql-snow .ql-editor {
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .ql-snow .ql-editor.ql-blank::before {
+  color: var(--portal-text-muted);
+}
+
+:root[data-theme="dark"] .ql-snow .ql-stroke {
+  stroke: rgba(255, 255, 255, 0.78);
+}
+
+:root[data-theme="dark"] .ql-snow .ql-stroke-miter {
+  stroke: rgba(255, 255, 255, 0.78);
+}
+
+:root[data-theme="dark"] .ql-snow .ql-fill,
+:root[data-theme="dark"] .ql-snow .ql-stroke.ql-fill {
+  fill: rgba(255, 255, 255, 0.78);
+}
+
+:root[data-theme="dark"] .ql-snow .ql-picker,
+:root[data-theme="dark"] .ql-snow .ql-picker-label {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+:root[data-theme="dark"] .ql-snow.ql-toolbar button:hover,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button:hover,
+:root[data-theme="dark"] .ql-snow.ql-toolbar button:focus,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button:focus,
+:root[data-theme="dark"] .ql-snow.ql-toolbar button.ql-active,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button.ql-active {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+:root[data-theme="dark"] .ql-snow.ql-toolbar button:hover,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button:hover,
+:root[data-theme="dark"] .ql-snow.ql-toolbar button:focus,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button:focus,
+:root[data-theme="dark"] .ql-snow.ql-toolbar button.ql-active,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button.ql-active,
+:root[data-theme="dark"] .ql-snow.ql-toolbar .ql-picker-label:hover,
+:root[data-theme="dark"] .ql-snow .ql-toolbar .ql-picker-label:hover,
+:root[data-theme="dark"] .ql-snow.ql-toolbar .ql-picker-label.ql-active,
+:root[data-theme="dark"] .ql-snow .ql-toolbar .ql-picker-label.ql-active,
+:root[data-theme="dark"] .ql-snow.ql-toolbar .ql-picker-item:hover,
+:root[data-theme="dark"] .ql-snow .ql-toolbar .ql-picker-item:hover,
+:root[data-theme="dark"] .ql-snow.ql-toolbar .ql-picker-item.ql-selected,
+:root[data-theme="dark"] .ql-snow .ql-toolbar .ql-picker-item.ql-selected {
+  color: var(--portal-gold-accent, #d4af37);
+}
+
+:root[data-theme="dark"] .ql-snow.ql-toolbar button:hover .ql-stroke,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button:hover .ql-stroke,
+:root[data-theme="dark"] .ql-snow.ql-toolbar button:focus .ql-stroke,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button:focus .ql-stroke,
+:root[data-theme="dark"] .ql-snow.ql-toolbar button.ql-active .ql-stroke,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button.ql-active .ql-stroke,
+:root[data-theme="dark"] .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke,
+:root[data-theme="dark"] .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke,
+:root[data-theme="dark"] .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+:root[data-theme="dark"] .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+:root[data-theme="dark"] .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke,
+:root[data-theme="dark"] .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke,
+:root[data-theme="dark"] .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+:root[data-theme="dark"] .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke,
+:root[data-theme="dark"] .ql-snow.ql-toolbar button:hover .ql-stroke-miter,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button:hover .ql-stroke-miter,
+:root[data-theme="dark"] .ql-snow.ql-toolbar button:focus .ql-stroke-miter,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button:focus .ql-stroke-miter,
+:root[data-theme="dark"] .ql-snow.ql-toolbar button.ql-active .ql-stroke-miter,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button.ql-active .ql-stroke-miter {
+  stroke: var(--portal-gold-accent, #d4af37);
+}
+
+:root[data-theme="dark"] .ql-snow.ql-toolbar button:hover .ql-fill,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button:hover .ql-fill,
+:root[data-theme="dark"] .ql-snow.ql-toolbar button:focus .ql-fill,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button:focus .ql-fill,
+:root[data-theme="dark"] .ql-snow.ql-toolbar button.ql-active .ql-fill,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button.ql-active .ql-fill,
+:root[data-theme="dark"] .ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill,
+:root[data-theme="dark"] .ql-snow .ql-toolbar .ql-picker-label:hover .ql-fill,
+:root[data-theme="dark"] .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill,
+:root[data-theme="dark"] .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill,
+:root[data-theme="dark"] .ql-snow.ql-toolbar .ql-picker-item:hover .ql-fill,
+:root[data-theme="dark"] .ql-snow .ql-toolbar .ql-picker-item:hover .ql-fill,
+:root[data-theme="dark"] .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill,
+:root[data-theme="dark"] .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill,
+:root[data-theme="dark"] .ql-snow.ql-toolbar button:hover .ql-stroke.ql-fill,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button:hover .ql-stroke.ql-fill,
+:root[data-theme="dark"] .ql-snow.ql-toolbar button:focus .ql-stroke.ql-fill,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button:focus .ql-stroke.ql-fill,
+:root[data-theme="dark"] .ql-snow.ql-toolbar button.ql-active .ql-stroke.ql-fill,
+:root[data-theme="dark"] .ql-snow .ql-toolbar button.ql-active .ql-stroke.ql-fill {
+  fill: var(--portal-gold-accent, #d4af37);
+}
+
+:root[data-theme="dark"] .ql-snow .ql-picker-options {
+  background-color: color-mix(
+    in srgb,
+    var(--portal-page-bg, #0a0f1a) 92%,
+    rgba(255, 255, 255, 0.1)
+  );
+  border-color: var(--portal-border);
+  box-shadow: var(--portal-dropdown-shell-shadow);
+}
+
+:root[data-theme="dark"] .ql-snow .ql-picker-options .ql-picker-item {
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label,
+:root[data-theme="dark"] .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
+  border-color: var(--portal-border);
+}
+
+:root[data-theme="dark"] .ql-snow .ql-tooltip {
+  background-color: color-mix(
+    in srgb,
+    var(--portal-page-bg, #0a0f1a) 92%,
+    rgba(255, 255, 255, 0.1)
+  );
+  border-color: var(--portal-border);
+  color: var(--portal-text);
+  box-shadow: var(--portal-dropdown-shell-shadow);
+}
+
+:root[data-theme="dark"] .ql-snow .ql-tooltip input[type="text"] {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--portal-border);
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .deal_offering_quill,
+:root[data-theme="dark"] .email_preview_quill_host {
+  border-color: var(--portal-border);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+:root[data-theme="dark"] .deal_offering_quill .ql-toolbar.ql-snow {
+  background: rgba(255, 255, 255, 0.08);
+  border-bottom-color: var(--portal-border);
+}

@@ -1,0 +1,31 @@
+{
+  "deal_name": "Wildflower Assisted Living",
+  "deal_id": "",
+  "mapped_from": "Class_Mapping_FILLED.xlsx",
+  "note": "PUT into class-setup meta.promote (resolve share keys from class names \u2192 class UUIDs). Fixes Class Setup UI showing synthetic 12% instead of Class Mapping hurdle rates.",
+  "promote": {
+    "hurdles": [
+      {
+        "id": "h1",
+        "rate": "7",
+        "basis": "Cash-on-cash",
+        "measuredOn": "LP classes"
+      }
+    ],
+    "shares_by_class_name": {
+      "Class A1 - LP (Cash Engine)": [
+        "100",
+        "50"
+      ],
+      "Class A2 - LP (Growth Engine)": [
+        "100",
+        "50"
+      ],
+      "General partners": [
+        "0",
+        "50"
+      ]
+    }
+  },
+  "ui_maps_to": "add_deal_form.class_setup_json.promote"
+}

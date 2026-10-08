@@ -1,0 +1,247 @@
+.card_radio_group:not(.card_radio_group_binary) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.65em;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Yes/No and other two-option groups — side by side, equal columns */
+.card_radio_group.card_radio_group_binary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--portal-binary-radio-gap, 0.65rem);
+  align-items: stretch;
+  width: 100%;
+  max-width: min(100%, var(--portal-binary-radio-max-width, 28rem));
+}
+
+.card_radio_group_binary .card_radio_card {
+  flex: none;
+  min-width: 0;
+  max-width: none;
+  width: 100%;
+  min-height: var(--portal-binary-radio-min-height, 2.125rem);
+  padding: var(--portal-binary-radio-padding-y, 0.3rem)
+    var(--portal-binary-radio-padding-x, 0.65rem);
+  line-height: 1.2;
+}
+
+/* Icon + label on the left, radio circle on the right */
+.card_radio_group_binary .card_radio_card_icon {
+  order: 1;
+}
+
+.card_radio_group_binary .card_radio_card_label {
+  order: 2;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.card_radio_group_binary .card_radio_card_radio {
+  order: 3;
+  margin-left: auto;
+  align-self: center;
+}
+
+/* Modals use `.um_field label { display: block }` — keep card row layout */
+.um_field label.card_radio_card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-bottom: 0;
+  width: 100%;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: var(--portal-text, #334155);
+}
+
+.card_radio_card {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--portal-binary-radio-inner-gap, 0.5rem);
+  flex: 1 1 min(9.5rem, calc(50% - 0.35em));
+  min-width: min(100%, 9.5rem);
+  max-width: min(100%, 16rem);
+  min-height: var(--portal-binary-radio-min-height, 2.75rem);
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: var(--portal-surface, #fff);
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 0.875em;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--portal-text, #334155);
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.card_radio_card:hover:not(.card_radio_card_selected):not(
+    :has(.card_radio_input:disabled)
+  ) {
+  border-color: color-mix(
+    in srgb,
+    var(--portal-text, #0f172a) 18%,
+    var(--portal-border, #e2e8f0)
+  );
+  background: color-mix(
+    in srgb,
+    var(--portal-text, #0f172a) 2%,
+    var(--portal-surface, #fff)
+  );
+}
+
+.card_radio_card_selected {
+  border-color: var(--portal-text, #0f172a);
+  color: var(--portal-text, #0f172a);
+  background: color-mix(
+    in srgb,
+    var(--portal-text, #0f172a) 3%,
+    var(--portal-surface, #fff)
+  );
+  box-shadow: 0 0 0 1px var(--portal-text, #0f172a);
+}
+
+.card_radio_card_radio {
+  flex: 0 0 auto;
+  align-self: center;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid var(--portal-border, #cbd5e1);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s ease;
+}
+
+.card_radio_card_selected .card_radio_card_radio {
+  border-color: var(--portal-text, #0f172a);
+}
+
+.card_radio_card_selected .card_radio_card_radio::after {
+  content: "";
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--portal-text, #0f172a);
+}
+
+.card_radio_card_icon {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.card_radio_card_icon svg {
+  display: block;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.card_radio_card_selected .card_radio_card_icon {
+  color: var(--portal-text, #0f172a);
+}
+
+.card_radio_card_label {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 1em;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card_radio_input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+.card_radio_card:has(.card_radio_input:disabled) {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.card_radio_card:has(.card_radio_input:disabled):hover {
+  cursor: not-allowed;
+  border-color: var(--portal-border, #e2e8f0);
+  background: var(--portal-surface, #fff);
+}
+
+.card_radio_card:focus-within {
+  outline: 2px solid color-mix(in srgb, var(--portal-text, #0f172a) 35%, transparent);
+  outline-offset: 2px;
+}
+
+.card_radio_card_selected:focus-within {
+  outline-color: var(--portal-text, #0f172a);
+}
+
+:root[data-theme="dark"] .card_radio_card {
+  background: var(--portal-surface, #0a0f1a);
+  border-color: var(--portal-border, rgba(255, 255, 255, 0.14));
+  color: rgba(255, 255, 255, 0.9);
+}
+
+:root[data-theme="dark"] .card_radio_card:hover:not(.card_radio_card_selected):not(
+    :has(.card_radio_input:disabled)
+  ) {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+:root[data-theme="dark"] .card_radio_card_selected {
+  border-color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.82);
+}
+
+:root[data-theme="dark"] .card_radio_card_icon {
+  color: var(--portal-text-muted, #94a3b8);
+}
+
+:root[data-theme="dark"] .card_radio_card_selected .card_radio_card_icon {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+:root[data-theme="dark"] .card_radio_card_radio {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+:root[data-theme="dark"] .card_radio_card_selected .card_radio_card_radio {
+  border-color: rgba(255, 255, 255, 0.82);
+}
+
+:root[data-theme="dark"] .card_radio_card_selected .card_radio_card_radio::after {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+@media (max-width: 520px) {
+  .card_radio_group.card_radio_group_binary {
+    grid-template-columns: 1fr;
+  }
+}

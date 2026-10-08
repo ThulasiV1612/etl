@@ -1,0 +1,383 @@
+/* Auth forms — landing luxury card (auth_layout.css) + portal tokens */
+
+.emailData,
+.passwordData {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 1rem;
+}
+
+.passwordData {
+  position: relative;
+}
+
+.loginForm .input_wrapper {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.authPage .loginForm .input_wrapper label {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  margin: 0 0 0.4em;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--auth-landing-ink-muted, rgba(244, 241, 235, 0.55));
+}
+
+.loginForm .input_wrapper label.input_wrapper__label_row {
+  flex-wrap: nowrap;
+  gap: 0.35em;
+}
+
+.loginForm .input_wrapper label span {
+  margin: 0;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.loginForm .input_wrapper label .input_wrapper__label_leading {
+  gap: 0.5em;
+}
+
+.loginForm .input_wrapper label .input_wrapper__label_leading > span.input_wrapper__label_icon {
+  margin: 0;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.loginForm .input_wrapper label span svg,
+.loginForm .input_wrapper label .input_wrapper__label_icon svg {
+  color: var(--portal-text-muted);
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+}
+
+.loginForm .input_wrapper label .input_wrapper__required_icon {
+  color: var(--portal-danger, #ba1a1a);
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.authPage .loginForm .input_field {
+  width: 100%;
+  height: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0 0.85em;
+  box-sizing: border-box;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  color: var(--auth-landing-ink, #f4f1eb);
+  background: rgba(244, 241, 235, 0.05);
+  border: 1px solid var(--auth-landing-blue-border, rgba(30, 80, 160, 0.25));
+  border-radius: var(--ui-button-border-radius, 4px);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.loginForm .input_field::placeholder {
+  color: color-mix(in srgb, var(--portal-outline, #76777d) 55%, transparent);
+}
+
+.authPage .loginForm .input_field:focus {
+  outline: none;
+  border-color: var(--auth-landing-gold-border, rgba(201, 151, 58, 0.3));
+  background: rgba(244, 241, 235, 0.08);
+  box-shadow: 0 0 0 2px var(--auth-landing-gold-dim, rgba(201, 151, 58, 0.18));
+}
+
+.loginForm .input_field:read-only,
+.loginForm .input_field.readOnlyField,
+.loginForm .input_field.resetMail {
+  background: color-mix(in srgb, var(--portal-surface-muted) 65%, var(--portal-surface-container-low));
+  color: var(--portal-text-muted);
+  cursor: default;
+}
+
+.loginForm .input_wrapper__field {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.loginForm .input_wrapper__field .input_field {
+  padding-right: 2.75em;
+}
+
+.loginForm .passwordVisible {
+  top: 50%;
+  right: 0.65rem;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: var(--ui-button-border-radius, 4px);
+  color: var(--portal-text-muted);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.loginForm .passwordVisible:hover {
+  color: var(--portal-gold-accent, #d4af37);
+  background: color-mix(in srgb, var(--portal-gold-accent, #d4af37) 8%, transparent);
+}
+
+.authPage .pwdCaption {
+  margin: -0.25rem 0 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  text-align: center;
+  color: var(--auth-landing-ink-muted, rgba(244, 241, 235, 0.55));
+}
+
+.auth_row_forgot {
+  display: flex;
+  justify-content: flex-end;
+  margin: -0.35rem 0 0.85rem;
+}
+
+.authPage .auth_link {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--auth-landing-gold-light, #e8bc6a);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.authPage .auth_link:hover {
+  color: var(--auth-landing-gold-pale, #f5dfa0);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.authMessage {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5em;
+  margin: 0 0 1rem;
+  padding: 0.65em 0.85em;
+  border-radius: var(--ui-button-border-radius, 4px);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.authPage .authMessage--success {
+  background: color-mix(in srgb, #0f766e 18%, var(--auth-landing-blue-surface, #0f1f3d));
+  border: 1px solid color-mix(in srgb, #0f766e 35%, transparent);
+  color: var(--auth-landing-ink, #f4f1eb);
+}
+
+.authPage .authMessage--error {
+  background: color-mix(in srgb, var(--portal-danger, #ba1a1a) 14%, var(--auth-landing-blue-surface, #0f1f3d));
+  border: 1px solid color-mix(in srgb, var(--portal-danger, #ba1a1a) 35%, transparent);
+  color: var(--auth-landing-ink, #f4f1eb);
+}
+
+.authMessage__icon {
+  flex-shrink: 0;
+  margin-top: 0.1em;
+}
+
+.authMessage__text,
+.authMessage p {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.authMessage--success .authMessage__icon,
+.authMessage--success .authMessage__text {
+  color: #5eead4;
+}
+
+.authMessage--error .authMessage__icon,
+.authMessage--error .authMessage__text,
+.orgError {
+  color: #fca5a5;
+}
+
+/* Legacy class names — keep readable on auth card */
+.authMessage--success .loginSuccess {
+  color: #5eead4;
+}
+
+.authMessage--error .loginSuccess,
+.authMessage--error .orgError {
+  color: #fca5a5;
+}
+
+.loginBtn {
+  margin: 0.25rem 0 0;
+  text-align: center;
+}
+
+a.login-btn {
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.authPage .login-btn {
+  display: inline-flex;
+  width: 100%;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0.7rem 1.25rem;
+  border: 1px solid var(--auth-landing-gold, #c9973a);
+  border-radius: var(--ui-button-border-radius, 4px);
+  background: var(--auth-landing-gold, #c9973a);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--auth-landing-blue-deep, #04080f);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.authPage .login-btn:hover:not(:disabled) {
+  background: var(--auth-landing-gold-light, #e8bc6a);
+  border-color: var(--auth-landing-gold-light, #e8bc6a);
+  box-shadow: 0 12px 32px var(--auth-landing-gold-dim, rgba(201, 151, 58, 0.18));
+}
+
+.login-btn:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.login-btn:disabled,
+.login-btn.disabled_css {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.login-btn span {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.authPage .auth_footer_links {
+  margin: 1.25rem 0 0;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--auth-landing-ink-muted, rgba(244, 241, 235, 0.55));
+}
+
+.authPage .auth_footer_links a,
+.authPage .forgotPassword a,
+.authPage a.forgot-password,
+.authPage .forgot-password,
+.authPage .signinText a,
+.authPage .redirecting_links {
+  color: var(--auth-landing-gold-light, #e8bc6a);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth_footer_links a:hover,
+.forgotPassword a:hover,
+.signinText a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.forgotPassword,
+.signinText {
+  margin: 0;
+  text-align: center;
+  font-size: inherit;
+  color: inherit;
+}
+
+.forgotPassword span,
+.signinText span,
+.forgot-password span {
+  cursor: pointer;
+}
+
+.authPage .auth_help {
+  margin: 1em 0 0 0;
+  /* padding-top: 1.25rem; */
+  border-top: 1px solid var(--auth-landing-blue-border, rgba(30, 80, 160, 0.25));
+}
+
+.authPage .auth_help p {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  text-align: center;
+  color: var(--auth-landing-ink-soft, rgba(244, 241, 235, 0.35));
+}
+
+.auth_help p + p {
+  margin-top: 0.75rem;
+}
+
+.companyContent {
+  margin-top: 0;
+}
+
+.authPage .auth_help.companyContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.contentOne {
+  font-size: inherit;
+  color: inherit;
+  text-align: inherit;
+}
+
+.contentTwo {
+  margin: 0;
+}
+
+@keyframes auth-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.auth_btn_loading {
+  pointer-events: none;
+}
+
+.auth_btn_loading .auth_spinner {
+  animation: auth-spin 0.8s linear infinite;
+}
+
+.authPage .loginForm .input_wrapper label span svg,
+.authPage .loginForm .input_wrapper label .input_wrapper__label_icon svg {
+  color: var(--auth-landing-gold, #c9973a);
+}
+
+.authPage .loginForm .passwordVisible:hover {
+  color: var(--auth-landing-gold-light, #e8bc6a);
+  background: var(--auth-landing-gold-dim, rgba(201, 151, 58, 0.18));
+}
+
+.authPage .loginForm .input_field:read-only,
+.authPage .loginForm .input_field.readOnlyField,
+.authPage .loginForm .input_field.resetMail {
+  background: rgba(244, 241, 235, 0.03);
+  color: var(--auth-landing-ink-muted, rgba(244, 241, 235, 0.55));
+}

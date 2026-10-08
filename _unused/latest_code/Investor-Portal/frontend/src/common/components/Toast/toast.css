@@ -1,0 +1,205 @@
+.toast_viewport {
+  position: fixed;
+  z-index: 20000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65em;
+  width: min(100% - 2.5em, 28em);
+  max-width: min(28em, calc(100vw - 2.5em));
+  pointer-events: none;
+}
+
+.toast_viewport--bottom-right {
+  bottom: 1.25em;
+  right: 1.25em;
+  left: auto;
+  top: auto;
+  align-items: flex-end;
+}
+
+.toast_viewport--top-center {
+  top: 1.25em;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translateX(-50%);
+  align-items: center;
+}
+
+.toast_viewport--top-center .toast_pill {
+  animation: toast_enter_top 0.28s ease-out;
+}
+
+@keyframes toast_enter_top {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.toast_viewport > * {
+  pointer-events: auto;
+}
+
+.toast_pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  width: 100%;
+  padding: 0.85em 0.9em 0.95em;
+  padding-bottom: calc(0.95em + 3px);
+  box-sizing: border-box;
+  border-radius: var(--portal-pill-radius, 4px);
+  border: 1px solid var(--portal-border, #e5e7eb);
+  background: var(--portal-surface, #ffffff);
+  color: var(--portal-text, #00477a);
+  box-shadow:
+    0 10px 28px rgb(15 23 42 / 12%),
+    0 2px 8px rgb(15 23 42 / 6%);
+  overflow: hidden;
+  animation: toast_enter 0.28s ease-out;
+}
+
+.toast_pill--success {
+  border-color: color-mix(in srgb, #22c55e 35%, var(--portal-border, #e5e7eb));
+  background: color-mix(in srgb, #f0fdf4 88%, var(--portal-surface, #fff));
+}
+
+.toast_pill--error {
+  border-color: color-mix(in srgb, #e11d48 35%, var(--portal-border, #e5e7eb));
+  background: color-mix(in srgb, #fff1f2 88%, var(--portal-surface, #fff));
+}
+
+.toast_pill--warning {
+  border-color: color-mix(in srgb, #d97706 38%, var(--portal-border, #e5e7eb));
+  background: color-mix(in srgb, #fffbeb 90%, var(--portal-surface, #fff));
+  box-shadow:
+    0 12px 32px rgb(15 23 42 / 14%),
+    0 2px 8px rgb(15 23 42 / 6%);
+}
+
+@keyframes toast_enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.toast_pill_icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25em;
+  height: 2.25em;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.toast_pill_icon--success {
+  background: #16a34a;
+}
+
+.toast_pill_icon--error {
+  background: #dc2626;
+}
+
+.toast_pill_icon--warning {
+  background: #d97706;
+}
+
+.toast_pill_body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+}
+
+.toast_pill_title {
+  font-size: 0.9375em;
+  font-weight: 700;
+  color: var(--portal-text, #00477a);
+  line-height: 1.25;
+}
+
+.toast_pill_desc {
+  font-size: 0.8125em;
+  font-weight: 500;
+  color: var(--portal-text-secondary, #4f4f4f);
+  line-height: 1.35;
+}
+
+.toast_pill_close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--portal-text-muted, #64748b);
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.toast_pill_close:hover {
+  color: var(--portal-text, #00477a);
+  background: var(--portal-primary-soft, #e6f0ff);
+}
+
+.toast_pill_close:focus-visible {
+  outline: 2px solid var(--portal-primary, #00477a);
+  outline-offset: 2px;
+}
+
+.toast_pill_timer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--portal-primary, #00477a);
+  opacity: 0.45;
+  transform-origin: left center;
+  animation-name: toast_timer_shrink;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.toast_pill--success .toast_pill_timer {
+  background: #16a34a;
+  opacity: 0.55;
+}
+
+.toast_pill--error .toast_pill_timer {
+  background: #dc2626;
+  opacity: 0.55;
+}
+
+.toast_pill--warning .toast_pill_timer {
+  background: #d97706;
+  opacity: 0.55;
+}
+
+@keyframes toast_timer_shrink {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}

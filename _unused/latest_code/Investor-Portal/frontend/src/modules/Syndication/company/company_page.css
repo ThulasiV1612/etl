@@ -1,0 +1,3896 @@
+/* Company directory shares Members (um_*) styles via user_management.css */
+
+.company_page.um_page {
+  /* max-width: 1280px; */
+  margin-top: 20px;
+  /* Space between radio control and its text (CardRadioGroup, offerings visibility, etc.) */
+  --cp-radio-label-gap: 0.55em;
+}
+
+/* Tighter title → tabs; avoid oversized gap from .um_header_row margin collapse */
+.company_page .um_members_header_block .um_header_row {
+  margin-bottom: 0.65em;
+}
+
+.company_page .um_members_tab_content {
+  min-width: 0;
+}
+
+.company_page .um_members_tab_panel[hidden] {
+  display: none !important;
+}
+
+/* Tab counts — match deals list `.deals_tabs_count` / contacts `.contacts_tab_count` */
+.cp_customers_tab_count,
+.cp_company_detail_tab_count {
+  margin-inline-start: 0.15em;
+  font-size: 0.875em;
+  font-weight: inherit;
+  font-variant-numeric: tabular-nums;
+  color: inherit;
+  white-space: nowrap;
+}
+
+/* /customers directory DataTable — Actions column width (scoped to this panel only) */
+.company_page
+  .cp_companies_tab_panel.deal_inv_table_panel
+  .um_table_members.deal_inv_table
+  thead
+  th.um_th_actions,
+.company_page
+  .cp_companies_tab_panel.deal_inv_table_panel
+  .um_table_members.deal_inv_table
+  tbody
+  td.um_td_actions.deal_inv_td_actions {
+  width: 10%;
+  box-sizing: border-box;
+}
+
+/* Customers list: first column is company name (not a row-select checkbox). */
+.company_page
+  .cp_companies_tab_panel.deal_inv_table_panel
+  .um_table.deal_inv_table.data_table_sticky_first {
+  --data-table-sticky-col-0-width: var(--cp-table-name-col-min, 16rem);
+}
+
+.cp_company_list_name_th,
+.cp_company_list_name_td {
+  min-width: var(--cp-table-name-col-min, 16rem);
+}
+
+.company_page
+  .cp_companies_tab_panel.deal_inv_table_panel
+  .um_table.deal_inv_table.data_table_sticky_first
+  th.data_table_col_sticky--0,
+.company_page
+  .cp_companies_tab_panel.deal_inv_table_panel
+  .um_table.deal_inv_table.data_table_sticky_first
+  td.data_table_col_sticky--0 {
+  width: var(--data-table-sticky-col-0-width);
+  min-width: var(--data-table-sticky-col-0-width);
+  max-width: var(--data-table-sticky-col-0-width);
+  box-sizing: border-box;
+}
+
+.company_page
+  .cp_companies_tab_panel.deal_inv_table_panel
+  .um_table.deal_inv_table
+  td.um_td_user
+  .um_user_meta {
+  flex: 1;
+}
+
+.cp_company_avatar {
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: var(--portal-pill-radius, 4px);
+  background: var(--ui-button-background-add);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cp_company_avatar svg {
+  color: #fff;
+}
+
+/* Customers table: company name → members page (class must not contain "_btn" or App.css applies pill radius) */
+a.cp_company_name_link {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 600;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.15em;
+  border-radius: 0;
+  transition:
+    color 0.15s ease,
+    text-decoration-color 0.15s ease;
+}
+
+a.cp_company_name_link:hover {
+  color: black;
+  text-decoration-color: black;
+}
+
+a.cp_company_name_link:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 2px;
+  border-radius: 0;
+}
+
+/* Customer company detail: tab links (NavLink) — base tab UX in portal-tabs.css */
+a.cp_company_detail_tab {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.cp_company_deal_name_link {
+  font-weight: 600;
+  color: black;
+  text-decoration: none;
+}
+
+a.cp_company_deal_name_link:hover {
+  text-decoration: underline;
+}
+
+a.cp_company_deal_name_link:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
+
+/* Company members page (route /customers/:id/members) — panel/table use shared .um_panel + .um_table_wrap */
+
+.cp_company_members_page_header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85em;
+  margin-bottom: 1.15em;
+  min-width: 0;
+}
+
+/* Align with shared `um_btn_secondary` (Members / Contacts toolbars) */
+.cp_company_members_back_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.65em;
+  height: 2.65em;
+  flex-shrink: 0;
+  margin-top: 0.12em;
+  border: 1px solid var(--ui-button-border, var(--sidebar-active-text));
+  border-radius: var(--ui-button-border-radius, 4px);
+  background: var(--ui-button-background-add, var(--sidebar-bg-color));
+  color: var(--ui-button-text, var(--sidebar-active-text));
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.cp_company_members_back_btn:hover {
+  background: var(--ui-button-hover);
+  color: var(--ui-button-text, var(--sidebar-active-text));
+}
+
+.cp_company_members_back_btn:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
+
+/* Customer company → Members / Deals tabs: same DataTable shell as Contacts */
+.cp_company_tab_panel_inner {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.cp_company_tab_toolbar {
+  margin-bottom: var(--portal-table-toolbar-margin-bottom, 25px);
+}
+
+.cp_company_tab_toolbar_hint {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-size: 0.875em;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+.cp_company_tab_toolbar_strong {
+  font-weight: 650;
+  color: #334155;
+}
+
+.cp_company_members_selection_notice {
+  margin: 0 0 0.75em;
+}
+
+.cp_company_members_send_mail_help {
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.cp_company_members_send_mail_modal .contacts_suspend_modal_desc strong {
+  font-weight: 650;
+  color: #334155;
+}
+
+.cp_company_members_send_mail_confirm_modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: min(28rem, calc(100vw - 2rem));
+  max-height: min(90vh, 32rem);
+  overflow: auto;
+  box-shadow: 0 20px 48px rgb(15 23 42 / 22%);
+}
+
+.cp_company_members_send_mail_modal:has(
+    + .cp_company_members_send_mail_confirm_modal
+  ) {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.cp_company_tab_table_wrap {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Customer company → Members: Deals column must stay visible (counts from API). */
+.cp_company_tab_table_wrap .um_table_members .cp_company_members_deals_th,
+.cp_company_tab_table_wrap .um_table_members .cp_company_members_deals_td {
+  min-width: 5em;
+  width: 6.5em;
+  max-width: 7.5em;
+  text-align: center;
+  vertical-align: middle;
+  font-variant-numeric: tabular-nums;
+}
+
+.cp_company_tab_table_wrap .um_table_members .cp_company_members_deals_value {
+  display: inline-block;
+  min-width: 1.25em;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/*
+ * Customers directory + company Members/Deals tables — roomier rhythm than dense
+ * deal_inv defaults. Scroll horizontally when columns need space instead of crushing cells.
+ */
+.company_page {
+  --cp-table-cell-padding-y: 0.75em;
+  --cp-table-cell-padding-x: 1em;
+  --cp-table-header-padding-y: 0.7em;
+  --cp-table-header-padding-x: 1em;
+  --cp-table-font-size: var(--portal-table-font-size, 0.9375rem);
+  --cp-table-name-col-min: 16rem;
+}
+
+.company_page
+  :is(.cp_companies_tab_panel, #cp-company-panel-members, #cp-company-panel-deals)
+  .cp_company_tab_table_wrap
+  > .um_table_wrap.data_table_shell {
+  overflow: hidden;
+  border: 1px solid var(--portal-table-border, var(--portal-border, #e2e8f0));
+  border-radius: var(--portal-card-radius, 4px);
+}
+
+.company_page
+  :is(.cp_companies_tab_panel, #cp-company-panel-members, #cp-company-panel-deals)
+  .cp_company_tab_table_wrap
+  .data_table_scroll_region {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  max-width: 100%;
+}
+
+.company_page
+  :is(.cp_companies_tab_panel, #cp-company-panel-members, #cp-company-panel-deals)
+  .cp_company_tab_table_wrap
+  .um_table.deal_inv_table {
+  width: 100%;
+  min-width: 56rem;
+  table-layout: fixed;
+}
+
+.company_page
+  #cp-company-panel-members
+  .cp_company_tab_table_wrap
+  .um_table.deal_inv_table {
+  min-width: 72rem;
+}
+
+.company_page
+  #cp-company-panel-deals
+  .cp_company_tab_table_wrap
+  .um_table.deal_inv_table {
+  table-layout: auto;
+  width: max-content;
+  min-width: 100%;
+}
+
+.company_page
+  :is(.cp_companies_tab_panel, #cp-company-panel-members, #cp-company-panel-deals)
+  .um_table.deal_inv_table
+  thead
+  th:not(.um_th_actions):not(.um_th_checkbox) {
+  padding: 0;
+}
+
+.company_page
+  :is(.cp_companies_tab_panel, #cp-company-panel-members, #cp-company-panel-deals)
+  .um_table.deal_inv_table
+  .um_sort_header_ctl {
+  padding: var(--cp-table-header-padding-y) var(--cp-table-header-padding-x);
+  gap: 0.4em;
+  font-size: var(--cp-table-font-size);
+}
+
+.company_page
+  :is(.cp_companies_tab_panel, #cp-company-panel-members, #cp-company-panel-deals)
+  .um_table.deal_inv_table
+  tbody
+  td {
+  font-size: var(--cp-table-font-size);
+  line-height: 1.45;
+  padding: var(--cp-table-cell-padding-y) var(--cp-table-cell-padding-x);
+}
+
+.company_page
+  :is(.cp_companies_tab_panel, #cp-company-panel-members, #cp-company-panel-deals)
+  .um_table.deal_inv_table
+  thead
+  th.um_th_checkbox,
+.company_page
+  :is(.cp_companies_tab_panel, #cp-company-panel-members, #cp-company-panel-deals)
+  .um_table.deal_inv_table
+  tbody
+  td.um_td_checkbox {
+  padding: var(--cp-table-cell-padding-y) 0.85em;
+}
+
+.company_page
+  :is(.cp_companies_tab_panel, #cp-company-panel-members, #cp-company-panel-deals)
+  .um_table.deal_inv_table
+  thead
+  th.um_th_actions,
+.company_page
+  :is(.cp_companies_tab_panel, #cp-company-panel-members, #cp-company-panel-deals)
+  .um_table.deal_inv_table
+  tbody
+  td.um_td_actions {
+  padding: var(--cp-table-cell-padding-y) 0.85em;
+}
+
+.company_page
+  :is(.cp_companies_tab_panel, #cp-company-panel-members, #cp-company-panel-deals)
+  .um_table.deal_inv_table
+  .um_user_cell {
+  gap: 0.85em;
+}
+
+.company_page
+  :is(.cp_companies_tab_panel, #cp-company-panel-members, #cp-company-panel-deals)
+  .um_table.deal_inv_table
+  .um_td_user {
+  min-width: var(--cp-table-name-col-min);
+}
+
+.company_page
+  #cp-company-panel-members
+  .um_table.deal_inv_table.data_table_sticky_first {
+  --data-table-sticky-col-1-width: var(--cp-table-name-col-min);
+}
+
+.company_page
+  #cp-company-panel-members
+  .um_table.deal_inv_table.data_table_sticky_first
+  th.data_table_col_sticky--1,
+.company_page
+  #cp-company-panel-members
+  .um_table.deal_inv_table.data_table_sticky_first
+  td.data_table_col_sticky--1 {
+  width: var(--data-table-sticky-col-1-width);
+  min-width: var(--data-table-sticky-col-1-width);
+  max-width: var(--data-table-sticky-col-1-width);
+  box-sizing: border-box;
+}
+
+.company_page
+  :is(.cp_companies_tab_panel, #cp-company-panel-members, #cp-company-panel-deals)
+  .um_table.deal_inv_table
+  .um_user_meta_username,
+.company_page
+  :is(.cp_companies_tab_panel, #cp-company-panel-members, #cp-company-panel-deals)
+  .um_table.deal_inv_table
+  .um_user_meta_email {
+  font-size: 1em;
+  line-height: 1.45;
+}
+
+.cp_company_cell_muted {
+  color: #475569;
+  font-size: inherit;
+}
+
+/* Company detail → Deals tab: first column is deal name (not a row-select checkbox). */
+#cp-company-panel-deals
+  .cp_company_deals_table.um_table.deal_inv_table.data_table_sticky_first {
+  --data-table-sticky-col-0-width: var(--cp-table-name-col-min, 16rem);
+}
+
+#cp-company-panel-deals
+  .cp_company_deals_table.um_table.deal_inv_table.data_table_sticky_first
+  th.data_table_col_sticky--0,
+#cp-company-panel-deals
+  .cp_company_deals_table.um_table.deal_inv_table.data_table_sticky_first
+  td.data_table_col_sticky--0 {
+  width: var(--data-table-sticky-col-0-width);
+  min-width: var(--data-table-sticky-col-0-width);
+  max-width: var(--data-table-sticky-col-0-width);
+  box-sizing: border-box;
+}
+
+.cp_company_deals_table .cp_company_deal_name_th,
+.cp_company_deals_table .cp_company_deal_name_td {
+  min-width: var(--cp-table-name-col-min, 16rem);
+  width: 18rem;
+  vertical-align: middle;
+}
+
+.cp_company_deals_table .cp_company_deal_name_link {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none;
+  font-weight: 600;
+  color: black;
+}
+
+.cp_company_deals_table .cp_company_deal_name_link:hover {
+  text-decoration: underline;
+}
+
+.cp_company_deals_table .cp_company_deal_meta_td {
+  vertical-align: middle;
+  min-width: 7.5rem;
+}
+
+.cp_company_deals_table .cp_company_deal_date_th,
+.cp_company_deals_table .cp_company_deal_date_td {
+  white-space: nowrap;
+  min-width: 6.5rem;
+}
+
+.cp_company_deals_table .cp_company_deal_num_th,
+.cp_company_deals_table .cp_company_deal_num_td {
+  min-width: 6rem;
+  width: 6.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.um_members_tab_content {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.cp_company_members_title_block {
+  min-width: 0;
+  flex: 1;
+}
+
+.cp_company_members_company_title {
+  margin: 0;
+  font-size: clamp(1.25em, 2.5vw, 1.65em);
+  font-weight: 650;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+.cp_company_members_context {
+  margin: 0.3em 0 0;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.cp_view_shell {
+  display: flex;
+  gap: 0;
+  min-height: 280px;
+  align-items: stretch;
+}
+
+.cp_view_shell_single {
+  display: block;
+  min-height: auto;
+}
+
+.cp_view_panel {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Customization actions — black / gray surface, white text */
+.cp_btn_customize {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45em;
+  margin: 0;
+  padding: 0.5em 1.05em;
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: var(--ui-button-text, var(--sidebar-active-text));
+  background: var(--ui-button-background-add, var(--sidebar-bg-color));
+  border: 1px solid var(--ui-button-border, var(--sidebar-active-text));
+  border-radius: var(--ui-button-border-radius, 4px);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.cp_btn_customize:hover {
+  background: var(--ui-button-hover);
+  border-color: var(--ui-button-border, var(--sidebar-active-text));
+  color: var(--ui-button-text, var(--sidebar-active-text));
+}
+
+.cp_btn_customize:focus-visible {
+  outline: 2px solid #a3a3a3;
+  outline-offset: 2px;
+}
+
+.cp_btn_customize:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cp_btn_customize svg {
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+/* Company → Settings tab — aligned with Email / Contact / Offerings and `um_panel` shell */
+.cp_settings_root {
+  max-width: 1100px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0 0 0.35em;
+}
+
+.cp_settings_page_lead {
+  margin: 0 0 1.5em;
+  max-width: 48em;
+  font-size: 0.875em;
+  color: #64748b;
+  line-height: 1.55;
+}
+
+/* Disabled until Edit (or read-only): show non-interactive cursor */
+.cp_settings_root :is(input, select, textarea):disabled {
+  cursor: not-allowed;
+}
+
+.cp_settings_root button:disabled {
+  cursor: not-allowed;
+}
+
+/* Row labels: match `cp_email_row_label` + Members field density */
+.cp_settings_root .cp_settings_field_label .um_view_field_label {
+  font-size: 0.875em;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #334155;
+}
+
+/* Section blocks — same rhythm as `cp_email_section` */
+.cp_settings_section {
+  margin-bottom: 1.75em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cp_settings_section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Titles: match `cp_email_section_title` */
+.cp_settings_h3 {
+  margin: 0 0 0.5em;
+  font-size: 1em;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.cp_settings_h3_with_icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.cp_settings_h3_icon {
+  flex-shrink: 0;
+  color: #64748b;
+}
+
+.cp_settings_field_label.um_view_field_head.cp_settings_field_head {
+  margin-bottom: 0;
+}
+
+.cp_settings_help_after_heading {
+  margin: 0 0 0.85em;
+  max-width: 48em;
+  font-size: 0.875em;
+  color: #64748b;
+  line-height: 1.55;
+}
+
+.cp_settings_row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.65em 1.25em;
+  width: 100%;
+}
+
+.cp_settings_row_spaced {
+  margin-top: 1.25em;
+}
+
+/* Logo / background / favicon: stack label + help above controls */
+.cp_settings_row_media_column {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.85em;
+}
+
+.cp_settings_row_media_column .cp_settings_label_col {
+  flex: none;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+}
+
+.cp_settings_row_media_column .cp_settings_control {
+  flex: none;
+  width: 100%;
+  max-width: none;
+}
+
+/* Label on top, controls (e.g. card radios) below */
+.cp_settings_row_vertical {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.85em;
+}
+
+.cp_settings_row_vertical .cp_settings_label_col {
+  flex: none;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+}
+
+.cp_settings_row_vertical .cp_settings_control {
+  flex: none;
+  width: 100%;
+  max-width: none;
+}
+
+.cp_settings_row_media_column .cp_settings_field_head {
+  align-items: flex-start;
+}
+
+.cp_settings_row_media_column .cp_settings_field_head .um_view_field_icon {
+  margin-top: 0.12em;
+}
+
+/* General settings: label + value/input stay on one horizontal line */
+.cp_settings_row_general {
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+/* Same fixed width for Company name + Company portal link label columns */
+.cp_settings_row_general .cp_settings_label_col_general {
+  flex: 0 0 220px;
+  width: 220px;
+  min-width: 220px;
+  max-width: 220px;
+  box-sizing: border-box;
+}
+
+.cp_settings_row_general .cp_settings_field_head {
+  align-items: center;
+}
+
+.cp_settings_row_general .cp_settings_control_general {
+  flex: 1 1 auto;
+  min-width: 0;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cp_settings_row_general .cp_settings_value_row {
+  /* flex: 1; */
+  min-width: 0;
+}
+
+.cp_settings_row_general .cp_settings_portal_mono {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.cp_settings_label_col {
+  flex: 0 0 min(240px, 32%);
+  min-width: 160px;
+  max-width: 280px;
+}
+
+/* Field labels use modal classes: .um_view_field_head + .um_view_field_label */
+.cp_settings_field_head.um_view_field_head {
+  margin-bottom: 0;
+}
+
+.cp_settings_row:not(.cp_settings_row_general) .cp_settings_label_col .cp_settings_field_head {
+  align-items: flex-start;
+}
+
+.cp_settings_row:not(.cp_settings_row_general) .cp_settings_field_head .um_view_field_icon {
+  margin-top: 0.12em;
+  flex-shrink: 0;
+}
+
+.cp_settings_control {
+  flex: 1 1 220px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5em;
+}
+
+.cp_settings_control .cp_settings_value_row {
+  width: 100%;
+}
+
+.cp_settings_value_text {
+  display: block;
+  font-size: 0.95em;
+  font-weight: 500;
+  color: #0f172a;
+  margin: 0;
+}
+
+.cp_settings_value_mono {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #0f172a;
+  font-family: ui-monospace, monospace;
+}
+
+.cp_settings_value_row {
+  display: flex;
+  /* flex-wrap: wrap; */
+  align-items: center;
+  gap: 0.5em 0.75em;
+}
+
+/* Stack radios / customize vertically; keep Edit actions on the same row as controls */
+.cp_settings_edit_field_block {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5em;
+}
+
+.cp_settings_media_edit_row {
+  align-items: flex-start;
+}
+
+/* Logo / background: preview card, then toolbar — Edit (or Save/Cancel), then Upload, then Delete */
+.cp_settings_media_block {
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  gap: 0.75em;
+}
+
+.cp_settings_media_block .cp_media_card {
+  width: 100%;
+  max-width: 440px;
+}
+
+.cp_settings_media_toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5em 0.75em;
+  width: 100%;
+}
+
+.cp_settings_edit_btn {
+  margin-top: 0;
+}
+
+/* Company name: readonly pill matches editable styling (value looks the same; field is disabled until Edit). */
+.cp_settings_name_edit_row .cp_settings_pill_input_field:disabled {
+  cursor: not-allowed;
+  color: #0f172a;
+  opacity: 1;
+  -webkit-text-fill-color: #0f172a;
+}
+
+.cp_settings_help_in_row {
+  margin: 0 0 0.35em;
+  max-width: 48em;
+  font-size: 0.875em;
+  color: #64748b;
+  line-height: 1.55;
+}
+
+.cp_settings_help_under_label {
+  margin-top: 0.5em;
+}
+
+.cp_settings_text_input {
+  flex: 1 1 200px;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0.55em 1em;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--ui-button-border-radius, 4px);
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.95em;
+}
+
+/* Company name: box styling on the input only */
+.cp_settings_name_edit_row .cp_settings_pill_input_field {
+  flex: 0 1 auto;
+  width: 16em;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  display: block;
+  min-height: 2.5em;
+  padding: 0.55em 1em;
+  margin: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--ui-button-border-radius, 4px);
+  background: #fff;
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.95em;
+  font-weight: 500;
+  color: #0f172a;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+}
+
+.cp_settings_value_pill {
+  display: flex;
+  align-items: center;
+  padding: 0 1em;
+  min-height: 2.5em;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--ui-button-border-radius, 4px);
+  background: #fff;
+  box-sizing: border-box;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.cp_settings_value_pill {
+  flex: 0 1 auto;
+  min-width: 0;
+  width: fit-content;
+  max-width: 100%;
+  font-size: 0.95em;
+  font-weight: 500;
+  color: #0f172a;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.cp_settings_name_edit_row .cp_settings_pill_input_field:focus-visible {
+  border-color: #94a3b8;
+  box-shadow: 0 0 0 2px rgba(148, 163, 184, 0.25);
+}
+
+.cp_settings_pill_input_field::placeholder {
+  color: #94a3b8;
+}
+
+/* Box-shaped controls (match standard field inputs) */
+.cp_settings_input_pill {
+  border-radius: var(--ui-button-border-radius, 4px);
+  min-height: 2.5em;
+  box-sizing: border-box;
+}
+
+select.cp_settings_input_pill.um_field_select {
+  padding-left: 0.85em;
+  padding-right: 2em;
+}
+
+.cp_settings_input_pill_area {
+  border-radius: var(--ui-button-border-radius, 4px);
+}
+
+.cp_settings_readonly_pill.um_view_field_box {
+  flex: 0 1 auto;
+  min-width: 0;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.cp_settings_portal_mono {
+  font-family: ui-monospace, monospace;
+  font-size: 0.875em;
+  font-weight: 500;
+}
+
+.cp_settings_select {
+  max-width: 100%;
+  width: min(400px, 100%);
+}
+
+/* Multi-select as single-line dropdown + checkbox panel */
+.cp_distribution_select_root {
+  position: relative;
+  width: min(100%, 520px);
+  max-width: 100%;
+}
+
+.cp_distribution_select_trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+  width: 100%;
+  min-height: 2.8571429em;
+  margin: 0;
+  padding: 0.5em 0.9em 0.5em 1.1em;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: #0f172a;
+  text-align: left;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--ui-button-border-radius, 4px);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.cp_distribution_select_trigger:hover {
+  border-color: #cbd5e1;
+}
+
+.cp_distribution_select_value {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.cp_distribution_select_chevron {
+  flex-shrink: 0;
+  color: #64748b;
+  transition: transform 0.2s ease;
+}
+
+.cp_distribution_select_chevron_open {
+  transform: rotate(180deg);
+}
+
+.cp_distribution_select_panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 6px);
+  z-index: 40;
+  padding: 0.35em 0;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--portal-card-radius, 4px);
+  box-shadow:
+    0 10px 15px -3px rgb(15 23 42 / 0.08),
+    0 4px 6px -4px rgb(15 23 42 / 0.06);
+  max-height: min(320px, 70vh);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.cp_distribution_select_divider {
+  height: 1px;
+  margin: 0.25em 0.65em;
+  background: #e2e8f0;
+}
+
+.cp_distribution_select_row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65em;
+  margin: 0;
+  padding: 0.5em 0.85em;
+  cursor: pointer;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: #334155;
+  line-height: 1.35;
+  transition: background-color 0.12s ease;
+}
+
+.cp_distribution_select_row:hover {
+  background: #f8fafc;
+}
+
+.cp_distribution_select_row_all {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.cp_distribution_select_checkbox {
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  margin: 0.15em 0 0;
+  accent-color: black;
+  cursor: pointer;
+}
+
+.cp_distribution_select_row_label {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.cp_settings_help {
+  margin: 0 0 0.85em;
+  max-width: 640px;
+  font-size: 0.875em;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.cp_tag_multiselect {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45em;
+  align-items: center;
+  padding: 0.55em 0.65em;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--ui-button-border-radius, 4px);
+  min-height: 2.85em;
+  background: #fafafa;
+  width: 100%;
+  max-width: 640px;
+  box-sizing: border-box;
+}
+
+.cp_tag_pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.3em 0.55em;
+  border-radius: var(--ui-button-border-radius, 4px);
+  background: #e2e8f0;
+  font-size: 0.78em;
+  font-weight: 500;
+  color: #334155;
+  line-height: 1.25;
+}
+
+.cp_tag_remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: #64748b;
+  line-height: 0;
+}
+
+.cp_tag_remove:hover {
+  color: #0f172a;
+}
+
+.cp_settings_hidden_file_input {
+  display: none;
+}
+
+.cp_media_card {
+  position: relative;
+  max-width: 440px;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--portal-card-radius, 4px);
+  padding: 1.1em 1.15em;
+  background: #fff;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 4%);
+}
+
+@keyframes cp_settings_branding_spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cp_settings_branding_preview_spinner {
+  color: #64748b;
+  flex-shrink: 0;
+  animation: cp_settings_branding_spin 0.85s linear infinite;
+}
+
+.cp_settings_branding_preview_loading {
+  display: flex;
+  min-height: 140px;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55em;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.cp_settings_media_selected_file {
+  margin: 0;
+  max-width: 100%;
+  font-size: 0.8rem;
+  color: #64748b;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cp_settings_icon_block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35em;
+  flex-shrink: 0;
+}
+
+.cp_media_preview {
+  position: relative;
+  min-height: 140px;
+  border-radius: var(--portal-card-radius, 4px);
+  margin-bottom: 0.85em;
+  overflow: hidden;
+}
+
+.cp_media_preview_logo.cp_media_preview_has_image {
+  display: block;
+  position: relative;
+  min-height: 140px;
+}
+
+.cp_media_preview_bg.cp_media_preview_has_image {
+  position: relative;
+  min-height: 180px;
+  background: #0f172a;
+}
+
+.cp_media_preview_img_bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--portal-card-radius, 4px);
+}
+
+.cp_media_preview_img_logo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.75em;
+  box-sizing: border-box;
+}
+
+.cp_settings_logo_icon_row {
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.75em 1em;
+}
+
+.cp_settings_logo_icon_row .cp_settings_media_toolbar--icon {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+.cp_media_icon_preview_wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--portal-card-radius, 4px);
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 4%);
+}
+
+.cp_media_icon_preview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cp_media_icon_placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+}
+
+.cp_media_preview_logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  background: linear-gradient(160deg, #f8fafc 0%, #e2e8f0 100%);
+  color: #475569;
+}
+
+.cp_media_preview_label {
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #334155;
+  text-align: center;
+  padding: 0 0.5em;
+}
+
+.cp_media_preview_bg {
+  background: linear-gradient(
+      135deg,
+      rgba(15, 118, 110, 0.15) 0%,
+      rgba(100, 116, 139, 0.2) 50%,
+      rgba(30, 41, 59, 0.25) 100%
+    ),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%2394a3b8' fill-opacity='.2'%3E%3Cpath d='M0 0h40v40H0zm40 40h40v40H40z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: cover, 24px 24px;
+}
+
+.cp_media_actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.cp_media_actions .um_btn_secondary,
+.cp_settings_value_row .um_btn_secondary,
+.cp_settings_value_row .um_btn_primary,
+.cp_settings_control > .um_btn_secondary,
+.cp_settings_control > .um_btn_primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+/* Settings / media actions — shared um_btn chrome */
+.cp_media_actions .um_btn_secondary,
+.cp_settings_value_row .um_btn_secondary,
+.cp_settings_value_row .um_btn_primary,
+.cp_settings_control > .um_btn_secondary,
+.cp_settings_control > .um_btn_primary {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  border-radius: 6px;
+}
+
+.cp_media_actions .um_btn_secondary:focus-visible,
+.cp_settings_value_row .um_btn_secondary:focus-visible,
+.cp_settings_control > .um_btn_secondary:focus-visible {
+  outline: 2px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .cp_settings_row:not(.cp_settings_row_general) {
+    flex-direction: column;
+  }
+
+  .cp_settings_row:not(.cp_settings_row_general) .cp_settings_label_col {
+    flex: none;
+    max-width: none;
+    width: 100%;
+  }
+
+
+  .cp_settings_row:not(.cp_settings_row_general) .cp_settings_control {
+    width: 100%;
+  }
+
+  /* Same label width as desktop (scaled) for company name + portal link */
+  .cp_settings_row_general .cp_settings_label_col_general {
+    flex: 0 0 200px;
+    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
+  }
+
+  .cp_settings_row_general .cp_settings_control_general {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
+.cp_companies_tab_panel .um_toolbar {
+  margin-top: 0;
+}
+
+/* —— Company → Email settings tab —— */
+.cp_email_main_fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.cp_sr_only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.cp_email_layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) min(320px, 100%);
+  gap: 1.75em 2em;
+  align-items: start;
+  max-width: 1100px;
+}
+
+/* When setup checklist aside is hidden */
+.cp_email_layout.cp_email_layout_single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.cp_email_main {
+  min-width: 0;
+}
+
+.cp_email_section {
+  margin-bottom: 1.75em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cp_email_section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.cp_email_section_title {
+  margin: 0 0 0.5em;
+  font-size: 1em;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.cp_email_section_title.form_heading_with_info .form_heading_with_info_row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cp_email_section_desc {
+  margin: 0 0 0.85em;
+  max-width: 42em;
+  font-size: 0.875em;
+  color: #64748b;
+  line-height: 1.55;
+}
+
+.cp_email_btn_outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  margin: 0;
+  padding: 0.5em 1em;
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: #0f172a;
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.cp_email_btn_outline:hover:not(:disabled) {
+  color: #334155;
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.cp_email_btn_outline:focus-visible {
+  outline: 2px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+.cp_email_btn_sm {
+  padding: 0.4em 0.75em;
+  font-size: 0.8125em;
+}
+
+.cp_email_row {
+  display: grid;
+  grid-template-columns: minmax(0, 220px) 1fr;
+  gap: 0.75em 1.5em;
+  align-items: start;
+  padding: 1em 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cp_email_row:last-child {
+  border-bottom: none;
+}
+
+.cp_email_row_editor {
+  padding-top: 0.5em;
+}
+
+.cp_email_row_label {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: #334155;
+}
+
+.cp_email_help_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25em;
+  height: 1.25em;
+  padding: 0;
+  border: none;
+  border-radius: var(--ui-button-border-radius, 4px);
+  background: #e2e8f0;
+  color: #64748b;
+  cursor: help;
+  flex-shrink: 0;
+}
+
+.cp_email_help_btn:hover {
+  background: #cbd5e1;
+  color: #475569;
+}
+
+.cp_email_row_actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  align-items: center;
+}
+
+.cp_email_row_value {
+  min-width: 0;
+}
+
+.cp_email_muted_line {
+  margin: 0;
+  font-size: 0.875em;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.cp_email_link_btn {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-style: normal;
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--main-auth-button-color, #155abf);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.cp_email_address_block {
+  border-top: 1px solid #e5e7eb;
+}
+
+.cp_email_address_row {
+  display: grid;
+  grid-template-columns: minmax(0, 220px) 1fr;
+  gap: 0.75em 1.5em;
+  padding: 1em 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cp_email_address_row_last {
+  border-bottom: none;
+}
+
+.cp_email_address_body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65em;
+  min-width: 0;
+}
+
+.cp_email_address_value {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  font-size: 0.9375em;
+  font-weight: 500;
+  color: #0f172a;
+  word-break: break-all;
+}
+
+.cp_email_address_icon {
+  flex-shrink: 0;
+  color: #64748b;
+}
+
+.cp_email_test_hint {
+  margin: 0;
+  font-size: 0.875em;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.cp_email_select {
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
+  padding: 0.5em 2em 0.5em 0.75em;
+  font-size: 0.875em;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #1f2937;
+}
+
+.cp_email_checklist {
+  border: 1px solid #e5e7eb;
+  border-radius: var(--portal-card-radius, 4px);
+  overflow: hidden;
+  background: #fff;
+}
+
+.cp_email_checklist_head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+  padding: 0.65em 1em;
+  background: #f8fafc;
+  border-bottom: 1px solid #e5e7eb;
+  color: #0f172a;
+}
+
+.cp_email_checklist_title {
+  font-size: 0.9375em;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.cp_email_checklist_toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75em;
+  height: 1.75em;
+  padding: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--ui-button-border-radius, 4px);
+  background: #fff;
+  color: #475569;
+  cursor: pointer;
+}
+
+.cp_email_checklist_toggle:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.cp_email_checklist_body {
+  padding: 1em 1em 1.1em;
+}
+
+.cp_email_checklist_intro {
+  margin: 0 0 0.85em;
+  font-size: 0.8125em;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.cp_email_checklist_list {
+  margin: 0 0 1em;
+  padding: 0;
+  list-style: none;
+}
+
+.cp_email_checklist_item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.8125em;
+  color: #334155;
+  flex-wrap: wrap;
+}
+
+.cp_email_checklist_badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25em;
+  height: 1.25em;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.cp_email_checklist_item_incomplete .cp_email_checklist_badge {
+  background: #dc2626;
+  color: #fff;
+}
+
+.cp_email_progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+}
+
+.cp_email_progress_track {
+  height: 6px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.cp_email_progress_fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--main-auth-button-color, #155abf);
+  transition: width 0.2s ease;
+}
+
+.cp_email_progress_label {
+  font-size: 0.75em;
+  font-weight: 600;
+  color: #64748b;
+}
+
+@media (max-width: 900px) {
+  .cp_email_layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cp_email_row,
+  .cp_email_address_row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* —— Company → Contact attributes tab —— */
+.cp_contact_root {
+  max-width: 1100px;
+}
+
+.cp_contact_intro {
+  margin: 0 0 1.25em;
+  max-width: 48em;
+  font-size: 0.875em;
+  color: #64748b;
+  line-height: 1.55;
+}
+
+.cp_contact_toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75em 1em;
+  margin-bottom: 1em;
+}
+
+.cp_contact_search_pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  flex: 1 1 200px;
+  max-width: 380px;
+  min-height: 2.5em;
+  padding: 0 1em;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--ui-button-border-radius, 4px);
+  background: #fff;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cp_contact_search_icon {
+  flex-shrink: 0;
+  color: #64748b;
+}
+
+.cp_contact_search_input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: none;
+  margin: 0;
+  padding: 0.35em 0;
+  background: transparent;
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.875em;
+  color: #0f172a;
+}
+
+.cp_contact_search_input::placeholder {
+  color: #94a3b8;
+}
+
+.cp_contact_create_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0.5em 0.85em;
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: #0f172a;
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.cp_contact_create_btn:hover:not(:disabled) {
+  color: #334155;
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.cp_contact_create_btn:focus-visible {
+  outline: 2px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+.cp_contact_table_wrap {
+  margin-top: 0.25em;
+}
+
+.cp_contact_table thead th {
+  background: #f1f5f9;
+  color: #334155;
+  font-weight: 600;
+}
+
+.cp_contact_th_inner {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  flex-wrap: wrap;
+}
+
+.cp_contact_sort_btn {
+  flex: 0 1 auto;
+}
+
+.cp_contact_th_actions {
+  text-align: left;
+}
+
+.cp_contact_empty_cell {
+  text-align: center;
+  padding: 2em 1em !important;
+  font-size: 0.875em;
+  color: #64748b;
+  vertical-align: middle;
+}
+
+/* —— Company → Offerings page tab —— */
+.cp_offerings_root {
+  max-width: 1100px;
+  padding: 0.15em 0 0.5em;
+}
+
+.cp_offerings_section {
+  margin-bottom: 1.75em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cp_offerings_section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.cp_offerings_section_title {
+  margin: 0 0 1em;
+  font-size: 1em;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.cp_offerings_field_row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.65em 1.25em;
+  margin-bottom: 1.15em;
+}
+
+.cp_offerings_field_row_disclaimer {
+  align-items: stretch;
+}
+
+.cp_offerings_field_label {
+  flex: 0 0 200px;
+  width: 200px;
+  min-width: 160px;
+  max-width: 240px;
+  box-sizing: border-box;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: #475569;
+  padding-top: 0.4em;
+  line-height: 1.4;
+}
+
+.cp_offerings_field_control {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.cp_offerings_link_block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65em;
+  max-width: 100%;
+}
+
+.cp_offerings_url_box {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 42em;
+  padding: 0.55em 0.85em;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--portal-card-radius, 4px);
+  background: #f8fafc;
+  font-family: ui-monospace, monospace;
+  font-size: 0.8125em;
+  font-weight: 500;
+  color: #334155;
+  word-break: break-all;
+  line-height: 1.45;
+}
+
+.cp_offerings_link_actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.cp_offerings_btn_outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  margin: 0;
+  padding: 0.5em 1em;
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: #0f172a;
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.cp_offerings_btn_outline:hover:not(:disabled) {
+  color: #334155;
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.cp_offerings_visibility {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--portal-binary-radio-gap, 0.65rem);
+  align-items: stretch;
+  width: 100%;
+  max-width: min(100%, var(--portal-binary-radio-max-width, 28rem));
+}
+
+.cp_offerings_radio_option {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--cp-radio-label-gap, var(--portal-binary-radio-inner-gap, 0.5rem));
+  width: 100%;
+  min-height: var(--portal-binary-radio-min-height, 2.125rem);
+  box-sizing: border-box;
+  padding: var(--portal-binary-radio-padding-y, 0.3rem)
+    var(--portal-binary-radio-padding-x, 0.65rem);
+  border: 1px solid #e2e8f0;
+  border-radius: var(--ui-button-border-radius, 4px);
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.875em;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #334155;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.cp_offerings_radio_option:hover:not(.cp_offerings_radio_option_selected) {
+  border-color: #cbd5e1;
+}
+
+.cp_offerings_radio_text {
+  font-size: 1em;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.cp_offerings_radio_input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+.cp_offerings_radio_face {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #cbd5e1;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.cp_offerings_radio_option_selected {
+  border-color: #0f172a;
+  color: #0f172a;
+}
+
+.cp_offerings_radio_option_selected .cp_offerings_radio_face {
+  border-color: #0f172a;
+  background: #fff;
+}
+
+.cp_offerings_radio_option_selected .cp_offerings_radio_face::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #0f172a;
+}
+
+.cp_offerings_disclaimer {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 42em;
+  min-height: 7.5em;
+  margin: 0;
+  padding: 0.65em 0.85em;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--portal-card-radius, 4px);
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.875em;
+  line-height: 1.5;
+  color: #0f172a;
+  resize: none;
+}
+
+.cp_offerings_disclaimer::placeholder {
+  color: #94a3b8;
+}
+
+.cp_offerings_table_section_head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75em 1em;
+  margin-bottom: 0.85em;
+}
+
+.cp_offerings_table_section_head .cp_offerings_section_title {
+  margin-bottom: 0;
+}
+
+.cp_offerings_alert {
+  margin-bottom: 1em;
+  padding: 0.65em 1em;
+  border: 1px solid #fde047;
+  border-radius: var(--portal-card-radius, 4px);
+  background: #fef9c3;
+  color: #854d0e;
+  font-size: 0.875em;
+  line-height: 1.5;
+}
+
+.cp_offerings_table_wrap {
+  margin-top: 0.25em;
+}
+
+.cp_offerings_table thead th {
+  background: #f1f5f9;
+  color: #334155;
+  font-weight: 600;
+}
+
+.cp_offerings_th_drag {
+  width: 2.25em;
+  padding-left: 0.5em !important;
+  padding-right: 0.25em !important;
+}
+
+.cp_offerings_td_drag {
+  width: 2.25em;
+  vertical-align: middle;
+  text-align: center;
+  padding-left: 0.35em !important;
+  padding-right: 0.25em !important;
+}
+
+.cp_offerings_drag {
+  display: inline-flex;
+  color: #94a3b8;
+  cursor: grab;
+}
+
+.cp_offerings_row_warn td {
+  background: #fefce8;
+}
+
+/* Beat global DataTable zebra so warning rows stay tinted */
+.um_table.cp_offerings_table tbody tr.cp_offerings_row_warn td {
+  background: #fefce8;
+}
+
+.cp_offerings_name_link {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-style: normal;
+  font-size: 1em;
+  font-weight: 500;
+  color: black;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cp_offerings_name_link:hover {
+  text-decoration: underline;
+}
+
+.cp_offerings_icon_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0.35em;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.cp_offerings_icon_btn:hover:not(:disabled) {
+  color: #334155;
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+@media (max-width: 640px) {
+  .cp_offerings_field_row {
+    flex-direction: column;
+  }
+
+  .cp_offerings_field_label {
+    flex: none;
+    width: 100%;
+    max-width: none;
+    padding-top: 0;
+  }
+
+  .cp_offerings_field_control {
+    width: 100%;
+  }
+}
+
+/* Settings tab — Billing */
+.cp_settings_billing_tab {
+  max-width: none;
+}
+
+.cp_billing_start {
+  margin: 0 0 1.35rem;
+  padding: 1.05rem 1.15rem;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: var(--portal-surface, #fff);
+  box-shadow: 0 1px 3px rgb(15 23 42 / 5%);
+}
+
+.cp_billing_start_head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+}
+
+.cp_billing_start_actions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.65rem;
+}
+
+.cp_billing_start_field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 12rem;
+}
+
+.cp_billing_start_field .cp_billing_filter_input {
+  width: 12.5rem;
+  min-height: var(--um-toolbar-control-height, 2.25rem);
+}
+
+.cp_billing_start_actions .um_btn_primary {
+  min-height: var(--um-toolbar-control-height, 2.25rem);
+}
+
+@media (max-width: 640px) {
+  .cp_billing_start_actions,
+  .cp_billing_start_field,
+  .cp_billing_start_field .cp_billing_filter_input,
+  .cp_billing_start_actions .um_btn_primary {
+    width: 100%;
+  }
+}
+
+:root[data-theme="dark"] .cp_billing_start {
+  background: var(--portal-surface, rgba(15, 23, 42, 0.35));
+  border-color: var(--portal-border, rgba(148, 163, 184, 0.28));
+  box-shadow: none;
+}
+.cp_billing_subtabs_outer {
+  margin-bottom: 1.25em;
+}
+.cp_billing_subtabs_outer .cp_billing_subtab_disabled,
+.cp_billing_subtabs_outer .um_members_tab:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.cp_billing_subtab_panel[hidden] {
+  display: none;
+}
+.cp_billing_subtab_panel,
+.cp_billing_subtab_panel_pricing,
+.cp_billing_subtab_panel_payment_methods {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+}
+
+/* Billing — payment methods */
+.cp_billing_payment_methods {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+.cp_billing_payment_methods_head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+}
+.cp_billing_payment_methods_title {
+  margin: 0;
+  font-family: var(--portal-font-sans, "Inter", sans-serif);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--portal-text, #0f172a);
+}
+.cp_billing_payment_methods_lead {
+  max-width: 38rem;
+  margin: 0.3rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--portal-text-muted, #64748b);
+}
+.cp_billing_payment_methods_actions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.65rem;
+}
+.cp_billing_payment_methods_error {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #fecaca;
+  border-radius: var(--portal-card-radius, 4px);
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 0.8125rem;
+}
+.cp_billing_payment_methods_panel {
+  overflow: hidden;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: var(--portal-surface, #fff);
+  box-shadow: 0 1px 3px rgb(15 23 42 / 5%);
+}
+.cp_billing_payment_methods_list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cp_billing_payment_method_row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 4.75rem;
+  padding: 0.9rem 1.15rem;
+  border-bottom: 1px solid var(--portal-border, #e2e8f0);
+  background: transparent;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+.cp_billing_payment_method_row:last-child {
+  border-bottom: 0;
+}
+.cp_billing_payment_method_row:hover {
+  background: color-mix(
+    in srgb,
+    var(--main-auth-button-color, #155abf) 3.5%,
+    var(--portal-surface, #fff)
+  );
+}
+.cp_billing_payment_method_icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 2.65rem;
+  height: 2.65rem;
+  border: 1px solid
+    color-mix(in srgb, var(--main-auth-button-color, #155abf) 16%, transparent);
+  border-radius: var(--portal-card-radius, 4px);
+  color: var(--main-auth-button-color, #155abf);
+  background: color-mix(
+    in srgb,
+    var(--main-auth-button-color, #155abf) 8%,
+    var(--portal-surface, #fff)
+  );
+}
+.cp_billing_payment_method_details {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.18rem;
+  min-width: 0;
+}
+.cp_billing_payment_method_details strong {
+  overflow: hidden;
+  font-size: 0.875rem;
+  font-weight: 650;
+  color: var(--portal-text, #0f172a);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cp_billing_payment_method_details small {
+  font-size: 0.75rem;
+  color: var(--portal-text-muted, #64748b);
+}
+.cp_billing_payment_methods_empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 14rem;
+  padding: 2rem;
+  background: color-mix(
+    in srgb,
+    var(--main-auth-button-color, #155abf) 2.5%,
+    var(--portal-surface, #fff)
+  );
+  text-align: center;
+}
+.cp_billing_payment_methods_empty_icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 0.85rem;
+  border: 1px solid
+    color-mix(in srgb, var(--main-auth-button-color, #155abf) 14%, transparent);
+  border-radius: var(--portal-card-radius, 4px);
+  color: var(--main-auth-button-color, #155abf);
+  background: color-mix(
+    in srgb,
+    var(--main-auth-button-color, #155abf) 10%,
+    var(--portal-surface, #fff)
+  );
+}
+.cp_billing_payment_methods_empty h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--portal-text, #0f172a);
+}
+.cp_billing_payment_methods_empty p {
+  margin: 0.35rem 0 1rem;
+  font-size: 0.8125rem;
+  color: var(--portal-text-muted, #64748b);
+}
+.cp_billing_payment_security_note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.8rem;
+  padding: 0.65rem 1.15rem;
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+  background: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 3%,
+    var(--portal-panel-bg, #f8f8f8)
+  );
+  font-size: 0.75rem;
+  color: var(--portal-text-muted, #64748b);
+}
+.cp_billing_payment_security_note svg {
+  flex: 0 0 auto;
+  color: #059669;
+}
+:root[data-theme="dark"] .cp_billing_payment_methods_error {
+  border-color: rgb(248 113 113 / 25%);
+  background: rgb(127 29 29 / 20%);
+  color: #fca5a5;
+}
+:root[data-theme="dark"] .cp_billing_payment_method_row {
+  background: transparent;
+}
+:root[data-theme="dark"] .cp_billing_payment_methods_panel {
+  box-shadow: none;
+}
+:root[data-theme="dark"] .cp_billing_payment_method_icon {
+  color: #93c5fd;
+}
+:root[data-theme="dark"] .cp_billing_payment_security_note svg {
+  color: #34d399;
+}
+@media (max-width: 700px) {
+  .cp_billing_payment_methods_head {
+    flex-direction: column;
+  }
+  .cp_billing_payment_methods_actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .cp_billing_payment_methods_actions .um_btn_primary,
+  .cp_billing_payment_methods_actions .um_btn_secondary {
+    flex: 1 1 auto;
+  }
+  .cp_billing_payment_method_row {
+    padding-right: 0.85rem;
+    padding-left: 0.85rem;
+  }
+  .cp_billing_payment_security_note {
+    align-items: flex-start;
+    padding-right: 0.85rem;
+    padding-left: 0.85rem;
+  }
+}
+
+/* Payment history */
+.cp_billing_payment_history {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.cp_billing_payment_history_head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cp_billing_kpi_metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  width: 100%;
+  margin: 0 0 0.15rem;
+}
+
+.cp_billing_payment_history--admin .cp_billing_kpi_metrics {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.cp_billing_kpi_metrics > .tool_style_card--metric {
+  min-width: 0;
+  min-height: 0;
+  max-width: none;
+  padding: 0.65rem 0.85rem 0.7rem;
+  justify-content: flex-start;
+}
+
+.cp_billing_kpi_metrics .tool_style_card--metric .tool_style_card_icon_box {
+  width: 1.7em;
+  height: 1.7em;
+}
+
+.cp_billing_kpi_metrics .tool_style_card--metric .tool_style_card_icon {
+  width: 1.05em;
+  height: 1.05em;
+  color: var(--portal-gold-accent, #d4af37);
+  opacity: 1;
+}
+
+.cp_billing_kpi_metrics .tool_style_card--metric .tool_style_card_value_lead,
+.cp_billing_kpi_metrics .tool_style_card--metric .tool_style_card_value_loading--metric {
+  margin-top: 0.3rem;
+}
+
+.cp_billing_kpi_metrics .tool_style_card--metric .tool_style_card_value_lead {
+  font-size: 1.15rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 900px) {
+  .cp_billing_kpi_metrics,
+  .cp_billing_payment_history--admin .cp_billing_kpi_metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .cp_billing_kpi_metrics,
+  .cp_billing_payment_history--admin .cp_billing_kpi_metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cp_billing_payment_history_title {
+  margin: 0;
+  font-family: var(--portal-font-sans, "Inter", sans-serif);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--portal-text, #0f172a);
+}
+
+.cp_billing_payment_history_lead {
+  margin: 0;
+  max-width: 42em;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.cp_billing_deal_lead {
+  max-width: none;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.cp_billing_deal_lead_free {
+  white-space: nowrap;
+}
+
+.cp_billing_invoices_table_wrap .deals_stage_chip--compact {
+  max-width: none;
+}
+
+.cp_billing_invoices_table_wrap .deals_stage_chip--compact > span:not(.deals_list_stage_badge_icon) {
+  overflow: visible;
+  text-overflow: unset;
+  white-space: nowrap;
+}
+
+.cp_billing_payment_filters_panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 1.25rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 4%,
+    var(--portal-panel-bg, #f8f8f8)
+  );
+  box-shadow: 0 1px 2px rgb(15 23 42 / 4%);
+}
+
+.cp_billing_payment_filters_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+  gap: 0.85rem 1.15rem;
+  flex: 1 1 20rem;
+  min-width: 0;
+}
+
+.cp_billing_filter_field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.cp_billing_filter_field--date {
+  grid-column: span 2;
+}
+
+.cp_billing_filter_label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.cp_billing_filter_label svg {
+  flex-shrink: 0;
+  color: var(--portal-gold-accent, #d4af37);
+}
+
+.cp_billing_filter_input {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: var(--um-toolbar-control-height, 2.25rem);
+  padding: 0.5em 0.75em;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-pill-radius, 4px);
+  background: var(--portal-surface, #fff);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--portal-text, #0f172a);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.cp_billing_filter_input:focus-visible {
+  outline: none;
+  border-color: var(--portal-text-muted);
+  box-shadow: var(--portal-field-focus-shadow, 0 0 0 2px rgb(17 24 39 / 8%));
+}
+
+.cp_billing_date_range {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.cp_billing_date_input {
+  flex: 1 1 0;
+  min-width: 0;
+  padding-left: 0.65em;
+  padding-right: 0.65em;
+}
+
+.cp_billing_date_range_sep {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--portal-text-muted, #64748b);
+  text-transform: lowercase;
+}
+
+.cp_billing_status_select {
+  padding-right: 2em;
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2364758b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.65em center;
+  background-size: 0.85em;
+}
+
+.cp_billing_cycle_select {
+  min-width: 7.5rem;
+  width: auto;
+  max-width: 9.5rem;
+  padding: 0.35rem 2em 0.35rem 0.65rem;
+  font-size: 0.8125rem;
+}
+
+.cp_billing_deal_search_toolbar {
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.cp_billing_org_deals {
+  padding: 0.75rem 0.25rem 0.35rem;
+  overflow-x: auto;
+}
+
+.cp_billing_org_name_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cp_billing_org_name_btn span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cp_billing_org_name_btn svg {
+  flex: 0 0 auto;
+  color: #64748b;
+  transition: transform 0.15s ease;
+}
+
+.cp_billing_org_name_btn--open svg {
+  transform: rotate(180deg);
+}
+
+/*
+.cp_billing_org_stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem 1.25rem;
+  margin: 0 0 0.85rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--portal-surface, #fff) 88%, #f8fafc);
+}
+
+.cp_billing_org_stats div {
+  min-width: 0;
+}
+
+.cp_billing_org_stats dt {
+  margin: 0 0 0.15rem;
+  font-size: 0.6875rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.cp_billing_org_stats dd {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+*/
+
+.cp_billing_org_empty {
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.cp_billing_org_deals .um_table_wrap {
+  margin: 0;
+  border-radius: 6px;
+}
+
+.cp_billing_org_deals .um_table.deal_inv_table {
+  width: max-content;
+  min-width: 100%;
+  table-layout: auto;
+}
+
+/* Org roster: stable columns so expand / name length does not shift widths. */
+.cp_billing_invoices_table_wrap .um_table.cp_billing_orgs_table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.cp_billing_invoices_table_wrap .um_table.cp_billing_orgs_table th.deals_col_deal_name,
+.cp_billing_invoices_table_wrap .um_table.cp_billing_orgs_table td.deals_col_deal_name {
+  width: 40%;
+  min-width: var(--cp-table-name-col-min, 16rem);
+}
+
+.cp_billing_invoices_table_wrap .um_table.cp_billing_orgs_table th.deals_th_align_center,
+.cp_billing_invoices_table_wrap .um_table.cp_billing_orgs_table td.deals_td_align_center,
+.cp_billing_invoices_table_wrap .um_table.cp_billing_orgs_table th.deals_th_align_right,
+.cp_billing_invoices_table_wrap .um_table.cp_billing_orgs_table td.cp_billing_amount_td {
+  width: 20%;
+}
+
+.cp_billing_payment_history--admin {
+  gap: 0.85rem;
+}
+
+/*
+:root[data-theme="dark"] .cp_billing_org_stats {
+  background: color-mix(in srgb, var(--portal-surface, #0f172a) 88%, #1e293b);
+}
+*/
+
+:root[data-theme="dark"] .cp_billing_org_name_btn svg {
+  color: #94a3b8;
+}
+
+/*
+@media (max-width: 900px) {
+  .cp_billing_org_stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+*/
+
+.cp_billing_reset_btn,
+.cp_billing_search_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.cp_billing_outstanding_banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid
+    color-mix(in srgb, var(--portal-gold-accent, #d4af37) 28%, var(--portal-border, #e2e8f0));
+  border-radius: var(--portal-card-radius, 4px);
+  background: var(
+    --portal-tab-active-bg,
+    color-mix(in srgb, var(--portal-gold-accent, #d4af37) 10%, transparent)
+  );
+}
+
+.cp_billing_outstanding_banner p {
+  margin: 0;
+  flex: 1 1 12rem;
+  min-width: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--portal-text, #0f172a);
+}
+
+.cp_billing_outstanding_banner--center {
+  align-items: center;
+  flex-wrap: nowrap;
+  text-align: center;
+}
+
+.cp_billing_outstanding_banner--center p {
+  flex: 0 1 auto;
+}
+
+.cp_billing_outstanding_icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--portal-icon-box-radius, 4px);
+  border: 1px solid
+    color-mix(in srgb, var(--portal-gold-accent, #d4af37) 24%, var(--portal-border, #e2e8f0));
+  background: color-mix(in srgb, var(--portal-gold-accent, #d4af37) 12%, transparent);
+  color: var(--portal-gold-accent, #d4af37);
+}
+
+.cp_billing_invoices_table_wrap {
+  min-width: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.cp_billing_invoices_table_wrap .um_table_pagination {
+  background: transparent;
+}
+
+.cp_billing_invoice_number {
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+}
+
+.cp_billing_deal_name_cell {
+  min-width: 0;
+}
+
+.cp_billing_deal_name_cell .deals_list_name_text {
+  flex: 0 1 auto;
+}
+
+.cp_billing_deal_name_toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+}
+
+.cp_billing_deal_name_toggle svg {
+  flex-shrink: 0;
+  color: var(--portal-text-muted, #64748b);
+  transition: transform 0.15s ease;
+}
+
+.cp_billing_deal_name_toggle .cp_billing_invoice_number {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cp_billing_deal_name_toggle--open svg {
+  transform: rotate(180deg);
+}
+
+.cp_billing_deal_name_toggle:hover .cp_billing_invoice_number {
+  text-decoration: underline;
+}
+
+.cp_billing_deal_mrr_history {
+  padding: 0.35rem 0.15rem 0.15rem;
+}
+
+.cp_billing_amount_stack {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+  line-height: 1.25;
+}
+
+.cp_billing_amount_extra {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.cp_billing_deal_mrr_history_title {
+  margin: 0 0 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.cp_billing_deal_mrr_history_empty {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.cp_billing_deal_mrr_table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.cp_billing_deal_mrr_table th,
+.cp_billing_deal_mrr_table td {
+  padding: 0.45rem 0.65rem;
+  text-align: left;
+  border-bottom: 1px solid var(--portal-border, #e2e8f0);
+}
+
+.cp_billing_deal_mrr_table th {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.cp_billing_deal_mrr_table td {
+  color: var(--portal-text, #0f172a);
+}
+
+.cp_billing_invoice_status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2em 0.55em;
+  border-radius: var(--portal-pill-radius, 4px);
+  border: 1px solid var(--portal-border, #e2e8f0);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: nowrap;
+  text-transform: capitalize;
+  color: var(--portal-text-muted, #64748b);
+  background: color-mix(in srgb, var(--portal-text) 4%, var(--portal-surface, #fff));
+}
+
+.deal_inv_table_panel .um_table.deal_inv_table th.cp_billing_payment_status_col,
+.deal_inv_table_panel .um_table.deal_inv_table td.cp_billing_payment_status_col {
+  white-space: nowrap;
+  min-width: 16.5rem;
+  width: 16.5rem;
+}
+
+.cp_billing_invoice_status--paid {
+  color: #047857;
+  border-color: color-mix(in srgb, #10b981 35%, var(--portal-border, #e2e8f0));
+  background: color-mix(in srgb, #10b981 10%, var(--portal-surface, #fff));
+}
+
+.cp_billing_invoice_status--open {
+  color: #1d4ed8;
+  border-color: color-mix(in srgb, #3b82f6 32%, var(--portal-border, #e2e8f0));
+  background: color-mix(in srgb, #3b82f6 8%, var(--portal-surface, #fff));
+}
+
+.cp_billing_invoice_status--overdue {
+  color: #b91c1c;
+  border-color: color-mix(in srgb, #ef4444 32%, var(--portal-border, #e2e8f0));
+  background: color-mix(in srgb, #ef4444 8%, var(--portal-surface, #fff));
+}
+
+.cp_billing_invoice_status--void {
+  color: var(--portal-text-muted, #64748b);
+  border-style: dashed;
+}
+
+.cp_billing_receipt_td {
+  text-align: center;
+}
+
+.cp_billing_receipt_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-pill-radius, 4px);
+  background: var(--portal-surface, #fff);
+  color: var(--portal-text-muted, #94a3b8);
+  cursor: not-allowed;
+  opacity: 0.65;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+@media (max-width: 768px) {
+  .cp_billing_filter_field--date {
+    grid-column: span 1;
+  }
+
+  .cp_billing_payment_filters_actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .cp_billing_reset_btn,
+  .cp_billing_search_btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .cp_billing_date_range {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cp_billing_date_range_sep {
+    text-align: center;
+  }
+}
+
+:root[data-theme="dark"] .cp_billing_payment_filters_panel {
+  background: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 8%,
+    var(--portal-panel-bg, rgba(255, 255, 255, 0.06))
+  );
+  border-color: var(--portal-border);
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] .cp_billing_filter_input {
+  background: var(--portal-surface, rgba(255, 255, 255, 0.04));
+  border-color: var(--portal-border);
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .cp_billing_filter_input:focus-visible {
+  box-shadow: var(--portal-field-focus-shadow-dark, 0 0 0 2px rgb(249 250 251 / 12%));
+}
+
+:root[data-theme="dark"] .cp_billing_outstanding_banner {
+  background: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 10%,
+    var(--portal-panel-bg, rgba(255, 255, 255, 0.06))
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 26%,
+    var(--portal-border)
+  );
+}
+
+:root[data-theme="dark"] .cp_billing_outstanding_banner p {
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .cp_billing_invoice_status--paid {
+  color: #6ee7b7;
+  background: color-mix(in srgb, #10b981 16%, transparent);
+}
+
+:root[data-theme="dark"] .cp_billing_invoice_status--open {
+  color: #93c5fd;
+  background: color-mix(in srgb, #3b82f6 14%, transparent);
+}
+
+:root[data-theme="dark"] .cp_billing_invoice_status--overdue {
+  color: #fca5a5;
+  background: color-mix(in srgb, #ef4444 14%, transparent);
+}
+
+:root[data-theme="dark"] .cp_billing_receipt_btn {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--portal-border);
+}
+
+:root[data-theme="dark"] .cp_billing_invoices_table_wrap .um_table_pagination {
+  background: transparent;
+}
+.cp_settings_billing_tab_title {
+  margin: 0 0 0.25em;
+  font-size: 1.125em;
+  font-weight: 600;
+  color: var(--font-color-title, #0f172a);
+}
+
+.cp_billing_header {
+  margin-bottom: 1.25em;
+}
+.cp_billing_subtitle {
+  margin: 0;
+  font-size: 0.875em;
+  color: #64748b;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* Billing filters: cycle on top, seats below */
+.cp_billing_filters {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85em;
+  margin-bottom: 1.5em;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.cp_billing_filter_row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4em;
+}
+
+.cp_billing_filter_heading {
+  margin: 0;
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.cp_billing_filter_hint {
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--portal-text-muted, #94a3b8);
+}
+
+.cp_billing_extra_users {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55em;
+}
+
+.cp_billing_extra_users_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  background: var(--portal-surface, #fff);
+  color: var(--portal-text, #0f172a);
+  cursor: pointer;
+}
+
+.cp_billing_extra_users_btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.cp_billing_extra_users_count {
+  min-width: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.cp_billing_extra_users_fee {
+  font-size: 0.875em;
+  font-weight: 600;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.cp_billing_deal_name {
+  margin: 0;
+  font-size: 1.125em;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--font-color-title, #0f172a);
+}
+
+.cp_billing_filter_row_disabled {
+  opacity: 0.5;
+}
+
+.cp_billing_filter_row_disabled .cp_billing_cycle_option {
+  cursor: not-allowed;
+}
+
+.cp_billing_plan_deal_ref {
+  margin: 0.15em 0 0.65em;
+  font-size: 0.8125em;
+  font-weight: 600;
+  color: var(--main-auth-button-color, #155abf);
+}
+
+.cp_billing_plan_card_locked {
+  opacity: 0.55;
+  pointer-events: none;
+  cursor: no-drop;
+}
+
+.cp_billing_plan_card_locked .cp_billing_plan_cta_disabled_wrap {
+  pointer-events: auto;
+  cursor: no-drop;
+}
+
+.cp_billing_plan_card_locked:hover {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  transform: none;
+}
+
+/* Billing cycle radio toggle */
+.cp_billing_cycle {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25em;
+  max-width: 100%;
+  padding: 0.25em;
+  margin: 0;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--ui-button-border-radius, 4px);
+}
+.cp_billing_cycle_option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.45em 1em;
+  border-radius: var(--ui-button-border-radius, 4px);
+  cursor: pointer;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: #475569;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    box-shadow 0.15s ease;
+  user-select: none;
+}
+.cp_billing_cycle_option input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 0.95em;
+  height: 0.95em;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 999px;
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+  background: #ffffff;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+.cp_billing_cycle_option input[type="radio"]:checked {
+  border-color: var(--main-auth-button-color, #155abf);
+  background: var(--main-auth-button-color, #155abf);
+  box-shadow: inset 0 0 0 3px #ffffff;
+}
+.cp_billing_cycle_option_active {
+  background: #ffffff;
+  color: var(--font-color-title, #0f172a);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+}
+.cp_billing_cycle_save {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1em 0.5em;
+  border-radius: var(--ui-button-border-radius, 4px);
+  background: #dcfce7;
+  color: #166534;
+  font-size: 0.7em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Plan cards grid — 3 per row, stretch to fill the tab */
+.cp_billing_plans {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25em;
+}
+
+.deal_stage_modal--billing_cycle {
+  width: min(24rem, 100%);
+  max-height: min(92vh, 44rem);
+}
+
+.deal_stage_modal--billing_cycle .deal_stage_modal_body {
+  overflow: auto;
+}
+
+.cp_billing_cycle_confirm_card {
+  margin-top: 0.85rem;
+}
+
+.cp_billing_cycle_confirm_card:hover {
+  transform: none;
+}
+
+.cp_billing_plan_card {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 1.5em;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.875em;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  transition: box-shadow 0.15s ease, transform 0.15s ease,
+    border-color 0.15s ease;
+}
+.cp_billing_plan_card:hover {
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+  transform: translateY(-2px);
+}
+.cp_billing_plan_card_featured {
+  border-color: var(--main-auth-button-color, #155abf);
+  box-shadow: 0 6px 18px rgba(21, 90, 191, 0.12);
+}
+
+.cp_billing_plan_badge {
+  position: absolute;
+  top: -0.7em;
+  right: 1em;
+  padding: 0.25em 0.7em;
+  background: var(--main-auth-button-color, #155abf);
+  color: #ffffff;
+  border-radius: 999px;
+  font-size: 0.7em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.cp_billing_plan_name {
+  margin: 0;
+  font-size: 1.125em;
+  font-weight: 600;
+  color: var(--font-color-title, #0f172a);
+}
+.cp_billing_plan_tagline {
+  margin: 0.35em 0 1.1em;
+  font-size: 0.85em;
+  color: #64748b;
+  min-height: 2.4em;
+  overflow-wrap: anywhere;
+}
+
+.cp_billing_plan_price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35em;
+  margin-bottom: 1.25em;
+  min-height: 2.4em;
+}
+.cp_billing_plan_price_main {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25em;
+}
+.cp_billing_plan_price_calc {
+  margin: 0;
+  font-size: 0.8em;
+  font-weight: 500;
+  color: #64748b;
+  line-height: 1.3;
+}
+.cp_billing_plan_price_perk {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2em 0.55em;
+  border-radius: var(--ui-button-border-radius, 4px);
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #166534;
+  background: #dcfce7;
+}
+.cp_billing_plan_price_amount {
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--font-color-title, #0f172a);
+  line-height: 1;
+}
+.cp_billing_plan_price_suffix {
+  font-size: 0.85em;
+  color: #64748b;
+  font-weight: 500;
+}
+.cp_billing_plan_price_custom {
+  font-size: 1.35em;
+  font-weight: 600;
+  color: var(--font-color-title, #0f172a);
+}
+
+.cp_billing_plan_body {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-bottom: 1.5em;
+  flex: 1;
+}
+.cp_billing_plan_section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.cp_billing_plan_section_title {
+  margin: 0;
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+.cp_billing_plan_section + .cp_billing_plan_features {
+  margin-top: 0.25em;
+  padding-top: 0.85em;
+  border-top: 1px solid #e2e8f0;
+}
+.cp_billing_plan_features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.cp_billing_plan_features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5em;
+  padding-top: 0.55em;
+  padding-bottom: 0.55em;
+  font-size: 0.875em;
+  color: #334155;
+}
+.cp_billing_plan_features li svg {
+  flex-shrink: 0;
+  color: #16a34a;
+  margin-top: 0.15em;
+}
+
+.cp_billing_plan_cta {
+  width: 100%;
+  padding: 0.65em 1em;
+  border-radius: var(--ui-button-border-radius, 4px);
+  font-size: 0.875em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+}
+.cp_billing_plan_cta:disabled {
+  cursor: no-drop;
+}
+.cp_billing_plan_cta_disabled_wrap {
+  display: block;
+  width: 100%;
+  cursor: no-drop;
+}
+.cp_billing_plan_cta_disabled_wrap .cp_billing_plan_cta {
+  pointer-events: none;
+}
+.cp_billing_plan_cta.um_btn_primary,
+.cp_billing_plan_cta_primary {
+  height: var(--portal-button-height, var(--top-navbar-control-height, 2.25rem));
+  min-height: var(--portal-button-height, var(--top-navbar-control-height, 2.25rem));
+  padding: 0 1.15em;
+  border: 1px solid var(--ui-button-border, var(--sidebar-active-text));
+  background: var(--ui-button-background-add, var(--sidebar-bg-color));
+  color: var(--ui-button-text, var(--sidebar-active-text));
+}
+.cp_billing_plan_cta.um_btn_primary:hover:not(:disabled),
+.cp_billing_plan_cta_primary:hover {
+  background: var(--ui-button-hover);
+  color: var(--ui-button-text, var(--sidebar-active-text));
+  border-color: var(--ui-button-border, var(--sidebar-active-text));
+}
+.cp_billing_plan_cta_pay,
+.cp_billing_pay_btn,
+.app_shell button.um_btn_primary.cp_billing_pay_btn,
+.app_shell .um_btn_primary.cp_billing_pay_btn {
+  height: var(--portal-button-height, var(--top-navbar-control-height, 2.25rem));
+  min-height: var(--portal-button-height, var(--top-navbar-control-height, 2.25rem));
+  padding: 0 1.15em;
+  border: 1px solid #16a34a;
+  background: #16a34a;
+  color: #ffffff;
+}
+.cp_billing_plan_cta_pay:hover:not(:disabled),
+.cp_billing_pay_btn:hover:not(:disabled),
+.app_shell button.um_btn_primary.cp_billing_pay_btn:hover:not(:disabled),
+.app_shell .um_btn_primary.cp_billing_pay_btn:hover:not(:disabled) {
+  background: #15803d;
+  border-color: #15803d;
+  color: #ffffff;
+}
+.cp_billing_plan_cta_pay:disabled {
+  opacity: 0.6;
+  cursor: no-drop;
+}
+.cp_billing_plan_cta_secondary {
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: var(--font-color-title, #0f172a);
+}
+.cp_billing_plan_cta_secondary:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+.cp_billing_plan_cta_secondary:disabled {
+  cursor: no-drop;
+}
+
+@media (max-width: 640px) {
+  .cp_billing_plans {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Payment Element (card + ACH) modal */
+.cp_billing_pe_overlay {
+  z-index: 1200;
+  padding: 1.5rem;
+  background: rgb(15 23 42 / 58%);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.cp_billing_pe_modal {
+  width: min(560px, calc(100vw - 2rem));
+  max-width: none;
+  max-height: min(92vh, 760px);
+  overflow: auto;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--portal-border, #e2e8f0) 82%, #fff);
+  border-radius: 16px;
+  background: var(--portal-surface, #fff);
+  box-shadow:
+    0 32px 80px rgb(15 23 42 / 24%),
+    0 8px 24px rgb(15 23 42 / 10%);
+}
+.cp_billing_pe_head {
+  align-items: center;
+  margin: 0;
+  padding: 1.35rem 1.5rem 1.2rem;
+  border-bottom: 1px solid var(--portal-border, #e2e8f0);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--main-auth-button-color, #155abf) 7%, #fff),
+    var(--portal-surface, #fff) 58%
+  );
+}
+.cp_billing_pe_heading {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 0;
+}
+.cp_billing_pe_title_icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid
+    color-mix(in srgb, var(--main-auth-button-color, #155abf) 18%, transparent);
+  border-radius: 12px;
+  color: var(--main-auth-button-color, #155abf);
+  background: color-mix(
+    in srgb,
+    var(--main-auth-button-color, #155abf) 9%,
+    #fff
+  );
+  box-shadow: 0 5px 14px rgb(21 90 191 / 10%);
+}
+.cp_billing_pe_head .um_modal_title {
+  margin: 0 0 0.2rem;
+  font-size: 1.15rem;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  color: var(--portal-text, #0f172a);
+}
+.cp_billing_pe_head .um_modal_close {
+  margin: 0;
+  border: 1px solid transparent;
+  border-radius: 9px;
+}
+.cp_billing_pe_head .um_modal_close:hover {
+  border-color: var(--portal-border, #e2e8f0);
+}
+.cp_billing_pe_subtitle {
+  margin: 0;
+  font-size: 0.825rem;
+  line-height: 1.4;
+  color: var(--text-muted, #64748b);
+}
+.cp_billing_pe_form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.cp_billing_pe_element {
+  padding: 1.5rem 1.5rem 0;
+  min-height: 180px;
+}
+.cp_billing_pe_security {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin: 0 1.5rem;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid color-mix(in srgb, #059669 18%, var(--portal-border, #e2e8f0));
+  border-radius: 10px;
+  background: color-mix(in srgb, #ecfdf5 70%, var(--portal-surface, #fff));
+  color: var(--portal-text, #0f172a);
+}
+.cp_billing_pe_security_icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  margin-top: 0.05rem;
+  color: #059669;
+}
+.cp_billing_pe_security > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.cp_billing_pe_security strong {
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+.cp_billing_pe_security small {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--text-muted, #64748b);
+}
+.cp_billing_pe_error {
+  margin: 0 1.5rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid #fecaca;
+  border-radius: 9px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 0.8125rem;
+}
+.cp_billing_pe_info {
+  margin: 0 1.5rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid #99f6e4;
+  border-radius: 9px;
+  background: #f0fdfa;
+  color: #0f766e;
+  font-size: 0.8125rem;
+}
+.cp_billing_pe_actions {
+  margin: 0;
+  padding: 1.15rem 1.5rem 1.35rem;
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+  background: color-mix(in srgb, var(--portal-surface, #fff) 92%, #f8fafc);
+}
+.cp_billing_pe_actions .um_btn_primary,
+.cp_billing_pe_actions .um_btn_secondary {
+  min-width: 7.5rem;
+}
+.cp_billing_pe_actions .um_btn_primary {
+  box-shadow: 0 6px 14px rgb(21 90 191 / 18%);
+}
+.cp_billing_pe_actions .cp_billing_pay_btn {
+  box-shadow: 0 6px 14px rgb(22 163 74 / 22%);
+}
+.cp_billing_pe_loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 220px;
+  padding: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted, #64748b);
+}
+.cp_billing_pe_loading > span {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--portal-border, #e2e8f0);
+  border-top-color: var(--main-auth-button-color, #155abf);
+  border-radius: 50%;
+  animation: cp-billing-pe-spin 0.75s linear infinite;
+}
+@keyframes cp-billing-pe-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+:root[data-theme="dark"] .cp_billing_pe_head {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--main-auth-button-color, #155abf) 15%, transparent),
+    transparent 60%
+  );
+}
+:root[data-theme="dark"] .cp_billing_pe_title_icon {
+  border-color: color-mix(
+    in srgb,
+    var(--main-auth-button-color, #60a5fa) 35%,
+    var(--portal-border)
+  );
+  color: #93c5fd;
+  background: rgb(59 130 246 / 12%);
+  box-shadow: none;
+}
+:root[data-theme="dark"] .cp_billing_pe_security {
+  border-color: rgb(52 211 153 / 22%);
+  background: rgb(16 185 129 / 8%);
+}
+:root[data-theme="dark"] .cp_billing_pe_security_icon {
+  color: #34d399;
+}
+:root[data-theme="dark"] .cp_billing_pe_error {
+  border-color: rgb(248 113 113 / 25%);
+  background: rgb(127 29 29 / 20%);
+  color: #fca5a5;
+}
+:root[data-theme="dark"] .cp_billing_pe_info {
+  border-color: rgb(45 212 191 / 24%);
+  background: rgb(19 78 74 / 20%);
+  color: #5eead4;
+}
+
+@media (max-width: 560px) {
+  .cp_billing_pe_overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+  .cp_billing_pe_modal {
+    width: 100%;
+    max-height: 94vh;
+    border-radius: 18px 18px 0 0;
+  }
+  .cp_billing_pe_head,
+  .cp_billing_pe_element,
+  .cp_billing_pe_actions {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+  .cp_billing_pe_security,
+  .cp_billing_pe_error,
+  .cp_billing_pe_info {
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+  .cp_billing_pe_actions .um_btn_primary,
+  .cp_billing_pe_actions .um_btn_secondary {
+    flex: 1;
+  }
+}
+
+/* Settings tab — Members: embed user management */
+.company_page .cp_settings_members_embed .um_page {
+  margin-top: 0;
+  max-width: none;
+}
+
+.company_page .cp_settings_members_embed .um_members_general_panel.um_panel {
+  margin-top: 0;
+}

@@ -1,0 +1,1 @@
+export { ClassSetupPage } from "./ClassSetupPage"

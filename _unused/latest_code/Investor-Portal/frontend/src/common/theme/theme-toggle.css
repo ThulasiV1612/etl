@@ -1,0 +1,29 @@
+/* light.html: p-2.5, hover surface-container-low */
+.portal_theme_toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0;
+  padding: 0.625rem;
+  border: none;
+  border-radius: var(--ui-button-border-radius, 4px);
+  background: transparent;
+  color: var(--portal-text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.portal_theme_toggle:hover {
+  background: var(--portal-surface-container-low, #f6f3f5);
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .portal_theme_toggle:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--portal-gold-accent, #d4af37);
+}

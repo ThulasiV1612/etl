@@ -1,0 +1,1394 @@
+/* Class Setup — simplified, standard enterprise table UX */
+
+.deals_class_setup_page {
+  --cs-page: var(--portal-page-bg, #f5f6f4);
+  --cs-surface: var(--portal-surface, #fcfcfb);
+  --cs-surface-2: var(--portal-surface-2, #f1f2ef);
+  --cs-ink: var(--portal-ink, #101413);
+  --cs-ink-2: var(--portal-ink-2, #52514e);
+  --cs-muted: var(--portal-muted, #898781);
+  --cs-hairline: var(--portal-hairline, #e1e0d9);
+  --cs-accent: #0e6b60;
+  --cs-accent-ink: #ffffff;
+  --cs-accent-soft: rgba(14, 107, 96, 0.09);
+  --cs-good: #0ca30c;
+  --cs-good-text: #006300;
+  --cs-critical: #d03b3b;
+  --cs-lp: #2a78d6;
+  --cs-gp: #eda100;
+  --cs-pref: #4a3aa7;
+  --cs-mezz: #eb6834;
+  --cs-shadow: 0 1px 2px rgba(16, 20, 19, 0.05), 0 4px 14px rgba(16, 20, 19, 0.05);
+  --cs-sticky-group-w: 142px;
+  --cs-sticky-class-w: 204px;
+  color: var(--cs-ink);
+}
+
+[data-theme="dark"] .deals_class_setup_page {
+  --cs-page: #0d0d0d;
+  --cs-surface: #1a1a19;
+  --cs-surface-2: #232322;
+  --cs-ink: #f4f4f0;
+  --cs-ink-2: #c3c2b7;
+  --cs-muted: #898781;
+  --cs-hairline: #2c2c2a;
+  --cs-accent: #2fa093;
+  --cs-accent-ink: #0d0d0d;
+  --cs-accent-soft: rgba(47, 160, 147, 0.14);
+  --cs-good-text: #4cc24c;
+  --cs-critical: #e66767;
+  --cs-lp: #3987e5;
+  --cs-gp: #c98500;
+  --cs-pref: #9085e9;
+  --cs-mezz: #d95926;
+  --cs-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- Sticky page header (back + title + actions) ---------- */
+/* Navbar is outside `.app_main_content` scroll — stick to top of the scroll pane. */
+.deals_class_setup_page > header.cs_page_header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+  padding: 0.35rem 0 0.55rem;
+  background: var(--cs-page);
+  box-shadow: 0 8px 14px -12px rgba(16, 20, 19, 0.35);
+}
+
+.deals_class_setup_page .cs_page_header_text {
+  min-width: 0;
+}
+
+.deals_class_setup_page .cs_page_subtitle {
+  margin: 0.15rem 0 0;
+  font-size: 13px;
+  color: var(--cs-ink-2);
+}
+
+.deals_class_setup_page .cs_page_header_actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.deals_class_setup_page .cs_page_header_actions .um_toolbar_export_btn,
+.deals_class_setup_page .cs_page_header_actions .um_btn_primary {
+  text-decoration: none;
+}
+
+.deals_class_setup_page .cs_add_select_wrap {
+  display: inline-flex;
+}
+
+.deals_class_setup_page .cs_add_select {
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--cs-ink-2);
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-hairline);
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.deals_class_setup_page .cs_create_panel {
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-hairline);
+  border-radius: 12px;
+  box-shadow: var(--cs-shadow);
+  padding: 16px;
+}
+
+.deals_class_setup_page .cs_create_panel_head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.deals_class_setup_page .cs_create_panel_title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.deals_class_setup_page .cs_create_panel_sub {
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  color: var(--cs-muted);
+  max-width: 60ch;
+}
+
+.deals_class_setup_page .cs_create_type_grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .deals_class_setup_page .cs_create_type_grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .deals_class_setup_page .cs_create_type_grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.deals_class_setup_page .cs_create_type_btn {
+  appearance: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--cs-hairline);
+  background: var(--cs-surface-2);
+  color: var(--cs-ink);
+}
+
+.deals_class_setup_page .cs_create_type_btn:hover {
+  border-color: var(--cs-accent);
+  background: var(--cs-accent-soft);
+}
+
+.deals_class_setup_page .cs_create_type_btn strong {
+  font-size: 13px;
+}
+
+.deals_class_setup_page .cs_create_type_btn span:last-child {
+  font-size: 12px;
+  color: var(--cs-muted);
+}
+
+.deals_class_setup_page .cs_create_type_btn .cs_swatch {
+  margin-bottom: 4px;
+}
+
+.deals_class_setup_page .cs_class_row.is-focused td {
+  background: var(--cs-accent-soft);
+  transition: background 0.35s ease;
+}
+
+.deals_class_setup_page .cs_page_body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 2rem;
+}
+
+/* ---------- Buttons ---------- */
+.deals_class_setup_page .cs_add_btn,
+.deals_class_setup_page .cs_primary_btn,
+.deals_class_setup_page .cs_subtle_btn,
+.deals_class_setup_page .cs_table_scroll_btn {
+  appearance: none;
+  font: inherit;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.deals_class_setup_page .cs_add_btn {
+  font-size: 12.5px;
+  font-weight: 600;
+  border: 1px solid var(--cs-hairline);
+  background: var(--cs-surface);
+  color: var(--cs-ink-2);
+  padding: 6px 12px;
+}
+
+.deals_class_setup_page .cs_add_btn:hover {
+  border-color: var(--cs-accent);
+  color: var(--cs-accent);
+}
+
+.deals_class_setup_page .cs_primary_btn {
+  font-weight: 600;
+  background: var(--cs-accent);
+  color: var(--cs-accent-ink);
+  border: 0;
+  padding: 8px 16px;
+}
+
+.deals_class_setup_page .cs_primary_btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.deals_class_setup_page .cs_subtle_btn {
+  font-size: 12.5px;
+  background: transparent;
+  border: 0;
+  color: var(--cs-ink-2);
+  padding: 4px 8px;
+}
+
+.deals_class_setup_page .cs_subtle_btn:hover {
+  background: var(--cs-surface-2);
+}
+
+.deals_class_setup_page .cs_subtle_btn.danger:hover {
+  color: var(--cs-critical);
+}
+
+/* ---------- Metric strip ---------- */
+.deals_class_setup_page .cs_metrics {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--cs-hairline);
+  border: 1px solid var(--cs-hairline);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--cs-shadow);
+}
+
+.deals_class_setup_page .cs_metric {
+  background: var(--cs-surface);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.deals_class_setup_page .cs_metric_label {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cs-muted);
+  font-weight: 650;
+}
+
+.deals_class_setup_page .cs_metric_value {
+  font-size: 16px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.deals_class_setup_page .cs_metric_value.is-ok {
+  color: var(--cs-good-text);
+}
+
+.deals_class_setup_page .cs_metric_value.is-bad {
+  color: var(--cs-critical);
+}
+
+.deals_class_setup_page .cs_metric_input {
+  font: inherit;
+  font-size: 16px;
+  font-weight: 650;
+  color: var(--cs-ink);
+  background: var(--cs-surface-2);
+  border: 1px solid var(--cs-hairline);
+  border-radius: 7px;
+  padding: 4px 8px;
+  width: 100%;
+  max-width: 160px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.deals_class_setup_page .cs_metric_hint {
+  font-size: 11.5px;
+  color: var(--cs-muted);
+}
+
+.deals_class_setup_page .cs_metric_bar {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--cs-surface-2);
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+.deals_class_setup_page .cs_metric_bar > i {
+  display: block;
+  height: 100%;
+  background: var(--cs-accent);
+  border-radius: inherit;
+}
+
+@media (max-width: 1100px) {
+  .deals_class_setup_page .cs_metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .deals_class_setup_page .cs_metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Validation banner ---------- */
+.deals_class_setup_page .cs_status_banner {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--cs-hairline);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.deals_class_setup_page .cs_status_banner.is-ok {
+  background: rgba(12, 163, 12, 0.08);
+  border-color: rgba(12, 163, 12, 0.25);
+  color: var(--cs-good-text);
+}
+
+.deals_class_setup_page .cs_status_banner.is-warn {
+  background: rgba(208, 59, 59, 0.06);
+  border-color: rgba(208, 59, 59, 0.22);
+  color: var(--cs-ink);
+}
+
+.deals_class_setup_page .cs_status_banner.is-warn svg {
+  color: var(--cs-critical);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.deals_class_setup_page .cs_status_banner_body strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.deals_class_setup_page .cs_status_list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--cs-ink-2);
+  font-size: 12.5px;
+}
+
+/* ---------- Table panel ---------- */
+.deals_class_setup_page .cs_table_panel {
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-hairline);
+  border-radius: 12px;
+  box-shadow: var(--cs-shadow);
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+.deals_class_setup_page .cs_table_toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--cs-hairline);
+}
+
+.deals_class_setup_page .cs_table_title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.deals_class_setup_page .cs_table_subtitle {
+  margin: 2px 0 0;
+  font-size: 12.5px;
+  color: var(--cs-muted);
+}
+
+.deals_class_setup_page .cs_table_scroll_btns {
+  display: inline-flex;
+  gap: 6px;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.deals_class_setup_page .cs_table_scroll_btn {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--cs-hairline);
+  background: var(--cs-surface);
+  color: var(--cs-ink-2);
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(16, 20, 19, 0.06);
+}
+
+.deals_class_setup_page .cs_table_scroll_btn:hover:not(:disabled) {
+  border-color: var(--cs-accent);
+  color: var(--cs-accent);
+}
+
+.deals_class_setup_page .cs_table_scroll_btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.deals_class_setup_page .cs_table_scroll {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  /* auto keeps trackpad / touch inertia smooth; buttons use scrollBy({ behavior: "smooth" }) */
+  scroll-behavior: auto;
+  cursor: default;
+}
+
+.deals_class_setup_page .cs_table_scroll.is-panning {
+  cursor: default;
+  user-select: none;
+}
+
+.deals_class_setup_page .cs_table_scroll.is-panning * {
+  cursor: default;
+  user-select: none;
+}
+
+.deals_class_setup_page .cs_table_scroll.has-right {
+  mask-image: linear-gradient(270deg, transparent, #000 24px, #000 100%);
+}
+
+.deals_class_setup_page .cs_table_scroll.has-left.has-right {
+  mask-image: linear-gradient(270deg, transparent, #000 24px, #000 100%);
+}
+
+.deals_class_setup_page .cs_classes_table {
+  width: max-content;
+  min-width: 1280px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+}
+
+.deals_class_setup_page .cs_classes_table th {
+  text-align: left;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cs-muted);
+  font-weight: 650;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--cs-hairline);
+  background: var(--cs-surface);
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.deals_class_setup_page .cs_classes_table th.r,
+.deals_class_setup_page .cs_classes_table td.r {
+  text-align: right;
+}
+
+.deals_class_setup_page .cs_classes_table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--cs-hairline);
+  vertical-align: middle;
+  background: var(--cs-surface);
+}
+
+/* Freeze Group + Class while the table scrolls horizontally */
+.deals_class_setup_page .cs_classes_table .cs_col_sticky {
+  position: sticky;
+  z-index: 2;
+  background: var(--cs-surface);
+}
+
+.deals_class_setup_page .cs_classes_table .cs_col_group {
+  left: 0;
+  min-width: var(--cs-sticky-group-w);
+  width: var(--cs-sticky-group-w);
+  max-width: var(--cs-sticky-group-w);
+  box-sizing: border-box;
+}
+
+.deals_class_setup_page .cs_classes_table .cs_col_class {
+  left: var(--cs-sticky-group-w);
+  min-width: var(--cs-sticky-class-w);
+  width: var(--cs-sticky-class-w);
+  max-width: var(--cs-sticky-class-w);
+  box-sizing: border-box;
+}
+
+.deals_class_setup_page .cs_classes_table thead th.cs_col_sticky {
+  z-index: 5;
+  top: 0;
+}
+
+.deals_class_setup_page .cs_classes_table .cs_totals_sticky_label {
+  left: 0;
+  min-width: calc(var(--cs-sticky-group-w) + var(--cs-sticky-class-w));
+  width: calc(var(--cs-sticky-group-w) + var(--cs-sticky-class-w));
+  max-width: calc(var(--cs-sticky-group-w) + var(--cs-sticky-class-w));
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+.deals_class_setup_page .cs_table_scroll.has-left .cs_col_class,
+.deals_class_setup_page .cs_table_scroll.has-left .cs_totals_sticky_label {
+  box-shadow: 6px 0 10px -6px rgba(16, 20, 19, 0.22);
+}
+
+[data-theme="dark"] .deals_class_setup_page .cs_table_scroll.has-left .cs_col_class,
+[data-theme="dark"]
+  .deals_class_setup_page
+  .cs_table_scroll.has-left
+  .cs_totals_sticky_label {
+  box-shadow: 6px 0 10px -6px rgba(0, 0, 0, 0.55);
+}
+
+.deals_class_setup_page .cs_class_row.is-focused .cs_col_sticky {
+  background: var(--cs-accent-soft);
+}
+
+.deals_class_setup_page .cs_section_row td {
+  background: transparent;
+  padding: 0;
+  border-bottom: 1px solid var(--cs-hairline);
+}
+
+/* Sticky to the visible scrollport so name / arrows / Add stay put while columns move. */
+.deals_class_setup_page .cs_section_inner {
+  position: sticky;
+  left: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  width: var(--cs-scroll-port-width, 100%);
+  max-width: var(--cs-scroll-port-width, 100%);
+  min-height: 42px;
+  padding: 8px 12px;
+  background: var(--cs-surface-2);
+}
+
+.deals_class_setup_page .cs_section_actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.deals_class_setup_page .cs_section_actions .cs_add_btn {
+  /* Match longest label ("+ Add sub-class") so arrows line up across sections */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 132px;
+  width: 132px;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.deals_class_setup_page .cs_section_actions .cs_section_save_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  height: 32px;
+  padding: 6px 14px;
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+
+.deals_class_setup_page .cs_section_actions .cs_section_save_btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.deals_class_setup_page .cs_section_unsaved_msg {
+  margin: 0.45rem 0 0;
+  padding: 0.45rem 0.65rem;
+  max-width: 36rem;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, #d97706 35%, transparent);
+  background: color-mix(in srgb, #f59e0b 12%, transparent);
+  color: #92400e;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: 550;
+}
+
+.deals_class_setup_page .cs_section_unsaved_msg strong {
+  font-weight: 700;
+}
+
+.deals_class_setup_page .cs_section_save_btn.is-dirty {
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, #f59e0b 55%, transparent),
+    0 0 0 4px color-mix(in srgb, #f59e0b 18%, transparent);
+  animation: cs_save_pulse 1.6s ease-in-out infinite;
+}
+
+.deals_class_setup_page .cs_section_save_btn.is-dirty:disabled {
+  animation: none;
+  box-shadow: none;
+}
+
+@keyframes cs_save_pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 2px color-mix(in srgb, #f59e0b 55%, transparent),
+      0 0 0 4px color-mix(in srgb, #f59e0b 18%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2px color-mix(in srgb, #f59e0b 75%, transparent),
+      0 0 0 6px color-mix(in srgb, #f59e0b 28%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deals_class_setup_page .cs_section_save_btn.is-dirty {
+    animation: none;
+  }
+}
+
+:root[data-theme="dark"] .deals_class_setup_page .cs_section_unsaved_msg {
+  color: #fcd34d;
+  border-color: color-mix(in srgb, #f59e0b 40%, transparent);
+  background: color-mix(in srgb, #f59e0b 16%, transparent);
+}
+
+.deals_class_setup_page .cs_section_actions .cs_table_scroll_btns {
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.deals_class_setup_page .cs_section_actions .cs_table_scroll_btn {
+  width: 30px;
+  height: 30px;
+}
+
+.deals_class_setup_page .cs_section_inner strong {
+  font-size: 13px;
+}
+
+.deals_class_setup_page .cs_section_desc {
+  color: var(--cs-muted);
+  font-size: 12px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.deals_class_setup_page .cs_section_count {
+  font-size: 11.5px;
+  font-weight: 650;
+  color: var(--cs-ink-2);
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-hairline);
+  border-radius: 999px;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+.deals_class_setup_page .cs_class_identity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  min-width: 0;
+  width: 100%;
+}
+
+.deals_class_setup_page .cs_class_info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-width: 280px;
+}
+
+.deals_class_setup_page .cs_class_info_chip {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--cs-ink-2);
+  background: var(--cs-surface-2);
+  border: 1px solid var(--cs-hairline);
+  border-radius: 999px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+.deals_class_setup_page .cs_class_row.tone-lp .cs_class_info_chip {
+  border-color: rgba(42, 120, 214, 0.25);
+  background: rgba(42, 120, 214, 0.08);
+  color: #1a5aa8;
+}
+
+.deals_class_setup_page .cs_class_row.tone-gp .cs_class_info_chip {
+  border-color: rgba(237, 161, 0, 0.3);
+  background: rgba(237, 161, 0, 0.1);
+  color: #8a5a00;
+}
+
+.deals_class_setup_page .cs_class_row.tone-pref .cs_class_info_chip {
+  border-color: rgba(74, 58, 167, 0.25);
+  background: rgba(74, 58, 167, 0.08);
+  color: #3d3280;
+}
+
+.deals_class_setup_page .cs_class_row.tone-mezz .cs_class_info_chip {
+  border-color: rgba(235, 104, 52, 0.3);
+  background: rgba(235, 104, 52, 0.1);
+  color: #a63d14;
+}
+
+[data-theme="dark"] .deals_class_setup_page .cs_class_row.tone-lp .cs_class_info_chip,
+[data-theme="dark"] .deals_class_setup_page .cs_class_row.tone-gp .cs_class_info_chip,
+[data-theme="dark"] .deals_class_setup_page .cs_class_row.tone-pref .cs_class_info_chip,
+[data-theme="dark"] .deals_class_setup_page .cs_class_row.tone-mezz .cs_class_info_chip {
+  color: var(--cs-ink-2);
+}
+
+.deals_class_setup_page .cs_swatch {
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+  flex: none;
+}
+
+.deals_class_setup_page .cs_swatch.lp { background: var(--cs-lp); }
+.deals_class_setup_page .cs_swatch.gp { background: var(--cs-gp); }
+.deals_class_setup_page .cs_swatch.pref { background: var(--cs-pref); }
+.deals_class_setup_page .cs_swatch.mezz { background: var(--cs-mezz); }
+
+.deals_class_setup_page .cs_class_row td:first-child {
+  border-left: 3px solid transparent;
+}
+
+.deals_class_setup_page .cs_class_row.tone-lp td:first-child {
+  border-left-color: var(--cs-lp);
+}
+
+.deals_class_setup_page .cs_class_row.tone-gp td:first-child {
+  border-left-color: var(--cs-gp);
+}
+
+.deals_class_setup_page .cs_class_row.tone-pref td:first-child {
+  border-left-color: var(--cs-pref);
+}
+
+.deals_class_setup_page .cs_class_row.tone-mezz td:first-child {
+  border-left-color: var(--cs-mezz);
+}
+
+.deals_class_setup_page .cs_empty_row td {
+  color: var(--cs-muted);
+  font-size: 12.5px;
+  font-style: italic;
+  padding: 10px 14px;
+}
+
+.deals_class_setup_page .cs_classes_table input,
+.deals_class_setup_page .cs_classes_table select {
+  font: inherit;
+  font-size: 12.5px;
+  color: var(--cs-ink);
+  background: var(--cs-surface-2);
+  border: 1px solid var(--cs-hairline);
+  border-radius: 7px;
+  padding: 5px 8px;
+}
+
+.deals_class_setup_page .cs_classes_table select {
+  min-width: 110px;
+}
+
+.deals_class_setup_page .cs_name_in {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-weight: 600;
+}
+
+.deals_class_setup_page .cs_text_in {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.deals_class_setup_page .cs_num_in {
+  width: 112px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.deals_class_setup_page .cs_num_ro {
+  display: inline-block;
+  min-width: 72px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cs-ink);
+}
+
+.deals_class_setup_page .cs_pct_in {
+  width: 5.5rem;
+  min-width: 5.5rem;
+  text-align: right;
+  box-sizing: border-box;
+}
+
+.deals_class_setup_page .cs_cellflex {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  min-width: 160px;
+}
+
+.deals_class_setup_page .cs_unit {
+  color: var(--cs-muted);
+  font-size: 11.5px;
+  white-space: nowrap;
+}
+
+.deals_class_setup_page .cs_split_chip {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--cs-surface-2);
+  color: var(--cs-ink-2);
+}
+
+.deals_class_setup_page .cs_totals td {
+  font-weight: 650;
+  border-top: 2px solid var(--cs-hairline);
+  border-bottom: 0;
+  padding: 10px 12px;
+  background: var(--cs-surface);
+}
+
+.deals_class_setup_page .cs_totals .is-ok {
+  color: var(--cs-good-text);
+}
+
+.deals_class_setup_page .cs_totals .is-bad {
+  color: var(--cs-critical);
+}
+
+.deals_class_setup_page .cs_col_actions {
+  width: 72px;
+  white-space: nowrap;
+}
+
+.deals_class_setup_page .cs_row_actions {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.deals_class_setup_page .cs_icon_btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: var(--cs-muted);
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deals_class_setup_page .cs_icon_btn:hover {
+  background: var(--cs-surface-2);
+  color: var(--cs-ink);
+}
+
+.deals_class_setup_page .cs_icon_btn.danger:hover {
+  color: var(--cs-critical);
+}
+
+.deals_class_setup_page .cs_confirm_inline {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.deals_class_setup_page .cs_toggle {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.deals_class_setup_page .cs_toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+}
+
+.deals_class_setup_page .cs_toggle .track {
+  width: 30px;
+  height: 17px;
+  border-radius: 999px;
+  background: var(--cs-hairline);
+  position: relative;
+  transition: background 0.15s;
+  flex: none;
+}
+
+.deals_class_setup_page .cs_toggle .track::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--cs-surface);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: left 0.15s;
+}
+
+.deals_class_setup_page .cs_toggle input:checked + .track {
+  background: var(--cs-accent);
+}
+
+.deals_class_setup_page .cs_toggle input:checked + .track::after {
+  left: 15px;
+}
+
+.deals_class_setup_page .cs_sr_only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ---------- Skeleton ---------- */
+.deals_class_setup_page .cs_skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.deals_class_setup_page .cs_skel_block {
+  height: 88px;
+  border-radius: 12px;
+  background: linear-gradient(
+    90deg,
+    var(--cs-surface-2) 25%,
+    var(--cs-hairline) 37%,
+    var(--cs-surface-2) 63%
+  );
+  background-size: 400% 100%;
+  animation: cs_skel 1.2s ease infinite;
+}
+
+@keyframes cs_skel {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deals_class_setup_page .cs_skel_block {
+    animation: none !important;
+  }
+  .deals_class_setup_page .cs_table_scroll {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Hurdles & promote schedule (HTML screen 1) ---------- */
+.deals_class_setup_page .cs_hurdles_btn {
+  appearance: none;
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--cs-ink-2);
+  background: var(--cs-surface-2);
+  border: 1px solid var(--cs-hairline);
+  border-radius: 999px;
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+
+.deals_class_setup_page .cs_hurdles_btn:hover {
+  border-color: var(--cs-accent);
+  color: var(--cs-accent);
+}
+
+.deals_class_setup_page .cs_promote_splits_edit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 200px;
+}
+
+.deals_class_setup_page .cs_promote_splits_inputs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px 4px;
+}
+
+.deals_class_setup_page .cs_promote_stage_field {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.deals_class_setup_page .cs_promote_stage_field .form_tooltip_root {
+  flex-shrink: 0;
+}
+
+.deals_class_setup_page .cs_promote_stage_field .form_tooltip_trigger {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+}
+
+.deals_class_setup_page .cs_promote_stage_field .form_tooltip_trigger svg {
+  width: 12px;
+  height: 12px;
+}
+
+.deals_class_setup_page .cs_promote_stage_tip {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+.deals_class_setup_page .cs_matrix_th_label {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 3px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.deals_class_setup_page .cs_matrix_th_label .form_tooltip_root {
+  flex-shrink: 0;
+}
+
+.deals_class_setup_page .cs_matrix_th_label .form_tooltip_trigger {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+}
+
+.deals_class_setup_page .cs_matrix_th_label .form_tooltip_trigger svg {
+  width: 12px;
+  height: 12px;
+}
+
+.deals_class_setup_page .cs_promote_arrow {
+  color: var(--cs-muted);
+  font-size: 11px;
+  margin: 0 2px;
+  user-select: none;
+}
+
+.deals_class_setup_page .cs_promote_splits_edit .cs_pct_in {
+  width: 5.5rem;
+  min-width: 5.5rem;
+}
+
+.deals_class_setup_page .cs_promote_card {
+  margin-top: 16px;
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-hairline);
+  border-radius: 14px;
+  box-shadow: 0 1px 0 rgba(16, 20, 19, 0.03);
+}
+
+.deals_class_setup_page .cs_promote_pad {
+  padding: 18px 20px 20px;
+}
+
+.deals_class_setup_page .cs_promote_head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+}
+
+.deals_class_setup_page .cs_promote_head .cs_promote_sub {
+  max-width: 40rem;
+}
+
+.deals_class_setup_page .cs_promote_head .cs_section_save_btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 7.5rem;
+  height: 32px;
+  padding: 6px 14px;
+  font-size: 12.5px;
+  border-radius: 8px;
+  border: 1px solid var(--cs-accent);
+  background: var(--cs-accent);
+  color: var(--cs-accent-ink);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.deals_class_setup_page .cs_promote_head .cs_section_save_btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.deals_class_setup_page .cs_workflow_next {
+  margin-top: 16px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-hairline);
+  border-radius: 14px;
+}
+
+.deals_class_setup_page .cs_workflow_next .cs_promote_sub {
+  margin: 0;
+  max-width: 28rem;
+}
+
+.deals_class_setup_page .cs_workflow_next .um_btn_primary {
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.deals_class_setup_page .cs_eyebrow {
+  margin: 0 0 6px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--cs-muted);
+}
+
+.deals_class_setup_page .cs_promote_sub {
+  margin: 0 0 12px;
+  font-size: 12.5px;
+  color: var(--cs-ink-2);
+  line-height: 1.45;
+  max-width: 72ch;
+}
+
+.deals_class_setup_page .cs_hurdle_editor {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--cs-ink-2);
+  margin-bottom: 14px;
+}
+
+.deals_class_setup_page .cs_hurdle_line {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+  overflow-x: auto;
+  max-width: 100%;
+  padding-bottom: 2px;
+}
+
+.deals_class_setup_page .cs_hurdle_line > .cs_unit:first-child {
+  flex: 0 0 auto;
+  min-width: 68px;
+}
+
+.deals_class_setup_page .cs_promote_card input,
+.deals_class_setup_page .cs_promote_card select {
+  font: inherit;
+  font-size: 12.5px;
+  color: var(--cs-ink);
+  background: var(--cs-surface-2);
+  border: 1px solid var(--cs-hairline);
+  border-radius: 7px;
+  padding: 4px 7px;
+  flex: 0 0 auto;
+}
+
+.deals_class_setup_page .cs_hurdle_line input[type="number"] {
+  width: 62px;
+  text-align: right;
+}
+
+.deals_class_setup_page .cs_hurdle_line select {
+  max-width: 160px;
+}
+
+.deals_class_setup_page .cs_matrix_wrap {
+  overflow-x: auto;
+  border: 1px solid var(--cs-hairline);
+  border-radius: 10px;
+  max-width: 100%;
+}
+
+.deals_class_setup_page .cs_matrix_table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  table-layout: fixed;
+  min-width: 0;
+}
+
+.deals_class_setup_page .cs_matrix_table th {
+  text-align: right;
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--cs-muted);
+  font-weight: 650;
+  padding: 8px 8px 7px;
+  border-bottom: 1px solid var(--cs-hairline);
+  white-space: normal;
+  vertical-align: bottom;
+  background: var(--cs-surface);
+  line-height: 1.25;
+}
+
+/* Class stays compact; stage columns share the rest evenly. */
+.deals_class_setup_page .cs_matrix_table th:first-child,
+.deals_class_setup_page .cs_matrix_table td:first-child {
+  text-align: left;
+  width: 15.5rem;
+  max-width: 15.5rem;
+  min-width: 11rem;
+  white-space: normal;
+}
+
+.deals_class_setup_page .cs_matrix_table th:not(:first-child),
+.deals_class_setup_page .cs_matrix_table td:not(:first-child) {
+  width: auto;
+  min-width: 8.5rem;
+  max-width: none;
+  padding-left: 8px;
+  padding-right: 10px;
+  vertical-align: middle;
+}
+
+.deals_class_setup_page .cs_matrix_table td:first-child .cs_cellflex {
+  display: inline-flex;
+  width: auto;
+  max-width: 100%;
+  min-width: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.5rem;
+}
+
+.deals_class_setup_page .cs_matrix_table td:first-child .cs_swatch,
+.deals_class_setup_page .cs_matrix_table td:first-child .cs_unit {
+  flex-shrink: 0;
+}
+
+.deals_class_setup_page .cs_matrix_class_name {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+  line-height: 1.35;
+}
+
+.deals_class_setup_page .cs_matrix_table th .cs_unit {
+  display: block;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+  margin-top: 1px;
+  white-space: normal;
+}
+
+.deals_class_setup_page .cs_matrix_hurdle_th {
+  min-width: 8.5rem;
+}
+
+.deals_class_setup_page .cs_matrix_hurdle_title {
+  display: block;
+  white-space: normal;
+}
+
+.deals_class_setup_page .cs_matrix_hurdle_rate {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  font-variant-numeric: tabular-nums;
+  color: var(--cs-accent);
+  background: var(--cs-accent-soft);
+  border: 1px solid rgba(14, 107, 96, 0.22);
+}
+
+.deals_class_setup_page .cs_matrix_table .cs_pct_in {
+  width: 5.5rem;
+  min-width: 5.5rem;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.deals_class_setup_page .cs_matrix_table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--cs-hairline);
+  white-space: nowrap;
+}
+
+.deals_class_setup_page .cs_matrix_table td:first-child {
+  white-space: normal;
+}
+
+.deals_class_setup_page .cs_matrix_table td.r {
+  text-align: right;
+}
+
+.deals_class_setup_page .cs_matrix_table tfoot td {
+  font-weight: 650;
+  border-top: 2px solid var(--cs-hairline);
+  border-bottom: 0;
+  padding: 9px 8px;
+}
+

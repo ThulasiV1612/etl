@@ -1,0 +1,26 @@
+.sx-bento-grid-wwd {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .sx-bento-grid-wwd {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .sx-bento-grid-wwd {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(140px, auto);
+  }
+
+  .sx-bento-grid-wwd > :nth-child(1) {
+    grid-row: span 2;
+  }
+
+  .sx-bento-grid-wwd > :nth-child(6) {
+    grid-column: 1 / -1;
+  }
+}

@@ -1,0 +1,562 @@
+/**
+ * Portal design tokens — aligned with newUi/light.html (Syndication X luxury shell).
+ * Theme is applied on document.documentElement via data-theme + .light / .dark classes.
+ */
+
+:root,
+:root[data-theme="light"],
+html.light {
+  color-scheme: light;
+
+  --portal-gold-accent: #d4af37;
+  --portal-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --portal-font-sans: "Inter", system-ui, sans-serif;
+
+  --main-auth-button-color: #131b2e;
+  --portal-primary: #000000;
+  --portal-primary-hover: #1b1b1d;
+  --portal-primary-soft: rgba(212, 175, 55, 0.1);
+
+  --color-accent: #d4af37;
+  --color-accent-hover: #c4a030;
+
+  --background-color-onboarding: #fcf8fa;
+  --card-onboarding-bg-color: #ffffff;
+  --page-background: #fcf8fa;
+  --bg-colour-main: #fcf8fa;
+
+  --portal-page-bg: #fcf8fa;
+  /* sx_logo_width_reduced.png canvas — auth shell background */
+  --portal-auth-page-bg: #f9f8f3;
+  /* Landing (new_landing.css) — auth card chrome */
+  --auth-landing-blue-deep: #04080f;
+  --auth-landing-blue-mid: #0a1628;
+  --auth-landing-blue-surface: #0f1f3d;
+  --auth-landing-blue-border: rgba(30, 80, 160, 0.25);
+  --auth-landing-blue-accent: #1a4fc4;
+  --auth-landing-gold: #c9973a;
+  --auth-landing-gold-light: #e8bc6a;
+  --auth-landing-gold-pale: #f5dfa0;
+  --auth-landing-gold-border: rgba(201, 151, 58, 0.3);
+  --auth-landing-gold-dim: rgba(201, 151, 58, 0.18);
+  --auth-landing-ink: #f4f1eb;
+  --auth-landing-ink-muted: rgba(244, 241, 235, 0.55);
+  --auth-landing-ink-soft: rgba(244, 241, 235, 0.35);
+  --auth-card-bg: var(--auth-landing-blue-mid);
+  --auth-card-border: var(--auth-landing-blue-border);
+  /* light.html header: bg-surface/80 */
+  --portal-chrome-bg: rgba(252, 248, 250, 0.8);
+  --portal-surface: #ffffff;
+  --portal-surface-muted: #f0edef;
+  --portal-surface-container-low: #f6f3f5;
+
+  /* light.html: bg-primary-container */
+  --sidebar-bg-color: #131b2e;
+  --sidebar-aside-bg: #131b2e;
+  /* Toggles, checkboxes, radios — match sidebar chrome */
+  --portal-control-accent: var(--sidebar-bg-color);
+  --sidebar-text-color: #7c839b;
+  --sidebar-text-hover: #ffffff;
+  --sidebar-active: rgba(212, 175, 55, 0.1);
+  --sidebar-active-text: #d4af37;
+
+  --portal-text: #1b1b1d;
+  --portal-text-secondary: #45464d;
+  --portal-text-muted: #76777d;
+  --light-gray-color: #76777d;
+
+  --portal-border: #c6c6cd;
+  --portal-outline: #76777d;
+  --portal-muted-bg: #f0edef;
+
+  --ui-button-border-radius: 4px;
+  --ui-button-background-add: var(--sidebar-bg-color);
+  --ui-button-text: var(--sidebar-active-text);
+  --ui-button-border: color-mix(
+    in srgb,
+    var(--sidebar-active-text) 28%,
+    var(--sidebar-bg-color)
+  );
+  --ui-button-hover: color-mix(
+    in srgb,
+    var(--sidebar-active-text) 14%,
+    var(--sidebar-bg-color)
+  );
+
+  --edit-button-background: rgba(212, 175, 55, 0.12);
+  --edit-button-color: #785a1a;
+  --delete-button-background: #ffdad6;
+
+  --active-status-background: #dcfce7;
+  --inactive-status-background: #fee2e2;
+  --portal-status-raising-text: #166534;
+  --portal-status-raising-bg: #dcfce7;
+  --portal-danger: #ba1a1a;
+
+  --ui-border-radius: 4px;
+  --portal-pill-radius: 4px;
+  /* Cards use the same corner radius as buttons. */
+  --portal-card-radius: var(--portal-pill-radius);
+
+  --portal-dropdown-shell-border: rgba(0, 0, 0, 0.08);
+  --portal-dropdown-shell-muted: #f6f3f5;
+  --portal-dropdown-action-pill-bg: #f0edef;
+  --portal-icon-box-radius: 4px;
+
+  --portal-toggle-track: #f0edef;
+  --portal-field-focus-shadow: 0 0 0 2px rgba(212, 175, 55, 0.25);
+  --portal-field-focus-shadow-dark: 0 0 0 2px rgba(212, 175, 55, 0.2);
+
+  --font-color-title: #1b1b1d;
+  --icon-color: #1b1b1d;
+
+  /* Tabs */
+  --portal-tab-active-text: #131b2e;
+  --portal-tab-active-bg: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 10%,
+    transparent
+  );
+  --portal-tab-strip-border: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 38%,
+    transparent
+  );
+
+  /* Tables, panels, pagination */
+  --portal-panel-bg: #f8f8f8;
+  --portal-table-border: #e2e8f0;
+  --portal-table-header-text: var(--portal-text, #1b1b1d);
+  --portal-table-header-bg: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 9%,
+    var(--portal-panel-bg, #f8f8f8)
+  );
+  --portal-table-header-border: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 24%,
+    var(--portal-table-border, #e2e8f0)
+  );
+  --portal-table-body-text: var(--portal-text);
+  --portal-table-row-odd: #ffffff;
+  --portal-table-row-even: #f8fafc;
+  --portal-table-sorted-text: #0f172a;
+  --portal-table-empty-border: #e2e8f0;
+  --portal-table-empty-bg: #fafafa;
+  --portal-table-empty-text: #64748b;
+  --portal-pagination-border: #e2e8f0;
+  --portal-pagination-muted: #64748b;
+  --portal-pagination-strong: #334155;
+  --portal-pagination-btn-bg: #ffffff;
+  --portal-pagination-btn-text: #475569;
+  /* Table horizontal scroll */
+  --portal-table-scroll-thumb: #cbd5e1;
+  --portal-table-scroll-thumb-hover: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 18%,
+    #94a3b8
+  );
+  /* App-wide scroll chrome */
+  --portal-scroll-size: 9px;
+  --portal-scroll-size-table: 10px;
+  --portal-scroll-track: transparent;
+  --portal-scroll-track-hover: color-mix(
+    in srgb,
+    var(--portal-border, #c6c6cd) 42%,
+    transparent
+  );
+  --portal-scroll-thumb: color-mix(
+    in srgb,
+    var(--portal-text-muted, #76777d) 48%,
+    transparent
+  );
+  --portal-scroll-thumb-hover: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 22%,
+    var(--portal-text-muted, #76777d)
+  );
+  --portal-scroll-thumb-active: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 38%,
+    var(--portal-text-secondary, #45464d)
+  );
+  --portal-table-sticky-edge-line: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 14%,
+    var(--portal-table-border, #e2e8f0)
+  );
+  --portal-table-sticky-edge-shadow: rgb(15 23 42 / 7%);
+  --portal-pagination-btn-border: #e2e8f0;
+  --portal-pagination-btn-hover-bg: #f8fafc;
+}
+
+:root[data-theme="dark"],
+html.dark {
+  color-scheme: dark;
+
+  --main-auth-button-color: #d4af37;
+  --portal-primary: #d4af37;
+  --portal-primary-hover: #e9c349;
+  --portal-primary-soft: rgba(212, 175, 55, 0.15);
+
+  --color-accent: #d4af37;
+  --color-accent-hover: #e9c349;
+
+  --background-color-onboarding: #0a0f1a;
+  --card-onboarding-bg-color: rgba(255, 255, 255, 0.05);
+  --page-background: #0a0f1a;
+  --bg-colour-main: #0a0f1a;
+
+  --portal-page-bg: #0a0f1a;
+  --portal-auth-page-bg: #04080f;
+  --auth-card-bg: var(--auth-landing-blue-surface);
+  /* light.html header: dark:bg-[#0a0f1a]/80 */
+  --portal-chrome-bg: rgba(10, 15, 26, 0.8);
+  --portal-surface: rgba(255, 255, 255, 0.05);
+  --portal-surface-muted: rgba(255, 255, 255, 0.08);
+  --portal-surface-container-low: rgba(255, 255, 255, 0.05);
+
+  /* light.html: dark:bg-[#0a0f1a] */
+  --sidebar-bg-color: #0a0f1a;
+  --sidebar-aside-bg: #0a0f1a;
+  --portal-control-accent: var(--sidebar-bg-color);
+  --sidebar-text-color: rgba(124, 131, 155, 0.75);
+  --sidebar-text-hover: rgba(255, 255, 255, 0.95);
+  --sidebar-active: rgba(212, 175, 55, 0.15);
+  --sidebar-active-text: #d4af37;
+
+  --portal-text: rgba(255, 255, 255, 0.92);
+  --portal-text-secondary: rgba(255, 255, 255, 0.72);
+  --portal-text-muted: rgba(255, 255, 255, 0.55);
+  --light-gray-color: rgba(255, 255, 255, 0.55);
+
+  --portal-border: rgba(198, 198, 205, 0.22);
+  --portal-outline: rgba(255, 255, 255, 0.45);
+  --portal-muted-bg: rgba(255, 255, 255, 0.06);
+
+  --ui-button-background-add: var(--sidebar-bg-color);
+  --ui-button-text: var(--sidebar-active-text);
+  --ui-button-border: color-mix(
+    in srgb,
+    var(--sidebar-active-text) 32%,
+    var(--sidebar-bg-color)
+  );
+  --ui-button-hover: color-mix(
+    in srgb,
+    var(--sidebar-active-text) 16%,
+    var(--sidebar-bg-color)
+  );
+
+  --edit-button-background: rgba(212, 175, 55, 0.15);
+  --edit-button-color: #d4af37;
+  --delete-button-background: rgba(186, 26, 26, 0.2);
+
+  --portal-status-raising-text: #86efac;
+  --portal-status-raising-bg: rgba(22, 101, 52, 0.35);
+  --portal-danger: #ffb4ab;
+
+  --portal-dropdown-shell-border: rgba(255, 255, 255, 0.1);
+  --portal-dropdown-shell-muted: rgba(255, 255, 255, 0.06);
+  --portal-dropdown-action-pill-bg: rgba(255, 255, 255, 0.08);
+
+  --portal-toggle-track: rgba(255, 255, 255, 0.08);
+  --portal-field-focus-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+
+  --font-color-title: rgba(255, 255, 255, 0.95);
+  --icon-color: rgba(255, 255, 255, 0.9);
+
+  --portal-tab-active-text: #d4af37;
+  --portal-tab-active-bg: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 15%,
+    transparent
+  );
+  --portal-tab-strip-border: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 42%,
+    transparent
+  );
+
+  --portal-panel-bg: rgba(255, 255, 255, 0.06);
+  --portal-table-border: rgba(255, 255, 255, 0.12);
+  --portal-table-header-text: rgba(255, 255, 255, 0.84);
+  --portal-table-header-bg: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 14%,
+    rgba(255, 255, 255, 0.06)
+  );
+  --portal-table-header-border: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 30%,
+    rgba(255, 255, 255, 0.1)
+  );
+  --portal-table-body-text: rgba(255, 255, 255, 0.92);
+  --portal-table-row-odd: rgba(255, 255, 255, 0.05);
+  --portal-table-row-even: rgba(255, 255, 255, 0.08);
+  --portal-table-sorted-text: rgba(255, 255, 255, 0.95);
+  --portal-table-empty-border: rgba(255, 255, 255, 0.14);
+  --portal-table-empty-bg: rgba(255, 255, 255, 0.04);
+  --portal-table-empty-text: rgba(255, 255, 255, 0.55);
+  --portal-pagination-border: rgba(255, 255, 255, 0.1);
+  --portal-pagination-muted: rgba(255, 255, 255, 0.55);
+  --portal-pagination-strong: rgba(255, 255, 255, 0.88);
+  --portal-pagination-btn-bg: rgba(255, 255, 255, 0.06);
+  --portal-pagination-btn-text: rgba(255, 255, 255, 0.78);
+  --portal-pagination-btn-border: rgba(255, 255, 255, 0.14);
+  --portal-pagination-btn-hover-bg: rgba(255, 255, 255, 0.1);
+  /* Table horizontal scroll */
+  --portal-table-scroll-thumb: rgba(255, 255, 255, 0.14);
+  --portal-table-scroll-thumb-hover: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 28%,
+    rgba(255, 255, 255, 0.22)
+  );
+  /* App-wide scroll chrome */
+  --portal-scroll-size: 9px;
+  --portal-scroll-size-table: 10px;
+  --portal-scroll-track: transparent;
+  --portal-scroll-track-hover: rgba(255, 255, 255, 0.06);
+  --portal-scroll-thumb: rgba(255, 255, 255, 0.16);
+  --portal-scroll-thumb-hover: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 26%,
+    rgba(255, 255, 255, 0.28)
+  );
+  --portal-scroll-thumb-active: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 40%,
+    rgba(255, 255, 255, 0.34)
+  );
+  --portal-table-sticky-edge-line: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 24%,
+    rgba(255, 255, 255, 0.1)
+  );
+  --portal-table-sticky-edge-shadow: rgb(0 0 0 / 38%);
+}
+
+html,
+body {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Keep Landing_Page visuals isolated — it owns its own background on `.sx-landing`. */
+body:not(:has(.sx-landing)) {
+  background-color: var(--portal-page-bg);
+  color: var(--portal-text);
+}
+
+/* newUi/light.html utilities (optional shared surfaces) */
+.luxury-shadow {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+}
+
+:root[data-theme="dark"] .luxury-shadow {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* newUi/light.html — header `backdrop-blur-lg` (Tailwind default) */
+.backdrop-blur-lg {
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border: 2px solid var(--portal-gold-accent, #d4af37);
+  border-radius: var(--portal-card-radius, 4px);
+}
+
+:root[data-theme="dark"] .glass-pill {
+  background: rgba(19, 27, 46, 0.6);
+}
+
+.prestige-card {
+  background: var(--portal-surface);
+  border: 2px solid var(--portal-gold-accent, #d4af37);
+  border-radius: var(--portal-card-radius, 4px);
+}
+
+/* Auth page backdrop — logo cream + landing ambient; card in auth_layout.css */
+body:has(.authPage) {
+  background-color: var(--portal-auth-page-bg, #f9f8f3);
+}
+
+.authPage {
+  background:
+    radial-gradient(
+      ellipse 85% 55% at 50% -12%,
+      color-mix(in srgb, var(--auth-landing-blue-accent, #1a4fc4) 10%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 50% 35% at 100% 100%,
+      var(--auth-landing-gold-dim, rgba(201, 151, 58, 0.18)),
+      transparent 55%
+    ),
+    var(--portal-auth-page-bg, #f9f8f3);
+}
+
+:root[data-theme="dark"] .authPage,
+:root[data-theme="dark"] body:has(.authPage) {
+  background:
+    radial-gradient(
+      ellipse 75% 50% at 50% -8%,
+      var(--auth-landing-gold-dim, rgba(201, 151, 58, 0.14)),
+      transparent 48%
+    ),
+    linear-gradient(
+      165deg,
+      var(--auth-landing-blue-deep, #04080f) 0%,
+      #060d1a 45%,
+      var(--auth-landing-blue-mid, #0a1628) 100%
+    );
+}
+
+/* Sidebar active state — gold pill from light.html */
+.app_sidebar_link {
+  color: var(--sidebar-text-color);
+}
+
+.app_sidebar_link:hover,
+.app_sidebar_expand_btn:hover {
+  color: var(--sidebar-text-hover);
+}
+
+.app_sidebar_link_active,
+.app_sidebar_link_active > span,
+.app_sidebar_link_active svg {
+  color: var(--sidebar-active-text);
+  /* font-weight: 600; */
+}
+
+.app_sidebar_link_active {
+  background-color: var(--sidebar-active);
+  border-left-color: var(--portal-gold-accent, #d4af37);
+}
+
+.app_sidebar_link_active:hover {
+  background-color: var(--sidebar-active);
+}
+
+.app_sidebar_link_active:hover,
+.app_sidebar_link_active:hover > span,
+.app_sidebar_link_active:hover svg {
+  color: var(--sidebar-active-text);
+}
+
+.app_sidebar_sublink_active {
+  border-left: 3px solid var(--portal-gold-accent, #d4af37);
+  color: var(--sidebar-active-text);
+}
+
+.app_sidebar_brand .app_sidebar_title {
+  color: var(--sidebar-text-hover);
+}
+
+.section_placeholder {
+  background: var(--portal-surface);
+  border: 1px solid var(--portal-border);
+  color: var(--portal-text);
+}
+
+/* Logged-in shell action buttons — sidebar navy + gold label */
+.app_shell .um_btn_primary,
+.app_shell a.um_btn_primary,
+.app_shell button.um_btn_primary {
+  background: var(--ui-button-background-add, var(--sidebar-bg-color));
+  color: var(--ui-button-text, var(--sidebar-active-text));
+  border-color: var(--ui-button-border, var(--sidebar-active-text));
+}
+
+.app_shell .um_btn_secondary,
+.app_shell a.um_btn_secondary,
+.app_shell button.um_btn_secondary {
+  background: transparent;
+  color: var(--portal-text, #1b1b1d);
+  border-color: var(--portal-border, #c6c6cd);
+}
+
+.app_shell .um_btn_primary:hover:not(:disabled),
+.app_shell a.um_btn_primary:hover,
+.app_shell button.um_btn_primary:hover:not(:disabled) {
+  background: var(--ui-button-hover);
+  color: var(--ui-button-text, var(--sidebar-active-text));
+}
+
+.app_shell .um_btn_secondary:hover:not(:disabled),
+.app_shell a.um_btn_secondary:hover,
+.app_shell button.um_btn_secondary:hover:not(:disabled) {
+  background: var(--portal-muted-bg, #f0edef);
+  color: var(--portal-text, #1b1b1d);
+  border-color: color-mix(
+    in srgb,
+    var(--portal-text, #1b1b1d) 14%,
+    var(--portal-border, #c6c6cd)
+  );
+}
+
+:root[data-theme="dark"] .app_shell .um_btn_secondary,
+:root[data-theme="dark"] .app_shell a.um_btn_secondary,
+:root[data-theme="dark"] .app_shell button.um_btn_secondary {
+  background: transparent;
+  color: var(--portal-text, rgba(255, 255, 255, 0.92));
+  border-color: var(--portal-border, rgba(255, 255, 255, 0.14));
+}
+
+:root[data-theme="dark"] .app_shell .um_btn_secondary:hover:not(:disabled),
+:root[data-theme="dark"] .app_shell a.um_btn_secondary:hover,
+:root[data-theme="dark"] .app_shell button.um_btn_secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--portal-text, rgba(255, 255, 255, 0.95));
+}
+
+/* Profile avatar — top nav chip + member/contact table user cells */
+.portal_profile_avatar,
+.top_navbar_avatar,
+.um_user_avatar_ring:not(.cp_company_avatar) {
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: var(--portal-pill-radius, 4px);
+  background: color-mix(in srgb, var(--portal-gold-accent, #d4af37) 20%, transparent);
+  color: var(--portal-gold-accent, #d4af37);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.um_user_initials {
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+/* Card / panel surfaces — match button corner radius (4px / --portal-pill-radius) */
+.deals_list_card_surface,
+.tool_style_card,
+.deal_card,
+.prestige-card,
+.glass-pill,
+.um_panel,
+.deal_esign_profile_card,
+.deal_docs_ui_root,
+.pm_panel,
+.invest_now_onboarding_panel,
+.deals_create_card,
+.deal_offering_top,
+.deal_inv_class_card,
+.deal_offer_pf_card,
+.auth_card,
+.portal_switch_card {
+  border-radius: var(--portal-pill-radius, 4px);
+}

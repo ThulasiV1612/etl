@@ -1,0 +1,50 @@
+/* Red delete row (matches deals list kebab danger) */
+.um_kebab_menuitem.deals_kebab_menuitem_danger {
+  color: #b91c1c;
+}
+
+.um_kebab_menuitem.deals_kebab_menuitem_danger .um_kebab_menuitem_icon {
+  color: #b91c1c;
+}
+
+.um_kebab_menuitem.deals_kebab_menuitem_danger:hover:not(:disabled) {
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.um_kebab_menuitem.deals_kebab_menuitem_danger:hover:not(:disabled) .um_kebab_menuitem_icon {
+  color: #b91c1c;
+}
+
+:root[data-theme="dark"] .um_kebab_menuitem.deals_kebab_menuitem_danger {
+  color: #f87171;
+}
+
+:root[data-theme="dark"]
+  .um_kebab_menuitem.deals_kebab_menuitem_danger
+  .um_kebab_menuitem_icon {
+  color: #f87171;
+}
+
+:root[data-theme="dark"] .um_kebab_menuitem.deals_kebab_menuitem_danger:hover:not(:disabled) {
+  background: rgb(127 29 29 / 25%);
+  color: #fecaca;
+}
+
+/* Kebab-only cell; menu lists Edit / Copy link / Send mail / Delete (portal). */
+.deal_member_row_actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 0;
+}
+
+.deal_member_row_actions_menu {
+  min-width: 10.5rem;
+}
+
+.deal_member_delete_overlay.portal_modal_z_boost {
+  z-index: 12000;
+}
+
+/* Delete confirm uses shared um_btn_primary tokens */

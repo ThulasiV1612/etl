@@ -1,0 +1,36 @@
+/* Landing tokens: align with sx_logo + App.css :root (--portal-*, --color-*) */
+.sx-landing {
+  --sx-brand: var(--portal-primary, #00477a);
+  --sx-brand-hover: var(--portal-primary-hover, #00365e);
+  --sx-brand-soft: var(--portal-primary-soft, #e6f0ff);
+  --sx-accent: var(--color-accent, #f4b740);
+  --sx-accent-hover: var(--color-accent-hover, #d99c2f);
+  --sx-title: var(--font-color-title, #003c66);
+  --sx-bg-page: var(--portal-page-bg, #eef2f6);
+  --sx-bg-subtle: var(--bg-colour-main, #eef2f6);
+  --sx-bg-deep: var(--portal-chrome-bg, #f5f7fa);
+  --sx-bg-mid: var(--page-background, #f5f7fa);
+  --sx-bg-panel: var(--portal-surface, #ffffff);
+  --sx-text: var(--sidebar-text-color, #1a1a1a);
+  --sx-text-muted: var(--portal-text-muted, #64748b);
+  --sx-text-soft: var(--light-gray-color, #64748b);
+  /* Legacy name used across landing components = accent gold from app */
+  --sx-gold: var(--sx-accent);
+  --sx-gold-soft: rgba(244, 183, 64, 0.2);
+  --sx-glow: rgba(0, 71, 122, 0.08);
+  --sx-border: var(--portal-border, #e5e7eb);
+  --sx-glass: rgba(255, 255, 255, 0.82);
+  --sx-glass-strong: rgba(255, 255, 255, 0.95);
+  --sx-accent-blue: var(--sx-brand);
+  --sx-radius-lg: 20px;
+  --sx-radius-md: 14px;
+  --sx-radius-sm: 10px;
+  --sx-radius-box: var(--ui-button-border-radius, 4px);
+  --sx-nav-h: 92px;
+  --sx-max: 1200px;
+  --sx-font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --sx-font-body: "Inter", system-ui, sans-serif;
+  --sx-shadow-elev: 0 18px 48px rgba(0, 71, 122, 0.06), 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  --sx-shadow-card: 0 4px 20px rgba(15, 23, 42, 0.05);
+  --sx-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}

@@ -1,0 +1,401 @@
+/* Add profile — sections, stepper, beneficiary row (shell: Add investment / um_modal) */
+
+/* Full page — `/investing/profiles/add` (Create deal–style body) */
+.investing_add_profile_page_root {
+  width: 100%;
+  max-width: min(42em, 100%);
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-bottom: 0.5em;
+}
+
+.investing_add_profile_page_stepper {
+  margin-bottom: 1.1em;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+/* Clickable profile wizard steps — same behavior as Next when moving forward */
+.investing_add_profile_inline_root .add_contact_stepper .add_contact_step_node_btn,
+.investing_add_profile_form_panel .add_contact_stepper .add_contact_step_node_btn,
+.deals_create_flow .add_contact_stepper .add_contact_step_node_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: inherit;
+  margin: 0;
+  padding: 0.15em 0.2em;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  font: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.investing_add_profile_inline_root
+  .add_contact_stepper
+  .add_contact_step_node_clickable:hover:not(:disabled),
+.investing_add_profile_form_panel
+  .add_contact_stepper
+  .add_contact_step_node_clickable:hover:not(:disabled),
+.deals_create_flow
+  .add_contact_stepper
+  .add_contact_step_node_clickable:hover:not(:disabled),
+.investing_add_profile_inline_root .add_contact_stepper .add_contact_step_node_btn:hover,
+.investing_add_profile_form_panel .add_contact_stepper .add_contact_step_node_btn:hover,
+.deals_create_flow .add_contact_stepper .add_contact_step_node_btn:hover {
+  color: var(--portal-primary, #2563eb);
+}
+
+.investing_add_profile_inline_root
+  .add_contact_stepper
+  .add_contact_step_node_btn:focus-visible,
+.investing_add_profile_form_panel
+  .add_contact_stepper
+  .add_contact_step_node_btn:focus-visible,
+.deals_create_flow .add_contact_stepper .add_contact_step_node_btn:focus-visible {
+  outline: 2px solid var(--portal-primary, #2563eb);
+  outline-offset: 2px;
+}
+
+.investing_add_profile_inline_root
+  .add_contact_stepper
+  .add_contact_step_node_btn
+  .add_contact_step_label,
+.investing_add_profile_form_panel
+  .add_contact_stepper
+  .add_contact_step_node_btn
+  .add_contact_step_label,
+.deals_create_flow
+  .add_contact_stepper
+  .add_contact_step_node_btn
+  .add_contact_step_label {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.15em;
+  transition: text-decoration-color 0.12s ease;
+}
+
+.investing_add_profile_inline_root
+  .add_contact_stepper
+  .add_contact_step_node_btn:hover
+  .add_contact_step_label,
+.investing_add_profile_form_panel
+  .add_contact_stepper
+  .add_contact_step_node_btn:hover
+  .add_contact_step_label,
+.deals_create_flow
+  .add_contact_stepper
+  .add_contact_step_node_btn:hover
+  .add_contact_step_label {
+  text-decoration-color: currentColor;
+}
+
+/* In-page variant (`variant="inline"`) on `/investing/profiles` */
+.investing_add_profile_inline_root {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.investing_add_profile_form_panel--inline.deals_add_inv_modal_panel.um_modal.um_modal_view {
+  max-width: 100%;
+  width: 100%;
+  max-height: none;
+  overflow: visible;
+  box-shadow: none;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: var(--portal-surface, #fff);
+  box-sizing: border-box;
+}
+
+.investing_add_profile_form_panel--inline .deals_add_inv_modal_scroll,
+.investing_add_profile_form_panel--inline .deals_add_inv_modal_form,
+.investing_add_profile_form_panel--inline .deals_add_inv_modal_body {
+  flex: 0 1 auto;
+  min-height: 0;
+  max-height: none;
+  overflow: visible;
+}
+
+/* Section / eyebrow titles use `add_contact_section` + `add_contact_section_eyebrow` from contacts.css */
+
+.add_profile_readonly_type {
+  box-sizing: border-box;
+  min-height: var(--deals-add-inv-control-min-h, 1em);
+  padding: 0.5rem 0.75rem;
+  line-height: 1.45;
+  font-size: var(--deals-add-inv-control-font, 0.9375rem);
+  color: var(--portal-text-muted, #64748b);
+  background: var(--portal-surface, #f8fafc);
+  border: 1px solid var(--portal-border, #e5e5e5);
+  border-radius: var(--deals-add-inv-control-radius, 10px);
+}
+
+/* Mailing row — checkbox sits in the label row beside the field title */
+.add_profile_mailing_field .um_field_label_with_suffix {
+  flex: 1;
+  min-width: 0;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.65em 1em;
+}
+
+.add_profile_mailing_field .um_field_label_text {
+  flex: 0 1 auto;
+}
+
+.um_field label.add_profile_same_as_tax,
+.add_profile_mailing_field label.add_profile_same_as_tax {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--portal-text-muted, #64748b);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.add_profile_same_as_tax_text {
+  line-height: 1.25;
+}
+
+/* Override `.um_field input` full-width field chrome on this checkbox */
+.um_field .add_profile_same_as_tax_checkbox,
+.deals_add_inv_modal_form .um_field .add_profile_same_as_tax_checkbox {
+  width: 1rem !important;
+  height: 1rem !important;
+  min-width: 1rem !important;
+  max-width: 1rem !important;
+  margin: 0;
+  padding: 0 !important;
+  flex: 0 0 auto;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  accent-color: var(--portal-primary, #2563eb);
+}
+
+.um_field .add_profile_same_as_tax_checkbox:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+@media (max-width: 520px) {
+  .add_profile_mailing_field .um_field_label_with_suffix {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .add_profile_mailing_field label.add_profile_same_as_tax {
+    margin-left: 0;
+  }
+}
+
+/* `um_field` / `mail_text_label` from user_management + add-investment modal */
+
+/* Info (i) control beside labels — uses native `title` tooltip. */
+.add_profile_hint {
+  display: inline-flex;
+  color: var(--portal-text-secondary, #64748b);
+  background: none;
+  border: none;
+  padding: 0.15em;
+  cursor: default;
+  border-radius: 4px;
+  vertical-align: middle;
+}
+
+.add_profile_hint:hover {
+  color: var(--portal-primary, #00477a);
+  background: var(--portal-primary-soft, #e6f0ff);
+}
+
+.add_profile_sub {
+  display: block;
+  margin: 0.2em 0 0.35em;
+  font-size: 0.75rem;
+  color: var(--portal-text-secondary, #64748b);
+  line-height: 1.35;
+}
+
+.add_profile_input_wrap {
+  position: relative;
+}
+
+/* Password / SSN: space for the visibility toggle. */
+.add_profile_input_wrap .deals_add_inv_input {
+  padding-right: 2.5em;
+}
+
+/* Placeholders: smaller than typed values (modal + inline page). */
+.investing_add_profile_form_panel .deals_add_inv_modal_form input.deals_add_inv_field_control::placeholder,
+.investing_add_profile_form_panel .deals_add_inv_modal_form textarea.deals_add_inv_field_control::placeholder,
+.investing_add_profile_page_root .deals_add_inv_modal_form input.deals_add_inv_field_control::placeholder,
+.investing_add_profile_page_root .deals_add_inv_modal_form textarea.deals_add_inv_field_control::placeholder,
+.add_profile_input_wrap .deals_add_inv_input::placeholder,
+.add_profile_search::placeholder {
+  font-size: 0.8125rem;
+  color: #94a3b8;
+}
+
+/* Searchable dropdowns: empty / placeholder label */
+.investing_add_profile_form_panel .portal_dropdown_select_trigger_label_placeholder,
+.investing_add_profile_page_root .portal_dropdown_select_trigger_label_placeholder {
+  font-size: 0.8125rem;
+  font-weight: 400;
+}
+
+/* Native selects showing the empty first option */
+.investing_add_profile_form_panel select.um_field_select:has(option[value=""]:checked),
+.investing_add_profile_page_root select.um_field_select:has(option[value=""]:checked) {
+  font-size: 0.8125rem;
+  color: #94a3b8;
+}
+
+.add_profile_ssn_toggle {
+  position: absolute;
+  right: 0.4em;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  padding: 0.35em;
+  border: none;
+  background: none;
+  color: var(--portal-text-secondary, #64748b);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.add_profile_ssn_toggle:hover {
+  color: var(--portal-text, #0f172a);
+  background: #f1f5f9;
+}
+
+.add_profile_search_wrap {
+  position: relative;
+}
+
+/* Search + icon: extra left padding (border/radius from deals_add_inv). */
+.add_profile_search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem 0.75rem 0.5rem 2.25em;
+  border-radius: var(--deals-add-inv-control-radius, 10px);
+  font-size: var(--deals-add-inv-control-font, 0.9375rem);
+}
+
+.add_profile_search_no_icon {
+  padding-left: 0.75rem;
+}
+
+.add_profile_search_icon {
+  position: absolute;
+  left: 0.6em;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+/* Visually hidden — current step for screen readers (add contact style stepper) */
+.add_profile_sronly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  white-space: nowrap;
+}
+
+.add_profile_ben_lead {
+  margin: 0 0 0.9em;
+  line-height: 1.45;
+  max-width: 36em;
+}
+
+/* Beneficiary summary (opens Add beneficiary) */
+.add_profile_ben_row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6em 0.9em;
+}
+
+.add_profile_ben_text {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--portal-text, #0f172a);
+  line-height: 1.4;
+}
+
+.add_profile_ben_sub {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--portal-text-secondary, #64748b);
+}
+
+.add_profile_ben_add {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  height: 36px;
+  padding: 0 0.9em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--portal-primary, #00477a);
+  background: #fff;
+  border: 1px solid var(--portal-primary, #00477a);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.add_profile_ben_add:hover {
+  background: var(--portal-primary-soft, #e6f0ff);
+}
+
+.add_profile_ben_link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  background: none;
+  border: none;
+  padding: 0.2em 0.35em;
+  font-size: 0.8rem;
+  color: var(--portal-primary, #00477a);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.add_profile_inline_link {
+  font: inherit;
+  color: var(--portal-primary, #00477a);
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.add_profile_inline_link:hover {
+  color: #003a66;
+}

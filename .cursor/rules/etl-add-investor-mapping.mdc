@@ -1,0 +1,49 @@
+---
+description: ETL Add Investor (deal LP roster + investments) from Cash Flow Excel
+globs: ETL_Add_Investor_Mapping_Template*.xlsx,**/deal-lp-investor*,**/AddLpInvestor*
+alwaysApply: false
+---
+
+# ETL: Add Investor (Deal Investors tab)
+
+Prerequisites: **deal exists**, **classes exist**, prefer **Profiles/Addresses** ETL done.
+
+## What “Add Investor” stores
+
+| UI / sheet | Table | Creates money? |
+|---|---|---|
+| Add LP Investor → **Add Investors** sheet | `deal_lp_investor` | **No** |
+| Commitment / funded → **Investments** sheet | `deal_investment` (`investor_role=lp_investors`) | **Yes** |
+
+API `POST /deals/:dealId/lp-investors` = roster only (contact, class, profile_id).  
+Do **not** use `POST /investments` for LPs.
+
+## Required Add Investor fields
+
+- `contact_id` (user/contact)
+- `investor_class` = exact `deal_investor_class.name` (e.g. `Class A - Limited partners`)
+- `profile_id` enum: `individual` | `joint_tenancy` | `custodian_ira_401k` | `llc_corp_trust_etc`
+- optional `user_investor_profile_id` (book profile UUID)
+- `send_invitation_mail` usually `no` for ETL
+
+## Cash Flow map
+
+- Email → contact/user → `contact_id`
+- Class → `investor_class_name`
+- Profile type → `profile_id` (see Profile Type Map sheet)
+- Unique profile id → link book profile
+- **Selected sponsors** → ETL column `selected_sponsors` (resolve sponsor name → `users.id`, set `deal_lp_investor.added_by` on insert — required for Deal Investors UI visibility)
+- Invested / Funded / Status / Payment method → **Investments** sheet only
+
+There is **no** `selected_sponsors` DB column on `deal_lp_investor`; use it only to resolve `added_by`.
+
+## Load order
+
+1. Classes  
+2. Profiles / Addresses / Beneficiaries  
+3. **Add Investors** (`deal_lp_investor`)  
+4. **Investments** (`deal_investment`)  
+5. Sync `deal_lp_investor.committed_amount` = sum of that contact’s LP investments **in that class**  
+
+Dedupe roster by `(deal_id, contact_id, investor_class)` — same person in two classes → **two** roster rows.  
+One investment row per Cash Flow `Unique investment id`.

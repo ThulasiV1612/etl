@@ -1,0 +1,54 @@
+.card_compact_amount {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.card_compact_amount_value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.card_compact_amount_info {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.card_compact_amount_info .form_tooltip_trigger {
+  padding: 0.1em;
+}
+
+.card_compact_amount_tooltip_p {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.table_compact_amount_cell {
+  display: inline-flex;
+  justify-content: flex-end;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Dashboard KPI cards: compact amount matches bold lead value */
+.tool_style_card_value_lead .card_compact_amount,
+.portal_metric_kpi_card .tool_style_card_value_lead .card_compact_amount,
+.pm_kpi_card .tool_style_card_value_lead .card_compact_amount {
+  align-items: baseline;
+  max-width: 100%;
+}
+
+.tool_style_card_value_lead .card_compact_amount_value,
+.portal_metric_kpi_card .tool_style_card_value_lead .card_compact_amount_value,
+.pm_kpi_card .tool_style_card_value_lead .card_compact_amount_value {
+  font-weight: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  color: inherit;
+}

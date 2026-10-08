@@ -1,0 +1,352 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@import "./variables.css";
+@import "./animations.css";
+
+.sx-landing__reveal {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100dvh;
+}
+
+.sx-landing__reveal-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+}
+
+.sx-landing__reveal-main,
+.sx-landing__reveal-footer {
+  width: 100%;
+}
+
+.sx-landing {
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  color: var(--sx-text);
+  font-family: var(--sx-font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  text-align: left;
+  overflow-x: clip;
+  background: radial-gradient(
+      100% 85% at 100% 0%,
+      color-mix(in srgb, var(--sx-brand) 10%, transparent) 0%,
+      transparent 52%
+    ),
+    radial-gradient(
+      70% 55% at 0% 18%,
+      color-mix(in srgb, var(--sx-accent) 12%, transparent) 0%,
+      transparent 48%
+    ),
+    linear-gradient(180deg, var(--sx-bg-deep) 0%, var(--sx-bg-mid) 45%, var(--sx-bg-page) 100%);
+}
+
+.sx-landing *,
+.sx-landing *::before,
+.sx-landing *::after {
+  box-sizing: border-box;
+}
+
+.sx-landing a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.sx-landing button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.sx-landing :focus-visible {
+  outline: 2px solid var(--sx-brand);
+  outline-offset: 3px;
+}
+
+.sx-landing .sx-wrap {
+  width: min(100% - 2.5rem, var(--sx-max));
+  margin-inline: auto;
+}
+
+@media (max-width: 640px) {
+  .sx-landing .sx-wrap {
+    width: min(100% - 1.5rem, var(--sx-max));
+  }
+}
+
+.sx-landing .sx-ambient {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.sx-landing .sx-ambient__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.55;
+}
+
+.sx-landing .sx-ambient__orb--1 {
+  width: 420px;
+  height: 420px;
+  top: -100px;
+  right: -60px;
+  background: color-mix(in srgb, var(--sx-brand) 14%, transparent);
+}
+
+.sx-landing .sx-ambient__orb--2 {
+  width: 380px;
+  height: 380px;
+  bottom: 5%;
+  left: -80px;
+  background: color-mix(in srgb, var(--sx-accent) 18%, transparent);
+}
+
+.sx-landing .sx-hero-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.28;
+  background-image: linear-gradient(
+      color-mix(in srgb, var(--sx-brand) 12%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--sx-brand) 12%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, black, transparent);
+}
+
+.sx-landing .sx-glass {
+  background: var(--sx-glass);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: var(--sx-shadow-elev), 0 1px 2px rgba(15, 23, 42, 0.03);
+}
+
+.sx-landing .sx-glass-subtle {
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--sx-border);
+}
+
+.sx-landing .sx-bento {
+  position: relative;
+  border-radius: var(--sx-radius-lg);
+  padding: 1.35rem 1.4rem;
+  overflow: hidden;
+  background: var(--sx-bg-panel);
+  box-shadow: var(--sx-shadow-card);
+  transition: transform 0.45s var(--sx-ease-out), box-shadow 0.45s var(--sx-ease-out),
+    border-color 0.35s ease;
+}
+
+.sx-landing .sx-bento::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  /* background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--sx-brand) 38%, transparent),
+    color-mix(in srgb, var(--sx-accent) 28%, transparent),
+    rgba(15, 23, 42, 0.04)
+  ); */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.sx-landing .sx-bento:hover {
+  transform: translateY(-3px) scale(1.008);
+  box-shadow: 0 18px 44px rgba(0, 71, 122, 0.08), 0 0 0 1px color-mix(in srgb, var(--sx-brand) 14%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sx-landing .sx-bento {
+    transition: none;
+  }
+  .sx-landing .sx-bento:hover {
+    transform: none;
+  }
+}
+
+.sx-landing .sx-bento__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--sx-radius-sm);
+  background: var(--sx-brand-soft);
+  color: var(--sx-brand);
+  margin-bottom: 1rem;
+}
+
+.sx-landing .sx-bento__title {
+  font-family: var(--sx-font-display);
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.45rem;
+  color: var(--sx-title);
+}
+
+.sx-landing .sx-bento__desc {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--sx-text-muted);
+  line-height: 1.5;
+}
+
+.sx-landing .sx-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: var(--sx-radius-box);
+  border: 1.5px solid color-mix(in srgb, var(--sx-brand) 42%, transparent);
+  color: var(--sx-brand);
+  font-weight: 600;
+  font-size: 0.875rem;
+  background: rgba(255, 255, 255, 0.75);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.sx-landing .sx-btn-outline:hover {
+  background: var(--sx-brand-soft);
+  border-color: var(--sx-brand);
+  color: var(--sx-brand-hover);
+  transform: translateY(-1px);
+}
+
+.sx-landing .sx-btn-glow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.68rem 1.35rem;
+  border-radius: var(--sx-radius-box);
+  font-weight: 650;
+  font-size: 0.9rem;
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--sx-brand) 92%, #000) 0%,
+    var(--sx-brand) 48%,
+    var(--sx-brand-hover) 100%
+  );
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.22) inset, 0 10px 26px rgba(0, 71, 122, 0.22);
+  transition: transform 0.25s var(--sx-ease-out), box-shadow 0.25s ease;
+}
+
+.sx-landing .sx-btn-glow::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--sx-accent) 45%, transparent),
+    transparent 55%,
+    color-mix(in srgb, var(--sx-brand) 35%, transparent)
+  );
+  z-index: -1;
+  opacity: 0.85;
+  filter: blur(12px);
+}
+
+.sx-landing .sx-btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3) inset, 0 14px 34px rgba(0, 71, 122, 0.28);
+}
+
+/* Primary “Start Investing” — wider tap target + visual balance with icon */
+.sx-landing .sx-btn-glow.sx-btn-glow--wide {
+  min-width: clamp(210px, 38vw);
+  padding-inline: 1.75rem;
+  justify-content: center;
+}
+
+.sx-landing .sx-section {
+  position: relative;
+  z-index: 1;
+  scroll-margin-top: calc(var(--sx-nav-h) + 16px);
+  padding-block: clamp(2rem, 8vw, 2rem);
+}
+
+.sx-landing .sx-section__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sx-gold);
+  margin-bottom: 0.75rem;
+}
+
+.sx-landing .sx-section__title {
+  font-family: var(--sx-font-display);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.12;
+  margin: 0 0 0.75rem;
+  color: var(--sx-title);
+}
+
+.sx-landing .sx-section__lead {
+  max-width: 52ch;
+  margin: 0 0 2.25rem;
+  color: var(--sx-text-muted);
+  font-size: 1.02rem;
+}
+
+.sx-landing .sx-cursor-glow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  background: radial-gradient(
+    600px circle at var(--sx-glow-x, 50%) var(--sx-glow-y, 40%),
+    color-mix(in srgb, var(--sx-brand) 10%, transparent),
+    transparent 55%
+  );
+  mix-blend-mode: multiply;
+  transition: opacity 0.4s ease;
+}
+
+.sx-landing main {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .sx-landing .sx-cursor-glow {
+    display: none;
+  }
+}

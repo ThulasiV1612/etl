@@ -1,0 +1,53 @@
+.reusable_templates_root {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.reusable_templates_head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.reusable_templates_create_panel {
+  max-width: 36rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: var(--portal-surface, #fff);
+}
+
+.reusable_templates_field label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: var(--portal-text, #334155);
+}
+
+.reusable_templates_field input[type="text"],
+.reusable_templates_field input[type="file"] {
+  width: 100%;
+  font: inherit;
+}
+
+.reusable_templates_status {
+  font-size: 0.875rem;
+  color: var(--portal-muted, #64748b);
+}
+
+.reusable_templates_status_ready {
+  color: #047857;
+  font-weight: 600;
+}
+
+.reusable_templates_status_draft {
+  color: #b45309;
+  font-weight: 600;
+}

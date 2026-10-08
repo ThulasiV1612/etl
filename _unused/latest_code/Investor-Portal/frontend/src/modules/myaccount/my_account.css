@@ -1,0 +1,118 @@
+/* My account — same page chrome as investing Profiles / Investments (`um_page` + segmented tabs + card panel) */
+
+.myaccount_page {
+  min-width: 0;
+}
+
+.myaccount_page_header {
+  margin-bottom: 0.2rem;
+}
+
+.myaccount_form_panel {
+  --myaccount-panel-px: clamp(1rem, 2.5vw, 1.5rem);
+  --myaccount-panel-pt: 1.1rem;
+  --myaccount-panel-pb: 1.35rem;
+  padding: var(--myaccount-panel-pt) var(--myaccount-panel-px)
+    var(--myaccount-panel-pb);
+  box-sizing: border-box;
+}
+
+.deals_list_page .myaccount_form_panel.deals_list_card_surface {
+  background: #f6f6f6;
+}
+
+:root[data-theme="dark"]
+  .deals_list_page
+  .myaccount_form_panel.deals_list_card_surface {
+  background: var(--portal-surface, #1a1a1a);
+}
+
+.myaccount_form_body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 36rem;
+  min-width: 0;
+}
+
+.myaccount_readonly_note {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.myaccount_form_body .um_msg_error {
+  margin: 0 0 1rem;
+}
+
+.myaccount_form_body .um_field {
+  margin-bottom: 0;
+}
+
+.myaccount_form_body form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.myaccount_actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+}
+
+@keyframes myaccount_btn_spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.myaccount_btn_spin {
+  animation: myaccount_btn_spin 0.85s linear infinite;
+}
+
+/* NavLink renders <a>: strip default underline so tabs match segmented pill styling */
+.myaccount_page .um_members_tabs_row a.um_members_tab {
+  text-decoration: none;
+}
+
+/* Non-editable account fields — match disabled inputs; default cursor (no pointer / I-beam) */
+.myaccount_page .um_field input:read-only,
+.myaccount_page .um_field input[readonly] {
+  opacity: 0.65;
+  cursor: default;
+  caret-color: transparent;
+  color: var(--portal-text-muted, #64748b);
+  background: var(--portal-surface-muted, #f8fafc);
+  border-color: var(--portal-border, #e2e8f0);
+  box-shadow: none;
+}
+
+.myaccount_page .um_field input:read-only:focus,
+.myaccount_page .um_field input:read-only:focus-visible,
+.myaccount_page .um_field input[readonly]:focus,
+.myaccount_page .um_field input[readonly]:focus-visible {
+  outline: none;
+  border-color: var(--portal-border, #e2e8f0);
+  box-shadow: none;
+}
+
+.myaccount_page .um_field:has(input:read-only) .um_field_label_row,
+.myaccount_page .um_field:has(input[readonly]) .um_field_label_row {
+  cursor: default;
+}
+
+:root[data-theme="dark"] .myaccount_page .um_field input:read-only,
+:root[data-theme="dark"] .myaccount_page .um_field input[readonly] {
+  background: color-mix(
+    in srgb,
+    var(--portal-surface, #1a1a1a) 88%,
+    var(--portal-surface-muted, #2a2a2a) 12%
+  );
+  color: var(--portal-text-muted, #94a3b8);
+  border-color: var(--portal-border, #334155);
+}

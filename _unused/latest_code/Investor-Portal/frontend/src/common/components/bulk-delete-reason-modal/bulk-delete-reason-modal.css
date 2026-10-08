@@ -1,0 +1,23 @@
+.bulk_delete_reason_overlay.portal_modal_z_boost {
+  z-index: 12000;
+}
+
+/* Confirm uses shared um_btn_primary tokens */
+
+.um_toolbar_delete_btn {
+  color: #b91c1c;
+}
+
+.um_toolbar_delete_btn:hover:not(:disabled) {
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+:root[data-theme="dark"] .um_toolbar_delete_btn {
+  color: #f87171;
+}
+
+:root[data-theme="dark"] .um_toolbar_delete_btn:hover:not(:disabled) {
+  background: rgb(127 29 29 / 25%);
+  color: #fecaca;
+}

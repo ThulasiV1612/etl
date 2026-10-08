@@ -1,0 +1,115 @@
+.deal_stage_modal--pay_method {
+  width: min(32rem, 100%);
+  max-height: min(90vh, 36rem);
+}
+
+.deal_stage_modal--pay_method .deal_stage_modal_icon_wrap {
+  color: #166534;
+  background: color-mix(in srgb, #16a34a 16%, transparent);
+  border-color: color-mix(in srgb, #16a34a 38%, transparent);
+}
+
+.deal_stage_modal--pay_method .deal_stage_modal_btn--confirm {
+  background: #16a34a;
+}
+
+.deal_stage_modal--pay_method .deal_stage_modal_btn--confirm:hover:not(:disabled) {
+  background: #15803d;
+}
+
+.billing_pay_method_fieldset {
+  margin: 0.95rem 0 0;
+  padding: 0;
+  border: none;
+  min-width: 0;
+}
+
+.billing_pay_method_legend {
+  padding: 0;
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.billing_pay_method_list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.billing_pay_method_option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0.75rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  background: var(--portal-surface, #fff);
+  cursor: pointer;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--portal-text, #0f172a);
+}
+
+.billing_pay_method_option input {
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.billing_pay_method_option--selected {
+  border-color: #16a34a;
+  background: color-mix(in srgb, #16a34a 8%, transparent);
+}
+
+.billing_pay_method_default {
+  display: inline-block;
+  margin-left: 0.45rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #166534;
+  background: color-mix(in srgb, #16a34a 14%, transparent);
+}
+
+.billing_pay_method_actions {
+  flex-wrap: wrap;
+}
+
+.billing_pay_method_btn_stripe {
+  border-color: #2563eb;
+  color: #1d4ed8;
+}
+
+.billing_pay_method_btn_stripe:hover:not(:disabled) {
+  background: color-mix(in srgb, #2563eb 10%, transparent);
+}
+
+@media (max-width: 40rem) {
+  .billing_pay_method_actions .deal_stage_modal_btn {
+    flex: 1 1 100%;
+  }
+}
+
+:root[data-theme="dark"] .deal_stage_modal--pay_method .deal_stage_modal_icon_wrap {
+  color: #86efac;
+}
+
+:root[data-theme="dark"] .billing_pay_method_option {
+  background: var(--portal-surface, #1e293b);
+  border-color: var(--portal-border, #334155);
+}
+
+:root[data-theme="dark"] .billing_pay_method_option--selected {
+  background: color-mix(in srgb, #16a34a 16%, transparent);
+}
+
+:root[data-theme="dark"] .billing_pay_method_default {
+  color: #86efac;
+}

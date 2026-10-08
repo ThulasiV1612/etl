@@ -1,0 +1,244 @@
+/* Investing Profiles add modals — width + extras on top of Add investment / Add contact shell */
+
+.investing_add_profile_form_panel.um_modal.um_modal_view:not(
+    .investing_add_profile_form_panel--inline
+  ) {
+  max-width: min(40rem, 100%);
+  max-height: min(90dvh, calc(100dvh - 2rem));
+  overflow: hidden;
+}
+
+.investing_add_address_form_panel.um_modal.um_modal_view {
+  max-width: min(28rem, 100%);
+}
+
+.investing_add_beneficiary_form_panel.um_modal.um_modal_view {
+  /* Match add contact / add profile so two-up fields have room at ≥480px */
+  max-width: min(40rem, 100%);
+}
+
+/* Pill-shaped controls — Add address & Add beneficiary */
+.investing_pill_modal_form input.deals_add_inv_input.deals_add_inv_field_control.deals_add_inv_field_pill,
+.investing_add_address_form_panel
+  .investing_pill_modal_form
+  input.deals_add_inv_input.deals_add_inv_field_control.deals_add_inv_field_pill,
+.investing_pill_modal_form .us_phone_input_wrap input.deals_add_inv_input.deals_add_inv_field_control.deals_add_inv_field_pill,
+.investing_add_beneficiary_form_panel
+  .investing_pill_modal_form
+  .add_profile_input_wrap
+  input.deals_add_inv_input.deals_add_inv_field_control.deals_add_inv_field_pill {
+  width: 100%;
+  border-radius: var(--portal-pill-radius, 4px);
+}
+
+.investing_pill_modal_form textarea.deals_add_inv_input.deals_add_inv_field_control.deals_add_inv_field_pill:not(
+    .investing_note_textarea
+  ),
+.investing_add_address_form_panel
+  .investing_pill_modal_form
+  textarea.deals_add_inv_input.deals_add_inv_field_control.deals_add_inv_field_pill:not(
+    .investing_note_textarea
+  ) {
+  border-radius: var(--portal-pill-radius, 4px);
+  resize: none;
+}
+
+.investing_pill_modal_form textarea.deals_add_inv_input.deals_add_inv_field_control.deals_add_inv_field_pill.investing_note_textarea,
+.investing_add_address_form_panel
+  .investing_pill_modal_form
+  textarea.investing_note_textarea {
+  border-radius: 1.25rem;
+  resize: none;
+}
+
+.investing_pill_modal_form textarea.investing_note_textarea {
+  display: block;
+  width: 100%;
+  min-height: 5.5rem;
+  line-height: 1.45;
+}
+
+.investing_pill_modal_form select.um_field_select.deals_add_inv_field_control.deals_add_inv_field_pill,
+.investing_add_address_form_panel
+  .investing_pill_modal_form
+  select.um_field_select.deals_add_inv_field_control.deals_add_inv_field_pill {
+  border-radius: var(--portal-pill-radius, 4px);
+  padding-left: 1rem;
+  padding-right: 2.35rem;
+}
+
+.investing_pill_modal_form
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.deals_add_inv_field_control.deals_add_inv_field_pill,
+.investing_pill_modal_form .portal_dropdown_select_trigger.deals_add_inv_field_pill,
+.investing_add_address_form_panel
+  .investing_pill_modal_form
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.deals_add_inv_field_control.deals_add_inv_field_pill {
+  border-radius: var(--portal-pill-radius, 4px);
+  justify-content: space-between;
+  gap: 0.35rem;
+}
+
+/* Add beneficiary: pair fields like add contact `add_contact_name_grid` */
+.add_beneficiary_field_grid.add_contact_name_grid {
+  margin-bottom: 0.35em;
+}
+
+.add_beneficiary_field_grid__full {
+  grid-column: 1 / -1;
+}
+
+/* Routing + account stay on one even row (digits don't wrap or look staggered). */
+.add_profile_account_number {
+  white-space: nowrap;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+    monospace;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  letter-spacing: 0.02em;
+}
+
+.investing_add_profile_form_panel .add_contact_name_grid .um_field_label_with_suffix {
+  flex-wrap: nowrap;
+}
+
+/* Add address: zip spans full row (was half-width in the two-column grid) */
+.investing_add_address_form_panel .add_address_zip_field {
+  width: 100%;
+}
+
+/* Stacked sub-label (check memo, distribution) beside icon */
+.investing_form_label_stack {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1em;
+}
+
+.investing_form_subline {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: var(--portal-text-secondary, #64748b);
+  font-weight: 400;
+}
+
+/* Required marker — shared across these modals */
+.investing_form_req {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+/* Beneficiary opened above Add profile (z 1200) */
+.um_modal_overlay.investing_ben_modal_overlay {
+  z-index: 1300;
+}
+
+/* Add address opened above Add beneficiary / nested profile modals */
+.um_modal_overlay.investing_nested_modal_overlay {
+  z-index: 1400;
+}
+
+/* Add profile uses same `um_modal_actions` / add_contact footer pattern as Add contact. */
+.investing_add_profile_form_panel .add_contact_modal_actions,
+.investing_add_address_form_panel .add_contact_modal_actions,
+.investing_add_beneficiary_form_panel .add_contact_modal_actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.investing_add_profile_form_panel .add_contact_modal_actions_leading,
+.investing_add_address_form_panel .add_contact_modal_actions_leading,
+.investing_add_beneficiary_form_panel .add_contact_modal_actions_leading {
+  margin-right: auto;
+}
+
+.investing_add_profile_form_panel .add_contact_modal_actions_trailing,
+.investing_add_address_form_panel .add_contact_modal_actions_trailing,
+.investing_add_beneficiary_form_panel .add_contact_modal_actions_trailing {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* Info (i) directly after the label text (with icon row: field icon | text | (i)) */
+.investing_field_hint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--portal-text-secondary, #64748b);
+  background: none;
+  border: none;
+  padding: 0.1em 0.15em;
+  margin: 0;
+  flex-shrink: 0;
+  align-self: center;
+  cursor: help;
+  border-radius: 4px;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.investing_field_hint:hover,
+.investing_field_hint:focus-visible {
+  color: var(--portal-primary, #00477a);
+  background: var(--portal-primary-soft, #e6f0ff);
+  outline: none;
+}
+
+/* Add address: same searchable dropdowns as Add deal — match native selects in this modal */
+.deals_add_inv_modal_form .deals_create_dropdown_select {
+  width: 100%;
+}
+
+.deals_add_inv_modal_form
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.deals_add_inv_field_control:not(
+    .deals_add_inv_field_pill
+  ) {
+  width: 100%;
+  min-height: var(--deals-add-inv-control-min-h, 2.5rem);
+  border-radius: var(--deals-add-inv-control-radius);
+  font-family: var(--deals-add-inv-font-family, system-ui, sans-serif);
+  font-size: var(--deals-add-inv-control-font, 0.9rem);
+  line-height: 1.45;
+  color: var(--portal-text, #282828);
+  background: var(--portal-surface, #fff);
+  border: 1px solid var(--portal-border, #e5e5e5);
+  text-align: left;
+  cursor: pointer;
+  color-scheme: light dark;
+}
+
+.investing_pill_modal_form
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.deals_add_inv_field_control.deals_add_inv_field_pill,
+.investing_add_address_form_panel
+  .investing_pill_modal_form
+  .deals_create_dropdown_select
+  .portal_dropdown_select_trigger.deals_add_inv_field_control.deals_add_inv_field_pill {
+  width: 100%;
+  min-height: var(--deals-add-inv-control-min-h, 2.5rem);
+  font-family: var(--deals-add-inv-font-family, system-ui, sans-serif);
+  font-size: var(--deals-add-inv-control-font, 0.9rem);
+  line-height: 1.45;
+  color: var(--portal-text, #282828);
+  background: var(--portal-surface, #fff);
+  border: 1px solid var(--portal-border, #e5e5e5);
+  text-align: left;
+  cursor: pointer;
+  color-scheme: light dark;
+  border-radius: var(--portal-pill-radius, 4px);
+}

@@ -1,0 +1,353 @@
+/**
+ * Portal-agnostic dropdown (trigger + listbox).
+ * Pair with portal-specific wrappers or extra className as needed.
+ */
+.portal_dropdown_select {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Match `.app_shell input` / `select` in App.css (border, radius, hover, focus ring). */
+.portal_dropdown_select_trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5333333em 0.8em;
+  min-height: 2.6666667em;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 0.9375em;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: left;
+  color: var(--portal-text, #282828);
+  /* color: gray; */
+  background: var(--portal-surface, #fff);
+  border: 1px solid var(--portal-border, #e5e5e5);
+  border-radius: var(--portal-pill-radius, 4px);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.portal_dropdown_select_trigger:hover:not(:disabled) {
+  border-color: #d1d5db;
+}
+
+.portal_dropdown_select_trigger:focus {
+  outline: none;
+}
+
+.portal_dropdown_select_trigger:focus-visible {
+  outline: none;
+  border-color: var(--portal-text-muted, #64748b);
+  box-shadow: var(--portal-field-focus-shadow, 0 0 0 2px rgb(17 24 39 / 8%));
+}
+
+:root[data-theme="dark"] .portal_dropdown_select_trigger:focus-visible {
+  box-shadow: var(
+    --portal-field-focus-shadow-dark,
+    0 0 0 2px rgb(249 250 251 / 12%)
+  );
+}
+
+.portal_dropdown_select_trigger:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.portal_dropdown_select_trigger_invalid {
+  border-color: var(--portal-danger, #b91c1c);
+}
+
+.portal_dropdown_select_trigger_label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1em;
+  font-weight: 500;
+  /* margin: 0 0 0 1em; */
+}
+
+.portal_dropdown_select_trigger_label_placeholder {
+  color: var(--portal-text-muted, #64748b);
+}
+
+.portal_dropdown_select_chevron {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--portal-text-muted, #64748b);
+  transition: transform 0.15s ease;
+  pointer-events: none;
+}
+
+.portal_dropdown_select_chevron svg {
+  display: block;
+}
+
+.portal_dropdown_select_trigger[aria-expanded="true"] .portal_dropdown_select_chevron {
+  transform: rotate(180deg);
+}
+
+.portal_dropdown_select_panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  z-index: 1200;
+  max-height: min(280px, 50vh);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0.25em 0;
+  margin: 0;
+  list-style: none;
+  background: var(--portal-surface, #fff);
+  border: 1px solid var(--portal-border, #e5e5e5);
+  border-radius: var(--portal-card-radius, 4px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+}
+
+/**
+ * Portaled fixed panel: inline style sets `left` + `width`. Base `.portal_dropdown_select_panel`
+ * uses `right: 0`, which would otherwise stretch the panel to the viewport edge and cause
+ * horizontal overflow / layout shift.
+ */
+.portal_dropdown_select_panel--fixed {
+  right: auto;
+  min-width: 0;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+}
+
+.portal_dropdown_select_panel > li {
+  margin: 0 0.5em;
+  padding: 0;
+  list-style: none;
+}
+
+.portal_dropdown_select_search_slot {
+  flex-shrink: 0;
+  padding: 0.35em 0.5em 0.45em;
+  border-bottom: 1px solid var(--portal-border, #e5e5e5);
+  margin-bottom: 0.15em;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--portal-surface, #fff);
+}
+
+.portal_dropdown_select_search {
+  display: block;
+  width: 100%;
+  border-radius: var(--ui-button-border-radius, 4px);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.5333333em 0.8em;
+  font-family: inherit;
+  font-size: 0.9375em;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--portal-text, #282828);
+  background: var(--portal-surface, #fff);
+  border: 1px solid var(--portal-border, #e5e5e5);
+  /* border-radius: var(--portal-card-radius, 10px); */
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.portal_dropdown_select_search::placeholder {
+  color: var(--portal-text-muted, #64748b);
+}
+
+.portal_dropdown_select_search:hover:not(:disabled) {
+  border-color: #d1d5db;
+}
+
+.portal_dropdown_select_search:focus {
+  outline: none;
+}
+
+.portal_dropdown_select_search:focus-visible {
+  outline: none;
+  border-color: var(--portal-text-muted, #64748b);
+  box-shadow: var(--portal-field-focus-shadow, 0 0 0 2px rgb(17 24 39 / 8%));
+}
+
+:root[data-theme="dark"] .portal_dropdown_select_search:focus-visible {
+  box-shadow: var(
+    --portal-field-focus-shadow-dark,
+    0 0 0 2px rgb(249 250 251 / 12%)
+  );
+}
+
+.portal_dropdown_select_empty {
+  padding: 0.65em 0.75em;
+  font-size: 0.875em;
+  color: var(--portal-text-muted, #64748b);
+  text-align: center;
+}
+
+.portal_dropdown_select_header_slot {
+  flex-shrink: 0;
+  padding: 0.35em 0.5em 0.45em;
+  border-bottom: 1px solid var(--portal-border, #e2e8f0);
+  margin-bottom: 0.15em;
+}
+
+.portal_dropdown_select_header_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  width: 100%;
+  padding: 0.45em 0.65em;
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: black;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--portal-card-radius, 4px);
+  cursor: pointer;
+  text-align: center;
+}
+
+/* .portal_dropdown_select_header_btn:hover {
+  background: color-mix(in srgb, black 10%, transparent);
+} */
+
+.portal_dropdown_select_header_btn:focus {
+  outline: 1px solid black;
+  /* outline-offset: 1px; */
+}
+
+.portal_dropdown_select_heading {
+  padding: 0.35em 0.65em 0.2em;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--portal-text-muted, #64748b);
+  list-style: none;
+}
+
+.portal_dropdown_select_option {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.5em 0.65em;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.9em;
+  line-height: 1.35;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+}
+
+.portal_dropdown_select_option:hover:not(:disabled),
+.portal_dropdown_select_option[data-active="true"] {
+  background: color-mix(in srgb, black 12%, transparent);
+}
+
+.portal_dropdown_select_option:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Optional two-part row: main label + suffix (e.g. “Already added”) */
+.portal_dropdown_select_option--rich {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  text-align: left;
+}
+
+.portal_dropdown_select_option_label_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.portal_dropdown_select_option_label_text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.portal_dropdown_select_option_suffix {
+  flex-shrink: 0;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--portal-text-muted, #94a3b8);
+}
+
+.portal_dropdown_select_option:disabled .portal_dropdown_select_option_suffix {
+  opacity: 1;
+  color: var(--portal-text-muted, #94a3b8);
+}
+
+.portal_dropdown_select_option_selected {
+  font-weight: 600;
+}
+
+.portal_dropdown_select_footer {
+  flex-shrink: 0;
+  padding: 0.35em 0.5em 0.25em;
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+  margin-top: 0.15em;
+}
+
+.portal_dropdown_select_footer_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  width: 100%;
+  padding: 0.45em 0.65em;
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: black;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--portal-card-radius, 4px);
+  cursor: pointer;
+  text-align: center;
+}
+
+.portal_dropdown_select_footer_btn:hover {
+  background: color-mix(in srgb, black 10%, transparent);
+}
+
+.portal_dropdown_select_footer_btn:focus {
+  outline: 1px solid black;
+  /* outline-offset: 1px; */
+}

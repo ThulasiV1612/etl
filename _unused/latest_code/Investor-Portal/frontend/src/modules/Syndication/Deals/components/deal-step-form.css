@@ -1,0 +1,94 @@
+.deal_step_grid {
+  align-items: start;
+}
+
+.deal_step_close_date_wrap {
+  max-width: 100%;
+}
+
+.deal_step_ruled_section {
+  margin-top: 0.25em;
+  padding-top: 1.35em;
+  border-top: 1px solid var(--portal-border);
+}
+
+.deal_step_fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  min-width: 0;
+}
+
+.deal_step_legend {
+  padding: 0;
+  font-size: var(--deals-label-size, 0.8125rem);
+  font-weight: 600;
+  color: var(--portal-text-muted, #475569);
+  letter-spacing: 0.01em;
+}
+
+.deal_step_fieldset .radio-group {
+  margin-top: 0.5em;
+  width: 100%;
+  max-width: min(100%, var(--portal-binary-radio-max-width, 28rem));
+}
+
+/* Create deal — all four stage pills on one row */
+.deal_step_fieldset .radio-group.deal_step_stage_pills {
+  max-width: 100%;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.deal_step_stage_pills .radio-btn {
+  min-height: var(--portal-binary-radio-min-height, 2.125rem);
+  padding: var(--portal-binary-radio-padding-y, 0.3rem)
+    var(--portal-binary-radio-padding-x, 0.65rem);
+  font-size: 0.8125rem;
+  line-height: 1.25;
+}
+
+.deal_step_yesno_cards {
+  width: 100%;
+}
+
+.deal_step_date_hint {
+  margin: 0.2em 0 0;
+  font-size: var(--deals-meta-size, 0.8125rem);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--portal-text-muted);
+}
+
+.deal_step_owning_block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+}
+
+.deal_step_owning_block .field_info_heading {
+  margin-bottom: 0;
+}
+
+.deal_step_deal_type_wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--deals-form-label-gap, 0.5em);
+}
+
+.deal_step_deal_type_label_row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.35em;
+  min-width: 0;
+  width: 100%;
+}
+
+.deal_step_deal_type_label {
+  font-size: var(--deals-label-size, 0.8125rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--portal-text, #0f172a);
+  letter-spacing: 0.01em;
+  cursor: pointer;
+}

@@ -1,0 +1,14 @@
+.us_phone_input_wrap {
+  width: 100%;
+}
+
+.us_phone_input_wrap .input_field {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.us_phone_input_err {
+  margin: 0.35em 0 0 0;
+  font-size: 0.85em;
+  color: #b91c1c;
+}

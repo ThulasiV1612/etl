@@ -1,0 +1,416 @@
+/* Deal Members tab shell — table chrome comes from deal-investors-tab.css + user_management.css (same as Investors tab). */
+
+/* Initial load — centered in the table panel card */
+.deal_members_table_panel_loading.deal_inv_table_panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: min(52vh, 28rem);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.deal_members_page_loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  width: 100%;
+  text-align: center;
+}
+
+.deal_members_page_loading_text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--portal-text-muted, #64748b);
+}
+/* Narrow Sl. no. column */
+.deal_inv_table_panel .deal_members_th_sl,
+.deal_inv_table_panel .deal_members_td_sl {
+  width: 2.75rem;
+  max-width: 3.25rem;
+  min-width: 2.5rem;
+  padding-left: 0.35rem;
+  padding-right: 0.35rem;
+  box-sizing: border-box;
+}
+
+/* Deal Members: single User column (avatar + name + email) matches Members page */
+.deal_inv_td_user_cell {
+  min-width: 220px;
+  vertical-align: middle;
+}
+
+.deal_inv_td_investor_identity {
+  min-width: 16rem;
+  vertical-align: middle;
+}
+
+.deal_member_user_name_row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.deal_member_user_name_row .um_user_meta_username {
+  min-width: 0;
+}
+
+.deal_members_tab {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+  min-width: 0;
+}
+
+.deal_members_roster_subtabs_outer {
+  margin: 0;
+}
+
+.deal_members_roster_subtabs_row {
+  flex-wrap: wrap;
+}
+
+/* Empty Profile / Status: short centered hyphen, not a wide em-dash */
+.deal_members_tab .deal_gp_empty_dash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: var(--portal-text-muted, #94a3b8);
+  line-height: 1;
+}
+
+.deal_members_tab .deal_gp_empty_dash > span {
+  display: inline-block;
+  width: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.deal_members_tab .deal_inv_table_panel .deal_gp_th_profile,
+.deal_members_tab .deal_inv_table_panel .deal_gp_th_status,
+.deal_members_tab .deal_inv_table_panel .deal_gp_td_profile:has(.deal_gp_empty_dash),
+.deal_members_tab .deal_inv_table_panel .deal_gp_td_status:has(.deal_gp_empty_dash) {
+  text-align: center;
+}
+
+.deal_members_tab .deal_inv_table_panel thead th.deal_gp_th_profile,
+.deal_members_tab .deal_inv_table_panel tbody td.deal_gp_td_profile,
+.deal_members_tab .deal_inv_table_panel .um_table.deal_inv_table thead th.deal_inv_th_profile.deal_gp_th_profile,
+.deal_members_tab .deal_inv_table_panel .um_table.deal_inv_table tbody td.deal_inv_td_profile.deal_gp_td_profile {
+  min-width: 5.5rem;
+  max-width: 8.5rem;
+  width: 6.75rem;
+}
+
+/* Deal role: Lead Sponsor / Admin sponsor / Co-sponsor pills share one width */
+.deal_members_tab .deal_inv_table_panel thead th.deal_gp_th_role,
+.deal_members_tab .deal_inv_table_panel tbody td.deal_gp_td_role,
+.deal_members_tab .deal_inv_table_panel .um_table.deal_inv_table thead th.deal_inv_th_role.deal_gp_th_role,
+.deal_members_tab .deal_inv_table_panel .um_table.deal_inv_table tbody td.deal_inv_td_role.deal_gp_td_role {
+  min-width: 11.5rem;
+  max-width: 12.5rem;
+  width: 11.5rem;
+}
+
+.deal_members_tab .deal_inv_table_panel .deal_gp_td_role .um_role_badge.deal_inv_role_badge {
+  box-sizing: border-box;
+  width: 10.75rem;
+  min-width: 10.75rem;
+  max-width: 10.75rem;
+  justify-content: flex-start;
+}
+
+.deal_members_tab .deal_inv_table_panel .deal_gp_td_role .um_role_badge .um_role_badge_label {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Initial load — centered in the table panel */
+.deal_members_table_panel_loading.deal_inv_table_panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: min(52vh, 28rem);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.deal_members_page_loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  width: 100%;
+  text-align: center;
+}
+
+.deal_members_page_loading_text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--portal-text-muted, #64748b);
+}
+
+/* Toolbar — one row: Send mail + Export left; search + Add Member on the right */
+.deal_members_table_toolbar.um_toolbar.deal_inv_table_um_toolbar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.65em 1em;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.deal_members_table_toolbar.um_toolbar.deal_inv_table_um_toolbar
+  .um_toolbar_actions.deal_members_toolbar_actions_leading {
+  order: 0;
+  margin-left: 0;
+  margin-right: 0;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65em;
+}
+
+.deal_members_table_toolbar.um_toolbar.deal_inv_table_um_toolbar
+  .um_toolbar_actions.deal_members_toolbar_actions_trailing {
+  order: 1;
+  margin-left: auto;
+  margin-right: 0;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65em;
+  min-width: 0;
+}
+
+.deal_members_table_toolbar.um_toolbar.deal_inv_table_um_toolbar
+  .deal_members_toolbar_actions_trailing
+  .um_search_wrap {
+  order: 0;
+  margin-left: 0;
+  flex: 0 1 22em;
+  min-width: min(12rem, 100%);
+  max-width: 22em;
+}
+
+.deal_members_table_toolbar.um_toolbar.deal_inv_table_um_toolbar
+  .deal_members_add_member_btn.um_btn_primary {
+  order: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.deal_members_table_toolbar.um_toolbar.deal_inv_table_um_toolbar
+  .deal_members_add_member_btn.um_btn_primary
+  svg {
+  flex-shrink: 0;
+}
+
+.deal_members_table_toolbar.um_toolbar.deal_inv_table_um_toolbar
+  .um_btn_toolbar,
+.deal_members_table_toolbar.um_toolbar.deal_inv_table_um_toolbar
+  .um_toolbar_export_btn {
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .deal_members_table_toolbar.um_toolbar.deal_inv_table_um_toolbar {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .deal_members_table_toolbar.um_toolbar.deal_inv_table_um_toolbar
+    .um_toolbar_actions.deal_members_toolbar_actions_leading,
+  .deal_members_table_toolbar.um_toolbar.deal_inv_table_um_toolbar
+    .um_toolbar_actions.deal_members_toolbar_actions_trailing {
+    width: 100%;
+    margin-left: 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .deal_members_table_toolbar.um_toolbar.deal_inv_table_um_toolbar
+    .deal_members_toolbar_actions_trailing
+    .um_search_wrap {
+    flex: 1 1 100%;
+    max-width: none;
+    width: 100%;
+  }
+}
+
+/* Investors tab uses tighter spacing between KPI cards and table panel */
+.deal_inv_populated.deal_members_tab {
+  gap: 0.75em;
+}
+
+.deal_members_actions_cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.deal_members_action_icon_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--um-border-subtle, #d8dee8);
+  border-radius: 6px;
+  background: var(--um-surface-raised, #fff);
+  color: var(--um-text-muted, #3d4a5c);
+  cursor: pointer;
+}
+
+.deal_members_action_icon_btn:hover {
+  background: var(--um-surface-hover, #f0f4f9);
+  color: var(--um-text, #1a2332);
+}
+
+.deal_members_action_icon_btn:focus-visible {
+  outline: 2px solid var(--um-focus-ring, #2563eb);
+  outline-offset: 1px;
+}
+
+/* Deal Members + GP: header fills the card; no right-edge gutter strip. */
+.deal_members_tab .deal_inv_table_panel .um_table_wrap.data_table_shell {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+.deal_members_tab .deal_inv_table_panel .data_table_scroll_region {
+  width: 100%;
+  max-width: 100%;
+  overflow-y: hidden;
+  scrollbar-gutter: auto;
+}
+
+.deal_members_tab
+  .deal_inv_table_panel
+  .um_table_wrap.data_table_shell
+  .data_table_scroll_region
+  .um_table.deal_inv_table,
+.deal_members_tab .deal_inv_table_panel .um_table.deal_inv_table {
+  width: 100%;
+  min-width: max-content;
+  max-width: none;
+  table-layout: auto;
+}
+
+.deal_members_tab .deal_inv_table_panel .um_table.deal_inv_table thead {
+  background: var(--portal-table-header-bg, #f8fafc);
+}
+
+.deal_members_tab .deal_gp_totals_bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  margin: 0;
+  padding: 0.7rem 1rem;
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+  background: color-mix(in srgb, var(--portal-chrome-bg, #f8fafc) 88%, #fff);
+  box-sizing: border-box;
+}
+
+.deal_members_tab .deal_gp_totals_bar_intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  min-width: 0;
+}
+
+.deal_members_tab .deal_gp_totals_bar_kicker {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deal_members_tab .deal_gp_totals_bar_meta {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--portal-text, #0f172a);
+}
+
+.deal_members_tab .deal_gp_totals_bar_metrics {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.85rem 1.15rem;
+  min-width: 0;
+}
+
+.deal_members_tab .deal_gp_totals_metric {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.15rem;
+  min-width: 8.5rem;
+}
+
+.deal_members_tab .deal_gp_totals_metric_label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deal_members_tab .deal_gp_totals_metric_value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--portal-text, #0f172a);
+  line-height: 1.2;
+}
+
+.deal_members_tab .deal_gp_totals_metric_divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--portal-border, #e2e8f0);
+}
+
+@media (max-width: 640px) {
+  .deal_members_tab .deal_gp_totals_bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .deal_members_tab .deal_gp_totals_bar_metrics {
+    width: 100%;
+  }
+
+  .deal_members_tab .deal_gp_totals_metric {
+    align-items: flex-start;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .deal_members_tab .deal_gp_totals_metric_divider {
+    display: none;
+  }
+}

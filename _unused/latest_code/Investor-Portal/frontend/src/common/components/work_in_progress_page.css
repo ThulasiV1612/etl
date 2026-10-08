@@ -1,0 +1,51 @@
+.wip_page {
+  text-align: left;
+  max-width: 40em;
+}
+
+.wip_breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  margin: 0 0 1em;
+  font-size: 0.8125em;
+  color: var(--portal-text-muted);
+}
+
+.wip_breadcrumb a {
+  color: var(--portal-text-muted);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.wip_breadcrumb a:hover {
+  color: var(--portal-text);
+  text-decoration: underline;
+}
+
+.wip_breadcrumb_plain {
+  font-weight: 500;
+  color: var(--portal-text-muted);
+  cursor: default;
+}
+
+.wip_breadcrumb_sep {
+  opacity: 0.5;
+}
+
+.wip_title {
+  margin: 0 0 0.75em;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--portal-text);
+}
+
+.wip_message {
+  margin: 0;
+  padding: 1.5em 1.25em;
+  border: 1px dashed var(--portal-border);
+  border-radius: var(--portal-card-radius);
+  background: var(--portal-surface);
+  color: var(--portal-text-muted);
+  font-size: 0.9375em;
+}

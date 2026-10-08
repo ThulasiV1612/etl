@@ -1,0 +1,210 @@
+.crm_overview_page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.crm_overview_header {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.crm_overview_title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+}
+
+.crm_overview_subtitle {
+  margin: 0.35rem 0 0;
+  color: var(--portal-text-muted, #6b7280);
+  font-size: 0.95rem;
+  max-width: 40rem;
+}
+
+.crm_overview_header_actions {
+  margin-left: auto;
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.crm_overview_funnel {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.crm_overview_funnel_card {
+  background: var(--portal-surface, #fff);
+  border: 1px solid var(--portal-border, #e6e1d5);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  border-top: 3px solid var(--portal-gold-accent, #c9a24b);
+}
+
+.crm_overview_funnel_label {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--portal-text-muted, #6b7280);
+}
+
+.crm_overview_funnel_count {
+  margin-top: 0.25rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+  line-height: 1.15;
+}
+
+.crm_overview_funnel_sub {
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  color: var(--portal-text-muted, #6b7280);
+}
+
+.crm_overview_grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1.1rem;
+}
+
+.crm_overview_panel {
+  background: var(--portal-surface, #fff);
+  border: 1px solid var(--portal-border, #e6e1d5);
+  border-radius: 10px;
+  padding: 1.25rem 1.35rem;
+}
+
+.crm_overview_panel_title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+}
+
+.crm_overview_panel_hint {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  color: var(--portal-text-muted, #6b7280);
+}
+
+.crm_overview_attention_list {
+  list-style: none;
+  margin: 0.65rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.crm_overview_attention_row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--portal-border, #e6e1d5) 80%, transparent);
+}
+
+.crm_overview_attention_row:last-child {
+  border-bottom: none;
+}
+
+.crm_overview_attention_dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.crm_overview_attention_text {
+  min-width: 0;
+  font-size: 0.9rem;
+  color: var(--portal-text-muted, #4b5563);
+}
+
+.crm_overview_attention_text strong {
+  color: var(--portal-text, #0f172a);
+  font-weight: 600;
+}
+
+.crm_overview_attention_btn {
+  margin-left: auto;
+  flex-shrink: 0;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+.crm_overview_sources {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.9rem;
+}
+
+.crm_overview_source_row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.crm_overview_source_name {
+  width: 7.5rem;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: var(--portal-text, #374151);
+}
+
+.crm_overview_source_track {
+  flex: 1;
+  height: 0.5rem;
+  background: color-mix(in srgb, var(--portal-border, #f0ede4) 90%, #fff);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.crm_overview_source_fill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.crm_overview_source_n {
+  width: 2rem;
+  text-align: right;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.crm_overview_sources_note {
+  margin: 0.9rem 0 0;
+  font-size: 0.8rem;
+  color: var(--portal-text-muted, #6b7280);
+  background: color-mix(in srgb, var(--portal-gold-accent, #c9a24b) 8%, #fff);
+  border: 1px solid color-mix(in srgb, var(--portal-gold-accent, #c9a24b) 22%, #efe9da);
+  border-radius: 7px;
+  padding: 0.55rem 0.75rem;
+}
+
+@media (max-width: 1100px) {
+  .crm_overview_funnel {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .crm_overview_grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .crm_overview_funnel {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .crm_overview_header_actions {
+    margin-left: 0;
+    width: 100%;
+  }
+}

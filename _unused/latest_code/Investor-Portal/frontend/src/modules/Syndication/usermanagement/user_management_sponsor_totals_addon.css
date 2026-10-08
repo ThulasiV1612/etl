@@ -1,0 +1,5 @@
+/* Optional: import in your integration entry or parent layout. */
+.um_total_investment_cell {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}

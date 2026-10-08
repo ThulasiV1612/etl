@@ -1,0 +1,499 @@
+.invest_now_draft_progress {
+  --inv-progress-gold: var(--portal-gold-accent, #d4af37);
+  --inv-progress-sidebar: var(--sidebar-bg-color, #131b2e);
+  --inv-progress-track: color-mix(
+    in srgb,
+    var(--portal-border, #e2e8f0) 55%,
+    var(--portal-surface-muted, #f8fafc)
+  );
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-width: 0;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: var(--portal-pill-radius, 4px);
+  border: 1px solid
+    color-mix(in srgb, var(--inv-progress-gold) 22%, var(--portal-border, #e2e8f0));
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--inv-progress-gold) 4%, var(--portal-surface, #fff)),
+    color-mix(in srgb, var(--portal-primary-soft, #e6f0ff) 18%, var(--portal-surface, #fff))
+  );
+  box-shadow: 0 1px 2px rgb(15 23 42 / 4%);
+}
+
+.invest_now_draft_progress_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.invest_now_draft_progress_label {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--portal-outline, #76777d) 75%, transparent);
+}
+
+.invest_now_draft_progress_pct {
+  font-family: var(--portal-font-display, "Playfair Display", Georgia, serif);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  color: var(--portal-text, #0f172a);
+}
+
+.invest_now_draft_progress_track {
+  position: relative;
+  height: 0.3125rem;
+  border-radius: var(--portal-pill-radius, 4px);
+  overflow: hidden;
+  background: var(--inv-progress-track);
+  box-shadow: inset 0 1px 2px rgb(15 23 42 / 6%);
+}
+
+.invest_now_draft_progress_fill {
+  position: relative;
+  height: 100%;
+  min-width: 0.25rem;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    var(--inv-progress-sidebar),
+    var(--inv-progress-gold)
+  );
+  box-shadow: 0 0 12px color-mix(in srgb, var(--inv-progress-gold) 35%, transparent);
+  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.invest_now_draft_progress_fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    rgb(255 255 255 / 28%) 0%,
+    rgb(255 255 255 / 0%) 55%
+  );
+  pointer-events: none;
+}
+
+.invest_now_draft_progress_meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+.invest_now_draft_progress--embedded {
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+/* Shared shell: dashboard cards + deal preview onboarding */
+.invest_now_onboarding_panel {
+  --inv-progress-gold: var(--portal-gold-accent, #d4af37);
+  --inv-progress-sidebar: var(--sidebar-bg-color, #131b2e);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 1rem 1.05rem 0.9rem;
+  border-radius: var(--portal-pill-radius, 4px);
+  border: 1px solid
+    color-mix(in srgb, var(--inv-progress-gold) 22%, var(--portal-border, #e2e8f0));
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--inv-progress-gold) 4%, var(--portal-surface, #fff)),
+    color-mix(in srgb, var(--portal-primary-soft, #e6f0ff) 18%, var(--portal-surface, #fff))
+  );
+  box-shadow: 0 1px 2px rgb(15 23 42 / 4%);
+}
+
+.invest_now_onboarding_panel_body {
+  min-width: 0;
+}
+
+.invest_now_onboarding_panel_body .invest_now_draft_progress--embedded {
+  gap: 0.75rem;
+}
+
+.invest_now_onboarding_panel_footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.9rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed
+    color-mix(in srgb, var(--inv-progress-gold) 24%, var(--portal-border, #e2e8f0));
+}
+
+.invest_now_onboarding_panel_action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0.55rem 1.15rem;
+  border-radius: var(--portal-pill-radius, 4px);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    letter-spacing 0.2s ease;
+}
+
+.invest_now_onboarding_panel_action--ghost {
+  border: 1px solid
+    color-mix(in srgb, var(--inv-progress-gold) 35%, var(--portal-border, #e2e8f0));
+  background: color-mix(in srgb, var(--inv-progress-gold) 6%, var(--portal-surface, #fff));
+  color: var(--inv-progress-gold);
+}
+
+.invest_now_onboarding_panel_action--primary {
+  border: 1px solid color-mix(
+    in srgb,
+    var(--inv-progress-gold) 32%,
+    var(--inv-progress-sidebar)
+  );
+  background: linear-gradient(
+    135deg,
+    var(--inv-progress-sidebar),
+    color-mix(in srgb, var(--inv-progress-gold) 48%, var(--inv-progress-sidebar))
+  );
+  color: var(--sidebar-active-text, #d4af37);
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--inv-progress-sidebar) 35%, transparent);
+}
+
+.invest_now_onboarding_panel_action--primary:hover:not(:disabled) {
+  filter: brightness(1.06);
+  box-shadow: 0 2px 8px rgb(15 23 42 / 16%);
+}
+
+.invest_now_onboarding_panel_action--ghost:hover {
+  letter-spacing: 0.04em;
+  background: color-mix(in srgb, var(--inv-progress-gold) 10%, var(--portal-surface, #fff));
+}
+
+.invest_now_onboarding_panel_action:focus-visible {
+  outline: 2px solid var(--portal-primary, #00477a);
+  outline-offset: 2px;
+}
+
+.invest_now_draft_progress_phase {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--portal-pill-radius, 4px);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  color: color-mix(in srgb, var(--portal-primary, #00477a) 82%, #0f172a);
+  background: color-mix(
+    in srgb,
+    var(--portal-primary-soft, #e6f0ff) 72%,
+    var(--portal-surface, #fff)
+  );
+  border: 1px solid
+    color-mix(in srgb, var(--portal-primary, #00477a) 12%, var(--portal-border, #e2e8f0));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Investments table — slimmer variant */
+.invest_now_draft_progress--compact {
+  gap: 0.45rem;
+  max-width: 12rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: var(--portal-pill-radius, 4px);
+}
+
+.invest_now_draft_progress--compact .invest_now_draft_progress_label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--portal-text, #0f172a);
+}
+
+.invest_now_draft_progress--compact .invest_now_draft_progress_pct {
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--inv-progress-gold) 55%, var(--portal-text, #0f172a));
+}
+
+.invest_now_draft_progress--compact .invest_now_draft_progress_track {
+  height: 0.25rem;
+}
+
+/* Dashboard prestige card — beside deal title */
+.invest_now_draft_progress--card-head .invest_now_draft_progress_header {
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.invest_now_draft_progress--card-head .invest_now_draft_progress_label {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--portal-outline, #76777d) 72%, transparent);
+}
+
+.invest_now_draft_progress--card-head .invest_now_draft_progress_pct {
+  font-family: var(--portal-font-display, "Playfair Display", Georgia, serif);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+}
+
+.invest_now_draft_progress--card-head .invest_now_draft_progress_track {
+  height: 0.28125rem;
+}
+
+.invest_now_draft_progress--card-head .invest_now_draft_progress_meta {
+  margin-top: -0.05rem;
+}
+
+.invest_now_draft_progress_phase--card-head {
+  padding: 0.12rem 0.45rem;
+  font-size: 0.625rem;
+  max-width: 100%;
+}
+
+.invest_now_draft_progress--current-step-action .invest_now_draft_progress_action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.15rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed
+    color-mix(in srgb, var(--inv-progress-gold, #d4af37) 24%, var(--portal-border, #e2e8f0));
+}
+
+.invest_now_draft_progress_action_btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.invest_now_draft_progress--phase-nav .invest_now_draft_progress_phases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.1rem;
+}
+
+.invest_now_draft_progress_phase_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--portal-pill-radius, 4px);
+  font-family: inherit;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  white-space: nowrap;
+  cursor: pointer;
+  color: color-mix(in srgb, var(--portal-primary, #00477a) 82%, #0f172a);
+  background: color-mix(
+    in srgb,
+    var(--portal-primary-soft, #e6f0ff) 72%,
+    var(--portal-surface, #fff)
+  );
+  border: 1px solid
+    color-mix(in srgb, var(--portal-primary, #00477a) 12%, var(--portal-border, #e2e8f0));
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.invest_now_draft_progress_phase_btn--current {
+  color: var(--sidebar-active-text, #d4af37);
+  background: linear-gradient(
+    135deg,
+    var(--inv-progress-sidebar),
+    color-mix(in srgb, var(--inv-progress-gold, #d4af37) 48%, var(--inv-progress-sidebar))
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--inv-progress-gold, #d4af37) 32%,
+    var(--inv-progress-sidebar)
+  );
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--inv-progress-sidebar) 35%, transparent);
+}
+
+.invest_now_draft_progress_phase_btn:hover:not(:disabled):not(
+    .invest_now_draft_progress_phase_btn--current
+  ) {
+  background: color-mix(
+    in srgb,
+    var(--portal-primary-soft, #e6f0ff) 88%,
+    var(--portal-surface, #fff)
+  );
+  border-color: color-mix(in srgb, var(--portal-primary, #00477a) 28%, var(--portal-border, #e2e8f0));
+}
+
+.invest_now_draft_progress_phase_btn:focus-visible {
+  outline: 2px solid var(--portal-primary, #00477a);
+  outline-offset: 2px;
+}
+
+.invest_now_draft_progress_phase_btn--disabled,
+.invest_now_draft_progress_phase_btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] .invest_now_draft_progress,
+:root[data-theme="dark"] .invest_now_onboarding_panel {
+  background: var(--card-onboarding-bg-color, rgba(255, 255, 255, 0.05));
+  border-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 22%,
+    var(--portal-border)
+  );
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] .invest_now_draft_progress_label,
+:root[data-theme="dark"]
+  .invest_now_draft_progress--card-head
+  .invest_now_draft_progress_label,
+:root[data-theme="dark"]
+  .invest_now_draft_progress--compact
+  .invest_now_draft_progress_label {
+  color: var(--portal-text-muted);
+}
+
+:root[data-theme="dark"] .invest_now_draft_progress_pct,
+:root[data-theme="dark"]
+  .invest_now_draft_progress--card-head
+  .invest_now_draft_progress_pct {
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"]
+  .invest_now_draft_progress--compact
+  .invest_now_draft_progress_pct {
+  color: var(--portal-gold-accent, #d4af37);
+}
+
+:root[data-theme="dark"] .invest_now_draft_progress_track {
+  background: var(--portal-surface-muted, rgba(255, 255, 255, 0.08));
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 22%);
+}
+
+:root[data-theme="dark"] .invest_now_draft_progress_fill::after {
+  background: linear-gradient(
+    180deg,
+    rgb(255 255 255 / 10%) 0%,
+    transparent 55%
+  );
+}
+
+:root[data-theme="dark"] .invest_now_draft_progress_phase,
+:root[data-theme="dark"] .invest_now_draft_progress_phase_btn {
+  color: var(--portal-text-secondary);
+  background: var(--portal-muted-bg, rgba(255, 255, 255, 0.06));
+  border-color: var(--portal-border);
+}
+
+:root[data-theme="dark"] .invest_now_draft_progress_phase_btn--current {
+  color: var(--sidebar-active-text, #d4af37);
+  background: var(--sidebar-active, rgba(212, 175, 55, 0.15));
+  border-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 32%,
+    var(--portal-border)
+  );
+  box-shadow: none;
+}
+
+:root[data-theme="dark"]
+  .invest_now_draft_progress_phase_btn:hover:not(:disabled):not(
+    .invest_now_draft_progress_phase_btn--current
+  ) {
+  color: var(--portal-text);
+  background: var(--portal-surface-muted, rgba(255, 255, 255, 0.08));
+  border-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 18%,
+    var(--portal-border)
+  );
+}
+
+:root[data-theme="dark"] .invest_now_onboarding_panel_footer,
+:root[data-theme="dark"]
+  .invest_now_draft_progress--current-step-action
+  .invest_now_draft_progress_action {
+  border-top-color: var(--portal-border);
+}
+
+:root[data-theme="dark"] .invest_now_onboarding_panel_action--ghost {
+  color: var(--portal-gold-accent, #d4af37);
+  background: var(--portal-muted-bg, rgba(255, 255, 255, 0.06));
+  border-color: var(--portal-border);
+}
+
+:root[data-theme="dark"] .invest_now_onboarding_panel_action--ghost:hover {
+  background: var(--portal-surface-muted, rgba(255, 255, 255, 0.08));
+  border-color: color-mix(
+    in srgb,
+    var(--portal-gold-accent, #d4af37) 28%,
+    var(--portal-border)
+  );
+}
+
+:root[data-theme="dark"] .invest_now_onboarding_panel_action--primary {
+  background: var(--ui-button-background-add, var(--sidebar-bg-color));
+  color: var(--ui-button-text, var(--sidebar-active-text));
+  border-color: var(--ui-button-border);
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] .invest_now_onboarding_panel_action--primary:hover:not(:disabled) {
+  background: var(--ui-button-hover);
+  filter: none;
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] .invest_now_onboarding_panel_action:focus-visible,
+:root[data-theme="dark"] .invest_now_draft_progress_phase_btn:focus-visible {
+  outline-color: var(--portal-gold-accent, #d4af37);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .invest_now_draft_progress_fill {
+    transition: none;
+  }
+}

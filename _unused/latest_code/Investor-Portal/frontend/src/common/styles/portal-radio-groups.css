@@ -1,0 +1,238 @@
+/**
+ * Binary (Yes/No and two-option) radio alignment — shared across the portal.
+ */
+
+:root {
+  --portal-binary-radio-gap: 0.65rem;
+  --portal-binary-radio-inner-gap: 0.5rem;
+  --portal-binary-radio-max-width: 28rem;
+  --portal-binary-radio-min-height: 2.125rem;
+  --portal-binary-radio-padding-y: 0.3rem;
+  --portal-binary-radio-padding-x: 0.65rem;
+}
+
+/* Yes/No card groups (deal create, modals, settings, invest flow) */
+.portal_yesno_radio_group,
+.deal_step_yesno_cards {
+  display: block;
+  width: 100%;
+  max-width: min(100%, var(--portal-binary-radio-max-width));
+  margin-top: 0.5em;
+  box-sizing: border-box;
+}
+
+.portal_yesno_radio_group .card_radio_group,
+.deal_step_yesno_cards .card_radio_group {
+  width: 100%;
+}
+
+/* Yes/No field block — same layout as Company Settings tab */
+.portal_yesno_field_block,
+.cp_settings_root .cp_settings_edit_field_block:has(.card_radio_group) {
+  flex: 0 0 auto;
+  width: min(100%, var(--portal-binary-radio-max-width));
+  max-width: var(--portal-binary-radio-max-width);
+  box-sizing: border-box;
+}
+
+.portal_yesno_field_block .portal_yesno_radio_group,
+.cp_settings_root
+  .cp_settings_edit_field_block:has(.card_radio_group)
+  .portal_yesno_radio_group {
+  margin-top: 0;
+  width: 100%;
+}
+
+.portal_yesno_field_block .card_radio_group,
+.cp_settings_root .cp_settings_edit_field_block .card_radio_group {
+  width: 100%;
+}
+
+.portal_yesno_field_block .card_radio_group_binary,
+.cp_settings_root .cp_settings_edit_field_block .card_radio_group_binary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--portal-binary-radio-gap);
+  align-items: stretch;
+  max-width: var(--portal-binary-radio-max-width);
+  width: 100%;
+}
+
+.portal_yesno_field_block .card_radio_card,
+.cp_settings_root .cp_settings_edit_field_block .card_radio_card {
+  min-width: 0;
+  width: 100%;
+}
+
+.portal_yesno_field_block .card_radio_group_binary .card_radio_card,
+.cp_settings_root
+  .cp_settings_edit_field_block
+  .card_radio_group_binary
+  .card_radio_card {
+  min-height: var(--portal-binary-radio-min-height);
+  padding: var(--portal-binary-radio-padding-y)
+    var(--portal-binary-radio-padding-x);
+}
+
+@media (max-width: 520px) {
+  .portal_yesno_field_block .card_radio_group_binary,
+  .cp_settings_root .cp_settings_edit_field_block .card_radio_group_binary {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Pill radios — two equal columns when exactly two options */
+.radio-group.radio-group_binary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--portal-binary-radio-gap);
+  align-items: stretch;
+  width: 100%;
+  max-width: min(100%, var(--portal-binary-radio-max-width));
+}
+
+.radio-group_binary .radio-btn {
+  min-height: var(--portal-binary-radio-min-height);
+}
+
+/* Native binary rows — wire account type, offerings visibility, questionnaire */
+.deal_fi_wire_radios,
+.cp_offerings_visibility,
+.invest_now_questionnaire_options:has(
+    .invest_now_questionnaire_option:nth-child(2):last-child
+  ) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--portal-binary-radio-gap);
+  width: 100%;
+  max-width: min(100%, var(--portal-binary-radio-max-width));
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+.deal_fi_wire_radios {
+  min-height: 0;
+}
+
+.deal_fi_wire_radio,
+.invest_now_questionnaire_options:has(
+    .invest_now_questionnaire_option:nth-child(2):last-child
+  )
+  .invest_now_questionnaire_option,
+.cp_offerings_radio_option {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--portal-binary-radio-inner-gap);
+  min-height: var(--portal-binary-radio-min-height);
+  padding: var(--portal-binary-radio-padding-y) var(--portal-binary-radio-padding-x);
+  box-sizing: border-box;
+}
+
+.invest_now_questionnaire_options:has(
+    .invest_now_questionnaire_option:nth-child(2):last-child
+  ) {
+  flex-direction: row;
+  padding-top: 0.35rem;
+}
+
+.invest_now_questionnaire_options:has(
+    .invest_now_questionnaire_option:nth-child(2):last-child
+  )
+  .invest_now_questionnaire_option {
+  padding: var(--portal-binary-radio-padding-y) var(--portal-binary-radio-padding-x);
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: var(--portal-surface, #fff);
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.invest_now_questionnaire_options:has(
+    .invest_now_questionnaire_option:nth-child(2):last-child
+  )
+  .invest_now_questionnaire_option:has(input:checked) {
+  border-color: var(--portal-text, #0f172a);
+  background: color-mix(
+    in srgb,
+    var(--portal-text, #0f172a) 3%,
+    var(--portal-surface, #fff)
+  );
+  box-shadow: 0 0 0 1px var(--portal-text, #0f172a);
+}
+
+.invest_now_questionnaire_options:has(
+    .invest_now_questionnaire_option:nth-child(2):last-child
+  )
+  .invest_now_questionnaire_option
+  input {
+  margin: 0;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  align-self: center;
+}
+
+.cp_offerings_visibility {
+  flex-wrap: nowrap;
+}
+
+.cp_offerings_radio_option {
+  width: 100%;
+}
+
+/* Binary rows — label/content left, radio indicator right */
+.deal_fi_wire_radio > span {
+  order: 1;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.deal_fi_wire_radio > input[type="radio"] {
+  order: 2;
+  margin-left: auto;
+}
+
+.cp_offerings_radio_text {
+  order: 1;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.cp_offerings_radio_face {
+  order: 2;
+  margin-left: auto;
+}
+
+.invest_now_questionnaire_options:has(
+    .invest_now_questionnaire_option:nth-child(2):last-child
+  )
+  .invest_now_questionnaire_option
+  > span {
+  order: 1;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.invest_now_questionnaire_options:has(
+    .invest_now_questionnaire_option:nth-child(2):last-child
+  )
+  .invest_now_questionnaire_option
+  > input[type="radio"] {
+  order: 2;
+  margin-left: auto;
+}
+
+@media (max-width: 520px) {
+  .radio-group.radio-group_binary,
+  .deal_fi_wire_radios,
+  .cp_offerings_visibility,
+  .invest_now_questionnaire_options:has(
+      .invest_now_questionnaire_option:nth-child(2):last-child
+    ) {
+    grid-template-columns: 1fr;
+  }
+}

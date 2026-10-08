@@ -1,0 +1,2792 @@
+/* Offering Information — investor class table + cards (portal field styles) */
+
+.deal_offering_info,
+.deal_inv_offering_modal {
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+}
+
+.deal_offering_info {
+  min-width: 0;
+  padding-top: 0.35em;
+}
+
+/* One column field shell — matches ClassFieldsForm grid labels */
+.deal_inv_class_field {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+}
+
+/* Equity class name: preset picker → editable text + inline edit affordance */
+.deal_inv_equity_name_editable_row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.deal_inv_equity_name_input_shell {
+  position: relative;
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
+.deal_inv_equity_name_text_input {
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 2.35rem;
+}
+
+.deal_inv_equity_name_input_suffix {
+  position: absolute;
+  right: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deal_inv_equity_name_edit_icon {
+  flex-shrink: 0;
+  opacity: 0.88;
+}
+
+.deal_inv_equity_name_clear_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: none;
+  border-radius: var(--ui-button-border-radius, 4px);
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.deal_inv_equity_name_clear_btn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--portal-text-muted, #64748b) 12%, transparent);
+}
+
+.deal_inv_equity_name_clear_btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.deal_inv_equity_name_preset_pick {
+  flex: 0 1 auto;
+  min-width: min(100%, 10.5rem);
+  max-width: 100%;
+}
+
+.deal_inv_offering_modal .deal_inv_class_field {
+  margin-bottom: 1em;
+}
+
+.deal_offering_info_toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75em 1em;
+  margin-bottom: 1em;
+}
+
+.deal_offering_toolbar_hint {
+  margin: 0;
+  flex: 1;
+  min-width: min(100%, 14em);
+  font-size: 0.875em;
+  color: var(--portal-text-muted, #64748b);
+  line-height: 1.45;
+}
+
+.deal_offering_add_ic_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  margin-left: auto;
+  flex-shrink: 0;
+  margin-top: 15px;
+}
+
+/* Add investor class panel: under Offering Information or standalone route */
+/* Add asset page uses `.deals_add_deal_asset_panel` with the same full-page shell */
+.deal_offering_info .deal_inv_ic_add_panel,
+.deals_add_investor_class_page .deal_inv_ic_add_panel,
+.deals_add_investor_class_page .deals_add_deal_asset_panel {
+  width: 100%;
+  max-width: none;
+  margin: 0 0 1.25em;
+  padding: 1em 1.15em 1.15em;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: var(--portal-surface, #fff);
+  box-sizing: border-box;
+  min-width: 0;
+  scroll-margin-top: 0.75em;
+}
+
+.deals_add_investor_class_page .deal_inv_ic_add_panel,
+.deals_add_investor_class_page .deals_add_deal_asset_panel {
+  max-width: min(65em, calc(100vw - 2.5rem));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Add Investor Class page should size panel by content (no forced full-height stretch). */
+.deals_add_investor_class_page .deals_add_deal_asset_panel {
+  display: block;
+  flex: 0 0 auto;
+  min-height: auto;
+}
+
+.deals_add_investor_class_page .deals_add_deal_asset_form {
+  display: block;
+  flex: 0 0 auto;
+  min-height: auto;
+}
+
+.deals_add_investor_class_page .deals_add_deal_asset_form_scroll {
+  flex: 0 0 auto;
+  min-height: 0;
+  overflow: visible;
+}
+
+/* Validation scroll: keep fields below sticky page header */
+.deals_add_investor_class_page .deal_inv_class_field :is(input, select, textarea) {
+  scroll-margin-top: 5.5rem;
+  scroll-margin-bottom: 1.5rem;
+}
+
+.deals_add_investor_class_loading_panel {
+  width: 100%;
+  max-width: min(65em, calc(100vw - 2.5rem));
+  margin: 0 auto 1.25em;
+  padding: 1.2em 1.15em;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: var(--portal-surface, #fff);
+  box-sizing: border-box;
+}
+
+.deals_add_investor_class_loading_panel .deal_offering_muted {
+  margin: 0;
+}
+
+.deals_page_loader_center_panel {
+  min-height: 52vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.deals_add_investor_class_page_head .deals_list_title_row {
+  min-height: 2.5rem;
+}
+
+/* Add Investor Class stepper: tighten connector spacing after "Class Details". */
+.deals_add_investor_class_page .deals_add_deal_asset_stepper.add_contact_stepper {
+  gap: 0.3em 0.55em;
+}
+
+/* Add / Edit investor class: center stepper with form panel column */
+.deals_add_investor_class_page.deals_investor_class_add_edit_page
+  .deals_add_deal_asset_head_main
+  .deals_add_deal_asset_stepper.add_contact_stepper {
+  width: 100%;
+  max-width: min(65em, calc(100vw - 2.5rem));
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Create deal: same alignment; width follows --deals-create-shell-max from deals-create.css */
+.deals_add_investor_class_page.deals_create_flow
+  .deals_add_deal_asset_head_main
+  .deals_add_deal_asset_stepper.add_contact_stepper {
+  width: 100%;
+  max-width: var(--deals-create-shell-max, min(70em, calc(100vw - 2.5rem)));
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.deals_add_investor_class_page .add_contact_step_line {
+  width: 1.6em;
+}
+
+/* Add / Edit investor class — clickable stepper labels */
+.add_contact_step_node_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: inherit;
+  margin: 0;
+  padding: 0.15em 0.2em;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  font: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.add_contact_step_node_clickable:hover:not(:disabled),
+.add_contact_step_node_btn:hover {
+  color: var(--portal-primary, #2563eb);
+}
+
+.add_contact_step_node_btn:focus-visible {
+  outline: 2px solid var(--portal-primary, #2563eb);
+  outline-offset: 2px;
+}
+
+.deals_add_investor_class_page .add_contact_step_node_btn .add_contact_step_label {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.15em;
+  transition: text-decoration-color 0.12s ease;
+}
+
+.deals_add_investor_class_page .add_contact_step_node_btn:hover .add_contact_step_label {
+  text-decoration-color: currentColor;
+}
+
+a.deal_offering_add_ic_btn.um_btn_primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.deal_inv_ic_add_panel_head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75em;
+  margin-bottom: 0.65em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--portal-border, #e2e8f0);
+}
+
+.deal_inv_ic_add_panel_title {
+  margin: 0;
+  font-size: 1.125em;
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+}
+
+.deal_inv_ic_add_panel_close {
+  flex-shrink: 0;
+}
+
+.deal_inv_ic_add_panel_form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.deal_inv_ic_add_panel_actions {
+  margin-top: 0.85em;
+  padding-top: 0.75em;
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+}
+
+.deal_inv_required {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.deal_inv_class_table_wrap {
+  overflow-x: auto;
+  margin-bottom: 1.25em;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: var(--portal-surface, #fff);
+}
+
+/* Inside Offering Information accordion: square top so the table lines up with the section shell */
+.deal_offering_panel .deal_inv_class_table_wrap {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.deal_inv_class_table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875em;
+}
+
+.deal_inv_class_table thead th {
+  text-align: left;
+  padding: 0.75em 1em;
+  font-weight: 600;
+  color: #64748b;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--portal-border, #e2e8f0);
+}
+
+.deal_inv_class_table tbody td {
+  padding: 0.65em 1em;
+  color: var(--portal-text, #0f172a);
+  border-bottom: 1px solid var(--portal-border, #e2e8f0);
+  vertical-align: middle;
+}
+
+.deal_inv_class_table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Classes list: allocation notice above Assets-style toolbar */
+.deal_classes_datatable_panel > .deal_inv_class_allocation_notice_wrap {
+  margin-bottom: 0.75em;
+}
+
+.deal_inv_class_toolbar {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+.deal_inv_class_toolbar_row.um_toolbar {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.deal_inv_class_allocation_notice_wrap {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.deal_inv_class_allocation_notice_wrap .deal_inv_class_allocation_notice {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: none;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.deal_inv_class_toolbar_search {
+  flex: 0 1 22em;
+  max-width: 22em;
+  min-width: min(100%, 12rem);
+}
+
+.deal_inv_class_allocation_notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5em;
+  flex: 1 1 16rem;
+  min-width: min(100%, 14rem);
+  max-width: none;
+  margin: 0;
+  padding: 0.5em 0.7em;
+  border-radius: var(--portal-card-radius, 4px);
+  border: 1px solid transparent;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  box-sizing: border-box;
+}
+
+.deals_add_investor_class_page .deal_inv_class_allocation_notice_wrap {
+  margin-bottom: 0.35em;
+}
+
+.deal_inv_class_allocation_notice_icon {
+  flex-shrink: 0;
+  margin-top: 0.1em;
+}
+
+.deal_inv_class_allocation_notice_text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+  min-width: 0;
+}
+
+.deal_inv_class_allocation_notice_text p {
+  margin: 0;
+}
+
+.deal_inv_class_allocation_notice_over {
+  color: #991b1b;
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.deal_inv_class_allocation_notice_exact {
+  color: #166534;
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.deal_inv_class_allocation_notice_under {
+  color: #991b1b;
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.deal_inv_class_add_btn_disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+  text-decoration: none;
+}
+
+.deal_inv_class_add_blocked_panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85em;
+  max-width: min(65em, calc(100vw - 2.5rem));
+}
+
+.deal_inv_class_add_blocked_panel .deal_inv_class_allocation_notice {
+  max-width: none;
+  width: 100%;
+}
+
+.deal_inv_class_add_blocked_hint {
+  margin: 0;
+  max-width: 40em;
+}
+
+.deal_inv_class_cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.deal_inv_class_card {
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: var(--portal-surface, #fff);
+  padding: 1em 1.1em 1.05em;
+  box-sizing: border-box;
+}
+
+.deal_inv_class_card.deal_offering_section {
+  padding: 0;
+  overflow: hidden;
+}
+
+.deal_inv_class_card_banner {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 0.85rem;
+  padding: 0.7rem 1.1em;
+  background: color-mix(
+    in srgb,
+    var(--sidebar-bg-color, #131b2e) 5%,
+    var(--portal-surface, #fff)
+  );
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--portal-border, #e2e8f0) 82%, transparent);
+}
+
+.deal_offering_section_expanded.deal_inv_class_card .deal_inv_class_card_banner {
+  background: var(--portal-surface, #fff);
+}
+
+.deal_inv_class_card .deal_docs_ui_banner_toggle.deal_inv_class_card_title_btn {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0;
+}
+
+.deal_inv_class_card .deal_inv_class_card_title {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.deal_inv_class_card_panel.deal_offering_panel {
+  padding: 0 1.1em 1.05em;
+  border-top: none;
+}
+
+.deal_inv_class_card_head_actions {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.deal_inv_class_card_title_row {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  min-width: 0;
+  flex: 1;
+}
+
+.deal_inv_class_card_title {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+}
+
+.deal_inv_class_name_input {
+  flex: 1;
+  min-width: 0;
+  max-width: 20em;
+}
+
+.deal_inv_class_icon_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35em;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.deal_inv_class_icon_btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.deal_inv_class_icon_btn_danger {
+  color: #b91c1c;
+}
+
+.deal_inv_class_icon_btn_danger:hover {
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.deal_inv_class_meta_line {
+  margin: 0.35em 0 0;
+  font-size: 0.8125em;
+  color: var(--portal-text-muted, #64748b);
+  line-height: 1.4;
+}
+
+.deal_inv_class_card_body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85em;
+  margin-top: 0.75em;
+  padding-top: 0.75em;
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+}
+
+.deal_inv_class_meta_sep {
+  margin: 0 0.35em;
+  opacity: 0.6;
+}
+
+.deal_inv_class_meta_edit {
+  margin-top: 0.65em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65em;
+}
+
+.deal_inv_class_card_divider {
+  height: 1px;
+  background: var(--portal-border, #e2e8f0);
+  margin: 0.85em 0;
+}
+
+/* Offering Information — class summary cards */
+.deal_inv_class_fin_grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65em;
+}
+
+@media (max-width: 520px) {
+  .deal_inv_class_fin_grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.deal_inv_class_fin_block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55em;
+  min-width: 0;
+  padding: 0.65em 0.75em;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  /* background: color-mix(in srgb, var(--portal-primary-soft, #f8fafc) 55%, #fff); */
+  background: #f6f6f6;
+}
+
+.deal_inv_class_fin_block_title {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deal_inv_class_fin_block_values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em 0.65em;
+  align-items: end;
+}
+
+.deal_inv_class_fin_block_raise_only .deal_inv_class_fin_block_values {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.deal_inv_class_fin_block_col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.deal_inv_class_fin_block_value_money .card_compact_amount {
+  max-width: 100%;
+}
+
+.deal_inv_class_fin_block_value_money .card_compact_amount_value {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  line-height: inherit;
+}
+
+.deal_inv_class_fin_block_label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--portal-text-muted, #64748b);
+  line-height: 1.25;
+}
+
+.deal_inv_class_fin_block_value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.deal_inv_class_fin_block_value_money {
+  font-size: 1rem;
+}
+
+.deal_inv_class_fin_block_value_pct {
+  color: color-mix(in srgb, var(--portal-primary, #2563eb) 78%, #0f172a);
+}
+
+.deal_inv_class_detail_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+  gap: 0.5em 1em;
+  margin: 0;
+  padding: 0;
+}
+
+.deal_inv_class_detail_item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  min-width: 0;
+}
+
+.deal_inv_class_detail_item dt {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--portal-text-muted, #64748b);
+  line-height: 1.25;
+}
+
+.deal_inv_class_detail_item dd {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.3;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.deal_inv_class_detail_item dd .card_compact_amount {
+  max-width: 100%;
+}
+
+.deal_inv_class_status_row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45em;
+  padding-top: 0.15em;
+}
+
+.deal_inv_class_status_chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  max-width: 100%;
+  padding: 0.28em 0.55em;
+  border-radius: 6px;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  background: var(--portal-surface, #fff);
+  font-size: 0.75rem;
+  line-height: 1.3;
+}
+
+.deal_inv_class_status_chip_label {
+  font-weight: 600;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deal_inv_class_status_chip_value {
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+  overflow-wrap: anywhere;
+}
+
+/* Legacy horizontal metrics (inline edit / other surfaces) */
+.deal_inv_class_metrics_h {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1em 1.25em;
+}
+
+.deal_inv_class_metrics_h_items {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
+  gap: 1em 1.5em;
+  align-items: flex-end;
+}
+
+.deal_inv_class_metric_h {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  min-width: min(100%, 7.5em);
+}
+
+.deal_inv_class_metric_h_label {
+  font-size: 0.75em;
+  font-weight: 600;
+  color: var(--portal-text-muted, #64748b);
+  letter-spacing: 0.02em;
+}
+
+.deal_inv_class_metric_h_value {
+  font-size: 0.9375em;
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+  line-height: 1.3;
+}
+
+.deal_inv_class_metrics_h_actions {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.45em;
+}
+
+.deal_inv_class_h_icon_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35em;
+  height: 2.35em;
+  padding: 0;
+  border: 1px solid var(--portal-border, #cbd5e1);
+  border-radius: var(--portal-pill-radius, 4px);
+  background: var(--portal-surface, #fff);
+  color: var(--portal-text-muted, #64748b);
+  cursor: pointer;
+  transition:
+    background 0.12s ease,
+    color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.deal_inv_class_h_icon_btn:hover {
+  background: var(--portal-primary-soft, #f8fafc);
+  color: var(--portal-text, #0f172a);
+  border-color: var(--portal-border, #94a3b8);
+}
+
+.deal_inv_class_h_icon_btn:focus-visible {
+  outline: 2px solid var(--portal-primary, #2563eb);
+  outline-offset: 2px;
+}
+
+.deal_inv_class_h_icon_btn_danger {
+  color: #b91c1c;
+  border-color: var(--portal-border, #cbd5e1);
+}
+
+.deal_inv_class_h_icon_btn_danger:hover {
+  background: #fef2f2;
+  color: #991b1b;
+  border-color: #fecaca;
+}
+
+:root[data-theme="dark"] .deal_inv_class_h_icon_btn {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--portal-surface, #1e293b);
+  color: #94a3b8;
+}
+
+:root[data-theme="dark"] .deal_inv_class_h_icon_btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--portal-text, #f1f5f9);
+}
+
+.deal_inv_class_fields {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+
+.deal_inv_class_fields_readonly .deal_inv_class_field_value {
+  margin: 0.25em 0 0;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: var(--portal-text, #334155);
+}
+
+/* Class details / add-edit form — one label size for every field label variant */
+.deal_inv_ic_add_panel_form,
+.deal_inv_offering_modal .deal_inv_ic_modal_form_grid {
+  --deal-inv-class-label-font-size: var(
+    --deals-label-size,
+    var(--portal-form-label-font-size, 0.8125rem)
+  );
+  --deal-inv-class-label-font-weight: var(--portal-form-label-font-weight, 600);
+  --deal-inv-class-label-color: var(--portal-form-label-color, #475569);
+  --deal-inv-class-label-letter-spacing: var(
+    --portal-form-label-letter-spacing,
+    0.01em
+  );
+}
+
+/* Raise (ownership): Add-contact–style row + FormTooltip info (i), not ? help */
+.deal_inv_ic_raise_own_label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45em;
+  margin-bottom: 0.35em;
+  font-size: var(--deal-inv-class-label-font-size, 0.8125rem);
+  font-weight: var(--deal-inv-class-label-font-weight, 600);
+  color: var(--deal-inv-class-label-color, #475569);
+  letter-spacing: var(--deal-inv-class-label-letter-spacing, 0.01em);
+  cursor: default;
+}
+
+.deal_inv_ic_raise_own_label_icon {
+  flex-shrink: 0;
+  color: #64748b;
+}
+
+.deal_inv_offering_modal.add_contact_panel .deal_inv_ic_raise_own_info {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.15em;
+  color: #64748b;
+}
+
+.deal_inv_class_field_label {
+  display: block;
+  font-size: var(--deal-inv-class-label-font-size, 0.8125rem);
+  font-weight: var(--deal-inv-class-label-font-weight, 600);
+  color: var(--deal-inv-class-label-color, #475569);
+  margin-bottom: 0.35em;
+  letter-spacing: var(--deal-inv-class-label-letter-spacing, 0.01em);
+}
+
+/* Nested label text must not shrink (e.g. Maximum investment inside raise_own_label). */
+.deal_inv_ic_raise_own_label .deal_inv_class_field_label,
+label.deal_inv_ic_dist_label_flex .deal_inv_class_field_label,
+.deal_inv_class_label_inline {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+/* Text inputs + custom dropdowns: black outline (offering + Add Investor Class modal) */
+.deal_offering_info .deals_add_inv_input.deals_add_inv_field_control,
+.deal_inv_offering_modal .deals_add_inv_input.deals_add_inv_field_control {
+  border-color: #000000;
+}
+
+.deal_offering_info .deal_inv_portal_select_trigger,
+.deal_inv_offering_modal .deal_inv_portal_select_trigger {
+  border-color: #000000;
+}
+
+/* Offering details: no hover highlight on custom dropdowns (trigger + list) */
+.deal_offering_info .deal_inv_portal_select_trigger:hover:not(:disabled),
+.deal_inv_offering_modal .deal_inv_portal_select_trigger:hover:not(:disabled) {
+  background: var(--portal-surface, #fff);
+  border-color: #000000;
+  box-shadow: none;
+}
+
+.deal_offering_info .deal_inv_portal_select_option:hover,
+.deal_inv_offering_modal .deal_inv_portal_select_option:hover {
+  background: transparent;
+}
+
+.deal_offering_info
+  .deal_inv_portal_select_option.deal_inv_portal_select_option_selected:hover,
+.deal_inv_offering_modal
+  .deal_inv_portal_select_option.deal_inv_portal_select_option_selected:hover {
+  background: color-mix(
+    in srgb,
+    var(--portal-primary, #2563eb) 10%,
+    var(--portal-surface, #fff)
+  );
+}
+
+.deal_offering_info .deal_inv_portal_select_list,
+.deal_inv_offering_modal .deal_inv_portal_select_list {
+  border-color: #000000;
+}
+
+.deal_offering_info .deal_inv_portal_select_open .deal_inv_portal_select_trigger,
+.deal_inv_offering_modal .deal_inv_portal_select_open .deal_inv_portal_select_trigger {
+  border-color: #000000;
+  border-bottom-color: #000000;
+}
+
+/* Add / Edit investor class modals — lower height: two columns, no inner scroll */
+.deals_add_inv_modal_panel.deal_inv_ic_form_modal_panel.um_modal.um_modal_view {
+  max-width: min(56em, calc(100vw - 1.5em));
+}
+
+.deals_add_inv_modal_panel.deal_inv_ic_form_modal_panel .um_modal_head {
+  margin-bottom: 0.45em;
+}
+
+.deal_inv_offering_modal .deal_inv_ic_modal_form_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45em 0.95em;
+  align-content: start;
+}
+
+.deal_inv_offering_modal .deal_inv_ic_modal_form_grid_3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 0.85em;
+  row-gap: 0.7em;
+}
+
+/* Form grid: spacing from gap only — keeps three fields per row visually even */
+.deal_inv_offering_modal .deal_inv_ic_modal_form_grid > .deal_inv_class_field {
+  margin-bottom: 0;
+}
+
+.deal_inv_ic_modal_form_grid_3 > .deal_inv_ic_advanced {
+  grid-column: 1 / -1;
+}
+
+.deal_inv_ic_modal_form_grid_3 > .deal_inv_lp_hurdles_section {
+  grid-column: 1 / -1;
+}
+
+.deal_inv_ic_modal_form_grid > .deal_inv_ic_new_class_subtitle {
+  grid-column: 1 / -1;
+  margin: 0 0 0.15em;
+  font-size: 1.125em;
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+  line-height: 1.3;
+}
+
+/* Same control as hurdles section footer (.deal_inv_ic_lp_hurdle_link); row only for grid placement */
+.deal_inv_ic_modal_form_grid > .deal_inv_ic_new_class_add_hurdle_row {
+  grid-column: 1 / -1;
+  justify-self: start;
+  margin: 0.35em 0 0.65em;
+}
+
+.deal_inv_ic_modal_form_grid > .deal_inv_ic_new_class_add_hurdle_row:focus-visible {
+  outline: 2px solid var(--portal-primary, #2563eb);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.deal_inv_ic_modal_form_grid > .deal_inv_ic_form_metrics_strip {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: start;
+  gap: 0.5em 0.55em;
+  margin: 0 0 0.85em;
+  padding: 0.65em 0.75em;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: color-mix(
+    in srgb,
+    var(--portal-primary-soft, #f8fafc) 100%,
+    var(--portal-surface, #fff)
+  );
+  box-sizing: border-box;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.deal_inv_ic_form_metric_cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  min-width: 0;
+}
+
+.deal_inv_ic_form_metric_label {
+  font-size: var(--deal-inv-class-label-font-size, 0.8125rem);
+  font-weight: var(--deal-inv-class-label-font-weight, 600);
+  letter-spacing: var(--deal-inv-class-label-letter-spacing, 0.01em);
+  text-transform: none;
+  color: var(--deal-inv-class-label-color, #475569);
+  line-height: 1.3;
+  hyphens: auto;
+  overflow-wrap: anywhere;
+}
+
+.deal_inv_ic_form_metric_value {
+  font-size: 0.9375em;
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+  font-variant-numeric: tabular-nums;
+}
+
+.deal_inv_ic_modal_form_grid > .deal_inv_ic_form_metrics_strip_paired {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 0.55em;
+  padding: 0.55em;
+  background:#f6f6f6;
+  /* background: color-mix(in srgb, var(--portal-primary-soft, #f8fafc) 80%, #fff); */
+}
+
+.deal_inv_ic_form_fin_block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45em;
+  min-width: 0;
+  height: 100%;
+  min-height: 100%;
+  padding: 0.55em 0.65em;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: var(--portal-surface, #fff);
+  box-sizing: border-box;
+}
+
+.deal_inv_ic_form_fin_block_title {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deal_inv_ic_form_fin_block_values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4em 0.55em;
+  align-items: end;
+}
+
+.deal_inv_ic_form_fin_block_raise_only .deal_inv_ic_form_fin_block_values {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.deal_inv_ic_form_fin_block_col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12em;
+  min-width: 0;
+}
+
+.deal_inv_ic_form_fin_block_label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deal_inv_ic_form_fin_block_value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.deal_inv_ic_form_fin_block_value_pct {
+  color: color-mix(in srgb, var(--portal-primary, #2563eb) 78%, #0f172a);
+}
+
+.deal_inv_ic_form_fin_block_total {
+  justify-content: flex-start;
+}
+
+.deal_inv_ic_form_fin_block_total .deal_inv_ic_form_fin_block_total_body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 0;
+}
+
+.deal_inv_ic_form_fin_block_total .deal_inv_ic_form_fin_block_label_spacer {
+  visibility: hidden;
+}
+
+.deal_inv_ic_form_fin_block_total .deal_inv_ic_form_fin_block_value_money {
+  font-size: 0.875rem;
+  line-height: 1.25;
+}
+
+.deal_inv_ic_modal_form_grid > .deal_inv_ic_form_metrics_strip_gp {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.deal_inv_ic_form_fin_block_pct_only {
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 3.25em;
+}
+
+.deal_inv_ic_modal_form_grid > .deal_inv_ic_form_metrics_strip_mezz {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .deal_inv_ic_modal_form_grid > .deal_inv_ic_form_metrics_strip_paired,
+  .deal_inv_ic_modal_form_grid > .deal_inv_ic_form_metrics_strip_mezz {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .deal_inv_ic_modal_form_grid > .deal_inv_ic_form_metrics_strip_paired,
+  .deal_inv_ic_modal_form_grid > .deal_inv_ic_form_metrics_strip_mezz {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.deal_inv_ic_lp_hurdle_link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  border: 1px solid #000000;
+  background: var(--portal-surface, #fff);
+  padding: 0.38em 0.78em;
+  border-radius: var(--portal-pill-radius, 4px);
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.8125em;
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.deal_inv_ic_lp_hurdle_link:hover:not(:disabled) {
+  background: #f8fafc;
+  text-decoration: none;
+}
+
+.deal_inv_ic_lp_hurdle_link:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* LP Advanced: four-column grid to match offering mock */
+.deal_inv_ic_advanced.deal_inv_ic_advanced_lp .deal_inv_ic_advanced_um_grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 1100px) {
+  .deal_inv_ic_advanced.deal_inv_ic_advanced_lp .deal_inv_ic_advanced_um_grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.deal_inv_ic_advanced.deal_inv_ic_advanced_gp .deal_inv_ic_advanced_um_grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 1100px) {
+  .deal_inv_ic_advanced.deal_inv_ic_advanced_gp .deal_inv_ic_advanced_um_grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.deal_inv_ic_advanced.deal_inv_ic_advanced_mezz .deal_inv_ic_advanced_um_grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Mezzanine — Advanced section (flat 3-column grid per design) */
+.deal_inv_mezz_adv_grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem 1rem;
+  align-items: start;
+}
+
+.deal_inv_mezz_adv_cell {
+  min-width: 0;
+}
+
+.deal_inv_mezz_adv_cell_spacer {
+  visibility: hidden;
+  pointer-events: none;
+  min-height: 0;
+}
+
+.deal_inv_mezz_adv_ppu_row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.5rem 0.75rem;
+}
+
+.deal_inv_mezz_adv_ppu_row input {
+  flex: 1 1 6rem;
+  min-width: 0;
+}
+
+.deal_inv_mezz_adv_ppu_btn {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.deal_inv_mezz_adv_assets .deal_inv_ic_assets_ms {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .deal_inv_mezz_adv_grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .deal_inv_mezz_adv_cell_spacer {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .deal_inv_mezz_adv_grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Mezzanine — average annual return preferred return block */
+.deal_inv_mezz_aar_block {
+  grid-column: 1 / -1;
+  min-width: 0;
+  margin: 0.15rem 0 0.35rem;
+}
+
+.deal_inv_mezz_aar_grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem 1rem;
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .deal_inv_mezz_aar_grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .deal_inv_mezz_aar_grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.deal_inv_mezz_aar_pct {
+  width: 100%;
+}
+
+.deal_inv_mezz_aar_pct input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.deal_inv_mezz_aar_advanced {
+  margin-top: 0.65rem;
+}
+
+.deal_inv_mezz_aar_block--irr .deal_inv_mezz_aar_grid {
+  margin-bottom: 0;
+}
+
+.deal_inv_mezz_roi_block {
+  grid-column: 1 / -1;
+  min-width: 0;
+  margin: 0.15rem 0 0.35rem;
+}
+
+.deal_inv_mezz_roi_field {
+  max-width: 16rem;
+}
+
+@media (max-width: 1100px) {
+  .deal_inv_ic_advanced.deal_inv_ic_advanced_mezz .deal_inv_ic_advanced_um_grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.deal_inv_ic_advanced_um_spacer {
+  min-height: 2.75rem;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* LP hurdles (waterfall) */
+.deal_inv_lp_hurdles_section {
+  margin: 0.25em 0 0.75em;
+  min-width: 0;
+}
+
+.deal_inv_lp_hurdles_head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em 1em;
+  margin-bottom: 0.65em;
+}
+
+.deal_inv_lp_hurdles_title_row {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+}
+
+.deal_inv_lp_hurdles_title {
+  font-size: 0.9375em;
+  font-weight: 700;
+  color: var(--portal-text, #0f172a);
+}
+
+.deal_inv_lp_hurdles_collapse_all {
+  border: none;
+  background: none;
+  padding: 0.25em 0.5em;
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.8125em;
+  font-weight: 600;
+  color: var(--portal-primary, #2563eb);
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.deal_inv_lp_hurdles_collapse_all:hover:not(:disabled) {
+  background: #eff6ff;
+}
+
+.deal_inv_lp_hurdles_collapse_all:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.deal_inv_lp_hurdle_list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+}
+
+.deal_inv_lp_hurdles_footer_add {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-top: 0.75em;
+}
+
+.deal_inv_ic_lp_hurdle_footer_add_icon {
+  flex-shrink: 0;
+}
+
+.deal_inv_lp_hurdle_card {
+  scroll-margin-top: 1.25rem;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: var(--portal-surface, #fff);
+  border-left: 3px solid var(--portal-primary, #2563eb);
+  overflow: hidden;
+}
+
+.deal_inv_lp_hurdle_card > summary {
+  list-style: none;
+}
+
+.deal_inv_lp_hurdle_card > summary::-webkit-details-marker {
+  display: none;
+}
+
+.deal_inv_lp_hurdle_summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em 0.75em;
+  padding: 0.65em 0.75em;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+}
+
+.deal_inv_lp_hurdle_summary_chevron {
+  flex-shrink: 0;
+  color: var(--portal-primary, #2563eb);
+  transition: transform 0.15s ease;
+}
+
+.deal_inv_lp_hurdle_card:not([open]) .deal_inv_lp_hurdle_summary_chevron {
+  transform: rotate(-90deg);
+}
+
+.deal_inv_lp_hurdle_summary:hover {
+  background: #f8fafc;
+}
+
+.deal_inv_lp_hurdle_summary_main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2em;
+  flex: 1;
+  min-width: 0;
+}
+
+.deal_inv_lp_hurdle_summary_title {
+  font-size: 0.9375em;
+}
+
+.deal_inv_lp_hurdle_summary_meta {
+  font-size: 0.75em;
+  font-weight: 500;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deal_inv_lp_hurdle_summary_sep {
+  margin: 0 0.35em;
+  opacity: 0.5;
+}
+
+.deal_inv_lp_hurdle_summary .deal_inv_lp_hurdle_trash {
+  margin-left: auto;
+}
+
+.deal_inv_lp_hurdle_trash {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35em;
+  border: none;
+  border-radius: var(--portal-card-radius, 4px);
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.deal_inv_lp_hurdle_trash:hover:not(:disabled) {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.deal_inv_lp_hurdle_body {
+  padding: 0 0.75em 0.85em;
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+}
+
+.deal_inv_lp_hurdle_sentence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45em 0.6em;
+  margin: 0.75em 0 1em;
+  font-size: 0.875em;
+  line-height: 1.5;
+  color: var(--portal-text, #334155);
+}
+
+.deal_inv_lp_hurdle_sentence_lead {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25em;
+  font-weight: 600;
+  color: #475569;
+}
+
+.deal_inv_lp_hurdle_sentence_txt {
+  color: #475569;
+}
+
+.deal_inv_lp_hurdle_sentence_input {
+  min-width: 4.25em;
+  min-height: 2.5em;
+  text-align: center;
+  padding: 0.38em 0.85em !important;
+  font-size: 0.875em !important;
+  line-height: 1.3 !important;
+}
+
+.deal_inv_lp_hurdle_sentence_input_readonly {
+  cursor: default;
+  background: color-mix(in srgb, var(--portal-primary-soft, #f1f5f9) 70%, #fff);
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deal_inv_lp_hurdle_sentence_input_readonly:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/*
+ * add_deal_modal.css / add-investment-modal.css set .deals_add_inv_input { width: 100% } globally.
+ * The Add Investor Class page is not under .deal_offering_info / .deal_inv_offering_modal, so without
+ * this rule the inline hurdle inputs stretch to the full row and crowd the “%” + following words.
+ */
+.deal_inv_lp_hurdle_sentence .deals_add_inv_input.deals_add_inv_field_control {
+  width: auto;
+  min-width: 4.25em;
+  max-width: 8.5em;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+}
+
+/* Modal/page rule sets .deals_add_inv_input to width:100%; keep hurdle line as one flowing sentence */
+.deal_inv_offering_modal .deal_inv_lp_hurdle_sentence input.deal_inv_lp_hurdle_sentence_input.deals_add_inv_field_control,
+.deal_offering_info .deal_inv_lp_hurdle_sentence input.deal_inv_lp_hurdle_sentence_input.deals_add_inv_field_control {
+  width: auto;
+  min-width: 5.6em;
+  max-width: 8.5em;
+  flex: 0 0 auto;
+  border-radius: 0.5em;
+}
+
+.deal_inv_lp_hurdle_pct_inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  flex-shrink: 0;
+  width: max-content;
+  max-width: 100%;
+  /* Keep value + % together; separate clearly from the following word (e.g. “… % cash …”). */
+  white-space: nowrap;
+  margin-inline-end: 0.35em;
+}
+
+.deal_inv_lp_hurdle_sentence .deal_inv_lp_hurdle_pct_inline .deals_add_inv_input.deals_add_inv_field_control {
+  min-width: 4.6em;
+  max-width: 6.2em;
+}
+
+.deal_inv_offering_modal
+  .deal_inv_lp_hurdle_sentence
+  .deal_inv_lp_hurdle_pct_inline
+  input.deal_inv_lp_hurdle_sentence_input.deals_add_inv_field_control,
+.deal_offering_info
+  .deal_inv_lp_hurdle_sentence
+  .deal_inv_lp_hurdle_pct_inline
+  input.deal_inv_lp_hurdle_sentence_input.deals_add_inv_field_control {
+  min-width: 4.6em;
+  max-width: 6.2em;
+}
+
+.deal_inv_lp_hurdle_pct_suffix {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #475569;
+  line-height: 1;
+  flex-shrink: 0;
+  padding-inline-start: 0.05em;
+}
+
+.deal_inv_lp_hurdle_row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.55em 0.85em;
+  margin-bottom: 0.65em;
+}
+
+@media (max-width: 720px) {
+  .deal_inv_lp_hurdle_row2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.deal_inv_lp_hurdle_advanced {
+  margin-top: 0.35em;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  padding: 0.25em 0.5em 0.5em;
+  background: #fafafa;
+}
+
+.deal_inv_lp_hurdle_advanced > summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: 0.8125em;
+  font-weight: 600;
+  color: var(--portal-primary, #2563eb);
+  padding: 0.2em 0;
+}
+
+.deal_inv_lp_hurdle_advanced > summary::-webkit-details-marker {
+  display: none;
+}
+
+.deal_inv_lp_hurdle_advanced_chevron {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.25em;
+  transition: transform 0.15s ease;
+  color: var(--portal-primary, #2563eb);
+}
+
+.deal_inv_lp_hurdle_advanced[open] .deal_inv_lp_hurdle_advanced_chevron {
+  transform: rotate(90deg);
+}
+
+.deal_inv_lp_hurdle_advanced_placeholder {
+  margin: 0.35em 0 0;
+  font-size: 0.8125em;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deal_inv_lp_hurdle_advanced_grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.55em 0.85em;
+  margin: 0.35em 0 0;
+  padding-bottom: 0.15em;
+  min-width: 0;
+}
+
+.deal_inv_lp_hurdle_advanced_grid .deal_inv_lp_hurdle_adv_span2 {
+  grid-column: span 2;
+}
+
+@media (max-width: 900px) {
+  .deal_inv_lp_hurdle_advanced_grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .deal_inv_lp_hurdle_advanced_grid {
+    grid-template-columns: 1fr;
+  }
+
+  .deal_inv_lp_hurdle_advanced_grid .deal_inv_lp_hurdle_adv_span2 {
+    grid-column: span 1;
+  }
+}
+
+label.deal_inv_ic_dist_label_flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35em;
+  width: 100%;
+  margin-bottom: 0.35em;
+  cursor: default;
+  font-size: var(--deal-inv-class-label-font-size, 0.8125rem);
+  font-weight: var(--deal-inv-class-label-font-weight, 600);
+  color: var(--deal-inv-class-label-color, #475569);
+  letter-spacing: var(--deal-inv-class-label-letter-spacing, 0.01em);
+}
+
+.deal_inv_class_label_row {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  margin-bottom: 0.35em;
+}
+
+.deal_inv_class_label_row .deal_inv_class_label_inline {
+  margin-bottom: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.deal_inv_field_help_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.15em;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #64748b;
+  cursor: help;
+  flex-shrink: 0;
+}
+
+.deal_inv_field_help_btn:hover:not(:disabled) {
+  color: var(--portal-primary, #2563eb);
+  background: #f1f5f9;
+}
+
+.deal_inv_field_help_btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.deal_inv_field_hint {
+  margin: 0.35em 0 0;
+  font-size: 0.75em;
+  line-height: 1.4;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deal_inv_ic_advanced {
+  margin-top: 0.25em;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  padding: 0.35em 0.65em 0.65em;
+  background: #fafafa;
+}
+
+.deal_inv_ic_advanced_summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: var(--portal-primary, #2563eb);
+  padding: 0.25em 0;
+}
+
+.deal_inv_ic_advanced_summary::-webkit-details-marker {
+  display: none;
+}
+
+.deal_inv_ic_advanced_chevron {
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+  color: var(--portal-primary, #2563eb);
+}
+
+.deal_inv_ic_advanced[open] .deal_inv_ic_advanced_chevron {
+  transform: rotate(90deg);
+}
+
+.deal_inv_ic_advanced_contact_shell {
+  padding-top: 0.5em;
+  margin-top: 0.35em;
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+}
+
+.deal_inv_ic_advanced_lp_hurdles {
+  margin-top: 1em;
+  padding-top: 0.85em;
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+}
+
+.deal_inv_ic_advanced_pipeline_step2 .deal_inv_ic_advanced_lp_hurdles {
+  margin-top: 0.65em;
+}
+
+.deal_inv_ic_advanced_lp_hurdles .deal_inv_lp_hurdles_footer_add {
+  margin-top: 0.35em;
+}
+
+.deal_inv_ic_adv_group_head {
+  grid-column: 1 / -1;
+  margin: 0.2em 0 0.1em;
+}
+
+.deal_inv_ic_adv_group_title {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deal_inv_ic_adv_group_title.form_heading_with_info .form_heading_with_info_row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.deals_add_deal_asset_additional_subtitle.form_heading_with_info
+  .form_heading_with_info_row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.deal_inv_ic_adv_group_hint {
+  margin: 0.2em 0 0;
+  font-size: 0.75rem;
+  color: var(--portal-text-muted, #64748b);
+  line-height: 1.35;
+}
+
+/* Advanced: same field rhythm as Add contact (`um_field` + 3-col grid) */
+.deal_inv_ic_advanced_um_grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.deal_inv_ic_adv_group {
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  background: var(--portal-surface, #fff);
+  padding: 0.55rem 0.65rem 0.7rem;
+}
+
+.deal_inv_ic_adv_group_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55em 0.9em;
+  align-content: start;
+}
+
+.deal_inv_ic_adv_field_assets {
+  grid-column: 1 / -1;
+}
+
+.deal_inv_ic_assets_ms {
+  width: 100%;
+  max-width: 100%;
+}
+
+.deal_inv_ic_advanced_um_grid .um_field.add_contact_field_tight {
+  margin-bottom: 0;
+  min-width: 0;
+}
+
+.deal_inv_ic_advanced_um_grid .deal_inv_ic_adv_field {
+  padding: 0.6rem 0 0.7rem;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.deal_inv_ic_advanced_lp .deal_inv_ic_pct_row input {
+  border-radius: 0 !important;
+  border: none !important;
+  border-bottom: 1px solid var(--portal-border, #cbd5e1) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.deal_inv_ic_advanced_lp .deal_inv_ic_pct_row input:focus-visible {
+  outline: none;
+  border-bottom-color: var(--portal-primary, #2563eb) !important;
+}
+
+.deal_inv_ic_pct_row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.deal_inv_ic_pct_row input {
+  flex: 1 1 7em;
+  min-width: 6.75em;
+  max-width: 11em;
+}
+
+.deal_inv_ic_pct_row .deal_inv_ic_inline_btn {
+  margin-left: auto;
+}
+
+.deal_inv_ic_advanced_um_grid .deal_inv_ic_pct_field {
+  grid-column: span 1;
+}
+
+.deal_inv_ic_inline_btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-size: 0.8125em;
+  font-weight: 600;
+  padding: 0.4em 0.75em;
+  border-radius: var(--portal-pill-radius, 4px);
+}
+
+.deal_inv_ic_freeze_toggle {
+  margin-left: auto;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--portal-border, #cbd5e1);
+  border-radius: var(--portal-pill-radius, 4px);
+  background: var(--portal-surface, #fff);
+  color: var(--portal-text-muted, #64748b);
+  cursor: pointer;
+  transition:
+    background 0.12s ease,
+    color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.deal_inv_ic_freeze_toggle:hover:not(:disabled) {
+  background: #f8fafc;
+  border-color: color-mix(
+    in srgb,
+    var(--portal-text, #0f172a) 16%,
+    var(--portal-border, #cbd5e1)
+  );
+  color: var(--portal-text, #0f172a);
+}
+
+.deal_inv_ic_freeze_toggle:focus-visible {
+  outline: 2px solid var(--portal-primary, #2563eb);
+  outline-offset: 2px;
+}
+
+.deal_inv_ic_freeze_toggle_active {
+  border-color: var(--portal-primary, #2563eb);
+  background: color-mix(
+    in srgb,
+    var(--portal-primary, #2563eb) 12%,
+    var(--portal-surface, #fff)
+  );
+  color: var(--portal-primary, #2563eb);
+}
+
+.deal_inv_ic_freeze_toggle:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.deal_inv_ic_price_action_row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.35em;
+}
+
+@media (max-width: 900px) {
+  .deal_inv_ic_adv_group_grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.deal_inv_offering_modal .deal_inv_ic_modal_form_grid > .um_msg_error,
+.deal_inv_offering_modal .deal_inv_ic_modal_form_grid > .um_modal_form_error,
+.deal_inv_offering_modal .deal_inv_ic_modal_form_grid > .deal_inv_class_allocation_notice_wrap {
+  grid-column: 1 / -1;
+}
+
+/* Validation focus — highlight field that must be corrected */
+.deal_inv_ic_field_invalid,
+.deals_add_inv_input.deal_inv_ic_field_invalid,
+.deals_add_inv_field_control.deal_inv_ic_field_invalid {
+  border-color: #b91c1c !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, #b91c1c 28%, transparent);
+  animation: deal_inv_ic_field_invalid_pulse 1.2s ease-in-out 2;
+}
+
+@keyframes deal_inv_ic_field_invalid_pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 2px color-mix(in srgb, #b91c1c 28%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 4px color-mix(in srgb, #b91c1c 42%, transparent);
+  }
+}
+
+.deal_inv_offering_modal .deal_inv_ic_modal_form_grid .deal_inv_class_fields {
+  display: contents;
+}
+
+.deal_inv_offering_modal .deal_inv_ic_modal_form_grid .deal_inv_class_field_label {
+  margin-bottom: 0.2em;
+}
+
+@media (max-width: 640px) {
+  .deal_inv_offering_modal .deal_inv_ic_modal_form_grid {
+    grid-template-columns: 1fr;
+    gap: 0.45em;
+  }
+
+  .deal_inv_offering_modal .deal_inv_ic_modal_form_grid_3 {
+    grid-template-columns: 1fr;
+  }
+
+  .deal_inv_ic_adv_group_grid {
+    grid-template-columns: 1fr;
+  }
+
+  .deal_inv_ic_pct_row {
+    flex-wrap: wrap;
+  }
+}
+
+:root[data-theme="dark"] .deal_inv_ic_adv_group {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.deal_inv_class_table_actions_cell {
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.deal_inv_table_actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35em 0.5em;
+}
+
+.deal_inv_table_action_btn_inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}
+
+.deal_inv_table_action_btn {
+  margin: 0;
+  padding: 0.3em 0.65em;
+  border: 1px solid #000000;
+  border-radius: var(--portal-pill-radius, 4px);
+  background: var(--portal-surface, #fff);
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.8125em;
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+  cursor: pointer;
+  transition:
+    background 0.12s ease,
+    color 0.12s ease;
+}
+
+.deal_inv_table_action_btn:hover {
+  background: #f8fafc;
+}
+
+.deal_inv_table_action_btn:focus-visible {
+  outline: 2px solid var(--portal-primary, #2563eb);
+  outline-offset: 2px;
+}
+
+.deal_inv_table_action_btn_danger {
+  color: #b91c1c;
+  border-color: #000000;
+}
+
+.deal_inv_table_action_btn_danger:hover {
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+:root[data-theme="dark"] .deal_offering_info .deal_inv_ic_add_panel,
+:root[data-theme="dark"] .deals_add_investor_class_page .deal_inv_ic_add_panel,
+:root[data-theme="dark"] .deals_add_investor_class_page .deals_add_deal_asset_panel {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: var(--portal-surface, #1e293b);
+}
+
+:root[data-theme="dark"] .deal_inv_ic_add_panel_head,
+:root[data-theme="dark"] .deal_inv_ic_add_panel_actions {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+:root[data-theme="dark"] .deal_inv_ic_add_panel_title {
+  color: var(--portal-text, #f1f5f9);
+}
+
+:root[data-theme="dark"] .deal_inv_ic_new_class_subtitle {
+  color: var(--portal-text, #f1f5f9);
+}
+
+:root[data-theme="dark"] .deal_inv_ic_form_metrics_strip {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+:root[data-theme="dark"] .deal_inv_ic_form_fin_block {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+:root[data-theme="dark"] .deal_inv_class_fin_block {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+:root[data-theme="dark"] .deal_inv_class_status_chip {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+:root[data-theme="dark"] .deal_inv_class_allocation_notice_over {
+  color: #fecaca;
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(248, 113, 113, 0.35);
+}
+
+:root[data-theme="dark"] .deal_inv_class_allocation_notice_exact {
+  color: #bbf7d0;
+  background: rgba(34, 197, 94, 0.14);
+  border-color: rgba(74, 222, 128, 0.35);
+}
+
+:root[data-theme="dark"] .deal_inv_class_allocation_notice_under {
+  color: #fecaca;
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(248, 113, 113, 0.35);
+}
+
+:root[data-theme="dark"] .deal_inv_ic_form_metric_value,
+:root[data-theme="dark"] .deal_inv_ic_form_fin_block_value,
+:root[data-theme="dark"] .deal_inv_class_fin_block_value,
+:root[data-theme="dark"] .deal_inv_class_detail_item dd,
+:root[data-theme="dark"] .deal_inv_class_status_chip_value {
+  color: var(--portal-text, #f1f5f9);
+}
+
+:root[data-theme="dark"] .deal_offering_info .deals_add_inv_input.deals_add_inv_field_control,
+:root[data-theme="dark"] .deal_inv_offering_modal .deals_add_inv_input.deals_add_inv_field_control {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+:root[data-theme="dark"] .deal_offering_info .deal_inv_portal_select_trigger,
+:root[data-theme="dark"] .deal_inv_offering_modal .deal_inv_portal_select_trigger,
+:root[data-theme="dark"] .deal_offering_info .deal_inv_portal_select_list,
+:root[data-theme="dark"] .deal_inv_offering_modal .deal_inv_portal_select_list {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+:root[data-theme="dark"]
+  .deal_offering_info
+  .deal_inv_portal_select_trigger:hover:not(:disabled),
+:root[data-theme="dark"]
+  .deal_inv_offering_modal
+  .deal_inv_portal_select_trigger:hover:not(:disabled) {
+  background: var(--portal-surface);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+:root[data-theme="dark"] .deal_offering_info .deal_inv_portal_select_option:hover,
+:root[data-theme="dark"]
+  .deal_inv_offering_modal
+  .deal_inv_portal_select_option:hover {
+  background: transparent;
+}
+
+:root[data-theme="dark"]
+  .deal_offering_info
+  .deal_inv_portal_select_option.deal_inv_portal_select_option_selected:hover,
+:root[data-theme="dark"]
+  .deal_inv_offering_modal
+  .deal_inv_portal_select_option.deal_inv_portal_select_option_selected:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="dark"] .deal_inv_table_action_btn {
+  border-color: rgba(255, 255, 255, 0.45);
+  color: var(--portal-text, #f1f5f9);
+  background: var(--portal-surface, #1e293b);
+}
+
+:root[data-theme="dark"] .deal_inv_table_action_btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Custom combobox: one shell — list sits inside the same border as the trigger (no floating card) */
+.deal_inv_portal_select {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.deal_inv_portal_select_open {
+  z-index: 40;
+}
+
+.deal_inv_portal_select_trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+  width: 100%;
+  min-height: 2.6315789em;
+  margin: 0;
+  padding: 0.55em 0.85em 0.55em 1em;
+  box-sizing: border-box;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--ui-button-border-radius, 4px);
+  background: var(--portal-surface, #fff);
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.95em;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--portal-text, #0f172a);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease,
+    border-radius 0.15s ease;
+}
+
+.deal_inv_portal_select_trigger:hover:not(:disabled) {
+  border-color: color-mix(
+    in srgb,
+    var(--portal-text, #0f172a) 14%,
+    var(--portal-border, #e2e8f0)
+  );
+  background: var(--portal-primary-soft, #fafafa);
+}
+
+.deal_inv_portal_select_trigger:focus-visible {
+  outline: none;
+  border-color: var(--portal-primary, #2563eb);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--portal-primary, #2563eb) 22%, transparent);
+}
+
+.deal_inv_portal_select_trigger:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  background: #f8fafc;
+}
+
+/* Open: top cap of one menu — bottom corners square so the list attaches flush */
+.deal_inv_portal_select_open .deal_inv_portal_select_trigger {
+  border-color: #2563eb;
+  border-bottom-color: #e2e8f0;
+  border-radius: var(--portal-card-radius, 4px) var(--portal-card-radius, 4px) 0 0;
+  box-shadow: none;
+}
+
+/* Same typography empty vs selected (matches text inputs) */
+.deal_inv_portal_select_text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: inherit;
+  font-weight: 500;
+  letter-spacing: normal;
+}
+
+.deal_inv_portal_select_chevron {
+  flex-shrink: 0;
+  color: var(--portal-text-muted, #64748b);
+  transition: transform 0.2s ease;
+}
+
+.deal_inv_portal_select_chevron_open {
+  transform: rotate(180deg);
+}
+
+.deal_inv_portal_select_list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0.25em 0;
+  list-style: none;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  background: var(--portal-surface, #fff);
+  box-shadow:
+    0 10px 24px -12px rgb(15 23 42 / 14%),
+    0 0 0 1px color-mix(in srgb, var(--portal-text, #0f172a) 5%, transparent);
+  max-height: min(16em, 45vh);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.deal_inv_portal_select_option {
+  margin: 0 0.25em;
+  width: calc(100% - 0.5em);
+  box-sizing: border-box;
+  padding: 0.5em 0.65em;
+  border-radius: 6px;
+  font-size: 0.875em;
+  line-height: 1.4;
+  color: var(--portal-text, #0f172a);
+  cursor: pointer;
+  transition: background 0.12s ease;
+  text-align: left;
+}
+
+.deal_inv_portal_select_option + .deal_inv_portal_select_option {
+  margin-top: 0.1em;
+}
+
+.deal_inv_portal_select_option:hover {
+  background: var(--portal-primary-soft, #f8fafc);
+}
+
+.deal_inv_portal_select_option_selected {
+  background: color-mix(
+    in srgb,
+    var(--portal-primary, #2563eb) 10%,
+    var(--portal-surface, #fff)
+  );
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+}
+
+:root[data-theme="dark"] .deal_inv_portal_select_trigger {
+  background: var(--portal-surface);
+  border-color: var(--portal-border);
+  color: var(--portal-text);
+}
+
+:root[data-theme="dark"] .deal_inv_portal_select_trigger:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+:root[data-theme="dark"] .deal_inv_portal_select_trigger:disabled {
+  background: rgba(30, 41, 59, 0.6);
+}
+
+:root[data-theme="dark"] .deal_inv_portal_select_open .deal_inv_portal_select_trigger {
+  border-color: var(--portal-border);
+  border-bottom-color: var(--portal-border);
+}
+
+:root[data-theme="dark"] .deal_inv_portal_select_list {
+  background: var(--portal-surface);
+  border-color: var(--portal-border);
+  border-top: none;
+  box-shadow: 0 12px 28px -10px rgb(0 0 0 / 55%);
+}
+
+:root[data-theme="dark"] .deal_inv_portal_select_option:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+:root[data-theme="dark"] .deal_inv_portal_select_option_selected {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--portal-text);
+}
+
+/* Add / Edit investor class — cleaner dropdowns (not pill-shaped; floating menu) */
+.deal_inv_ic_form_modal_panel.deal_inv_offering_modal .deal_inv_ic_modal_form_grid,
+.deal_inv_ic_form_modal_panel.deal_inv_offering_modal .deal_inv_ic_add_panel_form,
+.deal_inv_ic_form_modal_panel.deal_inv_offering_modal .deals_add_inv_modal_form {
+  overflow: visible;
+}
+
+.deal_inv_ic_form_modal_panel.deal_inv_offering_modal .deal_inv_portal_select {
+  width: 100%;
+}
+
+.deal_inv_ic_form_modal_panel.deal_inv_offering_modal .deal_inv_portal_select_open {
+  z-index: 60;
+}
+
+.deal_inv_ic_form_modal_panel.deal_inv_offering_modal .deal_inv_portal_select_trigger {
+  min-height: var(--deals-add-inv-control-min-h, 2.5rem);
+  padding: 0.5rem 0.65rem 0.5rem 0.75rem;
+  border-radius: var(--deals-add-inv-control-radius, 8px);
+  font-family: var(--deals-add-inv-font-family, inherit);
+  font-size: var(--deals-add-inv-control-font, 0.9375rem);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--portal-text, #282828);
+  border-color: var(--portal-border, #e2e8f0);
+}
+
+.deal_inv_ic_form_modal_panel.deal_inv_offering_modal .deal_inv_portal_select_chevron {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.deal_inv_ic_form_modal_panel.deal_inv_offering_modal
+  .deal_inv_portal_select_trigger:hover:not(:disabled) {
+  background: var(--portal-surface, #fff);
+  border-color: color-mix(
+    in srgb,
+    var(--portal-text, #0f172a) 12%,
+    var(--portal-border, #e2e8f0)
+  );
+}
+
+.deal_inv_ic_form_modal_panel.deal_inv_offering_modal
+  .deal_inv_portal_select_open
+  .deal_inv_portal_select_trigger {
+  border-radius: var(--portal-card-radius, 4px);
+  border-color: var(--portal-primary, #2563eb);
+  border-bottom-color: var(--portal-primary, #2563eb);
+  box-shadow: 0 0 0 1px
+    color-mix(in srgb, var(--portal-primary, #2563eb) 28%, transparent);
+}
+
+.deal_inv_ic_form_modal_panel.deal_inv_offering_modal .deal_inv_portal_select_list {
+  top: calc(100% + 5px);
+  padding: 0.35em;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  box-shadow:
+    0 4px 6px -2px rgb(15 23 42 / 6%),
+    0 12px 28px -8px rgb(15 23 42 / 16%);
+}
+
+.deal_inv_ic_form_modal_panel.deal_inv_offering_modal .deal_inv_portal_select_option {
+  margin: 0;
+  width: 100%;
+  padding: 0.55em 0.7em;
+  border-radius: 6px;
+  font-family: var(--deals-add-inv-font-family, inherit);
+  font-size: var(--deals-add-inv-control-font, 0.9375rem);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--portal-text, #282828);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.deal_inv_ic_form_modal_panel.deal_inv_offering_modal
+  .deal_inv_portal_select_option
+  + .deal_inv_portal_select_option {
+  margin-top: 0.08em;
+}
+
+.deal_inv_ic_form_modal_panel.deal_inv_offering_modal
+  .deal_inv_portal_select_option_selected {
+  background: color-mix(
+    in srgb,
+    var(--portal-primary, #2563eb) 12%,
+    var(--portal-surface, #fff)
+  );
+  font-weight: 600;
+}
+
+:root[data-theme="dark"]
+  .deal_inv_ic_form_modal_panel.deal_inv_offering_modal
+  .deal_inv_portal_select_open
+  .deal_inv_portal_select_trigger {
+  border-color: rgba(255, 255, 255, 0.35);
+  border-bottom-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.35);
+}
+
+:root[data-theme="dark"]
+  .deal_inv_ic_form_modal_panel.deal_inv_offering_modal
+  .deal_inv_portal_select_list {
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 12px 36px -8px rgb(0 0 0 / 55%);
+}
+
+.deal_inv_class_card_actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: 1em;
+  padding-top: 0.75em;
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+}
+
+:root[data-theme="dark"] .deal_inv_class_table thead th {
+  background: rgba(255, 255, 255, 0.06);
+  color: #94a3b8;
+}
+
+:root[data-theme="dark"] .deal_inv_class_table tbody td {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Full-page preview (portfolio-style) for investor class */
+.deal_inv_preview_shell {
+  max-width: min(56em, 100%);
+  margin: 0 auto;
+  padding: 1em 1.25em 2em;
+  box-sizing: border-box;
+}
+
+.deal_inv_preview_back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin: 0 0 1.25em;
+  font-size: 0.875em;
+  font-weight: 600;
+  color: var(--portal-primary, #2563eb);
+  text-decoration: none;
+}
+
+.deal_inv_preview_back:hover {
+  text-decoration: underline;
+}
+
+.deal_inv_preview_back_link {
+  font-weight: 600;
+  color: var(--portal-primary, #2563eb);
+}
+
+.deal_inv_preview_hero {
+  padding: 1.5em 1.35em 1.75em;
+  border-radius: var(--portal-card-radius, 4px);
+  border: 1px solid var(--portal-border, #e2e8f0);
+  background: linear-gradient(
+    165deg,
+    var(--portal-surface, #fff) 0%,
+    color-mix(in srgb, var(--portal-primary-soft, #f8fafc) 92%, #fff) 100%
+  );
+  margin-bottom: 1.5em;
+}
+
+.deal_inv_preview_deal_name {
+  margin: 0 0 0.35em;
+  font-size: 0.8125em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deal_inv_preview_title {
+  margin: 0 0 0.5em;
+  font-size: clamp(1.35em, 2.5vw, 1.75em);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--portal-text, #0f172a);
+}
+
+.deal_inv_preview_sub {
+  margin: 0;
+  font-size: 0.9375em;
+  color: var(--portal-text-muted, #64748b);
+  line-height: 1.45;
+}
+
+.deal_inv_preview_grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+
+@media (min-width: 720px) {
+  .deal_inv_preview_grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.deal_inv_preview_card {
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  padding: 1em 1.15em 1.1em;
+  background: var(--portal-surface, #fff);
+}
+
+.deal_inv_preview_card_title {
+  margin: 0 0 0.85em;
+  font-size: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deal_inv_preview_dl {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85em;
+}
+
+.deal_inv_preview_dl > div {
+  display: grid;
+  grid-template-columns: minmax(0, 11em) 1fr;
+  gap: 0.5em 1em;
+  align-items: baseline;
+}
+
+.deal_inv_preview_dl dt {
+  margin: 0;
+  font-size: 0.8125em;
+  font-weight: 600;
+  color: var(--portal-text-muted, #64748b);
+}
+
+.deal_inv_preview_dl dd {
+  margin: 0;
+  font-size: 0.9375em;
+  font-weight: 600;
+  color: var(--portal-text, #0f172a);
+}
+
+:root[data-theme="dark"] .deal_inv_preview_hero {
+  background: linear-gradient(
+    165deg,
+    var(--portal-surface) 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* View investor class — modal body (portfolio blocks inside dialog) */
+.deal_inv_view_ic_scroll {
+  padding-top: 0.25em;
+}
+
+.deal_inv_preview_hero_modal {
+  margin-bottom: 1em;
+}
+
+.deal_inv_preview_title_modal {
+  font-size: clamp(1.15em, 2.2vw, 1.45em);
+}
+
+.deal_inv_preview_grid_modal {
+  margin-bottom: 0.25em;
+}
+
+/* Offering Details — confirm delete + in-app message (replaces window.confirm / alert) */
+.deal_ic_dialog_overlay.deals_add_inv_modal_overlay.portal_modal_z_boost {
+  z-index: 1220;
+}
+
+.deal_ic_message_overlay.deal_ic_dialog_overlay {
+  z-index: 1230;
+}
+
+.deal_ic_dialog_shell.deals_add_inv_modal_panel {
+  max-width: min(22em, calc(100vw - 2em));
+}
+
+.deal_ic_dialog_body {
+  padding: 0 1.15em 0.85em;
+}
+
+.deal_ic_dialog_message {
+  margin: 0;
+  font-size: 0.875em;
+  line-height: 1.5;
+  color: var(--portal-text, #0f172a);
+}
+
+.deal_ic_dialog_message_error {
+  color: #b91c1c;
+}
+
+.deal_ic_dialog_btn_danger {
+  background: #b91c1c;
+  border-color: #b91c1c;
+}
+
+.deal_ic_dialog_btn_danger:hover:not(:disabled) {
+  background: #991b1b;
+  border-color: #991b1b;
+}
+
+:root[data-theme="dark"] .deal_ic_dialog_message {
+  color: var(--portal-text, #f1f5f9);
+}
+
+:root[data-theme="dark"] .deal_ic_dialog_message_error {
+  color: #f87171;
+}
+
+:root[data-theme="dark"] .deal_ic_dialog_btn_danger {
+  background: #dc2626;
+  border-color: #dc2626;
+}
+
+:root[data-theme="dark"] .deal_ic_dialog_btn_danger:hover:not(:disabled) {
+  background: #ef4444;
+  border-color: #ef4444;
+}
+
+/* Add Investor Class page: step 2 — advanced always open, match Add Asset “Additional information” */
+.deal_inv_ic_advanced_summary_pipeline_hidden {
+  display: none;
+}
+
+.deal_inv_ic_advanced_pipeline_step2.deal_inv_ic_advanced {
+  margin-top: 0;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.deal_inv_ic_advanced_pipeline_step2.deal_inv_ic_advanced
+  .deal_inv_ic_advanced_contact_shell {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.deals_add_deal_asset_additional_investor_class {
+  margin-bottom: 0.25rem;
+}

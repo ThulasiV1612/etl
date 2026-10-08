@@ -1,0 +1,40 @@
+{
+  "deal_name": "Woodland Ridge",
+  "deal_id": "",
+  "mapped_from": "Class_Mapping_FILLED.xlsx",
+  "note": "PUT into class-setup meta.promote (resolve share keys from class names \u2192 class UUIDs). Fixes Class Setup UI showing synthetic 12% instead of Class Mapping hurdle rates.",
+  "promote": {
+    "hurdles": [
+      {
+        "id": "h1",
+        "rate": "6.5",
+        "basis": "Cash-on-cash",
+        "measuredOn": "LP classes"
+      },
+      {
+        "id": "h2",
+        "rate": "5.5",
+        "basis": "Cash-on-cash",
+        "measuredOn": "LP classes"
+      }
+    ],
+    "shares_by_class_name": {
+      "Class A+ LP": [
+        "100",
+        "100",
+        "70"
+      ],
+      "Class A - Limited partners": [
+        "100",
+        "100",
+        "70"
+      ],
+      "General partners": [
+        "0",
+        "0",
+        "30"
+      ]
+    }
+  },
+  "ui_maps_to": "add_deal_form.class_setup_json.promote"
+}

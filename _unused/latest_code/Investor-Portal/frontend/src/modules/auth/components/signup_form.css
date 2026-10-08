@@ -1,0 +1,231 @@
+/* SignupForm: layout + invite flow (only classes used by SignupForm.tsx) */
+
+.authPage:has(.signup_page) .authContent {
+  max-width: min(100%, 900px);
+}
+
+.authPage:has(.signup_page) .auth_card.loginForm {
+  max-width: 100%;
+}
+
+body:has(.signup_page) .companyContent {
+  margin-top: 0.35em;
+}
+
+.signup_page .companyContent {
+  margin-top: 0.35em;
+}
+
+.signup_page .companyContent .copyright {
+  margin: 0.5em 0 0;
+}
+
+.signup_page .companyContent .poweredBy {
+  margin: 0.5em 0 0;
+}
+
+/* One viewport-tall shell; scroll only inside if the form is taller than the screen */
+html:has(.signup_page),
+body:has(.signup_page) {
+  height: 100%;
+  overflow: hidden;
+}
+
+body:has(.signup_page) #root {
+  min-height: 0;
+  height: 100%;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
+.authPage:has(.signup_page) {
+  align-items: center;
+  /* safe center: vertically center when content fits; start when it would overflow */
+  justify-content: safe center;
+  box-sizing: border-box;
+  height: 100dvh;
+  max-height: 100dvh;
+  min-height: 0;
+  padding-block: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.authPage:has(.signup_page) .authContent {
+  flex-shrink: 0;
+}
+
+.authPage:has(.signup_page) .loginCred {
+  padding: 0;
+}
+
+.signup_page .signup_modal_content {
+  width: 100%;
+  max-width: 900px;
+  min-width: 0;
+  box-sizing: border-box;
+  border-radius: var(--portal-pill-radius, 4px);
+  box-shadow: none;
+  background: transparent;
+  overflow: visible;
+}
+
+.signup_page .settings_form {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.signup_success_signin_btn {
+  width: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  margin-top: 0.5em;
+  text-decoration: none;
+}
+
+.signup_success_signin_btn span {
+  margin: 0 0 0 5px;
+  display: flex;
+}
+
+/* Signup rows: two fields per row on desktop, stacked on mobile. */
+.signup_page .signupForm_rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65em;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.signup_page .signupForm_row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65em;
+  min-width: 0;
+}
+
+.signup_page .signupForm_row .emailData,
+.signup_page .signupForm_row .passwordData {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.signup_page .signupForm_col .input_wrapper .input_field {
+  width: 100%;
+}
+
+.signup_page .emailData,
+.signup_page .passwordData {
+  margin: 0 0 4px 0;
+}
+
+@media (min-width: 640px) {
+  .signup_page .signupForm_row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25em;
+  }
+}
+
+.signup_page .loginBtn {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0 0 0;
+}
+
+.signup_page .loginBtn .login-btn {
+  width: 100%;
+  max-width: 20em;
+  min-width: 0;
+  border-radius: var(--ui-button-border-radius, 4px);
+  padding: 0.45em 1em;
+  box-sizing: border-box;
+}
+
+.terms_policy {
+  display: flex;
+  align-content: flex-start;
+  align-items: flex-start;
+  gap: 0.35em;
+  margin: 1rem 0;
+  padding: 0.15rem 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--portal-text-muted);
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.signup_page .terms_policy label.signup_terms_label_row {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.signup_terms_label_text {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Inline with agreement copy — matches field labels (asterisk immediately after label text). */
+.signup_terms_label_text .signup_terms_required_mark {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.2em;
+  vertical-align: 0.08em;
+  line-height: 0;
+  color: #dc2626;
+}
+
+.signup_terms_required_icon {
+  display: block;
+  color: #dc2626;
+}
+
+.terms_policy input[type="checkbox"] {
+  flex-shrink: 0;
+}
+
+.signup_field_hint {
+  margin: 0.35em 0 0;
+  font-size: 0.75em;
+  line-height: 1.35;
+  color: var(--portal-text-muted);
+  max-width: 100%;
+}
+
+.terms,
+.policy {
+  color: var(--portal-gold-accent, #d4af37);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.terms:hover,
+.policy:hover {
+  text-decoration: underline;
+}
+
+.signup_success_with_footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25em;
+  width: 100%;
+}
+
+.signup_success_footer.companyContent {
+  margin-top: 0.5em;
+}

@@ -1,0 +1,226 @@
+.deal_asset_attr_table_wrap {
+  min-width: 0;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  overflow: hidden;
+  background: var(--portal-surface, #fff);
+}
+
+.deal_asset_attr_table {
+  width: 100%;
+}
+
+.deal_asset_attr_tr {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(7rem, 0.9fr) minmax(12rem, 1.4fr);
+  gap: 0.5rem 0.75rem;
+  align-items: center;
+}
+
+.deal_asset_attr_tr_head {
+  background: color-mix(
+    in srgb,
+    var(--portal-text, #0f172a) 5%,
+    var(--portal-surface, #fff)
+  );
+  font-size: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--portal-text-muted, #64748b);
+  padding: 0.65em 0.75em;
+}
+
+.deal_asset_attr_tr_body {
+  padding: 0.55em 0.75em;
+  border-top: 1px solid var(--portal-border, #e2e8f0);
+  font-size: 0.875em;
+}
+
+.deal_asset_attr_th_handle,
+.deal_asset_attr_td_handle {
+  padding: 0;
+  justify-self: center;
+}
+
+.deal_asset_attr_drag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--portal-text-muted, #94a3b8);
+  cursor: grab;
+}
+
+.deal_asset_attr_drag:active {
+  cursor: grabbing;
+}
+
+.deal_asset_attr_drag:focus-visible {
+  outline: 2px solid var(--portal-primary, #2563eb);
+  outline-offset: 2px;
+}
+
+.deal_asset_attr_label_text {
+  font-weight: 500;
+  color: var(--portal-text, #0f172a);
+}
+
+.deal_asset_attr_input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0.45em 0.65em;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.9375em;
+  background: var(--portal-surface, #fff);
+  color: var(--portal-text, #0f172a);
+}
+
+.deal_asset_attr_input:focus-visible {
+  outline: 2px solid var(--portal-primary, #2563eb);
+  outline-offset: 1px;
+}
+
+.deal_asset_attr_input_search::placeholder {
+  color: var(--portal-text-muted, #94a3b8);
+}
+
+/* Default value-column selects (non–number-of-units rows, if any) */
+.deal_asset_attr_select {
+  flex: 0 0 auto;
+  min-width: min(11rem, 42vw);
+  max-width: 100%;
+  padding: 0.45em 0.5em;
+  border: 1px solid var(--portal-border, #e2e8f0);
+  border-radius: var(--portal-card-radius, 4px);
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.875em;
+  background: var(--portal-surface, #fff);
+  color: var(--portal-text, #0f172a);
+}
+
+/* Number of units — full-width 50/50 quantity + unit dropdown */
+.deal_asset_attr_tr_num_units {
+  align-items: center;
+}
+
+.deal_asset_attr_td_num_units {
+  display: block;
+  min-width: 0;
+}
+
+.deal_asset_attr_num_units_wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: stretch;
+  gap: 0.65rem;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.deal_asset_attr_num_units_wrap .deal_asset_attr_num_units_input,
+.deal_asset_attr_num_units_wrap .deal_asset_attr_num_units_select {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  flex: initial;
+  padding: 0.45em 0.5em;
+  border-radius: var(--portal-card-radius, 4px);
+  border: 1px solid var(--portal-border, #e2e8f0);
+  font-family: inherit;
+  font-size: 0.875em;
+  line-height: 1.25;
+  background: var(--portal-surface, #fff);
+  color: var(--portal-text, #0f172a);
+}
+
+.deal_asset_attr_num_units_wrap .deal_asset_attr_num_units_select {
+  padding-right: 2.1rem;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.65rem center;
+  background-size: 1rem;
+}
+
+.deal_asset_attr_date_row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1rem;
+  min-width: 0;
+}
+
+.deal_asset_attr_input_date {
+  flex: 1;
+  min-width: min(10rem, 100%);
+}
+
+.deal_asset_attr_input_year {
+  max-width: 8rem;
+}
+
+/* Year built / year renovated — keep N/A on the same line as the input */
+.deal_asset_attr_year_na_row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.deal_asset_attr_year_na_row .deal_asset_attr_input_year {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.deal_asset_attr_year_na_row .deal_asset_attr_na {
+  margin-left: 0;
+  flex-shrink: 0;
+}
+
+.deal_asset_attr_na {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: auto;
+  font-size: 0.875em;
+  color: var(--portal-text-muted, #64748b);
+  cursor: pointer;
+  user-select: none;
+}
+
+.deal_asset_attr_na input {
+  margin: 0;
+}
+
+.deal_asset_attr_td_value {
+  min-width: 0;
+}
+
+:root[data-theme="dark"] .deal_asset_attr_table_wrap {
+  background: color-mix(in srgb, var(--portal-surface) 96%, #000);
+}
+
+:root[data-theme="dark"] .deal_asset_attr_tr_head {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+:root[data-theme="dark"]
+  .deal_asset_attr_num_units_wrap
+  .deal_asset_attr_num_units_select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+}

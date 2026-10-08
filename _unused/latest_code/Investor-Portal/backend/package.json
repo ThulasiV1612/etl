@@ -1,0 +1,58 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "start": "node --watch dist/server.js",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:cleanup": "node scripts/cleanup-db-keep-platform-admin.mjs",
+    "audit:investors-added": "tsx scripts/audit-deal-investors-added.ts",
+    "test": "tsx --test tests/**/*.test.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cloudinary": "^2.9.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "drizzle-orm": "^0.45.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.0.2",
+    "nodemailer": "^8.0.4",
+    "pdf-lib": "^1.17.1",
+    "pg": "^8.20.0",
+    "pino": "^10.3.1",
+    "sanitize-html": "^2.17.2",
+    "stripe": "^22.3.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cookie-parser": "^1.4.9",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^2.0.0",
+    "@types/nodemailer": "^7.0.11",
+    "@types/pg": "^8.20.0",
+    "@types/sanitize-html": "^2.16.1",
+    "drizzle-kit": "^0.31.10",
+    "tsx": "^4.20.5"
+  },
+  "directories": {
+    "test": "tests"
+  }
+}

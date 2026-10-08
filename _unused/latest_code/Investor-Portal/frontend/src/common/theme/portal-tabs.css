@@ -1,0 +1,207 @@
+/**
+ * Portal tabs — unified underline strip (customer Members / Deals pattern).
+ * Applies to .um_members_tab strips and legacy .um_segmented_tabs_* markup.
+ */
+
+/* —— Tab strip container —— */
+.um_members_tabs_outer,
+.um_segmented_tabs_outer {
+  margin: 0 0 0.75em;
+  padding: 0;
+  max-width: 100%;
+}
+
+.um_members_tabs_row,
+.um_segmented_tabs_row,
+.deals_tabs_row.um_members_tabs_row,
+.deals_tabs_row.um_segmented_tabs_row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid var(--portal-tab-strip-border);
+}
+
+/* Horizontal scroll rows (deals, contacts, etc.) */
+.deals_tabs_row.um_segmented_tabs_row,
+.deals_tabs_row.um_members_tabs_row,
+.um_segmented_tabs_row.deals_tabs_row {
+  flex-wrap: nowrap;
+  width: max-content;
+  min-width: min(100%, max-content);
+}
+
+a.um_members_tab,
+button.um_members_tab {
+  text-decoration: none;
+  color: var(--font-color-title, #1b1b1d);
+}
+
+/* —— Tab control (inactive + active) —— */
+.um_members_tab,
+.um_segmented_tabs_row .um_segmented_tab.um_members_tab,
+button.um_members_tab,
+button.um_segmented_tab.um_members_tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0;
+  padding: 0.7em 1.1em 0.65em;
+  min-height: 0;
+  border: none;
+  /* Beat global App.css `button { border-radius: … !important }` */
+  border-radius: 0 !important;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+  background: transparent;
+  box-shadow: none;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.9em;
+  line-height: 1.2;
+  color: var(--font-color-title, #1b1b1d);
+  cursor: pointer;
+  flex: 0 0 auto;
+  justify-content: center;
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.um_members_tab:hover:not(.um_members_tab_active),
+.um_segmented_tabs_row .um_segmented_tab.um_members_tab:hover:not(.um_members_tab_active) {
+  color: var(--font-color-title, #1b1b1d);
+  background: transparent;
+}
+
+.um_members_tab:focus-visible,
+.um_segmented_tabs_row .um_members_tab:focus-visible {
+  outline: 2px solid var(--portal-gold-accent, #d4af37);
+  outline-offset: 2px;
+}
+
+.um_members_tab_active,
+.um_segmented_tabs_row .um_segmented_tab.um_members_tab.um_members_tab_active {
+  color: var(--font-color-title, #1b1b1d);
+  border-bottom-color: var(--portal-gold-accent, #d4af37);
+  background: var(--portal-tab-active-bg);
+  border-radius: 0 !important;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] .um_members_tab_active,
+:root[data-theme="dark"]
+  .um_segmented_tabs_row
+  .um_segmented_tab.um_members_tab.um_members_tab_active {
+  color: var(--font-color-title, rgba(255, 255, 255, 0.95));
+  background: var(--portal-tab-active-bg);
+}
+
+/* Icons + counts (customer / deals / contacts) */
+.um_members_tab svg[aria-hidden],
+.um_segmented_tabs_row .um_segmented_tab svg[aria-hidden],
+.deals_tabs_icon,
+.um_segmented_tab_icon {
+  flex-shrink: 0;
+  color: var(--icon-color, #1b1b1d);
+  opacity: 1;
+}
+
+.um_members_tab_active svg[aria-hidden],
+.um_segmented_tabs_row .um_segmented_tab.um_members_tab_active svg[aria-hidden] {
+  color: var(--icon-color, #1b1b1d);
+  opacity: 1;
+}
+
+.deals_tabs_label,
+.um_segmented_tab_label {
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.deals_tabs_count,
+.cp_company_detail_tab_count,
+.cp_customers_tab_count,
+.contacts_tab_count {
+  margin-inline-start: 0.15em;
+  font-size: 0.875em;
+  font-weight: inherit;
+  font-variant-numeric: tabular-nums;
+  color: inherit;
+  white-space: nowrap;
+}
+
+/* —— Legacy um_tabs row —— */
+.um_tabs {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--portal-tab-strip-border);
+  margin-bottom: 1.5em;
+}
+
+.um_tab {
+  padding: 0.7em 1.1em 0.65em;
+  margin: 0 0 -1px;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.9em;
+  font-weight: 500;
+  color: var(--font-color-title, #1b1b1d);
+  cursor: pointer;
+  border-radius: 0 !important;
+  border-bottom: 3px solid transparent;
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.um_tab:hover {
+  color: var(--font-color-title, #1b1b1d);
+  background: transparent;
+}
+
+.um_tab_active {
+  color: var(--font-color-title, #1b1b1d);
+  border-bottom-color: var(--portal-gold-accent, #d4af37);
+  background: var(--portal-tab-active-bg);
+  font-weight: 600;
+}
+
+:root[data-theme="dark"] .um_tab_active {
+  color: var(--font-color-title, rgba(255, 255, 255, 0.95));
+  background: var(--portal-tab-active-bg);
+}
+
+/* —— Tab panels —— */
+.um_members_tab_content {
+  margin-top: 0;
+}
+
+.um_members_tab_content .um_members_tab_panel {
+  border-radius: var(--portal-card-radius, 4px);
+  margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .um_members_tab,
+  .um_segmented_tabs_row .um_segmented_tab.um_members_tab,
+  .um_tab {
+    transition-duration: 0.01ms;
+  }
+}

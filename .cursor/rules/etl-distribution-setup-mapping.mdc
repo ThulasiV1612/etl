@@ -1,0 +1,48 @@
+---
+description: ETL Distribution Setup — waterfall CONFIG into add_deal_form.distribution_setup_json (Investor-Portal-main)
+globs: ETL_Distribution_Setup*.xlsx,ETL_Distribution_Setup*.payload.json,**/distribution-setup/**
+alwaysApply: false
+---
+
+# ETL: SyndicationX Distribution Setup
+
+Use **Investor-Portal-main**. Target: `add_deal_form.distribution_setup_json` via the same shape as  
+`PUT /deals/:dealId/distribution-setup` `{ waterfalls: { operating, capital } }`.
+
+**ASSUME:** Deal(s) + Classes already exist. Do **not** create or modify classes.
+
+## Inputs (use whatever is present; no hardcoding)
+
+- `ETL_Distribution_Setup_FILLED_*.xlsx` — sheets `Deal_Meta`, `Waterfall_Operating`, `Waterfall_Capital` (alias `Dist_Setup_Seed` for a combined seed sheet)
+- `ETL_Distribution_Setup_FILLED_*.payload.json` — same payload shape
+- Optional: `ETL_Distributions_Paid_FILLED_*.xlsx` / `Paid_*` = **ledger only** — never write into `distribution_setup_json`
+- Optional regenerate seed from `Class_Mapping_FILLED.xlsx` grouped by `deal_name` (see row mapping below)
+
+## Per deal_name
+
+1. Resolve `deal_id` by `deal_name` (must already exist)
+2. Resolve each `pay_to_class_name` → `deal_investor_class.id` (exact name match for that deal)
+3. Build `waterfalls.operating[]` and `waterfalls.capital[]` from ETL rows for that deal
+4. Replace payTo class names with class UUIDs
+5. Persist `{ waterfalls, updatedAt }` (portal serializer shape; CATCHUP uses `catchup: { pct }`)
+6. Verify Distribution Setup UI for that deal
+
+## Kinds
+
+`LP_PREF` | `PREF_CURRENT` | `PREF_ACCRUED` | `ROC` | `CATCHUP`  
+`amountMode`: `calc` | `input`
+
+## Seed from Class_Mapping_FILLED (dynamic)
+
+- Each LP with `pref_enabled=yes` → operating `LP_PREF`, payTo that LP, name/rate from `pref_rate`
+- Each LP → capital `ROC`, payTo that LP
+- Each `preferred_equity` → operating `PREF_CURRENT` and/or capital `PREF_ACCRUED` as applicable
+- Each GP → capital `CATCHUP`, payTo that GP (`catchupPct` from ETL or default `20`)
+- Hurdles / Final Tier / promote stay on **Class Setup** — do not put them into `distribution_setup_json` except CATCHUP labeling context if present
+
+## Do not
+
+- Hardcode deal/class names, %, or dates
+- Recreate classes
+- Load Paid_* / Cash Flow “distributions paid” ledger into distribution setup
+- Expect Dist Setup to persist from classes alone (GET may seed defaults; must PUT/Save / ETL write)
